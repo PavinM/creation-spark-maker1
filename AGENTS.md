@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project architecture
+
+- Keep catalogue, collection, gallery, and process content in `src/lib/content.ts` so a future CMS can replace the data without redesigning views.
+- Keep shared public-site presentation in `src/components/site.tsx` so all routes use one navigation, footer, motion, card, hero, CTA, and form system.

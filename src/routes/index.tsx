@@ -1,24 +1,36 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CTASection, ProductCard, Reveal, SectionHeading } from "@/components/site";
+import { images, processes, products } from "@/lib/content";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [
+    { title: "Premium Kidswear Manufacturer India | Muthu International" },
+    { name: "description", content: "Premium kids apparel manufacturing, OEM and private-label production for brands, retailers and sourcing partners." },
+    { property: "og:title", content: "Muthu International — Premium Kidswear Manufacturing" },
+    { property: "og:description", content: "From concept to finished garment: design development, OEM, private label and quality-focused production." },
+    { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
+  ]}), component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function Home() { return <>
+  <section className="relative min-h-[92vh] overflow-hidden bg-navy pt-20 text-primary-foreground">
+    <img src={images.hero} width={1536} height={1024} fetchPriority="high" className="hero-image absolute inset-0 size-full object-cover object-center" alt="Premium contemporary kidswear collection"/>
+    <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/35 to-transparent"/>
+    <div className="page-shell hero-copy relative flex min-h-[calc(92vh-5rem)] flex-col justify-end pb-16 sm:pb-20">
+      <p className="label-track text-gold">Muthu International Private Ltd</p>
+      <h1 className="display-title mt-5 max-w-5xl text-5xl uppercase sm:text-7xl lg:text-8xl">Crafting kidswear.<br/>Building brands.</h1>
+      <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/80 sm:text-lg">Premium kids apparel manufacturing for brands, retailers and private-label businesses.</p>
+      <div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="secondary" className="h-12 rounded-none px-6"><Link to="/collections">Explore collection <ArrowRight/></Link></Button><Button asChild variant="outline" className="h-12 rounded-none border-primary-foreground/40 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10"><Link to="/request-quote">Get a quote</Link></Button></div>
+    </div><div className="absolute bottom-8 right-8 hidden items-center gap-3 text-[10px] uppercase tracking-[.16em] lg:flex">Scroll <span className="scroll-line h-10 w-px bg-gold"/><ArrowDown className="size-3"/></div>
+  </section>
+  <section className="py-20 sm:py-32"><div className="page-shell grid gap-12 lg:grid-cols-2"><Reveal><p className="label-track mb-5 text-gold">End-to-end capability</p><h2 className="display-title text-5xl uppercase sm:text-7xl">From concept<br/>to finished<br/>garment.</h2></Reveal><Reveal className="lg:pt-16"><p className="max-w-xl text-lg leading-8 text-slate">Muthu International Private Ltd brings together product development, manufacturing expertise and quality-focused production to create contemporary kidswear collections for modern brands.</p><div className="mt-10 grid grid-cols-2 border-t border-border">{["Design","Development","Manufacturing","Quality"].map(x=><div key={x} className="border-b border-border py-5 text-sm font-semibold uppercase text-navy">{x}</div>)}</div></Reveal></div></section>
+  <section className="bg-beige py-20 sm:py-28"><div className="page-shell"><SectionHeading eyebrow="Product direction" title="Our kidswear" text="Contemporary products developed for today’s kidswear market."/><div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{products.map(p=><ProductCard key={p.slug} product={p}/>)}</div><Button asChild variant="outline" className="mt-10 rounded-none"><Link to="/products">View all products <ArrowRight/></Link></Button></div></section>
+  <section className="py-20 sm:py-28"><div className="page-shell"><SectionHeading eyebrow="Manufacturing journey" title="Every garment has a process." text="A connected development and production journey, shaped around the buyer’s requirements."/><div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div className="image-zoom lg:sticky lg:top-28 lg:h-[65vh]"><img src={images.factory} loading="lazy" width={1536} height={1024} className="size-full object-cover" alt="Precision garment stitching at Muthu International"/></div><div>{processes.map((x,i)=><Reveal key={x}><div className="grid grid-cols-[4rem_1fr] border-b border-border py-7"><span className="font-mono text-xs text-gold">{String(i+1).padStart(2,"0")}</span><span className="text-2xl font-medium uppercase text-navy sm:text-4xl">{x}</span></div></Reveal>)}</div></div></div></section>
+  <section className="bg-navy py-20 text-primary-foreground sm:py-28"><div className="page-shell grid items-end gap-10 lg:grid-cols-[1.2fr_.8fr]"><Reveal><p className="label-track mb-6 text-gold">OEM & private label</p><h2 className="display-title text-5xl uppercase sm:text-7xl">Your brand.<br/>Your design.<br/>Our manufacturing.</h2></Reveal><Reveal><p className="leading-8 text-primary-foreground/65">Develop your own kidswear collection with customized products, colours, prints, embroidery, labels and specifications.</p><div className="mt-8 flex flex-wrap gap-3"><Button asChild variant="secondary" className="rounded-none"><Link to="/oem-private-label">Explore OEM</Link></Button><Button asChild variant="outline" className="rounded-none border-primary-foreground/30 bg-transparent text-primary-foreground"><Link to="/request-quote">Start your project</Link></Button></div></Reveal></div></section>
+  <section className="py-20 sm:py-28"><div className="page-shell"><SectionHeading eyebrow="Why Muthu" title="Built around your brand."/><div className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3">{["Quality","Design Development","Customization","OEM","Private Label","Reliable Production"].map((x,i)=><Reveal key={x}><div className="min-h-40 border-b border-r border-border p-7 transition-colors hover:bg-beige"><span className="font-mono text-xs text-gold">0{i+1}</span><h3 className="mt-12 text-xl font-semibold uppercase text-navy">{x}</h3></div></Reveal>)}</div></div></section>
+  <section className="relative min-h-[72vh] overflow-hidden text-primary-foreground"><img src={images.factory} loading="lazy" width={1536} height={1024} className="absolute inset-0 size-full object-cover" alt="Muthu International garment manufacturing floor"/><div className="absolute inset-0 bg-navy/65"/><div className="page-shell relative flex min-h-[72vh] items-end pb-16"><Reveal><p className="label-track text-gold">Inside production</p><h2 className="display-title mt-5 max-w-4xl text-5xl uppercase sm:text-7xl">Where ideas become garments.</h2><p className="mt-5 max-w-2xl leading-7 text-primary-foreground/70">Design. Cutting. Printing. Embroidery. Stitching. Finishing. Quality control.</p><Button asChild variant="secondary" className="mt-7 rounded-none"><Link to="/manufacturing">Explore manufacturing <ArrowRight/></Link></Button></Reveal></div></section>
+  <section className="bg-beige py-20 sm:py-28"><div className="page-shell"><SectionHeading eyebrow="Latest developments" title="A considered point of view."/><div className="grid gap-6 md:grid-cols-12"><Link to="/products/$slug" params={{slug:products[3].slug}} className="image-zoom md:col-span-7"><img src={images.editorial} loading="lazy" width={1024} height={1280} className="aspect-[4/5] size-full object-cover" alt="Latest embroidered kidswear development"/></Link><div className="grid gap-6 md:col-span-5"><Link to="/products/$slug" params={{slug:products[2].slug}} className="image-zoom"><img src={images.printedSet} loading="lazy" width={1024} height={1280} className="aspect-square size-full object-cover object-top" alt="Printed kidswear co-ord development"/></Link><Link to="/products/$slug" params={{slug:products[1].slug}} className="image-zoom"><img src={images.girlsTee} loading="lazy" width={1024} height={1280} className="aspect-[4/3] size-full object-cover object-top" alt="Girls embroidered tee development"/></Link></div></div></div></section>
+  <CTASection/>
+</>; }

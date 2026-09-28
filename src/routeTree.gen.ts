@@ -10,33 +10,192 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DesignDevelopmentRouteImport } from './routes/design-development'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ManufacturingRouteImport } from './routes/manufacturing'
+import { Route as OemPrivateLabelRouteImport } from './routes/oem-private-label'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as QualityRouteImport } from './routes/quality'
+import { Route as RequestQuoteRouteImport } from './routes/request-quote'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsRoute = CollectionsRouteImport.update({
+  id: '/collections',
+  path: '/collections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignDevelopmentRoute = DesignDevelopmentRouteImport.update({
+  id: '/design-development',
+  path: '/design-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManufacturingRoute = ManufacturingRouteImport.update({
+  id: '/manufacturing',
+  path: '/manufacturing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OemPrivateLabelRoute = OemPrivateLabelRouteImport.update({
+  id: '/oem-private-label',
+  path: '/oem-private-label',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualityRoute = QualityRouteImport.update({
+  id: '/quality',
+  path: '/quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestQuoteRoute = RequestQuoteRouteImport.update({
+  id: '/request-quote',
+  path: '/request-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/collections': typeof CollectionsRoute
+  '/contact': typeof ContactRoute
+  '/design-development': typeof DesignDevelopmentRoute
+  '/gallery': typeof GalleryRoute
+  '/manufacturing': typeof ManufacturingRoute
+  '/oem-private-label': typeof OemPrivateLabelRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/quality': typeof QualityRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/collections': typeof CollectionsRoute
+  '/contact': typeof ContactRoute
+  '/design-development': typeof DesignDevelopmentRoute
+  '/gallery': typeof GalleryRoute
+  '/manufacturing': typeof ManufacturingRoute
+  '/oem-private-label': typeof OemPrivateLabelRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/quality': typeof QualityRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/collections': typeof CollectionsRoute
+  '/contact': typeof ContactRoute
+  '/design-development': typeof DesignDevelopmentRoute
+  '/gallery': typeof GalleryRoute
+  '/manufacturing': typeof ManufacturingRoute
+  '/oem-private-label': typeof OemPrivateLabelRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/quality': typeof QualityRoute
+  '/request-quote': typeof RequestQuoteRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/collections'
+    | '/contact'
+    | '/design-development'
+    | '/gallery'
+    | '/manufacturing'
+    | '/oem-private-label'
+    | '/products'
+    | '/quality'
+    | '/request-quote'
+    | '/sustainability'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/collections'
+    | '/contact'
+    | '/design-development'
+    | '/gallery'
+    | '/manufacturing'
+    | '/oem-private-label'
+    | '/products'
+    | '/quality'
+    | '/request-quote'
+    | '/sustainability'
+    | '/products/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/collections'
+    | '/contact'
+    | '/design-development'
+    | '/gallery'
+    | '/manufacturing'
+    | '/oem-private-label'
+    | '/products'
+    | '/quality'
+    | '/request-quote'
+    | '/sustainability'
+    | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CollectionsRoute: typeof CollectionsRoute
+  ContactRoute: typeof ContactRoute
+  DesignDevelopmentRoute: typeof DesignDevelopmentRoute
+  GalleryRoute: typeof GalleryRoute
+  ManufacturingRoute: typeof ManufacturingRoute
+  OemPrivateLabelRoute: typeof OemPrivateLabelRoute
+  ProductsRoute: typeof ProductsRouteWithChildren
+  QualityRoute: typeof QualityRoute
+  RequestQuoteRoute: typeof RequestQuoteRoute
+  SustainabilityRoute: typeof SustainabilityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +207,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections': {
+      id: '/collections'
+      path: '/collections'
+      fullPath: '/collections'
+      preLoaderRoute: typeof CollectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-development': {
+      id: '/design-development'
+      path: '/design-development'
+      fullPath: '/design-development'
+      preLoaderRoute: typeof DesignDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manufacturing': {
+      id: '/manufacturing'
+      path: '/manufacturing'
+      fullPath: '/manufacturing'
+      preLoaderRoute: typeof ManufacturingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oem-private-label': {
+      id: '/oem-private-label'
+      path: '/oem-private-label'
+      fullPath: '/oem-private-label'
+      preLoaderRoute: typeof OemPrivateLabelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quality': {
+      id: '/quality'
+      path: '/quality'
+      fullPath: '/quality'
+      preLoaderRoute: typeof QualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-quote': {
+      id: '/request-quote'
+      path: '/request-quote'
+      fullPath: '/request-quote'
+      preLoaderRoute: typeof RequestQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
+      parentRoute: typeof ProductsRoute
+    }
   }
 }
 
+interface ProductsRouteChildren {
+  ProductsSlugRoute: typeof ProductsSlugRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsSlugRoute: ProductsSlugRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CollectionsRoute: CollectionsRoute,
+  ContactRoute: ContactRoute,
+  DesignDevelopmentRoute: DesignDevelopmentRoute,
+  GalleryRoute: GalleryRoute,
+  ManufacturingRoute: ManufacturingRoute,
+  OemPrivateLabelRoute: OemPrivateLabelRoute,
+  ProductsRoute: ProductsRouteWithChildren,
+  QualityRoute: QualityRoute,
+  RequestQuoteRoute: RequestQuoteRoute,
+  SustainabilityRoute: SustainabilityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

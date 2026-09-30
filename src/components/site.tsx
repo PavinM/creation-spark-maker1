@@ -62,7 +62,7 @@ export function SiteFooter() {
 
 export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => { const el = ref.current; if (!el) return; const obs = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { el.classList.add("revealed"); obs.disconnect(); } }, { threshold: .14 }); obs.observe(el); return () => obs.disconnect(); }, []);
+  useEffect(() => { const el = ref.current; if (!el) return; const obs = new IntersectionObserver((entries) => { const entry = entries[0]; if (entry?.isIntersecting) { el.classList.add("revealed"); obs.disconnect(); } }, { threshold: .14 }); obs.observe(el); return () => obs.disconnect(); }, []);
   return <div ref={ref} className={cn("reveal", className)}>{children}</div>;
 }
 

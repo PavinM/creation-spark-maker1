@@ -60,15 +60,54 @@ export function SiteFooter() {
   </footer>;
 }
 
+function useScrollProgress<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      if (reducedMotion.matches) {
+        element.style.setProperty("--scroll-progress", "1");
+        return;
+      }
+      const rect = element.getBoundingClientRect();
+      const viewport = window.innerHeight || 1;
+      const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport + rect.height)));
+      element.style.setProperty("--scroll-progress", progress.toFixed(4));
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    reducedMotion.addEventListener("change", requestUpdate);
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      reducedMotion.removeEventListener("change", requestUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+  return ref;
+}
+
 export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => { const el = ref.current; if (!el) return; const obs = new IntersectionObserver((entries) => { const entry = entries[0]; if (entry?.isIntersecting) { el.classList.add("revealed"); obs.disconnect(); } }, { threshold: .14 }); obs.observe(el); return () => obs.disconnect(); }, []);
-  return <div ref={ref} className={cn("reveal", className)}>{children}</div>;
+  const ref = useScrollProgress<HTMLDivElement>();
+  return <div ref={ref} className={cn("scroll-reveal", className)}>{children}</div>;
+}
+
+export function ScrollMedia({ children, className }: { children: ReactNode; className?: string }) {
+  const ref = useScrollProgress<HTMLDivElement>();
+  return <div ref={ref} className={cn("scroll-media", className)}>{children}</div>;
 }
 
 export function PageHero({ eyebrow, title, text, image = images.hero }: { eyebrow: string; title: string; text: string; image?: string }) {
   return <section className="relative min-h-[72vh] overflow-hidden bg-navy pt-20 text-primary-foreground">
-    <img src={image} width={1536} height={1024} className="absolute inset-0 size-full object-cover opacity-45" alt="Muthu International kidswear and manufacturing" />
+    <ScrollMedia className="absolute inset-0"><img src={image} width={1536} height={1024} className="size-full object-cover opacity-45" alt="Muthu International kidswear and manufacturing" /></ScrollMedia>
     <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/65 to-transparent"/>
     <div className="page-shell relative flex min-h-[calc(72vh-5rem)] items-end pb-16"><div className="max-w-4xl"><p className="label-track mb-6 text-gold">{eyebrow}</p><h1 className="display-title text-5xl uppercase sm:text-7xl lg:text-8xl">{title}</h1><p className="mt-7 max-w-2xl text-base leading-8 text-primary-foreground/75 sm:text-lg">{text}</p></div></div>
   </section>;
@@ -93,6 +132,6 @@ export function InquiryForm({ kind }: { kind: FormKind }) {
 
 export function ProcessList({ items }: { items: string[] }) { return <div className="border-t border-border">{items.map((item,i)=><Reveal key={item}><div className="grid grid-cols-[3.5rem_1fr_auto] items-center border-b border-border py-6 sm:grid-cols-[6rem_1fr_auto]"><span className="font-mono text-xs text-gold">{String(i+1).padStart(2,"0")}</span><h3 className="text-xl font-medium uppercase text-navy sm:text-3xl">{item}</h3><ChevronDown className="size-4 text-slate"/></div></Reveal>)}</div>; }
 
-export function ContentBand({ title, text, image, reverse = false }: { title: string; text: string; image: string; reverse?: boolean }) { return <section className="py-16 sm:py-24"><div className={cn("page-shell grid items-center gap-10 lg:grid-cols-2", reverse && "lg:[&>*:first-child]:order-2")}><Reveal className="image-zoom aspect-[4/5] max-h-[42rem]"><img src={image} loading="lazy" width={1024} height={1280} className="size-full object-cover" alt={title}/></Reveal><Reveal className="lg:p-12"><p className="label-track mb-5 text-gold">Muthu International</p><h2 className="display-title text-4xl uppercase sm:text-6xl">{title}</h2><p className="mt-7 max-w-xl leading-8 text-slate">{text}</p></Reveal></div></section>; }
+export function ContentBand({ title, text, image, reverse = false }: { title: string; text: string; image: string; reverse?: boolean }) { return <section className="py-16 sm:py-24"><div className={cn("page-shell grid items-center gap-10 lg:grid-cols-2", reverse && "lg:[&>*:first-child]:order-2")}><ScrollMedia className="image-zoom aspect-[4/5] max-h-[42rem]"><img src={image} loading="lazy" width={1024} height={1280} className="size-full object-cover" alt={title}/></ScrollMedia><Reveal className="lg:p-12"><p className="label-track mb-5 text-gold">Muthu International</p><h2 className="display-title text-4xl uppercase sm:text-6xl">{title}</h2><p className="mt-7 max-w-xl leading-8 text-slate">{text}</p></Reveal></div></section>; }
 
 export type GalleryItem = (typeof gallery)[number];

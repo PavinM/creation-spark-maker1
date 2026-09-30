@@ -40,7 +40,7 @@ export function SiteHeader() {
         <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>{open ? <X/> : <Menu/>}</Button>
       </div>
     </header>
-    <div className={cn("fixed inset-0 z-40 bg-navy px-6 pt-28 text-primary-foreground transition-transform duration-500 md:hidden", open ? "translate-x-0" : "translate-x-full")}>
+    <div className={cn("fixed inset-0 z-40 overflow-y-auto bg-navy px-6 pt-28 text-primary-foreground transition-[visibility,transform] duration-500 md:hidden", open ? "visible translate-x-0" : "invisible translate-x-full")}>
       <nav className="flex flex-col" aria-label="Mobile navigation">
         {[...nav, ["Design & Development", "/design-development"], ["Sustainability", "/sustainability"], ["Gallery", "/gallery"], ["Contact", "/contact"]] .map(([label,to]) => <Link key={to} to={to} className="border-b border-primary-foreground/15 py-4 text-xl font-medium">{label}</Link>)}
         <Button asChild variant="secondary" className="mt-8 h-12 rounded-none"><Link to="/request-quote">Request a quote <ArrowRight/></Link></Button>

@@ -1,2 +1,51 @@
-import { createFileRoute } from "@tanstack/react-router"; import { useState } from "react"; import { PageHero, Reveal, SectionHeading } from "@/components/site"; import { gallery, images } from "@/lib/content";
-export const Route=createFileRoute("/gallery")({head:()=>({meta:[{title:"Kidswear & Factory Gallery | Muthu International"},{name:"description",content:"Explore product development, garment craftsmanship, production and quality imagery."},{property:"og:title",content:"Inside Muthu International"},{property:"og:description",content:"Kidswear, craftsmanship and manufacturing gallery."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Page}); const filters=["All","Factory","Products","Kidswear","Printing","Embroidery","Stitching","Quality","Packaging"]; function Page(){const [active,setActive]=useState("All"); const shown=active==="All"?gallery:gallery.filter(x=>x.category===active); return <><PageHero eyebrow="Gallery" title="Product. Process. Detail." text="A visual study of contemporary kidswear and the craftsmanship behind it." image={images.detail}/><section className="py-20 sm:py-28"><div className="page-shell"><SectionHeading eyebrow="Inside Muthu" title="A closer look."/><div className="mb-10 flex flex-wrap gap-2">{filters.map(x=><button key={x} type="button" onClick={()=>setActive(x)} className={`border px-4 py-2 text-xs font-bold uppercase tracking-[.1em] ${active===x?"border-navy bg-navy text-primary-foreground":"border-border text-navy hover:border-gold"}`}>{x}</button>)}</div>{shown.length?<div className="columns-1 gap-5 sm:columns-2 lg:columns-3">{shown.map((x,i)=><Reveal key={`${x.title}-${i}`} className="mb-5 break-inside-avoid"><figure className="image-zoom"><img src={x.image} loading="lazy" width={i%2?1024:1536} height={i%2?1280:1024} className={`w-full object-cover ${i%3===0?"aspect-[4/5]":"aspect-square"}`} alt={x.title}/><figcaption className="flex justify-between py-4 text-sm"><strong className="text-navy">{x.title}</strong><span className="text-slate">{x.category}</span></figcaption></figure></Reveal>)}</div>:<div className="bg-beige p-12 text-center text-slate">Imagery for this category can be added when supplied.</div>}</div></section></>}
+import { createFileRoute } from "@tanstack/react-router";
+import { CTASection, GalleryWithLightbox, PageHero, SectionHeading } from "@/components/site";
+import { gallery, images } from "@/lib/content";
+
+export const Route = createFileRoute("/gallery")({
+  head: () => ({
+    meta: [
+      { title: "Kidswear & Factory Gallery | Muthu International" },
+      {
+        name: "description",
+        content:
+          "Visual archive of Muthu International: explore factory stitching lines, printing stations, embroidery detail, finished kidswear styles, and quality inspection.",
+      },
+      { property: "og:title", content: "Inside Muthu International | Manufacturing Gallery" },
+      {
+        property: "og:description",
+        content: "High-definition photography of kidswear product development, factory floor, and craftsmanship.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: GalleryPage,
+});
+
+function GalleryPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Visual Portfolio"
+        title="Product. Process. Detail."
+        text="An authentic visual exploration of our childrenswear craftsmanship, manufacturing infrastructure, surface embellishments and final product deliveries."
+        image={images.detail}
+      />
+
+      <section className="bg-ivory py-20 sm:py-28">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Inside Muthu International"
+            title="A Closer Look."
+            text="Filter through categories to explore production machinery, embroidery handfeel, printing clarity, and finished apparel. Click any image for full-screen inspection."
+          />
+
+          <GalleryWithLightbox items={gallery} />
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  );
+}

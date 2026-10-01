@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Manrope", sans-serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -32,74 +32,222 @@
 }
 
 :root {
-  --background: oklch(0.982 0.006 80);
-  --foreground: oklch(0.265 0.025 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.265 0.025 250);
-  --primary: oklch(0.29 0.07 248);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.948 0.014 80);
-  --secondary-foreground: oklch(0.29 0.07 248);
-  --muted: oklch(0.948 0.014 80);
-  --muted-foreground: oklch(0.53 0.03 252);
-  --accent: oklch(0.72 0.075 75);
-  --accent-foreground: oklch(0.23 0.05 248);
-  --border: oklch(0.865 0.017 78);
-  --input: oklch(0.865 0.017 78);
-  --ring: oklch(0.72 0.075 75);
-  --navy: oklch(0.29 0.07 248);
-  --gold: oklch(0.72 0.075 75);
-  --ivory: oklch(0.982 0.006 80);
-  --beige: oklch(0.948 0.014 80);
-  --charcoal: oklch(0.265 0.025 250);
-  --slate: oklch(0.53 0.03 252);
-  --paper: oklch(1 0 0);
+  /* Exact Muthu International Brand Colors */
+  --navy: #102A43;
+  --gold: #C8A06A;
+  --ivory: #FAF9F6;
+  --beige: #F1ECE3;
+  --charcoal: #1C2733;
+  --slate: #667085;
+  --paper: #FFFFFF;
+  --border-light: #DDD6CB;
+
+  /* Theme mappings */
+  --background: #FAF9F6;
+  --foreground: #1C2733;
+  --card: #FFFFFF;
+  --card-foreground: #1C2733;
+  --primary: #102A43;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1ECE3;
+  --secondary-foreground: #102A43;
+  --muted: #F1ECE3;
+  --muted-foreground: #667085;
+  --accent: #C8A06A;
+  --accent-foreground: #102A43;
+  --border: #DDD6CB;
+  --input: #DDD6CB;
+  --ring: #C8A06A;
 }
 
-* { box-sizing: border-box; border-color: var(--border); }
-html { overflow-x: clip; scroll-behavior: smooth; background: var(--background); }
-body { margin: 0; overflow-x: hidden; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
-button, input, select, textarea { font: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
-::selection { background: var(--gold); color: var(--navy); }
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
 
-@utility text-balance { text-wrap: balance; }
-@utility display-title { font-family: var(--font-display); font-weight: 500; letter-spacing: 0; line-height: .92; text-wrap: balance; }
-@utility label-track { font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-@utility page-shell { width: min(100% - 2rem, 88rem); margin-inline: auto; }
-@utility image-zoom { overflow: hidden; & img { transition: transform .8s cubic-bezier(.22,1,.36,1); } &:hover img { transform: scale(1.035); } }
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* Custom scrollbar for subtle luxury feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: #C8A06A80;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility display-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+@utility label-track {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility page-shell {
+  width: min(100% - 2.5rem, 88rem);
+  margin-inline: auto;
+}
+
+@utility image-zoom {
+  overflow: hidden;
+  & img {
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover img {
+    transform: scale(1.045);
+  }
+}
+
+/* Apple-style smooth scroll classes */
 .scroll-reveal {
   --scroll-progress: 0;
   opacity: clamp(0, calc(var(--scroll-progress) * 2.8), 1);
-  transform: translate3d(0, calc((1 - var(--scroll-progress)) * 44px), 0) scale(calc(.975 + var(--scroll-progress) * .025));
+  transform: translate3d(0, calc((1 - var(--scroll-progress)) * 40px), 0) scale(calc(0.98 + var(--scroll-progress) * 0.02));
   will-change: transform, opacity;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-out;
 }
+
 .scroll-media {
-  --scroll-progress: .5;
+  --scroll-progress: 0.5;
   overflow: hidden;
-  transform: translate3d(0, calc((.5 - var(--scroll-progress)) * 34px), 0) scale(1.045);
+  transform: translate3d(0, calc((0.5 - var(--scroll-progress)) * 28px), 0) scale(1.03);
   will-change: transform;
 }
-.scroll-media > img,
-.scroll-media > video { width: 100%; height: 100%; object-fit: cover; }
 
-@keyframes hero-in { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes hero-scale { from { transform: scale(1.06); } to { transform: scale(1); } }
-@keyframes line-down { 0% { transform: scaleY(0); transform-origin: top; } 45% { transform: scaleY(1); transform-origin: top; } 55% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-.hero-copy > * { animation: hero-in .9s both cubic-bezier(.22,1,.36,1); }
-.hero-copy > *:nth-child(2) { animation-delay: .12s; }
-.hero-copy > *:nth-child(3) { animation-delay: .24s; }
-.hero-copy > *:nth-child(4) { animation-delay: .36s; }
-.hero-image { animation: hero-scale 1.8s both cubic-bezier(.22,1,.36,1); }
-.scroll-line { animation: line-down 1.8s infinite ease-in-out; }
+.scroll-media > img,
+.scroll-media > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-scale-in {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes line-down {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+.hero-copy > * {
+  animation: hero-fade-up 1s both cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-copy > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.25s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.4s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.55s; }
+
+.hero-media-anim {
+  animation: hero-scale-in 2.4s both cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-line {
+  animation: line-down 2s infinite ease-in-out;
+}
+
+/* Hide scrollbar for carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .scroll-reveal, .scroll-media { opacity: 1; transform: none; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-reveal, .scroll-media {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @media (max-width: 767px) {
-  .scroll-reveal { transform: translate3d(0, calc((1 - var(--scroll-progress)) * 24px), 0); }
-  .scroll-media { transform: translate3d(0, calc((.5 - var(--scroll-progress)) * 14px), 0) scale(1.025); }
+  .scroll-reveal {
+    transform: translate3d(0, calc((1 - var(--scroll-progress)) * 20px), 0);
+  }
+  .scroll-media {
+    transform: translate3d(0, calc((0.5 - var(--scroll-progress)) * 12px), 0) scale(1.015);
+  }
 }

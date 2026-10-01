@@ -21,6 +21,8 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as QualityRouteImport } from './routes/quality'
 import { Route as RequestQuoteRouteImport } from './routes/request-quote'
 import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
@@ -84,6 +86,16 @@ const SustainabilityRoute = SustainabilityRouteImport.update({
   path: '/sustainability',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CollectionsRoute,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CollectionsRoute,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -98,7 +110,7 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/collections': typeof CollectionsRoute
+  '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/design-development': typeof DesignDevelopmentRoute
   '/gallery': typeof GalleryRoute
@@ -108,13 +120,14 @@ export interface FileRoutesByFullPath {
   '/quality': typeof QualityRoute
   '/request-quote': typeof RequestQuoteRoute
   '/sustainability': typeof SustainabilityRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/collections': typeof CollectionsRoute
   '/contact': typeof ContactRoute
   '/design-development': typeof DesignDevelopmentRoute
   '/gallery': typeof GalleryRoute
@@ -123,14 +136,16 @@ export interface FileRoutesByTo {
   '/quality': typeof QualityRoute
   '/request-quote': typeof RequestQuoteRoute
   '/sustainability': typeof SustainabilityRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/collections': typeof CollectionsIndexRoute
   '/products': typeof ProductsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/collections': typeof CollectionsRoute
+  '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/design-development': typeof DesignDevelopmentRoute
   '/gallery': typeof GalleryRoute
@@ -140,7 +155,9 @@ export interface FileRoutesById {
   '/quality': typeof QualityRoute
   '/request-quote': typeof RequestQuoteRoute
   '/sustainability': typeof SustainabilityRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRouteTypes {
@@ -158,13 +175,14 @@ export interface FileRouteTypes {
     | '/quality'
     | '/request-quote'
     | '/sustainability'
+    | '/collections/$slug'
     | '/products/$slug'
+    | '/collections/'
     | '/products/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/collections'
     | '/contact'
     | '/design-development'
     | '/gallery'
@@ -173,7 +191,9 @@ export interface FileRouteTypes {
     | '/quality'
     | '/request-quote'
     | '/sustainability'
+    | '/collections/$slug'
     | '/products/$slug'
+    | '/collections'
     | '/products'
   id:
     | '__root__'
@@ -189,14 +209,16 @@ export interface FileRouteTypes {
     | '/quality'
     | '/request-quote'
     | '/sustainability'
+    | '/collections/$slug'
     | '/products/$slug'
+    | '/collections/'
     | '/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  CollectionsRoute: typeof CollectionsRoute
+  CollectionsRoute: typeof CollectionsRouteWithChildren
   ContactRoute: typeof ContactRoute
   DesignDevelopmentRoute: typeof DesignDevelopmentRoute
   GalleryRoute: typeof GalleryRoute
@@ -294,6 +316,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SustainabilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/': {
+      id: '/collections/'
+      path: '/'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof CollectionsRoute
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof CollectionsRoute
+    }
     '/products/': {
       id: '/products/'
       path: '/'
@@ -310,6 +346,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface CollectionsRouteChildren {
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+}
+
+const CollectionsRouteChildren: CollectionsRouteChildren = {
+  CollectionsSlugRoute: CollectionsSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+}
+
+const CollectionsRouteWithChildren = CollectionsRoute._addFileChildren(
+  CollectionsRouteChildren,
+)
 
 interface ProductsRouteChildren {
   ProductsSlugRoute: typeof ProductsSlugRoute
@@ -328,7 +378,7 @@ const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  CollectionsRoute: CollectionsRoute,
+  CollectionsRoute: CollectionsRouteWithChildren,
   ContactRoute: ContactRoute,
   DesignDevelopmentRoute: DesignDevelopmentRoute,
   GalleryRoute: GalleryRoute,

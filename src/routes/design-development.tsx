@@ -8,11 +8,11 @@ import { images } from "@/lib/content";
 export const Route = createFileRoute("/design-development")({
   head: () => ({
     meta: [
-      { title: "Kidswear Design & Development | Muthu International" },
+      { title: "Kidswear Design & Development | Muthu International Atelier" },
       {
         name: "description",
         content:
-          "Turnkey product development: custom garments, fabric sourcing, Pantone color matching, print & embroidery development, sampling, and private-label branding.",
+          "Turnkey product development: custom garments, fabric sourcing, Pantone color matching, botanical print & embroidery development, sampling, and private-label branding.",
       },
       { property: "og:title", content: "From Idea to Production | Muthu International" },
       {
@@ -28,31 +28,31 @@ export const Route = createFileRoute("/design-development")({
 
 const capabilities = [
   {
-    title: "Custom Garment Development",
+    title: "Custom Silhouette Development",
     icon: Shirt,
-    desc: "Developing completely original silhouettes, proportions, and multi-piece coordinated sets from your tech packs, reference garments or sketches.",
+    desc: "Developing completely original silhouettes, proportions, and multi-piece coordinated sets from your tech packs, physical samples, or sketches.",
     points: ["Original silhouette engineering", "Toddler & tween fit dynamics", "Seam construction optimization"],
   },
   {
-    title: "Fabric Selection & Sourcing",
+    title: "Fabric Engineering & Sourcing",
     icon: Scissors,
     desc: "Curating certified cottons, organic yarns, single jerseys, french terry, babycord, slub, and performance blends with custom handfeel finishes.",
-    points: ["100% Combed Compact Cotton", "Bio-wash & peach skin finishes", "Weight development (140 - 360 GSM)"],
+    points: ["100% Combed Compact Cotton", "Bio-wash & peach skin finishes", "Custom weight engineering (140–360 GSM)"],
   },
   {
-    title: "Colour Development",
+    title: "Pantone Color Formulation",
     icon: Palette,
     desc: "Precision Pantone TCX / TPX matching via lab dips with strict spectrophotometer verification and eco-friendly reactive dyes.",
     points: ["Fast lab-dip turnaround", "Batch-to-batch shade consistency", "Saliva and wash fastness compliant"],
   },
   {
-    title: "Print Development",
+    title: "Botanical & Reactive Printing",
     icon: Sparkles,
     desc: "Engineering all-over rotary prints, digital direct-to-fabric prints, and localized screen prints using baby-safe water-based non-toxic chemistry.",
     points: ["Rotary cylinder & digital AOP", "Plastisol, puff & discharge prints", "Phthalate and formaldehyde free"],
   },
   {
-    title: "Embroidery & Appliqué",
+    title: "Artisanal Embroidery & Appliqué",
     icon: Scissors,
     desc: "Creating multi-colour flat satin stitch, 3D puff embroidery, chenille textures, and mixed-fabric appliqué with protective soft backings.",
     points: ["Multi-head Tajima machinery", "Ultra-soft fused backings", "High tensile pull resistance"],
@@ -78,40 +78,46 @@ const capabilities = [
 ];
 
 function DesignDevelopmentPage() {
-  const [activeTab, setActiveTab] = useState<number>(0);
-
   return (
-    <>
+    <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Technical Capabilities"
-        title="From idea to production."
-        text="Collaborative product development engineered around your brand aesthetics, customer comfort and target price-point."
-        image={images.detail}
+        title="FROM SKETCH TO PRODUCTION PROTOTYPE."
+        text="Collaborative product development engineered around your brand aesthetics, tactile comfort, and target retail price-points."
+        image={images.bloomCraft || images.detail}
       />
 
       {/* Overview & Collaborative Briefing */}
-      <section className="bg-ivory py-20 sm:py-28">
+      <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal>
-              <p className="label-track mb-3 text-gold">Product Innovation</p>
-              <h2 className="display-title text-3xl uppercase text-navy sm:text-5xl">
-                Bridging Creative Vision & Industrial Execution.
+              <div className="flex items-center gap-2 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">[ CONCEPT INNOVATION ]</p>
+              </div>
+              <h2 className="display-title mt-3 text-3xl uppercase tracking-tight text-[#226192] sm:text-5xl">
+                BRIDGING CREATIVE VISION & INDUSTRIAL EXECUTION.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-slate">
-                Whether you bring a complete technical pack or just inspirational moodboards and physical reference samples, our technical merchandising and sampling team translates concepts into manufacturing realities.
+              <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
+                Whether you bring a complete technical pack or just inspirational moodboards and physical reference swatches, our technical merchandising and sampling team in Tirupur translates concepts into manufacturing realities.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-slate">
-                We balance modern fashion aesthetics with the stringent functional standards necessary for children's wear: non-scratchy seams, safe neckline stretchability, resilient wash durability, and compliant hardware.
+              <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
+                We balance contemporary magazine fashion aesthetics with the stringent functional standards necessary for children's wear: non-scratchy seams, safe neckline stretchability, resilient wash durability, and compliant hardware.
               </p>
               <div className="mt-8">
-                <Button asChild className="h-11 rounded-none bg-navy text-xs font-bold uppercase tracking-wider text-white hover:bg-navy/90 hover:text-gold">
-                  <Link to="/request-quote">Submit a Design Brief</Link>
-                </Button>
+                <Link
+                  to="/request-quote"
+                  className="inline-flex items-center gap-2 border border-[#226192] bg-[#226192] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] transition-colors hover:bg-[#EF8557] hover:border-[#EF8557]"
+                >
+                  <span>Submit a Design Brief</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
               </div>
             </Reveal>
 
-            <ScrollMedia className="image-zoom aspect-[4/3] border border-border bg-beige shadow-sm">
+            <ScrollMedia className="image-zoom relative aspect-[4/3] border border-[#226192]/20 bg-[#FFFFFF] shadow-md">
+              <div className="absolute -inset-2 bg-[#226192] -z-10 translate-x-2.5 translate-y-2.5 opacity-30" />
               <img
                 src={images.editorial}
                 loading="lazy"
@@ -125,12 +131,12 @@ function DesignDevelopmentPage() {
         </div>
       </section>
 
-      {/* Interactive Capabilities Grid */}
-      <section className="bg-beige py-20 sm:py-28">
+      {/* Capabilities Grid */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Core Competencies"
-            title="Comprehensive Design & Sampling Services."
+            title="COMPREHENSIVE DESIGN & SAMPLING SERVICES."
             text="Every facet of garment creation can be customized to your buyer manual specifications."
           />
 
@@ -139,25 +145,25 @@ function DesignDevelopmentPage() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title}>
-                  <div className="group flex h-full flex-col justify-between border border-border bg-white p-7 transition-all duration-300 hover:border-gold hover:shadow-md">
+                  <div className="group flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-7 transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                     <div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex size-10 items-center justify-center border border-gold/40 bg-ivory text-gold transition-colors group-hover:bg-navy group-hover:text-gold">
+                      <div className="flex items-center justify-between border-b border-[#226192]/10 pb-4">
+                        <div className="flex size-10 items-center justify-center border border-[#226192]/20 bg-[#EAE6DE] text-[#226192] transition-colors group-hover:bg-[#226192] group-hover:text-[#FFFFFF]">
                           <Icon className="size-5" />
                         </div>
-                        <span className="font-mono text-xs font-bold text-slate">0{idx + 1}</span>
+                        <span className="font-mono text-xs font-bold text-[#EF8557]">0{idx + 1}</span>
                       </div>
-                      <h3 className="mt-6 text-lg font-bold uppercase text-navy group-hover:text-gold">
+                      <h3 className="font-['Space_Grotesk'] mt-6 text-lg font-bold uppercase tracking-tight text-[#226192] group-hover:text-[#EF8557]">
                         {item.title}
                       </h3>
-                      <p className="mt-3 text-xs leading-relaxed text-slate">{item.desc}</p>
+                      <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">{item.desc}</p>
                     </div>
 
-                    <div className="mt-6 border-t border-border/60 pt-4">
-                      <ul className="space-y-1.5 text-[11px] text-slate">
+                    <div className="mt-6 border-t border-[#226192]/10 pt-4">
+                      <ul className="space-y-1.5 text-[11px] text-[#252525]/80">
                         {item.points.map((p) => (
                           <li key={p} className="flex items-center gap-1.5">
-                            <Check className="size-3 text-gold" />
+                            <Check className="size-3 text-[#EF8557]" />
                             <span>{p}</span>
                           </li>
                         ))}
@@ -172,6 +178,6 @@ function DesignDevelopmentPage() {
       </section>
 
       <CTASection />
-    </>
+    </div>
   );
 }

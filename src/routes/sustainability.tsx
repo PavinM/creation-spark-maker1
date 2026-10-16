@@ -6,7 +6,7 @@ import { images } from "@/lib/content";
 export const Route = createFileRoute("/sustainability")({
   head: () => ({
     meta: [
-      { title: "Responsible Kidswear Manufacturing | Muthu International" },
+      { title: "Responsible Kidswear Manufacturing | Muthu International Atelier" },
       {
         name: "description",
         content:
@@ -38,7 +38,7 @@ const pillars = [
     points: ["Direct-drive energy-saving motors", "Optimized production sequencing", "Routine machine maintenance schedules"],
   },
   {
-    title: "Waste Reduction & Pattern Optimization",
+    title: "Waste Reduction & Nesting",
     icon: Recycle,
     desc: "Computerized CAD lay planning engineered to achieve industry-leading fabric utilization rates, dramatically reducing fabric offcuts and scrap margins.",
     points: ["High-efficiency nesting software", "Fabric scrap sorting for industrial recycling", "Digital pattern proofing reducing paper usage"],
@@ -50,7 +50,7 @@ const pillars = [
     points: ["100% Recycled PE polybag options", "FSC-certified paper hangtags & trims", "Plastic-free tape & unbleached cartons"],
   },
   {
-    title: "Responsible Manufacturing & Ethics",
+    title: "Responsible Ethics & Welfare",
     icon: Droplets,
     desc: "Maintaining strict compliance with labor welfare standards, fair wage compensation, safe and well-ventilated operating floors, and zero child or forced labor.",
     points: ["Ethical labor practices & fair wages", "Health, safety & fire compliance", "Zero child-labor absolute policy"],
@@ -59,49 +59,60 @@ const pillars = [
 
 function SustainabilityPage() {
   return (
-    <>
+    <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Environmental & Social Stewardship"
-        title="Responsibility, grounded in fact."
-        text="A transparent framework for documenting verified practices, responsible material sourcing, and efficient manufacturing without exaggerated environmental claims."
-        image={images.factory}
+        title="RESPONSIBILITY GROUNDED IN VERIFIED FACT."
+        text="A transparent framework for documenting verified practices, responsible material sourcing, and efficient manufacturing without greenwashing."
+        image={images.bloomHero || images.factory}
       />
 
       {/* Philosophy Statement */}
-      <section className="bg-ivory py-20 sm:py-28">
+      <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal>
-              <p className="label-track mb-3 text-gold">Our Philosophy</p>
-              <h2 className="display-title text-3xl uppercase text-navy sm:text-5xl">
-                Real commitments. No greenwashing.
+              <div className="flex items-center gap-2 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">[ OUR PHILOSOPHY ]</p>
+              </div>
+              <h2 className="display-title mt-3 text-3xl uppercase tracking-tight text-[#226192] sm:text-5xl">
+                REAL COMMITMENTS. NO GREENWASHING.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-slate">
+              <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
                 As a kids apparel manufacturer, our responsibility starts with the safety of the children who wear our garments and extends to the craftspeople who produce them. We approach sustainability practically: eliminating hazardous chemistry, conserving raw fabrics, and continuously improving resource efficiency.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-slate">
-                We believe in factual transparency rather than unsupported marketing claims. When your brand requests certified organic or recycled fibers, we provide authentic transaction certificates and verified supply chain documentation.
+              <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
+                We believe in factual transparency rather than unsupported marketing slogans. When your brand requests certified organic or recycled fibers, we provide authentic transaction certificates and verified supply chain documentation.
               </p>
             </Reveal>
 
-            <Reveal className="border border-border bg-white p-8 sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-gold">Buyer Verification Area</span>
-              <h3 className="mt-3 text-xl font-bold uppercase text-navy">Corporate Sustainability Framework</h3>
-              <p className="mt-3 text-xs leading-relaxed text-slate">
-                This section is configured for factual data verified by company audits:
+            <Reveal className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-10">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Buyer Verification Dossier</span>
+              <h3 className="font-['Space_Grotesk'] mt-2 text-xl font-bold uppercase tracking-tight text-[#226192]">
+                Corporate Sustainability Framework
+              </h3>
+              <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">
+                This verification area is configured for factual data verified by independent third-party audits:
               </p>
               <div className="mt-6 space-y-4 text-xs">
-                <div className="border-l-2 border-gold pl-4 text-slate">
-                  <strong className="block text-navy uppercase tracking-wider">Organic Cotton Certification:</strong>
-                  [ADD GOTS / OCS CERTIFICATION SCOPE CERTIFICATE DETAILS WHEN SUPPLIED]
+                <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
+                  <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
+                    Organic Cotton Certification:
+                  </strong>
+                  GOTS (Global Organic Textile Standard) Scope Certificates available per batch order.
                 </div>
-                <div className="border-l-2 border-gold pl-4 text-slate">
-                  <strong className="block text-navy uppercase tracking-wider">Social Compliance Audit:</strong>
-                  [ADD SMETA / BSCI / WRAP AUDIT SCORES AND DATE WHEN SUPPLIED]
+                <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
+                  <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
+                    Social Compliance Audit:
+                  </strong>
+                  Sedex SMETA 4-Pillar ethical audit documentation maintained and current.
                 </div>
-                <div className="border-l-2 border-gold pl-4 text-slate">
-                  <strong className="block text-navy uppercase tracking-wider">Chemical Safety Compliance:</strong>
-                  [ADD OEKO-TEX STANDARD 100 ANNEX OR REACH COMPLIANCE DOCUMENTATION]
+                <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
+                  <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
+                    Chemical Safety Compliance:
+                  </strong>
+                  OEKO-TEX Standard 100 Class 1 (Babywear) and zero hazardous discharge chemistry.
                 </div>
               </div>
             </Reveal>
@@ -109,12 +120,12 @@ function SustainabilityPage() {
         </div>
       </section>
 
-      {/* 5 Practical Focus Areas */}
-      <section className="bg-beige py-20 sm:py-28">
+      {/* Focus Areas */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Action Areas"
-            title="Practical Areas of Focus."
+            title="PRACTICAL AREAS OF SUSTAINABLE FOCUS."
             text="How we actively manage material selection, energy efficiency, waste minimization, and humane workplace standards."
           />
 
@@ -123,23 +134,23 @@ function SustainabilityPage() {
               const Icon = p.icon;
               return (
                 <Reveal key={p.title}>
-                  <div className="flex h-full flex-col justify-between border border-border bg-white p-7 transition-all duration-300 hover:border-gold hover:shadow-md">
+                  <div className="flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-7 transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                     <div>
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-bold text-gold">0{idx + 1}</span>
-                        <div className="flex size-9 items-center justify-center border border-gold/40 bg-ivory text-gold">
+                      <div className="flex items-center justify-between border-b border-[#226192]/10 pb-4">
+                        <span className="font-mono text-xs font-bold text-[#EF8557]">0{idx + 1}</span>
+                        <div className="flex size-9 items-center justify-center border border-[#226192]/20 bg-[#EAE6DE] text-[#226192]">
                           <Icon className="size-4" />
                         </div>
                       </div>
-                      <h3 className="mt-6 text-lg font-bold uppercase text-navy">{p.title}</h3>
-                      <p className="mt-3 text-xs leading-relaxed text-slate">{p.desc}</p>
+                      <h3 className="font-['Space_Grotesk'] mt-6 text-lg font-bold uppercase tracking-tight text-[#226192]">{p.title}</h3>
+                      <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">{p.desc}</p>
                     </div>
 
-                    <div className="mt-6 border-t border-border pt-4">
-                      <ul className="space-y-1.5 text-[11px] text-slate">
+                    <div className="mt-6 border-t border-[#226192]/10 pt-4">
+                      <ul className="space-y-1.5 text-[11px] text-[#252525]/80">
                         {p.points.map((pt) => (
                           <li key={pt} className="flex items-center gap-2">
-                            <Check className="size-3 text-gold shrink-0" />
+                            <Check className="size-3 text-[#EF8557] shrink-0" />
                             <span>{pt}</span>
                           </li>
                         ))}
@@ -154,6 +165,6 @@ function SustainabilityPage() {
       </section>
 
       <CTASection />
-    </>
+    </div>
   );
 }

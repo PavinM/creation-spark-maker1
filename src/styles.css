@@ -5,8 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-display: "Bodoni MT", Didot, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-serif: "Bodoni MT", Didot, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.3125rem;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -22,66 +29,71 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-navy: var(--navy);
-  --color-gold: var(--gold);
-  --color-ivory: var(--ivory);
-  --color-beige: var(--beige);
-  --color-charcoal: var(--charcoal);
-  --color-slate: var(--slate);
-  --color-paper: var(--paper);
+
+  /* Exact Bloom Editorial Palette */
+  --color-ivory: #EAE6DE;
+  --color-editorial-blue: #226192;
+  --color-coral: #EF8557;
+  --color-charcoal: #252525;
+  --color-white: #FFFFFF;
 }
 
 :root {
-  /* Exact Muthu International Brand Colors */
-  --navy: #102A43;
-  --gold: #C8A06A;
-  --ivory: #FAF9F6;
-  --beige: #F1ECE3;
-  --charcoal: #1C2733;
-  --slate: #667085;
-  --paper: #FFFFFF;
-  --border-light: #DDD6CB;
+  /* Exact Bloom Inspired Brand Palette */
+  --ivory: #EAE6DE;
+  --editorial-blue: #226192;
+  --coral: #EF8557;
+  --white: #FFFFFF;
+  --charcoal: #252525;
+  --border-editorial: rgba(34, 97, 146, 0.22);
+  --border-light: #D9D3C7;
 
-  /* Theme mappings */
-  --background: #FAF9F6;
-  --foreground: #1C2733;
+  /* Theme mappings: Ivory as dominant background, Blue as primary anchor */
+  --background: #EAE6DE;
+  --foreground: #252525;
   --card: #FFFFFF;
-  --card-foreground: #1C2733;
-  --primary: #102A43;
+  --card-foreground: #252525;
+  --primary: #226192;
   --primary-foreground: #FFFFFF;
-  --secondary: #F1ECE3;
-  --secondary-foreground: #102A43;
-  --muted: #F1ECE3;
-  --muted-foreground: #667085;
-  --accent: #C8A06A;
-  --accent-foreground: #102A43;
-  --border: #DDD6CB;
-  --input: #DDD6CB;
-  --ring: #C8A06A;
+  --secondary: #EF8557;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E2DDD3;
+  --muted-foreground: #5C636E;
+  --accent: #EF8557;
+  --accent-foreground: #FFFFFF;
+  --border: #D8D2C5;
+  --input: #D8D2C5;
+  --ring: #226192;
 }
 
 * {
   box-sizing: border-box;
   border-color: var(--border);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   overflow-x: clip;
   scroll-behavior: smooth;
-  background-color: var(--background);
+  background-color: #EAE6DE;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #EAE6DE;
+  color: #252525;
   font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button, input, select, textarea {
   font: inherit;
+}
+
+[class*="font-['Space_Grotesk']"] {
+  font-family: var(--font-sans);
 }
 
 button, a {
@@ -89,8 +101,8 @@ button, a {
 }
 
 ::selection {
-  background: var(--gold);
-  color: var(--navy);
+  background: #EF8557;
+  color: #FFFFFF;
 }
 
 /* Custom scrollbar for subtle luxury feel */
@@ -99,14 +111,14 @@ button, a {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--ivory);
+  background: #EAE6DE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C8A06A80;
+  background: rgba(34, 97, 146, 0.4);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: #226192;
 }
 
 @utility text-balance {
@@ -114,18 +126,31 @@ button, a {
 }
 
 @utility display-title {
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
   text-wrap: balance;
+}
+
+@utility hero-title-clean {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+@utility font-serif-editorial {
+  font-family: var(--font-display);
 }
 
 @utility label-track {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
+  font-family: var(--font-sans);
 }
 
 @utility page-shell {
@@ -139,11 +164,48 @@ button, a {
     transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   }
   &:hover img {
-    transform: scale(1.045);
+    transform: scale(1.04);
   }
 }
 
-/* Apple-style smooth scroll classes */
+/* Editorial Outlined Text */
+.text-outline-blue {
+  font-family: var(--font-sans);
+  font-size: 0.92em;
+  font-style: normal;
+  font-weight: 700;
+  color: #226192 !important;
+  -webkit-text-stroke: 0;
+}
+
+.text-outline-white {
+  font-family: var(--font-sans);
+  font-size: 0.92em;
+  font-style: normal;
+  font-weight: 700;
+  color: #FFFFFF !important;
+  -webkit-text-stroke: 0;
+}
+
+.text-outline-ivory {
+  font-family: var(--font-sans);
+  font-size: 0.92em;
+  font-style: normal;
+  font-weight: 700;
+  color: #EAE6DE !important;
+  -webkit-text-stroke: 0;
+}
+
+.text-outline-coral {
+  font-family: var(--font-sans);
+  font-size: 0.92em;
+  font-style: normal;
+  font-weight: 700;
+  color: #EF8557 !important;
+  -webkit-text-stroke: 0;
+}
+
+/* Scroll reveals */
 .scroll-reveal {
   --scroll-progress: 0;
   opacity: clamp(0, calc(var(--scroll-progress) * 2.8), 1);
@@ -153,10 +215,7 @@ button, a {
 }
 
 .scroll-media {
-  --scroll-progress: 0.5;
   overflow: hidden;
-  transform: translate3d(0, calc((0.5 - var(--scroll-progress)) * 28px), 0) scale(1.03);
-  will-change: transform;
 }
 
 .scroll-media > img,
@@ -169,7 +228,7 @@ button, a {
 @keyframes hero-fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -179,46 +238,44 @@ button, a {
 
 @keyframes hero-scale-in {
   from {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
   to {
     transform: scale(1);
   }
 }
 
-@keyframes line-down {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  45% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  55% {
-    transform: scaleY(1);
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-}
-
 .hero-copy > * {
-  animation: hero-fade-up 1s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-fade-up 0.9s both cubic-bezier(0.16, 1, 0.3, 1);
 }
-.hero-copy > *:nth-child(1) { animation-delay: 0.1s; }
-.hero-copy > *:nth-child(2) { animation-delay: 0.25s; }
-.hero-copy > *:nth-child(3) { animation-delay: 0.4s; }
-.hero-copy > *:nth-child(4) { animation-delay: 0.55s; }
+.hero-copy > *:nth-child(1) { animation-delay: 0.08s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.18s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.28s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.38s; }
+.hero-copy > *:nth-child(5) { animation-delay: 0.48s; }
 
 .hero-media-anim {
-  animation: hero-scale-in 2.4s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-scale-in 2s both cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.scroll-line {
-  animation: line-down 2s infinite ease-in-out;
+/* Circular arrow button interaction */
+.btn-editorial-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-editorial-arrow:hover .arrow-circle {
+  background-color: #EF8557;
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+/* Thin editorial line */
+.editorial-line {
+  height: 1px;
+  background: rgba(34, 97, 146, 0.2);
+  width: 100%;
 }
 
 /* Hide scrollbar for carousels */
@@ -248,6 +305,6 @@ button, a {
     transform: translate3d(0, calc((1 - var(--scroll-progress)) * 20px), 0);
   }
   .scroll-media {
-    transform: translate3d(0, calc((0.5 - var(--scroll-progress)) * 12px), 0) scale(1.015);
+    transform: none;
   }
 }

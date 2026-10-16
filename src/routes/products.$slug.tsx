@@ -15,7 +15,7 @@ export const Route = createFileRoute("/products/$slug")({
     meta: [
       {
         title: loaderData
-          ? `${loaderData.name} | Muthu International Kidswear Manufacturer`
+          ? `${loaderData.name} | Muthu International Kidswear Atelier`
           : "Product Not Found | Muthu International",
       },
       {
@@ -40,28 +40,28 @@ function ProductDetailPage() {
   const [selectedImage, setSelectedImage] = useState(allImages[0]);
 
   const customizationHighlights = [
-    { label: "Fabric", val: p.fabric },
-    { label: "Colours", val: p.colours },
-    { label: "Sizes", val: p.sizes },
-    { label: "Printing", val: p.print },
-    { label: "Embroidery", val: p.embroidery },
-    { label: "Customization", val: p.customization },
+    { label: "Fabric Construction", val: p.fabric },
+    { label: "Pantone Dyeing", val: p.colours },
+    { label: "Size Grading", val: p.sizes },
+    { label: "Printing Techniques", val: p.print },
+    { label: "Embroidery Execution", val: p.embroidery },
+    { label: "Private Label OEM", val: p.customization },
   ];
 
   return (
-    <>
-      <section className="bg-ivory pt-28 pb-20 sm:pb-28">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      <section className="bg-[#EAE6DE] pt-28 pb-20 sm:pb-28">
         <div className="page-shell">
           {/* Breadcrumb / Back Link */}
           <div className="mb-8 flex items-center justify-between">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-navy transition-colors hover:text-gold"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#226192] transition-colors hover:text-[#EF8557]"
             >
-              <ArrowLeft className="size-4" /> All Products
+              <ArrowLeft className="size-4" /> Back to Products
             </Link>
-            <span className="text-xs uppercase tracking-wider text-slate">
-              OEM & Private Label Reference
+            <span className="text-xs uppercase tracking-[0.14em] text-[#252525]/70">
+              OEM & Private Label Reference Specification
             </span>
           </div>
 
@@ -69,15 +69,18 @@ function ProductDetailPage() {
             {/* Left: Large Image Gallery with interactive thumbnails */}
             <div className="space-y-4 lg:col-span-7">
               {/* Main Image View */}
-              <div className="border border-border bg-white p-2">
-                <div className="aspect-[4/5] overflow-hidden bg-beige">
-                  <img
-                    src={selectedImage}
-                    width={1024}
-                    height={1280}
-                    className="size-full object-cover transition-all duration-500"
-                    alt={p.name}
-                  />
+              <div className="relative">
+                <div className="absolute -inset-2 bg-[#226192] translate-x-2 translate-y-2 -z-10 opacity-30" />
+                <div className="border border-[#226192]/20 bg-[#FFFFFF] p-2 shadow-sm">
+                  <div className="aspect-[4/5] overflow-hidden bg-[#EAE6DE]">
+                    <img
+                      src={selectedImage}
+                      width={1024}
+                      height={1280}
+                      className="size-full object-cover transition-all duration-500"
+                      alt={p.name}
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -90,11 +93,11 @@ function ProductDetailPage() {
                     onClick={() => setSelectedImage(img)}
                     className={`cursor-pointer overflow-hidden border p-1 transition-all ${
                       selectedImage === img
-                        ? "border-gold ring-1 ring-gold"
-                        : "border-border bg-white hover:border-gold/60"
+                        ? "border-[#EF8557] ring-1 ring-[#EF8557]"
+                        : "border-[#226192]/20 bg-[#FFFFFF] hover:border-[#226192]"
                     }`}
                   >
-                    <div className="aspect-square bg-beige">
+                    <div className="aspect-square bg-[#EAE6DE]">
                       <img src={img} className="size-full object-cover" alt={`${p.name} view ${i + 1}`} />
                     </div>
                   </button>
@@ -104,38 +107,38 @@ function ProductDetailPage() {
 
             {/* Right: Product Details & Specifications */}
             <aside className="lg:sticky lg:top-28 lg:col-span-5">
-              <div className="border border-border bg-white p-8">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-px w-4 bg-gold" />
-                  <p className="label-track text-gold">{p.category}</p>
+              <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm">
+                <div className="flex items-center gap-2 text-[#EF8557]">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
+                  <p className="label-track text-[#EF8557]">{p.category}</p>
                 </div>
 
-                <h1 className="display-title mt-3 text-3xl uppercase text-navy sm:text-4xl">
+                <h1 className="font-['Space_Grotesk'] mt-3 text-3xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-4xl">
                   {p.name}
                 </h1>
 
-                <p className="mt-5 text-sm leading-relaxed text-slate">{p.description}</p>
+                <p className="mt-5 text-sm leading-relaxed text-[#252525]/85">{p.description}</p>
 
                 {/* Primary specs list */}
-                <div className="mt-8 space-y-3 border-t border-border pt-6">
+                <div className="mt-8 space-y-3 border-t border-[#226192]/15 pt-6">
                   {customizationHighlights.map((item) => (
-                    <div key={item.label} className="border-b border-border/60 pb-3 text-xs">
-                      <span className="font-bold uppercase tracking-wider text-navy">{item.label}: </span>
-                      <span className="text-slate">{item.val}</span>
+                    <div key={item.label} className="border-b border-[#226192]/10 pb-3 text-xs">
+                      <span className="font-bold uppercase tracking-wider text-[#226192]">{item.label}: </span>
+                      <span className="text-[#252525]/80">{item.val}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Technical Specifications Table */}
-                <div className="mt-8 border-t border-border pt-6">
-                  <h4 className="text-xs font-bold uppercase tracking-[0.14em] text-navy">
-                    Production Parameters
+                <div className="mt-8 border-t border-[#226192]/15 pt-6">
+                  <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-[#226192]">
+                    Atelier Production Parameters
                   </h4>
-                  <dl className="mt-3 divide-y divide-border/60 text-xs">
+                  <dl className="mt-3 divide-y divide-[#226192]/10 text-xs">
                     {p.specifications.map(([title, val]) => (
                       <div key={title} className="flex justify-between py-2">
-                        <dt className="font-medium text-slate">{title}</dt>
-                        <dd className="font-semibold text-navy text-right">{val}</dd>
+                        <dt className="font-semibold text-[#226192]">{title}</dt>
+                        <dd className="font-medium text-[#252525] text-right">{val}</dd>
                       </div>
                     ))}
                   </dl>
@@ -143,25 +146,23 @@ function ProductDetailPage() {
 
                 {/* B2B Action Button */}
                 <div className="mt-8 space-y-3">
-                  <Button
-                    asChild
-                    className="h-12 w-full rounded-none bg-navy text-xs font-bold uppercase tracking-[0.16em] text-white hover:bg-navy/90 hover:text-gold"
+                  <Link
+                    to="/request-quote"
+                    className="inline-flex h-12 w-full items-center justify-center gap-3 border border-[#226192] bg-[#226192] text-xs font-bold uppercase tracking-[0.16em] text-[#FFFFFF] transition-colors hover:border-[#EF8557] hover:bg-[#EF8557]"
                   >
-                    <Link to="/request-quote">
-                      Request Quote for this Style <ArrowRight className="ml-2 size-4 text-gold" />
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="h-11 w-full rounded-none border-border text-xs font-bold uppercase tracking-wider text-navy hover:border-gold"
+                    <span>Request Quote for this Style</span>
+                    <ArrowRight className="size-4" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="inline-flex h-11 w-full items-center justify-center border border-[#226192]/30 bg-transparent text-xs font-bold uppercase tracking-wider text-[#226192] transition-colors hover:border-[#EF8557] hover:text-[#EF8557]"
                   >
-                    <Link to="/contact">Speak with a Merchandiser</Link>
-                  </Button>
+                    Speak with a Merchandiser
+                  </Link>
                 </div>
 
-                <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-slate">
-                  <ShieldCheck className="size-4 text-gold" />
+                <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-[#252525]/75">
+                  <ShieldCheck className="size-4 text-[#EF8557]" />
                   <span>100% Quality Inspected · Needle Detection Cleared</span>
                 </div>
               </div>
@@ -171,6 +172,6 @@ function ProductDetailPage() {
       </section>
 
       <CTASection />
-    </>
+    </div>
   );
 }

@@ -5,11 +5,11 @@ import { gallery, images } from "@/lib/content";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Kidswear & Factory Gallery | Muthu International" },
+      { title: "Kidswear & Atelier Gallery | Muthu International" },
       {
         name: "description",
         content:
-          "Visual archive of Muthu International: explore factory stitching lines, printing stations, embroidery detail, finished kidswear styles, and quality inspection.",
+          "Visual archive of Muthu International: explore factory stitching lines, printing stations, embroidery detail, finished kidswear styles, and quality inspection in Tirupur, India.",
       },
       { property: "og:title", content: "Inside Muthu International | Manufacturing Gallery" },
       {
@@ -25,20 +25,20 @@ export const Route = createFileRoute("/gallery")({
 
 function GalleryPage() {
   return (
-    <>
+    <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Visual Portfolio"
-        title="Product. Process. Detail."
-        text="An authentic visual exploration of our childrenswear craftsmanship, manufacturing infrastructure, surface embellishments and final product deliveries."
-        image={images.detail}
+        title="PRODUCT. PROCESS. TACTILE DETAIL."
+        text="A visual documentation of our craftsmanship, clean stitching lines, botanical prints, and finished kidswear collections."
+        image={images.bloomCraft || images.detail}
       />
 
-      <section className="bg-ivory py-20 sm:py-28">
+      <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Inside Muthu International"
-            title="A Closer Look."
-            text="Filter through categories to explore production machinery, embroidery handfeel, printing clarity, and finished apparel. Click any image for full-screen inspection."
+            title="AN ATELIER PERSPECTIVE."
+            text="Filter by production category. Click any visual for high-resolution inspection."
           />
 
           <GalleryWithLightbox items={gallery} />
@@ -46,6 +46,6 @@ function GalleryPage() {
       </section>
 
       <CTASection />
-    </>
+    </div>
   );
 }

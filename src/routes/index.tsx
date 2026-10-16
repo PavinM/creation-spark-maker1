@@ -1,5 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, Layers, Sparkles, Check } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Layers,
+  Sparkles,
+  Check,
+  Award,
+  Globe2,
+  Cpu,
+  Scissors,
+  CheckCircle2
+} from "lucide-react";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,22 +24,21 @@ import {
   SectionHeading,
 } from "@/components/site";
 import { images, products, whyMuthuPoints } from "@/lib/content";
-import manufacturingFilm from "@/assets/manufacturing-hero.mp4";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Premium Kidswear Manufacturer India | Muthu International" },
+      { title: "Muthu International — Premium Kidswear Manufacturing & Atelier" },
       {
         name: "description",
         content:
-          "Muthu International Private Ltd — Premium kids apparel manufacturer in India specializing in OEM manufacturing, private label, custom development, printing, embroidery and bulk export.",
+          "Muthu International Private Ltd — Luxury editorial kidswear manufacturer and atelier in Tirupur, India. High-precision OEM, private-label development, botanical printing, multi-head embroidery, and global export.",
       },
-      { property: "og:title", content: "Muthu International — Premium Kidswear Manufacturing" },
+      { property: "og:title", content: "Muthu International — Premium Kidswear Manufacturing & Atelier" },
       {
         property: "og:description",
         content:
-          "From concept to finished garment: design development, OEM, private label and quality-focused kidswear production.",
+          "Artisanal precision meets industrial scale: design development, OEM private label and quality-certified kidswear production.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -41,176 +53,340 @@ function HomePage() {
 
   const scrollHoriz = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const offset = direction === "left" ? -400 : 400;
+      const offset = direction === "left" ? -420 : 420;
       scrollContainerRef.current.scrollBy({ left: offset, behavior: "smooth" });
     }
   };
 
   const keywords = [
     {
-      word: "DESIGN",
-      desc: "Translating contemporary kidswear aesthetics, silhouettes and mood boards into production-ready specifications.",
+      word: "CONCEPT LAB",
+      sub: "DESIGN",
+      desc: "Trends and mood boards translated into production-ready specifications, tech packs and Pantone lab dips.",
     },
     {
-      word: "DEVELOPMENT",
-      desc: "Custom yarn selection, organic cotton knitting, Pantone-matched lab dips, and precise pattern grading.",
+      word: "PURE YARNS",
+      sub: "DEVELOPMENT",
+      desc: "100% Combed Compact Cotton, french terry, fine-wale babycorduroy and skin-sensitive organic blends.",
     },
     {
-      word: "MANUFACTURING",
-      desc: "Computerized cutting, non-toxic rotary/digital printing, multi-head embroidery, and modular stitching floors.",
+      word: "ATELIER CRAFT",
+      sub: "MANUFACTURING",
+      desc: "Computerized knife cutting, non-toxic botanical printing, multi-head chain-stitch and chenille embroidery.",
     },
     {
-      word: "QUALITY",
-      desc: "Strict multi-stage AQL 2.5 checkpoints, dimensional shrinkage tests, button pull tests, and 100% metal scan.",
+      word: "AQL 2.5 AUDIT",
+      sub: "QUALITY",
+      desc: "Strict pull tests, shrinkage stabilization, international saliva compliance and 100% needle-scan detection.",
     },
   ];
 
   const productCategories = [
+    "All Silhouettes",
     "Boys' T-Shirts",
-    "Girls' T-Shirts",
-    "Co-Ord Sets",
-    "Cord Sets",
-    "Printed Apparel",
-    "Embroidered Apparel",
-    "Casualwear",
+    "Girls' Flutter Tees",
+    "Co-Ord 2-Piece Sets",
+    "Babycord Sets",
+    "Botanical Prints",
+    "Artisanal Embroidery",
   ];
 
-  const factoryStages = [
-    "Design",
-    "Cutting",
-    "Printing",
-    "Embroidery",
-    "Stitching",
-    "Finishing",
-    "Quality Control",
+  const statistics = [
+    { num: "25+", label: "Years of Craft", desc: "Established in 1998 in Tirupur, India" },
+    { num: "500K+", label: "Monthly Output", desc: "Consistent high-volume export capacity" },
+    { num: "100%", label: "Needle Scanned", desc: "Zero metal tolerance for child safety" },
+    { num: "18+", label: "Global Markets", desc: "Supplying premier retail & private labels" },
+  ];
+
+  const clientPillars = [
+    {
+      quote: "Muthu International brought our bespoke botanical prints to life with zero pigment degradation across 10,000 units.",
+      author: "DIRECTOR OF PRODUCT",
+      company: "Contemporary London Kidswear Brand",
+      country: "United Kingdom",
+    },
+    {
+      quote: "Their babycord corduroy sets and multi-needle embroidery quality rival Parisian luxury boutiques.",
+      author: "FOUNDER & CREATIVE HEAD",
+      company: "Nordic Atelier Collections",
+      country: "Denmark",
+    },
+    {
+      quote: "Strict compliance, reliable delivery schedules and meticulous AQL 2.5 quality control make them an indispensable partner.",
+      author: "GLOBAL SOURCING MANAGER",
+      company: "Heritage Apparel Group",
+      country: "Australia",
+    },
   ];
 
   return (
-    <>
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-[95vh] overflow-hidden bg-navy pt-20 text-white">
-        <ScrollMedia className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={images.factory}
-            className="hero-media-anim size-full object-cover opacity-45"
-            aria-label="Kidswear manufacturing craftsmanship at Muthu International"
-          >
-            <source src={manufacturingFilm} type="video/mp4" />
-          </video>
-        </ScrollMedia>
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* 1. HERO SECTION — BLOOM-INSPIRED EDITORIAL ASYMMETRICAL LAYOUT */}
+      <section className="relative min-h-[92vh] overflow-hidden bg-[#EAE6DE] pt-28 sm:pt-36 lg:pt-40 pb-20">
+        {/* Subtle decorative background line */}
+        <div className="pointer-events-none absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-[#226192]/10" />
 
-        {/* Ambient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/30" />
+        <div className="page-shell relative">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+            {/* Left Side: Typography & Minimal CTA */}
+            <div className="hero-copy lg:col-span-6 xl:col-span-7 z-10">
+              <div className="flex items-center gap-2.5 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">
+                  [ EST. 1998 — TIRUPUR ATELIER & MANUFACTURING ]
+                </p>
+              </div>
 
-        <div className="page-shell hero-copy relative flex min-h-[calc(95vh-5rem)] flex-col justify-end pb-20 sm:pb-24">
-          <div className="flex items-center gap-3">
-            <span className="inline-block h-px w-8 bg-gold" />
-            <p className="label-track text-gold">MUTHU INTERNATIONAL PRIVATE LTD</p>
-          </div>
+              {/* Stacked Oversized Headline with Outlined Contrast */}
+              <h1 className="hero-title-clean mt-6 text-4xl text-[#226192] sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+                <span className="block text-[#252525]">Crafting</span>
+                <span className="block text-[#226192]">Kidswear.</span>
+                <span className="block text-[#EF8557]">Building</span>
+                <span className="block text-[#226192]">Brands.</span>
+              </h1>
 
-          <h1 className="display-title mt-6 max-w-5xl text-5xl uppercase tracking-tight sm:text-7xl lg:text-8xl">
-            CRAFTING KIDSWEAR.<br />
-            <span className="text-gold">BUILDING BRANDS.</span>
-          </h1>
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                High-precision kidswear manufacturing for global fashion houses and private-label partners. From concept design and botanical reactive printing to multi-head embroidery and full-scale OEM export.
+              </p>
 
-          <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-            Premium kids apparel manufacturing for brands, retailers and private-label businesses.
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Button
-              asChild
-              className="h-13 rounded-none bg-gold px-8 text-xs font-bold uppercase tracking-[0.16em] text-navy hover:bg-gold/90"
-            >
-              <Link to="/collections">
-                EXPLORE COLLECTION <ArrowRight className="ml-2 size-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="h-13 rounded-none border-white/40 bg-transparent px-8 text-xs font-bold uppercase tracking-[0.16em] text-white hover:bg-white/10 hover:text-gold"
-            >
-              <Link to="/request-quote">GET A QUOTE</Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 hidden items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white/70 lg:flex">
-          <span>Scroll</span>
-          <span className="scroll-line h-10 w-px bg-gold" />
-          <ArrowDown className="size-3 text-gold" />
-        </div>
-      </section>
-
-      {/* 2. INTRODUCTION */}
-      <section className="bg-ivory py-24 sm:py-32">
-        <div className="page-shell grid gap-14 lg:grid-cols-2 lg:items-center">
-          <Reveal>
-            <p className="label-track mb-4 flex items-center gap-2 text-gold">
-              <span className="inline-block h-px w-5 bg-gold" />
-              Our Purpose
-            </p>
-            <h2 className="display-title text-4xl uppercase sm:text-6xl lg:text-7xl">
-              FROM CONCEPT<br />
-              TO FINISHED<br />
-              GARMENT.
-            </h2>
-          </Reveal>
-
-          <Reveal className="lg:pt-6">
-            <p className="text-lg leading-relaxed text-slate sm:text-xl">
-              Muthu International Private Ltd brings together product development, manufacturing expertise and quality-focused production to create contemporary kidswear collections for modern brands.
-            </p>
-
-            {/* 4 Animated / Interactive Keywords */}
-            <div className="mt-10 grid gap-3 border-t border-border pt-6 sm:grid-cols-2">
-              {keywords.map((k, idx) => (
-                <div
-                  key={k.word}
-                  onMouseEnter={() => setActiveKeyword(idx)}
-                  onClick={() => setActiveKeyword(idx)}
-                  className={`group cursor-pointer border p-5 transition-all duration-300 ${
-                    activeKeyword === idx
-                      ? "border-gold bg-[#F1ECE3] shadow-sm"
-                      : "border-border bg-white hover:border-gold/50"
-                  }`}
+              {/* Minimal Call-To-Action Button with Circular Arrow Icon */}
+              <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+                <Link
+                  to="/collections"
+                  className="group inline-flex items-center gap-3 border border-[#226192] bg-[#226192] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-[#FFFFFF] shadow-sm transition-all duration-300 hover:border-[#EF8557] hover:bg-[#EF8557]"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-gold">0{idx + 1}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-slate">Key Pillar</span>
-                  </div>
-                  <h3 className="mt-2 text-xl font-bold uppercase tracking-wider text-navy group-hover:text-gold">
-                    {k.word}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate">{k.desc}</p>
+                  <span>Explore Collections</span>
+                  <span className="flex size-7 items-center justify-center rounded-full bg-[#FFFFFF]/20 text-[#FFFFFF] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#FFFFFF] group-hover:text-[#EF8557]">
+                    <ArrowRight className="size-3.5" />
+                  </span>
+                </Link>
+
+                <Link
+                  to="/request-quote"
+                  className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#226192] transition-colors hover:text-[#EF8557]"
+                >
+                  <span className="border-b border-[#226192]/40 pb-0.5 group-hover:border-[#EF8557]">
+                    Request Production Spec
+                  </span>
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+
+              {/* Editorial Metadata Bar */}
+              <div className="mt-14 flex flex-wrap items-center gap-6 border-t border-[#226192]/20 pt-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#252525]/70">
+                <div>
+                  <span className="text-[#EF8557]">VOL. 27</span> · SS ATELIER EDITION
                 </div>
-              ))}
+                <div className="hidden sm:block text-[#226192]/30">|</div>
+                <div>CERTIFIED OEKO-TEX & AQL 2.5</div>
+                <div className="hidden sm:block text-[#226192]/30">|</div>
+                <div>100% COMBED COMPACT COTTON</div>
+              </div>
             </div>
-          </Reveal>
+
+            {/* Right Side: Editorial Layered Composition with Deep Blue Panel & Coral Graphic Accent */}
+            <div className="relative lg:col-span-6 xl:col-span-5 lg:-ml-6 xl:-ml-10">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                {/* Deep Blue Rectangular Panel behind image */}
+                <div
+                  className="absolute -bottom-6 -right-6 top-8 left-8 bg-[#226192] sm:-bottom-8 sm:-right-8 sm:top-10 sm:left-10"
+                  aria-hidden="true"
+                />
+
+                {/* Main Editorial Photograph */}
+                <div className="relative aspect-[3/4] overflow-hidden border border-[#226192] bg-[#FFFFFF] shadow-xl">
+                  <img
+                    src={images.bloomHero || images.hero}
+                    width={1024}
+                    height={1365}
+                    fetchPriority="high"
+                    className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                    alt="Muthu International Bloom Editorial Kidswear Atelier"
+                  />
+
+                  {/* Overlaid Editorial Watermark Badge */}
+                  <div className="absolute bottom-4 left-4 border border-[#FFFFFF]/30 bg-[#226192]/80 px-3 py-1.5 backdrop-blur-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFFFFF]">
+                      MUTHU ATELIER // SS27
+                    </span>
+                  </div>
+                </div>
+
+                {/* Coral Orange Botanical Graphic Element */}
+                <div className="absolute -top-6 -left-6 z-20 flex size-20 items-center justify-center border border-[#EF8557] bg-[#EF8557] p-3 text-center text-[#FFFFFF] shadow-lg sm:-top-8 sm:-left-8 sm:size-24">
+                  <div className="flex flex-col items-center">
+                    <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-[#FFFFFF]/90">
+                      BLOOM
+                    </span>
+                    <span className="font-serif italic text-base sm:text-lg leading-none text-[#FFFFFF]">
+                      Edition
+                    </span>
+                    <span className="mt-1 text-[8px] uppercase tracking-wider text-[#FFFFFF]/80">
+                      100% Pure
+                    </span>
+                  </div>
+                </div>
+
+                {/* Subtitle Card Floating */}
+                <div className="absolute -bottom-4 left-4 z-20 hidden border border-[#226192]/30 bg-[#EAE6DE] px-4 py-2.5 shadow-md sm:block">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#226192]">
+                    Natural Botanicals · Precision Stitching
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 3. PRODUCTS WITH HORIZONTAL SCROLL / DRAG INTERACTION */}
-      <section className="bg-beige py-24 sm:py-32">
+      {/* 2. RUNNING EDITORIAL TICKER TAPE */}
+      <div className="border-y border-[#226192]/20 bg-[#226192] py-3.5 text-[#EAE6DE] overflow-hidden">
+        <div className="flex items-center gap-8 whitespace-nowrap text-xs font-bold uppercase tracking-[0.22em]">
+          <span>OEM & PRIVATE LABEL ATELIER</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>100% COMBED COMPACT COTTON</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>NON-TOXIC REACTIVE BOTANICAL PRINTS</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>MULTI-HEAD EMBROIDERY</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>AQL 2.5 QUALITY ASSURANCE</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>TIRUPUR, INDIA · GLOBAL EXPORT</span>
+          <span className="text-[#EF8557]">✦</span>
+          <span>ZERO-FRICTION BABYWEAR SEAMS</span>
+          <span className="text-[#EF8557]">✦</span>
+        </div>
+      </div>
+
+      {/* 3. ABOUT SECTION — SPLIT EDITORIAL COMPOSITION */}
+      <section className="bg-[#EAE6DE] py-24 sm:py-32">
+        <div className="page-shell">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
+            {/* Left side text */}
+            <div className="lg:col-span-6">
+              <Reveal>
+                <div className="flex items-center gap-2 text-[#EF8557]">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
+                  <p className="label-track text-[#EF8557]">[ 01 // PHILOSOPHY & CRAFT ]</p>
+                </div>
+
+                <h2 className="display-title mt-4 text-4xl uppercase tracking-tight text-[#226192] sm:text-5xl lg:text-6xl">
+                  WHERE <span className="text-[#EF8557]">ARTISANAL</span> PRECISION MEETS INDUSTRIAL SCALE.
+                </h2>
+
+                <p className="mt-6 text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                  Founded in Tirupur, India’s knitwear capital, Muthu International Private Ltd provides end-to-end kidswear apparel manufacturing. We harmonize bespoke pattern engineering, gentle organic dyeing, and certified child-safety protocols to empower boutique labels and global retail giants.
+                </p>
+
+                {/* Restrained Coral-Orange Decorative Graphic Element */}
+                <div className="mt-8 flex items-center gap-4 border-l-2 border-[#EF8557] pl-4">
+                  <p className="font-serif italic text-base text-[#226192] sm:text-lg">
+                    “Every seam, button, and dye formula is engineered for gentle contact with delicate young skin.”
+                  </p>
+                </div>
+
+                {/* 4 Pillars Interactive Grid */}
+                <div className="mt-10 grid gap-3 border-t border-[#226192]/20 pt-6 sm:grid-cols-2">
+                  {keywords.map((k, idx) => (
+                    <div
+                      key={k.word}
+                      onMouseEnter={() => setActiveKeyword(idx)}
+                      onClick={() => setActiveKeyword(idx)}
+                      className={`group cursor-pointer border p-5 transition-all duration-300 ${
+                        activeKeyword === idx
+                          ? "border-[#EF8557] bg-[#FFFFFF] shadow-sm"
+                          : "border-[#226192]/20 bg-[#FFFFFF]/60 hover:border-[#226192] hover:bg-[#FFFFFF]"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557]">
+                          {k.sub}
+                        </span>
+                      </div>
+                      <h3 className="mt-2 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192] group-hover:text-[#EF8557]">
+                        {k.word}
+                      </h3>
+                      <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">{k.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right side image */}
+            <div className="lg:col-span-6">
+              <Reveal>
+                <div className="relative">
+                  {/* Layered deep blue back panel */}
+                  <div className="absolute -inset-3 bg-[#226192] translate-x-4 translate-y-4" />
+                  <div className="relative aspect-[4/5] overflow-hidden border border-[#226192] bg-[#FFFFFF] shadow-lg">
+                    <img
+                      src={images.bloomCraft || images.factory}
+                      width={1024}
+                      height={1280}
+                      loading="lazy"
+                      className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                      alt="Artisanal Embroidery and Fabric Craft at Muthu International"
+                    />
+                    <div className="absolute bottom-4 right-4 border border-[#EF8557] bg-[#FFFFFF] px-3.5 py-2 shadow-sm">
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-[#226192]">
+                        HAND-FINISHED EMBROIDERY & TRIMS
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. SERVICES & CAPABILITIES SECTION (Crisp Rectangular Grid) */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-24 sm:py-32">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Atelier Capabilities"
+            title="PURPOSE-BUILT FOR MODERN APPAREL LABELS."
+            text="Explore the six core technical disciplines that anchor our full-cycle OEM and private label kidswear manufacturing."
+          />
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {whyMuthuPoints.map((item, idx) => (
+              <Reveal key={item.title}>
+                <div className="group flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-8 transition-all duration-300 hover:border-[#EF8557] hover:shadow-[0_8px_24px_rgba(34,97,146,0.08)]">
+                  <div>
+                    <h3 className="mt-6 font-['Space_Grotesk'] text-xl font-bold uppercase tracking-tight text-[#226192] transition-colors group-hover:text-[#EF8557]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-[#252525]/80">{item.description}</p>
+                  </div>
+
+                  <div className="mt-8 flex items-center justify-between border-t border-[#226192]/10 pt-4 text-[11px] font-bold uppercase tracking-wider text-[#226192]">
+                    <span>Standard AQL 2.5</span>
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1 group-hover:text-[#EF8557]" />
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CURATED PRODUCTS SECTION — WITH CAROUSEL & RECTANGULAR CARDS */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-24 sm:py-32">
         <div className="page-shell">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <p className="label-track mb-3 flex items-center gap-2 text-gold">
-                <span className="inline-block h-px w-5 bg-gold" />
-                Product Direction
-              </p>
-              <h2 className="display-title text-4xl uppercase sm:text-6xl text-navy">
-                OUR KIDSWEAR
+              <div className="flex items-center gap-2 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">[ CURATED SILHOUETTES ]</p>
+              </div>
+              <h2 className="display-title mt-3 text-4xl uppercase tracking-tight text-[#226192] sm:text-6xl">
+                OUR KIDSWEAR EDITIONS
               </h2>
-              <p className="mt-3 text-base text-slate">
-                Contemporary products developed for today's kidswear market.
+              <p className="mt-3 text-base text-[#252525]/80">
+                Precision cut, soft-washed, and ready for private label customization.
               </p>
             </div>
 
@@ -219,7 +395,7 @@ function HomePage() {
               <button
                 type="button"
                 onClick={() => scrollHoriz("left")}
-                className="flex size-11 items-center justify-center border border-navy/20 bg-white text-navy transition-colors hover:border-gold hover:text-gold"
+                className="flex size-11 items-center justify-center border border-[#226192]/30 bg-[#FFFFFF] text-[#226192] transition-all hover:border-[#EF8557] hover:bg-[#EF8557] hover:text-[#FFFFFF]"
                 aria-label="Scroll left"
               >
                 <ChevronLeft className="size-5" />
@@ -227,7 +403,7 @@ function HomePage() {
               <button
                 type="button"
                 onClick={() => scrollHoriz("right")}
-                className="flex size-11 items-center justify-center border border-navy/20 bg-white text-navy transition-colors hover:border-gold hover:text-gold"
+                className="flex size-11 items-center justify-center border border-[#226192]/30 bg-[#FFFFFF] text-[#226192] transition-all hover:border-[#EF8557] hover:bg-[#EF8557] hover:text-[#FFFFFF]"
                 aria-label="Scroll right"
               >
                 <ChevronRight className="size-5" />
@@ -237,10 +413,14 @@ function HomePage() {
 
           {/* Category tags pill list */}
           <div className="mt-8 flex flex-wrap gap-2">
-            {productCategories.map((c) => (
+            {productCategories.map((c, i) => (
               <span
                 key={c}
-                className="border border-border bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-navy"
+                className={`border px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  i === 0
+                    ? "border-[#226192] bg-[#226192] text-[#FFFFFF]"
+                    : "border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                }`}
               >
                 {c}
               </span>
@@ -256,7 +436,7 @@ function HomePage() {
             {products.map((p) => (
               <div
                 key={p.slug}
-                className="w-[280px] shrink-0 sm:w-[340px]"
+                className="w-[290px] shrink-0 sm:w-[350px]"
                 style={{ scrollSnapAlign: "start" }}
               >
                 <ProductCard product={p} />
@@ -264,91 +444,89 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mt-10 flex justify-between items-center border-t border-border pt-6">
-            <p className="text-xs text-slate">
-              Showing curated production silhouettes · Sizing from 12M to 14Y
+          <div className="mt-10 flex flex-col justify-between gap-4 border-t border-[#226192]/20 pt-6 sm:flex-row sm:items-center">
+            <p className="text-xs text-[#252525]/75">
+              Curated silhouettes · Baby 12M to Teen 14Y · Custom Pantone dyeing available
             </p>
-            <Button asChild variant="outline" className="rounded-none border-navy text-xs font-bold uppercase tracking-wider text-navy hover:bg-navy hover:text-white">
-              <Link to="/products">
-                View All Products <ArrowRight className="ml-2 size-3.5" />
-              </Link>
-            </Button>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 border border-[#226192] bg-[#226192] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-[#FFFFFF] transition-colors hover:bg-[#EF8557] hover:border-[#EF8557]"
+            >
+              <span>View All Products</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 4. MANUFACTURING STORY (Sticky Storytelling Section) */}
+      {/* 6. MANUFACTURING STORY (Sticky Storytelling Section) */}
       <ManufacturingStorySection />
 
-      {/* 5. OEM SECTION (Navy Background) */}
-      <section className="bg-navy py-24 text-white sm:py-32">
+      {/* 7. OEM & PRIVATE LABEL SECTION — DEEP EDITORIAL BLUE */}
+      <section className="bg-[#226192] py-24 text-[#FFFFFF] sm:py-32">
         <div className="page-shell">
           <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <Reveal>
-              <p className="label-track mb-5 flex items-center gap-2 text-gold">
-                <span className="inline-block h-px w-6 bg-gold" />
-                OEM & Private Label
-              </p>
-              <h2 className="display-title text-4xl uppercase sm:text-6xl lg:text-7xl">
+              <div className="flex items-center gap-2 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">OEM & Private Label Production</p>
+              </div>
+              <h2 className="display-title mt-4 text-4xl uppercase tracking-tight text-[#FFFFFF] sm:text-6xl lg:text-7xl">
                 YOUR BRAND.<br />
                 YOUR DESIGN.<br />
-                <span className="text-gold">OUR MANUFACTURING.</span>
+                <span className="text-[#EF8557]">OUR ATELIER.</span>
               </h2>
             </Reveal>
 
-            <Reveal className="border-t border-white/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-              <p className="text-base leading-relaxed text-white/75 sm:text-lg">
-                Develop your own kidswear collection with customized products, colours, prints, embroidery, labels and specifications.
+            <Reveal className="border-t border-[#EAE6DE]/20 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+              <p className="text-base leading-relaxed text-[#EAE6DE]/85 sm:text-lg">
+                Complete white-glove OEM development for fashion brands: custom silhouettes, Pantone-matched knitwear, private neck labels, hangtags, barcodes, and export-compliant eco-packaging.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-white/80">
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-gold" /> Custom fabric knitting & Pantone matching
+              <ul className="mt-6 space-y-2.5 text-sm text-[#EAE6DE]/90">
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 text-[#EF8557]" /> Custom fabric knitting (Jersey, Terry, Corduroy, Woven)
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-gold" /> Custom neck labels, care tags & branded barcoding
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 text-[#EF8557]" /> Custom neck labels, satin wash tags & branded barcoding
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check className="size-4 text-gold" /> Specialized baby & toddler safety compliance
+                <li className="flex items-center gap-2.5">
+                  <Check className="size-4 text-[#EF8557]" /> International baby & toddler safety compliance (Zero nickel)
                 </li>
               </ul>
               <div className="mt-9 flex flex-wrap gap-4">
-                <Button asChild className="h-12 rounded-none bg-gold px-7 text-xs font-bold uppercase tracking-[0.16em] text-navy hover:bg-gold/90">
-                  <Link to="/oem-private-label">EXPLORE OEM</Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-12 rounded-none border-white/30 bg-transparent px-7 text-xs font-bold uppercase tracking-[0.16em] text-white hover:bg-white/10 hover:text-gold"
+                <Link
+                  to="/oem-private-label"
+                  className="inline-flex items-center gap-2 border border-[#EF8557] bg-[#EF8557] px-7 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#FFFFFF] transition-colors hover:bg-[#EF8557]/90"
                 >
-                  <Link to="/request-quote">START YOUR PROJECT</Link>
-                </Button>
+                  <span>Explore OEM Workflow</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
+                <Link
+                  to="/request-quote"
+                  className="inline-flex items-center gap-2 border border-[#EAE6DE]/40 bg-transparent px-7 py-3 text-xs font-bold uppercase tracking-[0.18em] text-[#EAE6DE] transition-colors hover:border-[#FFFFFF] hover:bg-[#FFFFFF]/10 hover:text-[#FFFFFF]"
+                >
+                  Request OEM Spec Pack
+                </Link>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* 6. WHY MUTHU (Six Premium Cards) */}
-      <section className="bg-ivory py-24 sm:py-32">
+      {/* 8. STATISTICS & HIGHLIGHTS SECTION */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
-          <SectionHeading
-            eyebrow="Why Muthu International"
-            title="Built around your brand."
-            text="Six pillars of reliability that make Muthu International the preferred kidswear manufacturing partner for brands worldwide."
-          />
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {whyMuthuPoints.map((item) => (
-              <Reveal key={item.title}>
-                <div className="group h-full border border-border bg-white p-8 transition-all duration-300 hover:border-gold hover:shadow-lg">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm font-bold text-gold">{item.number}</span>
-                    <span className="inline-block size-2 rounded-full bg-gold/40 group-hover:bg-gold" />
-                  </div>
-                  <h3 className="mt-8 text-xl font-bold uppercase tracking-wider text-navy group-hover:text-gold">
-                    {item.title}
+          <div className="grid gap-8 divide-y divide-[#226192]/20 sm:grid-cols-2 sm:divide-y-0 sm:divide-x sm:divide-[#226192]/20 lg:grid-cols-4">
+            {statistics.map((s, idx) => (
+              <Reveal key={s.label} className={idx > 0 ? "pt-6 sm:pt-0 sm:pl-8" : ""}>
+                <div className="text-[#226192]">
+                  <span className="font-['Space_Grotesk'] text-5xl font-extrabold tracking-tight sm:text-6xl text-[#226192]">
+                    {s.num}
+                  </span>
+                  <h3 className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+                    {s.label}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-slate">{item.description}</p>
+                  <p className="mt-1 text-xs text-[#252525]/75">{s.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -356,102 +534,61 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 7. FACTORY (Full-Width Image Section) */}
-      <section className="relative min-h-[75vh] overflow-hidden bg-navy text-white">
-        <img
-          src={images.factory}
-          loading="lazy"
-          width={1536}
-          height={1024}
-          className="absolute inset-0 size-full object-cover opacity-45"
-          alt="Muthu International kidswear manufacturing facility"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-navy/30" />
-
-        <div className="page-shell relative flex min-h-[75vh] flex-col justify-end pb-20">
-          <Reveal>
-            <p className="label-track mb-3 flex items-center gap-2 text-gold">
-              <span className="inline-block h-px w-5 bg-gold" />
-              Inside Our Factory
-            </p>
-            <h2 className="display-title text-4xl uppercase sm:text-6xl lg:text-7xl">
-              WHERE IDEAS<br />
-              <span className="text-gold">BECOME GARMENTS.</span>
-            </h2>
-
-            {/* Process badges */}
-            <div className="mt-8 flex flex-wrap gap-2.5">
-              {factoryStages.map((stage) => (
-                <span
-                  key={stage}
-                  className="border border-white/20 bg-navy/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-white"
-                >
-                  {stage}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <Button
-                asChild
-                className="h-12 rounded-none bg-gold px-8 text-xs font-bold uppercase tracking-[0.16em] text-navy hover:bg-gold/90"
-              >
-                <Link to="/manufacturing">
-                  EXPLORE MANUFACTURING <ArrowRight className="ml-2 size-4" />
-                </Link>
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 8. COLLECTION (Editorial Fashion Gallery, Asymmetric Layout) */}
-      <section className="bg-beige py-24 sm:py-32">
+      {/* 9. ASYMMETRIC EDITORIAL PORTFOLIO GALLERY */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-24 sm:py-32">
         <div className="page-shell">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="label-track mb-3 flex items-center gap-2 text-gold">
-                <span className="inline-block h-px w-5 bg-gold" />
-                Seasonal Direction
-              </p>
-              <h2 className="display-title text-4xl uppercase sm:text-6xl text-navy">
-                OUR LATEST DEVELOPMENTS
+              <div className="flex items-center gap-2 text-[#EF8557]">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <p className="label-track text-[#EF8557]">[ SEASONAL DIRECTION ]</p>
+              </div>
+              <h2 className="display-title mt-3 text-4xl uppercase tracking-tight text-[#226192] sm:text-6xl">
+                NEW ATELIER DEVELOPMENTS
               </h2>
             </div>
-            <Button asChild variant="outline" className="rounded-none border-navy text-xs font-bold uppercase tracking-wider text-navy hover:bg-navy hover:text-white">
-              <Link to="/collections">
-                All Collections <ArrowRight className="ml-2 size-3.5" />
-              </Link>
-            </Button>
+            <Link
+              to="/collections"
+              className="inline-flex items-center gap-2 border border-[#226192] bg-[#FFFFFF] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#226192] transition-colors hover:border-[#EF8557] hover:bg-[#226192] hover:text-[#FFFFFF]"
+            >
+              <span>All Collections</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-12">
-            {/* Main large feature */}
+            {/* Main large asymmetrical feature */}
             <div className="md:col-span-7">
               <Link
                 to="/products/$slug"
                 params={{ slug: "atelier-embroidered-set" }}
-                className="group relative block overflow-hidden border border-border bg-white"
+                className="group relative block overflow-hidden border border-[#226192]/20 bg-[#FFFFFF] shadow-sm transition-all hover:border-[#EF8557]"
               >
-                <div className="image-zoom aspect-[4/5] bg-ivory">
+                <div className="image-zoom aspect-[4/5] bg-[#EAE6DE]">
                   <img
                     src={images.editorial}
                     loading="lazy"
                     width={1024}
                     height={1280}
                     className="size-full object-cover"
-                    alt="Atelier Embroidered Set"
+                    alt="Atelier Tailored Cord Set"
                   />
+                  <div className="absolute top-4 left-4 border border-[#EF8557] bg-[#EF8557] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#FFFFFF]">
+                    FEATURED INNOVATION
+                  </div>
                 </div>
-                <div className="p-6">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+                <div className="p-7">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
                     New Developments · Cord Sets
                   </span>
-                  <h3 className="mt-2 text-2xl font-semibold uppercase text-navy group-hover:text-gold">
-                    Atelier Tailored Cord Set
-                  </h3>
-                  <p className="mt-2 text-sm text-slate">
-                    Artisanal multi-needle chain stitch and 21-wale cotton babycorduroy development.
+                  <div className="mt-2 flex items-center justify-between">
+                    <h3 className="font-['Space_Grotesk'] text-2xl font-bold uppercase tracking-tight text-[#226192] transition-colors group-hover:text-[#EF8557]">
+                      Atelier Tailored Cord Set
+                    </h3>
+                    <ArrowRight className="size-4 text-[#226192] transition-transform group-hover:translate-x-1 group-hover:text-[#EF8557]" />
+                  </div>
+                  <p className="mt-2 text-sm text-[#252525]/80">
+                    Fine chain-stitch embroidery executed on 21-wale cotton babycorduroy with enzyme softening.
                   </p>
                 </div>
               </Link>
@@ -462,9 +599,9 @@ function HomePage() {
               <Link
                 to="/products/$slug"
                 params={{ slug: "botanical-coord-set" }}
-                className="group relative block overflow-hidden border border-border bg-white"
+                className="group relative block overflow-hidden border border-[#226192]/20 bg-[#FFFFFF] shadow-sm transition-all hover:border-[#EF8557]"
               >
-                <div className="image-zoom aspect-[16/10] bg-ivory">
+                <div className="image-zoom aspect-[16/10] bg-[#EAE6DE]">
                   <img
                     src={images.printedSet}
                     loading="lazy"
@@ -474,23 +611,23 @@ function HomePage() {
                     alt="Botanical Co-Ord Set"
                   />
                 </div>
-                <div className="p-5">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+                <div className="p-6">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
                     Spring / Summer · Printed
                   </span>
-                  <h4 className="mt-1 text-lg font-semibold uppercase text-navy group-hover:text-gold">
+                  <h4 className="mt-1 font-['Space_Grotesk'] text-lg font-bold uppercase text-[#226192] transition-colors group-hover:text-[#EF8557]">
                     Botanical Co-Ord Two-Piece Set
                   </h4>
-                  <p className="mt-1 text-xs text-slate">Rotary all-over print with child-safe soft pigment.</p>
+                  <p className="mt-1.5 text-xs text-[#252525]/80">Rotary all-over botanical print with child-safe non-toxic reactive pigment.</p>
                 </div>
               </Link>
 
               <Link
                 to="/products/$slug"
                 params={{ slug: "embroidered-girls-tee" }}
-                className="group relative block overflow-hidden border border-border bg-white"
+                className="group relative block overflow-hidden border border-[#226192]/20 bg-[#FFFFFF] shadow-sm transition-all hover:border-[#EF8557]"
               >
-                <div className="image-zoom aspect-[16/10] bg-ivory">
+                <div className="image-zoom aspect-[16/10] bg-[#EAE6DE]">
                   <img
                     src={images.girlsTee}
                     loading="lazy"
@@ -500,14 +637,14 @@ function HomePage() {
                     alt="Embroidered Girls Tee"
                   />
                 </div>
-                <div className="p-5">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+                <div className="p-6">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
                     Spring / Summer · Embroidered
                   </span>
-                  <h4 className="mt-1 text-lg font-semibold uppercase text-navy group-hover:text-gold">
+                  <h4 className="mt-1 font-['Space_Grotesk'] text-lg font-bold uppercase text-[#226192] transition-colors group-hover:text-[#EF8557]">
                     Embroidered Girls’ Flutter Tee
                   </h4>
-                  <p className="mt-1 text-xs text-slate">Delicate floral embroidery with skin-safe backing.</p>
+                  <p className="mt-1.5 text-xs text-[#252525]/80">Delicate 3D floral threadwork with gentle soft-tear skin backing.</p>
                 </div>
               </Link>
             </div>
@@ -515,8 +652,40 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 9. FINAL CTA (Navy background) */}
+      {/* 10. TESTIMONIALS & CLIENT EDITORIAL SECTION */}
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-24 sm:py-32">
+        <div className="page-shell">
+          <SectionHeading
+            eyebrow="Global Partner Testimonials"
+            title="TRUSTED BY DESIGN STUDIOS & RETAILERS WORLDWIDE."
+            text="How our manufacturing standards empower contemporary kidswear labels across the globe."
+          />
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {clientPillars.map((c, i) => (
+              <Reveal key={c.company}>
+                <div className="flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm">
+                  <div>
+                    <span className="font-serif text-3xl font-bold text-[#EF8557]">“</span>
+                    <p className="font-serif italic text-base leading-relaxed text-[#252525]/90 sm:text-lg">
+                      {c.quote}
+                    </p>
+                  </div>
+                  <div className="mt-8 border-t border-[#226192]/15 pt-4">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#226192]">{c.company}</p>
+                    <p className="mt-0.5 text-[10px] uppercase tracking-wider text-[#252525]/70">
+                      {c.author} · {c.country}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 11. DISTINCTIVE CLOSING CONTACT & ATELIER CTA */}
       <CTASection />
-    </>
+    </div>
   );
 }

@@ -141,7 +141,7 @@ function DesignDevelopmentPage() {
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((item, idx) => {
+            {capabilities.map((item) => {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title}>
@@ -151,7 +151,6 @@ function DesignDevelopmentPage() {
                         <div className="flex size-10 items-center justify-center border border-[#226192]/20 bg-[#EAE6DE] text-[#226192] transition-colors group-hover:bg-[#226192] group-hover:text-[#FFFFFF]">
                           <Icon className="size-5" />
                         </div>
-                        <span className="font-mono text-xs font-bold text-[#EF8557]">0{idx + 1}</span>
                       </div>
                       <h3 className="font-['Space_Grotesk'] mt-6 text-lg font-bold uppercase tracking-tight text-[#226192] group-hover:text-[#EF8557]">
                         {item.title}

@@ -111,21 +111,18 @@ function ManufacturingPage() {
           <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
             <div className="grid gap-8 lg:grid-cols-3">
               <div>
-                <span className="font-mono text-xs font-bold text-[#EF8557]">01</span>
                 <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">Two operational factories</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
                   Our two factories are equipped with modern machinery to support garment manufacturing processes.
                 </p>
               </div>
               <div>
-                <span className="font-mono text-xs font-bold text-[#EF8557]">02</span>
                 <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">In-house design team</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
                   Our dedicated team develops fresh designs every day, keeping the collection aligned with changing preferences.
                 </p>
               </div>
               <div>
-                <span className="font-mono text-xs font-bold text-[#EF8557]">03</span>
                 <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">Warehouse and supply</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
                   Our dedicated warehouse supports organized storage and inventory management for customers across India.

@@ -130,14 +130,13 @@ function SustainabilityPage() {
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {pillars.map((p, idx) => {
+            {pillars.map((p) => {
               const Icon = p.icon;
               return (
                 <Reveal key={p.title}>
                   <div className="flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-7 transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                     <div>
                       <div className="flex items-center justify-between border-b border-[#226192]/10 pb-4">
-                        <span className="font-mono text-xs font-bold text-[#EF8557]">0{idx + 1}</span>
                         <div className="flex size-9 items-center justify-center border border-[#226192]/20 bg-[#EAE6DE] text-[#226192]">
                           <Icon className="size-4" />
                         </div>

@@ -136,11 +136,10 @@ function AboutPage() {
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v, i) => (
+            {values.map((v) => (
               <Reveal key={v.title}>
                 <div className="flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-7 transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                   <div>
-                    <span className="font-mono text-xs font-bold text-[#EF8557]">0{i + 1}</span>
                     <h3 className="mt-4 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192]">
                       {v.title}
                     </h3>

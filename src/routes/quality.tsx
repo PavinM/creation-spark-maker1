@@ -26,49 +26,41 @@ export const Route = createFileRoute("/quality")({
 
 const qualityStages = [
   {
-    step: "01",
     title: "Product Requirements",
     desc: "Understand the garment style, customer needs and intended use.",
     icon: Scale,
   },
   {
-    step: "02",
     title: "Design Coordination",
     desc: "Coordinate new styles from our in-house design team with manufacturing operations.",
     icon: FileCheck,
   },
   {
-    step: "03",
     title: "Production Planning",
     desc: "Organize manufacturing work across our two operational factories.",
     icon: Sparkles,
   },
   {
-    step: "04",
     title: "Modern Machinery",
     desc: "Use modern machinery to support the garment manufacturing process.",
     icon: Scissors,
   },
   {
-    step: "05",
     title: "Experienced Workforce",
     desc: "A team of over 100 employees supports manufacturing and business operations.",
     icon: ShieldCheck,
   },
   {
-    step: "06",
     title: "Quality Commitment",
     desc: "Coordinate design and manufacturing processes while working toward consistent product quality.",
     icon: Sparkles,
   },
   {
-    step: "07",
     title: "Applicable Requirements",
     desc: "Maintain applicable statutory and industry requirements relevant to business operations.",
     icon: FileCheck,
   },
   {
-    step: "08",
     title: "Customer Relationships",
     desc: "Build long-term relationships through quality, reliable business practices and cooperation.",
     icon: Box,
@@ -98,11 +90,10 @@ function QualityPage() {
             {qualityStages.map((q) => {
               const Icon = q.icon;
               return (
-                <Reveal key={q.step}>
+                <Reveal key={q.title}>
                   <div className="group flex h-full flex-col justify-between border border-[#226192]/20 bg-[#FFFFFF] p-7 transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                     <div>
                       <div className="flex items-center justify-between border-b border-[#226192]/10 pb-4">
-                        <span className="font-mono text-xs font-bold text-[#EF8557]">STAGE {q.step}</span>
                         <div className="flex size-8 items-center justify-center border border-[#226192]/20 bg-[#EAE6DE] text-[#226192] group-hover:bg-[#226192] group-hover:text-[#FFFFFF]">
                           <Icon className="size-4" />
                         </div>

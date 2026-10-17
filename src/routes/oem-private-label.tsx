@@ -110,12 +110,8 @@ function OemPrivateLabelPage() {
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {oemSteps.map((step, idx) => (
-              <Reveal key={step.number} className={idx === oemSteps.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}>
+              <Reveal key={step.title} className={idx === oemSteps.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}>
                 <div className="group h-full border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#EF8557] hover:bg-[#FFFFFF]/10">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm font-bold text-[#EF8557]">{step.number}</span>
-                    <span className="text-[10px] uppercase tracking-wider text-[#EAE6DE]/60">Phase {idx + 1}</span>
-                  </div>
                   <h3 className="font-['Space_Grotesk'] mt-6 text-lg font-bold uppercase tracking-tight text-[#FFFFFF] group-hover:text-[#EF8557]">
                     {step.title}
                   </h3>

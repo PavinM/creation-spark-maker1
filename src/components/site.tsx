@@ -85,11 +85,11 @@ export function SiteHeader() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           compact
-            ? "border-b border-[#226192]/15 bg-[#EAE6DE]/95 py-3 shadow-[0_2px_12px_rgba(34,97,146,0.06)] backdrop-blur-md"
-            : "border-b border-[#226192]/10 bg-[#EAE6DE]/90 py-4 backdrop-blur-sm"
+            ? "border-b border-[#226192]/15 bg-[#EAE6DE]/95 py-2.5 shadow-[0_2px_12px_rgba(34,97,146,0.06)] backdrop-blur-md"
+            : "border-b border-[#226192]/10 bg-[#EAE6DE]/90 py-3 backdrop-blur-sm"
         )}
       >
-        <div className="page-shell flex items-center justify-between gap-6">
+        <div className="page-shell flex items-center justify-between gap-4">
           {/* Brand Logo - Bloom Editorial Style */}
           <Link
             to="/"
@@ -113,12 +113,12 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-7 xl:flex" aria-label="Primary Navigation">
+          <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary Navigation">
             {primaryNav.map(({ label, to }) => (
               <Link
                 key={to}
                 to={to}
-                className="group relative py-1 text-xs font-bold uppercase tracking-[0.12em] text-[#226192]/80 transition-colors hover:text-[#226192]"
+                className="group relative py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
                 activeProps={{ className: "text-[#226192] font-black" }}
               >
                 <span>{label}</span>
@@ -128,16 +128,16 @@ export function SiteHeader() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden items-center gap-5 md:flex">
+          <div className="hidden items-center gap-4 md:flex">
             <Link
               to="/contact"
-              className="text-xs font-bold uppercase tracking-[0.12em] text-[#226192] transition-colors hover:text-[#EF8557]"
+              className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192] transition-colors hover:text-[#EF8557]"
             >
               Contact
             </Link>
             <Link
               to="/request-quote"
-              className="group inline-flex items-center gap-2 border border-[#226192] bg-[#226192] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-[#FFFFFF] transition-all duration-300 hover:border-[#EF8557] hover:bg-[#EF8557]"
+              className="group inline-flex items-center gap-2 border border-[#226192] bg-[#226192] px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#FFFFFF] transition-all duration-300 hover:border-[#EF8557] hover:bg-[#EF8557]"
             >
               <span>Get a Quote</span>
               <span className="flex size-5 items-center justify-center rounded-full bg-[#FFFFFF]/20 text-[#FFFFFF] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:bg-[#FFFFFF] group-hover:text-[#EF8557]">

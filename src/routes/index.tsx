@@ -138,7 +138,7 @@ function HomePage() {
               </div>
 
               {/* Stacked Oversized Headline with Outlined Contrast */}
-              <h1 className="hero-title-clean mt-6 text-4xl text-[#226192] sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+              <h1 className="hero-title-clean mt-6 text-4xl text-[#226192] sm:text-6xl lg:text-7xl xl:text-[4.75rem]">
                 <span className="block text-[#252525]">Crafting</span>
                 <span className="block text-[#226192]">Kidswear.</span>
                 <span className="block text-[#EF8557]">Building</span>

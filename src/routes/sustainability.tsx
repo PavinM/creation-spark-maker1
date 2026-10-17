@@ -81,42 +81,35 @@ const babySafetyChecks = [
 
 function SustainabilityPage() {
   return (
-    <div className="bg-[#FAF9F6] text-[#1C2826]">
-      {/* Eco-Luxe Hero */}
-      <section className="relative overflow-hidden border-b border-[#E3E8E5] bg-[#0A2317] text-[#FFFFFF]">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <img
-            src={images.bloomHero}
-            alt="Organic Botanical Textile Craft"
-            className="size-full object-cover object-center filter saturate-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#06170F] via-[#0A2317]/90 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10 py-24 sm:py-32 lg:py-40">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE SUSTAINABILITY HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="page-shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#10B981]/40 bg-[#10B981]/15 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#34D399] uppercase">
-                  <Leaf className="size-3.5" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
                   <span>Conscious Stewardship</span>
                 </div>
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight text-[#FFFFFF] sm:text-6xl lg:text-7xl">
-                  Gentle on Young Skin. Kind to the Earth.
+                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                  Gentle on Skin.
+                  <br />
+                  <span className="text-[#EF8557]">Kind to Nature.</span>
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#D1FAE5]">
-                  Children deserve clothes crafted with purity and love. At Muthu International, our environmental responsibility spans every meter of fabric—from certified organic cotton yarns to zero-discharge water recycling.
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                  Children deserve clothes crafted with purity and care. At Muthu International, our environmental responsibility spans every meter of fabric—from certified organic cotton yarns to zero-discharge water recycling.
                 </p>
-                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#10B981] bg-[#10B981] font-bold text-[#06170F] hover:bg-[#34D399] hover:border-[#34D399]">
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
                     <Link to="/request-quote" className="flex items-center gap-2">
                       <span>Source Sustainable Kidswear</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#A7F3D0]/30 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
+                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
                     <Link to="/quality">
-                      <span>Review Lab Safety Testing</span>
+                      <span>Review Lab Safety Standards</span>
                     </Link>
                   </Button>
                 </div>
@@ -126,37 +119,37 @@ function SustainabilityPage() {
             {/* Floating Eco Credentials */}
             <div className="lg:col-span-5">
               <Reveal>
-                <div className="overflow-hidden rounded-2xl border border-[#FFFFFF]/15 bg-[#06170F]/85 p-6 shadow-2xl backdrop-blur-md">
-                  <div className="flex items-center justify-between border-b border-[#FFFFFF]/10 pb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#34D399]">
+                <div className="overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-6 shadow-lg">
+                  <div className="flex items-center justify-between border-b border-[#226192]/15 pb-4">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#226192]">
                       Eco-Purity Scorecard
                     </span>
-                    <Award className="size-5 text-[#34D399]" />
+                    <Award className="size-5 text-[#EF8557]" />
                   </div>
 
                   <div className="mt-6 space-y-4 text-xs">
-                    <div className="rounded-xl border border-[#FFFFFF]/10 bg-[#FFFFFF]/5 p-4">
+                    <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#FFFFFF]">Water Reclamation Rate</strong>
-                        <span className="font-mono text-base font-bold text-[#34D399]">92%</span>
+                        <strong className="text-sm font-bold text-[#226192]">Water Reclamation Rate</strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">92%</span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#A7F3D0]">Closed-loop biological ETP and reverse osmosis system</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">Closed-loop biological ETP and reverse osmosis system</p>
                     </div>
 
-                    <div className="rounded-xl border border-[#FFFFFF]/10 bg-[#FFFFFF]/5 p-4">
+                    <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#FFFFFF]">Chemical Safety Grade</strong>
-                        <span className="font-mono text-base font-bold text-[#34D399]">Class 1</span>
+                        <strong className="text-sm font-bold text-[#226192]">Chemical Safety Grade</strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#226192]">Class 1</span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#A7F3D0]">OEKO-TEX standard compliant for direct infant skin contact</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">OEKO-TEX standard compliant for direct infant skin contact</p>
                     </div>
 
-                    <div className="rounded-xl border border-[#FFFFFF]/10 bg-[#FFFFFF]/5 p-4">
+                    <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#FFFFFF]">Ethical Artisan Workplace</strong>
-                        <span className="font-mono text-base font-bold text-[#34D399]">100% Fair</span>
+                        <strong className="text-sm font-bold text-[#226192]">Ethical Workplace</strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">100% Fair</span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#A7F3D0]">Over 100 respected employees with full healthcare & fair wages</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">Over 100 respected employees with full healthcare & fair wages</p>
                     </div>
                   </div>
                 </div>
@@ -259,30 +252,7 @@ function SustainabilityPage() {
       </section>
 
       {/* Sustainable Manufacturing CTA */}
-      <section className="bg-[#0A2317] py-20 text-[#FFFFFF]">
-        <div className="page-shell text-center">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#10B981]/20 px-4 py-1 text-xs font-semibold text-[#34D399]">
-              <Sparkles className="size-3.5" />
-              <span>Partner in Sustainability</span>
-            </div>
-            <h2 className="mt-4 font-['Space_Grotesk'] text-3xl font-extrabold sm:text-5xl">
-              Elevate Your Brand with Certified Sustainable Kidswear.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-[#D1FAE5]">
-              Let your customers buy with pride, knowing their children's apparel was consciously created in Tirupur's most ethical manufacturing hub.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="border border-[#10B981] bg-[#10B981] font-bold text-[#06170F] hover:bg-[#34D399]">
-                <Link to="/request-quote">Request Sustainable Apparel Quote</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-[#34D399]/40 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
-                <Link to="/manufacturing">Inspect Our Production Facilities</Link>
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection />
     </div>
   );
 }

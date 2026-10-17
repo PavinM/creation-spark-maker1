@@ -159,10 +159,6 @@ button, a {
   filter: brightness(0) saturate(100%) invert(31%) sepia(13%) saturate(2453%) hue-rotate(164deg) brightness(92%) contrast(90%);
 }
 
-[class~="text-[#EF8557]"] {
-  color: #226192 !important;
-}
-
 /* Page-specific hero compositions keep the shared brand cohesive without repeating the same layout. */
 .page-hero {
   position: relative;

@@ -7,16 +7,16 @@ import { images } from "@/lib/content";
 export const Route = createFileRoute("/oem-private-label")({
   head: () => ({
     meta: [
-      { title: "Bespoke OEM & Private Label Kidswear Manufacturing | Muthu International" },
+      { title: "Kidswear Manufacturing Expertise | OEM & Private Label | Muthu International" },
       {
         name: "description",
         content:
-          "Transform your children's clothing brand with Muthu International's end-to-end OEM and private label services. Custom branding, bespoke trims, rapid prototyping, and export-grade production.",
+          "Discover Muthu International's private label and OEM kidswear manufacturing expertise. Custom branding, bespoke trims, rapid sampling, and export-grade production in Tirupur, India.",
       },
-      { property: "og:title", content: "Executive OEM & Private Label Solutions | Muthu International" },
+      { property: "og:title", content: "Kidswear Manufacturing Expertise | Muthu International" },
       {
         property: "og:description",
-        content: "Turnkey private label apparel solutions for global retailers, D2C brands, and department stores.",
+        content: "Turnkey private label apparel solutions for retailers and children's brands worldwide.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,8 +29,8 @@ const oemCapabilities = [
   {
     title: "Bespoke Brand Identity Trims",
     icon: Tag,
-    desc: "Complete personalization: high-definition woven damask labels, soft tagless heat-transfers, embossed gold-foil hangtags, and barcoded inventory swing tickets.",
-    points: ["Damask woven & satin neck labels", "Tagless irritation-free heat seals", "FSC certified embossed hangtags"],
+    desc: "Complete personalization: high-definition woven damask labels, soft tagless heat-transfers, embossed hangtags, and barcoded inventory swing tickets.",
+    points: ["Damask woven & satin neck labels", "Tagless irritation-free heat seals", "FSC-certified embossed hangtags"],
   },
   {
     title: "Custom Hardware & Fasteners",
@@ -97,74 +97,71 @@ const workflowSteps = [
 
 function OemPrivateLabelPage() {
   return (
-    <div className="bg-[#0B132B] text-[#FFFFFF]">
-      {/* Luxury Executive Dark Hero */}
-      <section className="relative overflow-hidden border-b border-[#FFFFFF]/10 bg-[#070D1E] py-24 sm:py-32 lg:py-40">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <img
-            src={images.detail}
-            alt="Muthu International Custom Garment Details & Labels"
-            className="size-full object-cover object-center filter grayscale contrast-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070D1E] via-[#070D1E]/95 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="page-shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#D97706]/40 bg-[#D97706]/15 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#F59E0B] uppercase">
-                  <Building2 className="size-3.5" />
-                  <span>Turnkey Private Label Solutions</span>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
+                  <span>Our Manufacturing Expertise</span>
                 </div>
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight text-[#FFFFFF] sm:text-6xl lg:text-7xl">
-                  Your Brand. Our Manufacturing Precision.
+
+                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                  Your Brand.
+                  <br />
+                  <span className="text-[#EF8557]">Our Precision.</span>
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#94A3B8]">
-                  From international department stores to high-growth children's D2C labels, Muthu International provides seamless OEM and private label manufacturing with complete trim customization, pediatric safety compliance, and reliable lead times.
+
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                  Over 25 years in the garment industry, supported by an in-house design team, two modern operational factories, and a dedicated warehouse. From custom woven labels to export-grade bulk production, we bring complete OEM capabilities to your brand.
                 </p>
-                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#F59E0B] bg-[#F59E0B] font-bold text-[#070D1E] hover:bg-[#D97706] hover:border-[#D97706]">
+
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
                     <Link to="/request-quote" className="flex items-center gap-2">
                       <span>Request Private Label Quote</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#FFFFFF]/20 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
+                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
                     <Link to="/gallery">
-                      <span>View Custom Trim Gallery</span>
+                      <span>View Finished Products</span>
                     </Link>
                   </Button>
                 </div>
               </Reveal>
             </div>
 
-            {/* Floating Visual Feature Card */}
+            {/* Right: HD Featured Detail Showcase */}
             <div className="lg:col-span-5">
               <Reveal>
-                <div className="overflow-hidden rounded-2xl border border-[#FFFFFF]/15 bg-[#1C2541]/80 p-6 shadow-2xl backdrop-blur-md">
-                  <div className="relative aspect-video overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
                     <img
                       src={images.detail}
                       alt="Garment trim and label craftsmanship"
-                      className="size-full object-cover"
+                      className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="eager"
+                      decoding="async"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-3 left-3 text-xs font-bold text-[#F59E0B]">
-                      Precision Monogram & Stitch Callout
+                    <div className="absolute top-3 right-3 rounded-full bg-[#226192] px-3 py-1 text-[11px] font-bold text-[#FFFFFF]">
+                      Export Grade AQL 1.5
                     </div>
                   </div>
 
-                  <div className="mt-6 grid grid-cols-2 gap-3 text-xs">
-                    <div className="rounded-xl border border-[#FFFFFF]/10 bg-[#0B132B]/60 p-3.5">
-                      <ShieldCheck className="size-4 text-[#F59E0B]" />
-                      <strong className="mt-2 block font-bold text-[#FFFFFF]">AQL 1.5 Standard</strong>
-                      <span className="text-[10px] text-[#94A3B8]">Export quality guarantee</span>
+                  <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
+                    <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-3.5">
+                      <ShieldCheck className="size-4 text-[#EF8557]" />
+                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">Established 2000</strong>
+                      <span className="text-[11px] text-[#252525]/75">25+ Years Experience</span>
                     </div>
-                    <div className="rounded-xl border border-[#FFFFFF]/10 bg-[#0B132B]/60 p-3.5">
-                      <Globe className="size-4 text-[#F59E0B]" />
-                      <strong className="mt-2 block font-bold text-[#FFFFFF]">Worldwide Ready</strong>
-                      <span className="text-[10px] text-[#94A3B8]">Barcode & carton EDI compliant</span>
+                    <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-3.5">
+                      <Globe className="size-4 text-[#EF8557]" />
+                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">Pan-India Supply</strong>
+                      <span className="text-[11px] text-[#252525]/75">Serving Brands Nationwide</span>
                     </div>
                   </div>
                 </div>
@@ -174,13 +171,13 @@ function OemPrivateLabelPage() {
         </div>
       </section>
 
-      {/* OEM Core Customization Pillars */}
-      <section className="bg-[#0B132B] py-20 sm:py-28">
+      {/* ═══ 4 CORE CAPABILITY PILLARS ON WARM IVORY ═══ */}
+      <section className="py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
-            eyebrow="Comprehensive Customization"
-            title="Complete Private Label Anatomy"
-            text="Every detail of your brand identity, executed with perfection."
+            eyebrow="What We Bring Together"
+            title="Design, Manufacturing & Supply"
+            text="Our team and facilities support an evolving product range and the needs of retailers and private labels."
           />
 
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -188,23 +185,23 @@ function OemPrivateLabelPage() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title}>
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-[#FFFFFF]/10 bg-[#1C2541]/50 p-7 transition-all duration-300 hover:border-[#F59E0B] hover:bg-[#1C2541] hover:shadow-xl">
+                  <div className="flex h-full flex-col justify-between rounded-2xl border border-[#226192]/20 bg-[#FFFFFF] p-7 shadow-sm transition-all duration-300 hover:border-[#EF8557] hover:shadow-md">
                     <div>
-                      <div className="flex size-12 items-center justify-center rounded-xl bg-[#0B132B] border border-[#FFFFFF]/10 text-[#F59E0B]">
+                      <div className="flex size-12 items-center justify-center rounded-xl bg-[#226192] text-[#FFFFFF]">
                         <Icon className="size-6" />
                       </div>
-                      <h3 className="mt-5 font-['Space_Grotesk'] text-lg font-bold text-[#FFFFFF]">
+                      <h3 className="mt-5 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192]">
                         {item.title}
                       </h3>
-                      <p className="mt-3 text-xs leading-relaxed text-[#94A3B8]">
+                      <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">
                         {item.desc}
                       </p>
                     </div>
-                    <div className="mt-6 border-t border-[#FFFFFF]/10 pt-4">
-                      <ul className="space-y-2 text-[11px] text-[#CBD5E1]">
+                    <div className="mt-6 border-t border-[#226192]/15 pt-4">
+                      <ul className="space-y-2 text-[11px] text-[#252525]/85">
                         {item.points.map((p) => (
                           <li key={p} className="flex items-center gap-2">
-                            <Check className="size-3 text-[#F59E0B] shrink-0" />
+                            <Check className="size-3 text-[#EF8557] shrink-0" />
                             <span>{p}</span>
                           </li>
                         ))}
@@ -218,31 +215,31 @@ function OemPrivateLabelPage() {
         </div>
       </section>
 
-      {/* Comparison Matrix: White Label vs. Custom OEM */}
-      <section className="border-t border-[#FFFFFF]/10 bg-[#070D1E] py-20 sm:py-28">
+      {/* ═══ COMPARISON TABLE ON CLEAN WHITE & DEEP BLUE ACCENTS ═══ */}
+      <section className="border-t border-[#226192]/20 bg-[#FFFFFF] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
             eyebrow="Flexible Partnership Models"
             title="Choose Your Production Path"
-            text="Whether you need fast-to-market curated blanks or 100% bespoke bespoke patternmaking."
+            text="Whether you need fast-to-market curated blanks or 100% bespoke tech pack patternmaking."
           />
 
-          <div className="mt-14 overflow-hidden rounded-2xl border border-[#FFFFFF]/15 bg-[#1C2541]/40 shadow-xl">
+          <div className="mt-14 overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FAF8F5] shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#FFFFFF]/15 bg-[#0B132B]">
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold text-[#FFFFFF]">Production Parameter</th>
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold text-[#94A3B8]">Curated White Label</th>
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold text-[#F59E0B]">Full Bespoke OEM</th>
+                  <tr className="border-b border-[#226192]/20 bg-[#226192] text-[#FFFFFF]">
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider">Production Parameter</th>
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EAE6DE]">Curated White Label</th>
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EF8557]">Full Bespoke OEM</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#FFFFFF]/10">
+                <tbody className="divide-y divide-[#226192]/15 text-xs sm:text-sm">
                   {serviceComparison.map((row) => (
-                    <tr key={row.feature} className="transition-colors hover:bg-[#FFFFFF]/5">
-                      <td className="p-5 font-medium text-[#FFFFFF]">{row.feature}</td>
-                      <td className="p-5 text-[#94A3B8]">{row.whiteLabel}</td>
-                      <td className="p-5 font-semibold text-[#F59E0B]">{row.customOem}</td>
+                    <tr key={row.feature} className="transition-colors hover:bg-[#FFFFFF]">
+                      <td className="p-5 font-bold text-[#226192]">{row.feature}</td>
+                      <td className="p-5 text-[#252525]/80">{row.whiteLabel}</td>
+                      <td className="p-5 font-semibold text-[#EF8557]">{row.customOem}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -252,27 +249,28 @@ function OemPrivateLabelPage() {
         </div>
       </section>
 
-      {/* 7-Step Buyer Journey */}
-      <section className="bg-[#0B132B] py-20 sm:py-28">
+      {/* ═══ 7-STEP BUYER WORKFLOW ON DEEP BLUE ACCENT BAND ═══ */}
+      <section className="bg-[#226192] py-20 text-[#FFFFFF] sm:py-28">
         <div className="page-shell">
           <SectionHeading
             eyebrow="The Buyer Workflow"
             title="From Design Tech Pack to Retail Shelves"
-            text="Transparent, milestone-driven production tracking at every step."
+            text="Organized, milestone-driven production tracking at every step."
+            light
           />
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {workflowSteps.map((s, index) => (
               <Reveal key={s.step} className={index === workflowSteps.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}>
-                <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#FFFFFF]/10 bg-[#1C2541]/40 p-6">
+                <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#FFFFFF]/20 bg-[#FFFFFF]/10 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#EF8557] hover:bg-[#FFFFFF]/15">
                   <div>
-                    <span className="font-mono text-2xl font-black text-[#F59E0B]">
+                    <span className="font-['Space_Grotesk'] text-2xl font-black text-[#EF8557]">
                       {s.step}
                     </span>
                     <h4 className="mt-3 font-['Space_Grotesk'] text-base font-bold text-[#FFFFFF]">
                       {s.title}
                     </h4>
-                    <p className="mt-2 text-xs leading-relaxed text-[#94A3B8]">
+                    <p className="mt-2 text-xs leading-relaxed text-[#FFFFFF]/80">
                       {s.desc}
                     </p>
                   </div>
@@ -283,30 +281,8 @@ function OemPrivateLabelPage() {
         </div>
       </section>
 
-      {/* OEM Call to Action */}
-      <section className="border-t border-[#FFFFFF]/10 bg-[#070D1E] py-20">
-        <div className="page-shell text-center">
-          <Reveal>
-            <span className="inline-block rounded-full bg-[#F59E0B]/20 px-4 py-1 text-xs font-semibold text-[#F59E0B]">
-              Confidentiality Guaranteed
-            </span>
-            <h2 className="mt-4 font-['Space_Grotesk'] text-3xl font-extrabold sm:text-5xl">
-              Ready to Launch Your Kidswear Line?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-[#94A3B8]">
-              Send your tech packs or sample concepts. We sign strict Non-Disclosure Agreements (NDAs) to protect your brand's intellectual property.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="border border-[#F59E0B] bg-[#F59E0B] font-bold text-[#070D1E] hover:bg-[#D97706]">
-                <Link to="/request-quote">Request Tech Pack Evaluation</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-[#FFFFFF]/20 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
-                <Link to="/contact">Speak with OEM Director</Link>
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ═══ CALL TO ACTION ═══ */}
+      <CTASection />
     </div>
   );
 }

@@ -45,28 +45,21 @@ function RequestQuotePage() {
   const [selectedTier, setSelectedTier] = useState("Brand Run");
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A]">
-      {/* Executive RFQ Header */}
-      <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[#0F172A] text-[#FFFFFF]">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <img
-            src={images.factory}
-            alt="Muthu International Garment Factory Floor"
-            className="size-full object-cover object-center filter saturate-150"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/90 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10 py-20 sm:py-28">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE RFQ HEADER ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-16 sm:pt-36 sm:pb-20">
+        <div className="page-shell">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#EF8557]/40 bg-[#EF8557]/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#EF8557] uppercase">
-              <FileSpreadsheet className="size-3.5" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 rounded-full bg-[#EF8557]" />
               <span>B2B Procurement Desk</span>
             </div>
-            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight sm:text-6xl">
-              Request Your Manufacturing Quote.
+            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl">
+              Request Your
+              <br />
+              <span className="text-[#EF8557]">Manufacturing Quote.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-base text-[#94A3B8] sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
               Partner directly with our Tirupur manufacturing facility. Share your garment specifications, tech packs, or volume requirements for a detailed line-item cost proposal within 24 hours.
             </p>
           </Reveal>

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Users, Factory, Palette, Package, Award, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { CTASection, Reveal, SectionHeading } from "@/components/site";
 import { images } from "@/lib/content";
 
@@ -45,74 +46,77 @@ function AboutPage() {
 
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
-      {/* ═══ CINEMATIC FULL-WIDTH HERO WITH PARALLAX OVERLAY ═══ */}
-      <section className="relative min-h-[85vh] overflow-hidden bg-[#0d1b2a]">
-        {/* Full bleed background image */}
-        <div className="absolute inset-0">
-          <img
-            src={images.pageAbout}
-            alt="Muthu International team reviewing kidswear samples"
-            className="size-full object-cover opacity-50"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d1b2a]/90 via-[#0d1b2a]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a] via-transparent to-[#0d1b2a]/30" />
-        </div>
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE ABOUT HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="page-shell">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
+                  <span>About Muthu International</span>
+                </div>
 
-        {/* Content overlay */}
-        <div className="page-shell relative flex min-h-[85vh] items-end pb-20 pt-40">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-[#EF8557]" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#EF8557]">
-                About Muthu International
-              </span>
+                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                  Over 25 Years in
+                  <br />
+                  <span className="text-[#EF8557]">Kidswear Manufacturing.</span>
+                </h1>
+
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                  Established in 2000 in Tirupur, Muthu International brings garment industry experience, in-house daily design development, and two modern manufacturing factories together to serve brands and customers across India.
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                    <Link to="/manufacturing" className="flex items-center gap-2">
+                      <span>Our Facilities</span>
+                      <ArrowRight className="size-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                    <Link to="/contact">
+                      <span>Contact Our Team</span>
+                    </Link>
+                  </Button>
+                </div>
+              </Reveal>
             </div>
 
-            <h1 className="mt-6 font-['Space_Grotesk'] text-5xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Over 25 years in
-              <br />
-              <span className="bg-gradient-to-r from-[#EF8557] to-[#f4a67e] bg-clip-text text-transparent">
-                kidswear manufacturing.
-              </span>
-            </h1>
+            {/* Right: HD Team & Factory Review Image */}
+            <div className="lg:col-span-5">
+              <Reveal>
+                <div className="relative overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                    <img
+                      src={images.pageAbout}
+                      alt="Muthu International team reviewing kidswear samples"
+                      className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div className="absolute top-3 right-3 rounded-full bg-[#226192] px-3 py-1 text-[11px] font-bold text-[#FFFFFF]">
+                      Since 2000
+                    </div>
+                  </div>
 
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/75">
-              Established in 2000, Muthu International brings garment industry experience,
-              in-house design and modern manufacturing facilities together to serve
-              customers across India.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                to="/manufacturing"
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#EF8557] to-[#d96b3f] px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-[#EF8557]/20 transition-all duration-300 hover:shadow-xl hover:shadow-[#EF8557]/30"
-              >
-                <span>Our Facilities</span>
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 border border-white/25 px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white/90 backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/5"
-              >
-                Contact Us
-              </Link>
+                  <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">25+</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Years</span>
+                    </div>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#EF8557]">2</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Factories</span>
+                    </div>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">100+</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Team</span>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </div>
-        </div>
-
-        {/* Floating stat pills along bottom */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-[#0d1b2a]/80 backdrop-blur-md">
-          <div className="page-shell flex items-center gap-8 overflow-x-auto py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/70 no-scrollbar">
-            <span className="whitespace-nowrap">EST. <span className="text-[#EF8557]">2000</span></span>
-            <span className="text-white/20">|</span>
-            <span className="whitespace-nowrap">2 FACTORIES</span>
-            <span className="text-white/20">|</span>
-            <span className="whitespace-nowrap">100+ EMPLOYEES</span>
-            <span className="text-white/20">|</span>
-            <span className="whitespace-nowrap">IN-HOUSE DESIGN</span>
-            <span className="text-white/20">|</span>
-            <span className="whitespace-nowrap">PAN-INDIA SUPPLY</span>
           </div>
         </div>
       </section>

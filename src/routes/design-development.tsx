@@ -116,40 +116,33 @@ function DesignDevelopmentPage() {
   const [activeSeason, setActiveSeason] = useState(0);
 
   return (
-    <div className="bg-[#FAF8F5] text-[#1E293B]">
-      {/* Editorial Atelier Hero */}
-      <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[#1E293B] text-[#FFFFFF]">
-        <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src={images.pageDesign}
-            alt="Muthu International Design Atelier & Moodboard"
-            className="size-full object-cover object-center filter saturate-150"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#1E293B]/90 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10 py-24 sm:py-32 lg:py-40">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE ATELIER HERO ON WARM IVORY ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="page-shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/40 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#F59E0B] uppercase">
-                  <Sparkles className="size-3.5" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
                   <span>The Creative Atelier</span>
                 </div>
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight text-[#FFFFFF] sm:text-6xl lg:text-7xl">
-                  Where Daily Sketches Become Iconic Kidswear.
+                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                  Daily Sketches.
+                  <br />
+                  <span className="text-[#EF8557]">Iconic Kidswear.</span>
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#CBD5E1]">
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
                   Inside Muthu International's in-house design studio, creative illustration and technical precision merge. Our designers craft fresh kidswear concepts every day—synchronizing trend forecasting directly with production.
                 </p>
-                <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#F59E0B] bg-[#F59E0B] font-bold text-[#0F172A] hover:bg-[#D97706] hover:border-[#D97706]">
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
                     <Link to="/request-quote" className="flex items-center gap-2">
                       <span>Request Design Consultation</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#94A3B8]/40 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
+                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
                     <Link to="/collections">
                       <span>Explore Fresh Collections</span>
                     </Link>
@@ -161,29 +154,31 @@ function DesignDevelopmentPage() {
             {/* Floating Studio Visual Card */}
             <div className="lg:col-span-5">
               <Reveal className="relative">
-                <div className="overflow-hidden rounded-2xl border border-[#FFFFFF]/15 bg-[#0F172A]/80 p-3 shadow-2xl backdrop-blur-md">
+                <div className="overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
                     <img
                       src={images.pageDesign}
                       alt="Design Studio Artwork and Fabric Swatches"
-                      className="size-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="eager"
+                      decoding="async"
                     />
-                    <div className="absolute bottom-3 left-3 rounded-lg bg-[#0F172A]/90 px-3 py-1.5 text-[11px] font-semibold text-[#F59E0B] backdrop-blur-sm border border-[#F59E0B]/30">
+                    <div className="absolute bottom-3 left-3 rounded-lg bg-[#226192] px-3 py-1.5 text-[11px] font-semibold text-[#FFFFFF] shadow-sm">
                       Live In-Studio CAD & Swatch Desk
                     </div>
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="rounded-lg bg-[#FFFFFF]/5 p-2.5 border border-[#FFFFFF]/10">
-                      <strong className="block text-base font-bold text-[#FFFFFF]">365+</strong>
-                      <span className="text-[10px] text-[#94A3B8] uppercase">Styles / Year</span>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">365+</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Styles / Year</span>
                     </div>
-                    <div className="rounded-lg bg-[#FFFFFF]/5 p-2.5 border border-[#FFFFFF]/10">
-                      <strong className="block text-base font-bold text-[#F59E0B]">7 Days</strong>
-                      <span className="text-[10px] text-[#94A3B8] uppercase">Sample Turnaround</span>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#EF8557]">7 Days</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Sampling</span>
                     </div>
-                    <div className="rounded-lg bg-[#FFFFFF]/5 p-2.5 border border-[#FFFFFF]/10">
-                      <strong className="block text-base font-bold text-[#FFFFFF]">100%</strong>
-                      <span className="text-[10px] text-[#94A3B8] uppercase">In-House CAD</span>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">100%</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">In-House CAD</span>
                     </div>
                   </div>
                 </div>
@@ -355,29 +350,7 @@ function DesignDevelopmentPage() {
       </section>
 
       {/* Atelier CTA */}
-      <section className="bg-[#1E293B] py-20 text-[#FFFFFF]">
-        <div className="page-shell text-center">
-          <Reveal>
-            <span className="inline-block rounded-full bg-[#F59E0B]/20 px-4 py-1 text-xs font-semibold text-[#F59E0B]">
-              Ready to Collaborate
-            </span>
-            <h2 className="mt-4 font-['Space_Grotesk'] text-3xl font-extrabold sm:text-5xl">
-              Bring Your Kidswear Vision to Life.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-[#CBD5E1]">
-              Whether you have a completed tech pack or need our atelier to design an exclusive collection from scratch, our team is at your service.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="border border-[#F59E0B] bg-[#F59E0B] font-bold text-[#0F172A] hover:bg-[#D97706] hover:border-[#D97706]">
-                <Link to="/request-quote">Submit Your Design Brief</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-[#94A3B8]/40 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
-                <Link to="/contact">Book a Studio Consultation</Link>
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection />
     </div>
   );
 }

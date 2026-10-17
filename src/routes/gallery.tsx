@@ -27,32 +27,29 @@ export const Route = createFileRoute("/gallery")({
 function GalleryPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
-      {/* ═══ MOSAIC HERO — OVERLAPPING IMAGE GRID ═══ */}
-      <section className="relative overflow-hidden bg-[#0d1b2a] pt-28 pb-24 sm:pt-36 lg:pt-40">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE MOSAIC HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className="page-shell relative z-10">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             {/* Left text */}
             <div>
-              <div className="flex items-center gap-3">
-                <Camera className="size-4 text-[#EF8557]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#EF8557]">
-                  Visual Portfolio
-                </span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <span>Visual Portfolio</span>
               </div>
 
-              <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Kidswear, design
+              <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-5xl lg:text-6xl">
+                Kidswear, Design
                 <br />
-                <span className="text-[#EF8557]">& manufacturing.</span>
+                <span className="text-[#EF8557]">& Manufacturing.</span>
               </h1>
 
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-white/70">
-                A look at children's clothing, our design direction and the manufacturing
-                environment behind Muthu International.
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#252525]/85">
+                A visual journey through our children's clothing collections, in-house design direction, and modern manufacturing facilities in Tirupur.
               </p>
 
-              <div className="mt-8 flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white/40">
-                <Filter className="size-3.5 text-[#EF8557]" />
+              <div className="mt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#226192]">
+                <Filter className="size-4 text-[#EF8557]" />
                 <span>Filter by category below</span>
               </div>
             </div>

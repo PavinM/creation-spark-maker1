@@ -54,8 +54,8 @@ function ContactPage() {
 
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
-      {/* ═══ SPLIT HERO — IMAGE LEFT, CONTENT RIGHT ═══ */}
-      <section className="relative min-h-[70vh] overflow-hidden bg-[#226192]">
+      {/* ═══ SPLIT HERO — IMAGE LEFT, WARM IVORY CONTENT RIGHT ═══ */}
+      <section className="relative min-h-[70vh] overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE]">
         <div className="grid min-h-[70vh] lg:grid-cols-2">
           {/* Left: Full image */}
           <div className="relative hidden lg:block">
@@ -63,46 +63,45 @@ function ContactPage() {
               src={images.pageContact}
               alt="Muthu International office reception"
               className="absolute inset-0 size-full object-cover"
-              fetchPriority="high"
+              loading="eager"
+              decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#226192]/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#EAE6DE]/30" />
           </div>
 
-          {/* Right: Content on deep blue */}
+          {/* Right: Content on Warm Ivory */}
           <div className="flex items-center px-8 py-32 lg:px-16 xl:px-24">
             <div className="max-w-lg">
-              <div className="flex items-center gap-3">
-                <Send className="size-4 text-[#EF8557]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#EF8557]">
-                  Business Enquiries
-                </span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                <span className="size-2 rounded-full bg-[#EF8557]" />
+                <span>Business Enquiries</span>
               </div>
 
-              <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-5xl lg:text-6xl">
                 Let's build a
                 <br />
                 <span className="text-[#EF8557]">partnership.</span>
               </h1>
 
-              <p className="mt-6 text-base leading-relaxed text-white/75">
+              <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
                 Looking for an established kidswear manufacturer in India? Our team welcomes
                 enquiries about our products, manufacturing capabilities and business opportunities.
               </p>
 
-              <div className="mt-8 flex items-center gap-6 border-t border-white/15 pt-6">
+              <div className="mt-8 flex items-center gap-6 border-t border-[#226192]/20 pt-6">
                 <div className="text-center">
                   <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">25+</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-white/50">Years</p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Years</p>
                 </div>
-                <div className="h-8 w-px bg-white/15" />
+                <div className="h-8 w-px bg-[#226192]/20" />
                 <div className="text-center">
                   <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">2</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-white/50">Factories</p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Factories</p>
                 </div>
-                <div className="h-8 w-px bg-white/15" />
+                <div className="h-8 w-px bg-[#226192]/20" />
                 <div className="text-center">
                   <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">100+</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-white/50">Employees</p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Employees</p>
                 </div>
               </div>
             </div>

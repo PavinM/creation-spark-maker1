@@ -51,28 +51,21 @@ function ProductsPage() {
         );
 
   return (
-    <div className="bg-[#FAF9F6] text-[#1E293B]">
-      {/* Contemporary Catalog Hero */}
-      <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[#0F172A] text-[#FFFFFF]">
-        <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src={images.hero}
-            alt="Muthu International Garment Collection"
-            className="size-full object-cover object-center filter saturate-150"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/90 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10 py-20 sm:py-28">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE CATALOG HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-16 sm:pt-36 sm:pb-20">
+        <div className="page-shell">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/30 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#F59E0B] uppercase">
-              <Sparkles className="size-3.5" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 rounded-full bg-[#EF8557]" />
               <span>Garment Specification Catalog</span>
             </div>
-            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight sm:text-6xl">
-              Complete Kidswear Range.
+            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl">
+              Complete Kidswear
+              <br />
+              <span className="text-[#EF8557]">Range.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-base text-[#94A3B8] sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
               Engineered for comfort, safety, and longevity. All styles are crafted with bio-washed combed cotton, non-toxic eco-dyes, and reinforced child-safe seams.
             </p>
           </Reveal>

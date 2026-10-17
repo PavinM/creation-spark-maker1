@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { CTASection, Reveal, ScrollMedia, SectionHeading } from "@/components/site";
 import { images, manufacturingStages } from "@/lib/content";
 
@@ -28,79 +29,78 @@ export const Route = createFileRoute("/manufacturing")({
 function ManufacturingPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
-      {/* ═══ IMMERSIVE VIDEO-STYLE HERO WITH DIAGONAL CUT ═══ */}
-      <section className="relative min-h-[90vh] overflow-hidden bg-[#0d1b2a]">
-        {/* Full background image */}
-        <div className="absolute inset-0">
-          <img
-            src={images.pageManufacturing}
-            alt="Muthu International manufacturing facility"
-            className="size-full object-cover"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d1b2a]/70 via-[#0d1b2a]/40 to-[#0d1b2a]/90" />
-        </div>
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE MANUFACTURING HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <div className="page-shell">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 rounded-full bg-[#EF8557]" />
+                  <span>Inside Our Factories</span>
+                </div>
 
-        {/* Content */}
-        <div className="page-shell relative flex min-h-[90vh] flex-col justify-center py-40">
-          <div className="max-w-3xl">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 border border-[#EF8557]/30 bg-[#EF8557]/10 px-4 py-2 backdrop-blur-sm">
-                <span className="size-1.5 animate-pulse rounded-full bg-[#EF8557]" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#EF8557]">
-                  Inside Our Factory
-                </span>
-              </div>
+                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                  Built on Experience.
+                  <br />
+                  <span className="text-[#EF8557]">Modern Facilities.</span>
+                </h1>
 
-              <h1 className="mt-8 font-['Space_Grotesk'] text-5xl font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-8xl">
-                Built on
-                <br />
-                <span className="bg-gradient-to-r from-[#EF8557] to-[#f4a67e] bg-clip-text text-transparent">
-                  experience
-                </span>
-                <br />
-                & modern
-                <br />
-                facilities.
-              </h1>
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+                  Since 2000, our two operational factories, modern high-speed machinery, and dedicated workforce of over 100 people have powered our organized kidswear manufacturing operations in Tirupur.
+                </p>
 
-              <p className="mt-8 max-w-lg text-lg leading-relaxed text-white/70">
-                Since 2000, our two operational factories, modern machinery and dedicated
-                workforce have supported our kidswear manufacturing business.
-              </p>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                    <Link to="/quality" className="flex items-center gap-2">
+                      <span>Explore Quality Standards</span>
+                      <ArrowRight className="size-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                    <Link to="/request-quote">
+                      <span>Schedule Factory Visit</span>
+                    </Link>
+                  </Button>
+                </div>
+              </Reveal>
+            </div>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/quality"
-                  className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-[#226192] shadow-lg transition-all duration-300 hover:bg-[#EF8557] hover:text-white hover:shadow-xl"
-                >
-                  <span>Quality Standards</span>
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </Reveal>
+            {/* Right: HD Manufacturing Visual */}
+            <div className="lg:col-span-5">
+              <Reveal>
+                <div className="relative overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                    <img
+                      src={images.pageManufacturing}
+                      alt="Muthu International modern manufacturing facility"
+                      className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div className="absolute top-3 right-3 rounded-full bg-[#226192] px-3 py-1 text-[11px] font-bold text-[#FFFFFF]">
+                      Tirupur Hub
+                    </div>
+                  </div>
+
+                  <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">2</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Factories</span>
+                    </div>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#EF8557]">100+</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Workers</span>
+                    </div>
+                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                      <strong className="block text-base font-bold text-[#226192]">25+</strong>
+                      <span className="text-[10px] text-[#252525]/75 uppercase">Years</span>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
           </div>
-
-          {/* Side floating stat */}
-          <div className="absolute bottom-20 right-8 hidden flex-col gap-6 lg:flex">
-            {[
-              { num: "2", label: "Factories" },
-              { num: "100+", label: "Workers" },
-              { num: "25+", label: "Years" },
-            ].map((s) => (
-              <div key={s.label} className="border-l-2 border-[#EF8557]/40 pl-4 text-right">
-                <p className="font-['Space_Grotesk'] text-3xl font-extrabold text-white">{s.num}</p>
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Diagonal cut bottom */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" className="block w-full" preserveAspectRatio="none">
-            <polygon fill="#EAE6DE" points="0,80 1440,80 1440,30 0,80" />
-          </svg>
         </div>
       </section>
 

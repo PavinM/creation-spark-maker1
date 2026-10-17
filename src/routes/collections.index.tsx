@@ -27,35 +27,28 @@ export const Route = createFileRoute("/collections/")({
 
 function CollectionsPage() {
   return (
-    <div className="bg-[#FAF9F6] text-[#1E293B]">
-      {/* High-Fashion Editorial Cover Hero */}
-      <section className="relative overflow-hidden border-b border-[#E2E8F0] bg-[#111827] text-[#FFFFFF]">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <img
-            src={images.editorial}
-            alt="Muthu International High-Fashion Editorial Kidswear"
-            className="size-full object-cover object-top filter saturate-150"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent" />
-        </div>
-
-        <div className="page-shell relative z-10 py-24 sm:py-32 lg:py-36 text-center">
+    <div className="bg-[#EAE6DE] text-[#252525]">
+      {/* ═══ SIGNATURE WARM IVORY & DEEP BLUE COLLECTIONS HERO ═══ */}
+      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28 text-center">
+        <div className="page-shell relative z-10">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/30 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-[#F59E0B] uppercase">
-              <Sparkles className="size-3.5" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 rounded-full bg-[#EF8557]" />
               <span>Seasonal Curations</span>
             </div>
-            <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-              Curated Kidswear Stories.
+            <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+              Curated Kidswear
+              <br />
+              <span className="text-[#EF8557]">Stories.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base text-[#CBD5E1] sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
               Each collection is an expressive narrative combining hand-drawn graphic stories, ergonomic silhouettes, and certified skin-safe fabrics.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="border border-[#F59E0B] bg-[#F59E0B] font-bold text-[#0F172A] hover:bg-[#D97706]">
+              <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
                 <Link to="/products">Browse Full Garment Catalog</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-[#FFFFFF]/20 bg-transparent text-[#FFFFFF] hover:bg-[#FFFFFF]/10">
+              <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
                 <Link to="/gallery">View Editorial Lookbook Gallery</Link>
               </Button>
             </div>

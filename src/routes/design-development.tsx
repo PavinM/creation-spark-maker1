@@ -85,6 +85,7 @@ function DesignDevelopmentPage() {
         title="Fresh designs. Changing trends."
         text="Our in-house team develops new kidswear styles every day, creating a varied and continuously evolving collection."
         image={images.bloomCraft || images.detail}
+        variant="design"
       />
 
       {/* Overview & Collaborative Briefing */}

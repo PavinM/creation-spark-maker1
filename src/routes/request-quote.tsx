@@ -32,6 +32,7 @@ function RequestQuotePage() {
         title="Let's discuss kidswear manufacturing."
         text="Tell us about your product requirements and business enquiry. Our team welcomes opportunities to build long-term customer relationships."
         image={images.bloomHero || images.quality}
+        variant="enquiry"
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">

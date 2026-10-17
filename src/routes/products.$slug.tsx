@@ -49,8 +49,8 @@ function ProductDetailPage() {
   ];
 
   return (
-    <div className="bg-[#EAE6DE] text-[#252525]">
-      <section className="bg-[#EAE6DE] pt-28 pb-20 sm:pb-28">
+    <div className="product-detail-page bg-[#EAE6DE] text-[#252525]">
+      <section className="product-detail-page__hero bg-[#EAE6DE] pt-28 pb-20 sm:pb-28">
         <div className="page-shell">
           {/* Breadcrumb / Back Link */}
           <div className="mb-8 flex items-center justify-between">

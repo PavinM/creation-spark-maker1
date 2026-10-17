@@ -67,6 +67,7 @@ function ProductsPage() {
         title="A complete range of kidswear."
         text="From everyday T-shirts and co-ord sets to nightwear and seasonal clothing, our range serves a variety of children's garment needs."
         image={images.bloomHero || images.hero}
+        variant="products"
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">

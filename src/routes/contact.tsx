@@ -32,6 +32,7 @@ function ContactPage() {
         title="Let's build a business partnership."
         text="Looking for an established kidswear manufacturer in India? Our team welcomes enquiries about our products, manufacturing capabilities and business opportunities."
         image={images.bloomHero || images.hero}
+        variant="contact"
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">

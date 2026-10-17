@@ -61,6 +61,7 @@ function AboutPage() {
         title="Over 25 years in kidswear manufacturing."
         text="Established in 2000, Muthu International brings garment industry experience, in-house design and modern manufacturing facilities together to serve customers across India."
         image={images.bloomCraft || images.editorial}
+        variant="about"
       />
 
       {/* 1. Who We Are & Our Story */}

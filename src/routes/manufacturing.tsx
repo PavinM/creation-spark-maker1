@@ -34,6 +34,7 @@ function ManufacturingPage() {
         title="Built on experience and modern facilities."
         text="Since 2000, our two operational factories, modern machinery and dedicated workforce have supported our kidswear manufacturing business."
         image={images.bloomCraft || images.factory}
+        variant="manufacturing"
       />
 
       {/* 9 Stages Visual Journey */}

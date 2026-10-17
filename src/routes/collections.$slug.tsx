@@ -35,9 +35,9 @@ function CollectionDetailPage() {
   const collectionProducts = products.filter((p) => p.collectionSlug === collection.slug);
 
   return (
-    <div className="bg-[#EAE6DE] text-[#252525]">
+    <div className="collection-detail-page bg-[#EAE6DE] text-[#252525]">
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 sm:pt-36 pb-16">
+      <section className="collection-detail-page__hero relative min-h-[60vh] overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 sm:pt-36 pb-16">
         <div className="page-shell">
           <Link
             to="/collections"

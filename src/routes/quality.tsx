@@ -75,6 +75,7 @@ function QualityPage() {
         title="Quality in every garment."
         text="We focus on consistent product quality, customer requirements and applicable statutory and industry standards."
         image={images.bloomCraft || images.quality}
+        variant="quality"
       />
 
       {/* Quality Process Timeline */}

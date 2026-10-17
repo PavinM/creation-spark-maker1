@@ -31,6 +31,7 @@ function CollectionsPage() {
         title="Kidswear for everyday and seasonal needs."
         text="Our in-house design team develops fresh styles every day across a diverse selection of children's clothing."
         image={images.bloomHero || images.editorial}
+        variant="collections"
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">

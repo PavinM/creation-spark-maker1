@@ -372,40 +372,40 @@ export function PageHero({
   title,
   text,
   image = images.bloomHero || images.hero,
+  variant = "split",
 }: {
   eyebrow: string;
   title: string;
   text: string;
   image?: string;
+  variant?: "split" | "about" | "products" | "collections" | "contact" | "design" | "gallery" | "manufacturing" | "expertise" | "quality" | "enquiry" | "sustainability";
 }) {
   return (
-    <section className="relative min-h-[55vh] overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 text-[#252525] lg:pt-36">
-      <div className="page-shell pb-16">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <p className="label-track mb-4 flex items-center gap-2 text-[#EF8557]">
-              <span className="inline-block h-px w-6 bg-[#EF8557]" />
+    <section className={cn("page-hero", `page-hero--${variant}`)}>
+      <div className="page-shell page-hero__shell">
+        <div className="page-hero__layout">
+          <div className="page-hero__copy">
+            <p className="label-track page-hero__eyebrow mb-4 flex items-center gap-2 text-[#226192]">
+              <span className="inline-block h-px w-6 bg-current" />
               {eyebrow}
             </p>
-            <h1 className="font-['Space_Grotesk'] text-4xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+            <h1 className="page-hero__title font-['Space_Grotesk'] text-4xl font-bold tracking-tight text-[#226192] sm:text-5xl lg:text-6xl">
               {title}
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
+            <p className="page-hero__text mt-5 max-w-xl text-base leading-relaxed text-[#252525]/85">
               {text}
             </p>
           </div>
-          <div className="lg:col-span-5">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-[#226192] translate-x-3 translate-y-3" />
-              <div className="relative aspect-[16/10] overflow-hidden border border-[#226192] bg-[#FFFFFF]">
+          <div className="page-hero__media">
+            <div className="page-hero__media-backdrop" aria-hidden="true" />
+            <div className="page-hero__media-frame">
                 <img
                   src={image}
                   width={1200}
                   height={800}
-                  className="size-full object-cover"
+                  className="page-hero__image size-full object-cover"
                   alt={title}
                 />
-              </div>
             </div>
           </div>
         </div>

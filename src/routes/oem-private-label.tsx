@@ -56,6 +56,7 @@ function OemPrivateLabelPage() {
         title="Experience behind every kidswear collection."
         text="Over 25 years in the garment industry, supported by an in-house design team, two factories and a dedicated warehouse."
         image={images.bloomHero || images.printedSet}
+        variant="expertise"
       />
 
       {/* Models Explanation */}

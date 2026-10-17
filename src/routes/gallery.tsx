@@ -31,6 +31,7 @@ function GalleryPage() {
         title="Kidswear, design and manufacturing."
         text="A look at children's clothing, our design direction and the manufacturing environment behind Muthu International."
         image={images.bloomCraft || images.detail}
+        variant="gallery"
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">

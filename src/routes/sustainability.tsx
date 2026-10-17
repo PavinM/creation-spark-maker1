@@ -65,6 +65,7 @@ function SustainabilityPage() {
         title="Experience, responsibility and quality."
         text="An established kidswear manufacturer focused on quality, applicable requirements and long-term customer relationships."
         image={images.bloomHero || images.factory}
+        variant="sustainability"
       />
 
       {/* Philosophy Statement */}

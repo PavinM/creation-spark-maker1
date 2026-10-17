@@ -93,23 +93,22 @@ export function SiteHeader() {
           {/* Brand Logo - Bloom Editorial Style */}
           <Link
             to="/"
-            className="group flex shrink-0 flex-col items-center gap-0.5 transition-opacity hover:opacity-90"
+            className="group flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
             aria-label="Muthu International Home"
           >
-            <span className="relative block h-9 w-12 sm:h-10 sm:w-14">
+            <span className="block h-10 w-12 sm:h-12 sm:w-14">
               <img
                 src={images.muthuEmblem}
                 alt=""
                 aria-hidden="true"
-                className="size-full object-contain"
+                className="brand-blue-filter size-full object-contain"
                 loading="eager"
               />
-              <span className="absolute -right-0.5 -top-0.5 size-2 bg-[#EF6A24] sm:size-2.5" aria-hidden="true" />
             </span>
             <img
               src={images.muthuWordmark}
               alt="Muthu International Private Limited"
-              className="h-auto w-28 object-contain sm:w-40"
+              className="brand-blue-filter h-auto w-28 object-contain sm:w-36"
               loading="eager"
             />
           </Link>
@@ -209,7 +208,7 @@ export function SiteFooter() {
           {/* Brand Info */}
           <div>
             {/* Footer logo: emblem stacked above wordmark */}
-            <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-3">
               <span className="relative block h-16 w-20">
                 <img
                   src={images.muthuEmblem}
@@ -217,12 +216,11 @@ export function SiteFooter() {
                   className="size-full object-contain brightness-0 invert opacity-90"
                   loading="lazy"
                 />
-                <span className="absolute -right-0.5 -top-0.5 size-2.5 bg-[#EF6A24]" aria-hidden="true" />
               </span>
               <img
                 src={images.muthuWordmark}
                 alt="Muthu International"
-                className="h-8 w-auto object-contain brightness-0 invert opacity-70"
+                className="h-auto w-32 object-contain brightness-0 invert opacity-70"
                 loading="lazy"
               />
             </div>

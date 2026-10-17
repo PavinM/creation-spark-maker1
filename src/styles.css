@@ -155,6 +155,10 @@ button, a {
   color: #FFFFFF;
 }
 
+.brand-blue-filter {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(13%) saturate(2453%) hue-rotate(164deg) brightness(92%) contrast(90%);
+}
+
 /* Custom scrollbar for subtle luxury feel */
 ::-webkit-scrollbar {
   width: 6px;

@@ -334,7 +334,7 @@ function useScrollProgress<T extends HTMLElement>() {
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           element.style.setProperty("--scroll-progress", "1");
           observer.unobserve(element);
         }

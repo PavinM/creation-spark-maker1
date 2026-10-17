@@ -12,6 +12,12 @@ import muthuLogo from "@/assets/muthu-logo.png";
 import muthuEmblem from "@/assets/muthu-emblem.png";
 import muthuWordmark from "@/assets/muthu-wordmark.png";
 import manufacturingVideo from "@/assets/manufacturing-hero.mp4";
+import pageManufacturing from "@/assets/page-manufacturing.jpg";
+import pageAbout from "@/assets/page-about.jpg";
+import pageGallery from "@/assets/page-gallery.jpg";
+import pageContact from "@/assets/page-contact.jpg";
+import pageDesign from "@/assets/page-design.jpg";
+import pageQuality from "@/assets/page-quality.jpg";
 
 export const images = {
   hero,
@@ -28,6 +34,12 @@ export const images = {
   muthuEmblem,
   muthuWordmark,
   manufacturingVideo,
+  pageManufacturing,
+  pageAbout,
+  pageGallery,
+  pageContact,
+  pageDesign,
+  pageQuality,
 };
 
 export interface Product {

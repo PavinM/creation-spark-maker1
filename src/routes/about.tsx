@@ -11,12 +11,12 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Discover Muthu International’s editorial approach to premium kidswear manufacturing, OEM partnerships, and private-label apparel production in Tirupur, India.",
+          "Learn about Muthu International Private Limited: a kidswear manufacturer established in 2000, with two factories, an in-house design team, a dedicated warehouse and 100+ employees.",
       },
       { property: "og:title", content: "About Muthu International Private Ltd" },
       {
         property: "og:description",
-        content: "A quality-focused kidswear manufacturing atelier for modern brands.",
+        content: "Over 25 years of garment manufacturing experience, serving kidswear customers across India.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,20 +28,28 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   const values = [
     {
-      title: "Child-Safe Manufacturing",
-      desc: "Every detail prioritizes sensitive skin — nickel-free fasteners, non-toxic reactive dyes, zero-friction flatlock seams.",
+      title: "Kidswear Specialization",
+      desc: "Children’s clothing is our core business, with a varied range for everyday wear, casual occasions and seasonal needs.",
     },
     {
-      title: "Design & Fit Integrity",
-      desc: "We respect artistic proportion, relaxed silhouettes and your brand’s authentic editorial direction.",
+      title: "New Designs Every Day",
+      desc: "Our in-house design team continuously develops new styles in response to trends and customer preferences.",
     },
     {
-      title: "Repeatable Quality",
-      desc: "Meticulous AQL 2.5 auditing ensures the 10,000th unit matches the approved master prototype.",
+      title: "Modern Facilities",
+      desc: "Two operational factories with modern machinery support our garment manufacturing processes.",
     },
     {
-      title: "Transparent Partnership",
-      desc: "Direct communication with our Tirupur atelier team, dependable milestones and honest production timelines.",
+      title: "Dedicated Workforce",
+      desc: "More than 100 employees contribute to manufacturing and business operations through teamwork and experience.",
+    },
+    {
+      title: "Organized Supply",
+      desc: "A dedicated warehouse supports organized storage, inventory management and coordination of supply operations.",
+    },
+    {
+      title: "Quality & Compliance",
+      desc: "We focus on consistent product quality and maintaining applicable statutory and industry requirements.",
     },
   ];
 
@@ -50,8 +58,8 @@ function AboutPage() {
       {/* Hero */}
       <PageHero
         eyebrow="About Muthu International"
-        title="MANUFACTURING WITH ARTISANAL PURPOSE."
-        text="Kidswear development and bulk production built on craftsmanship, material purity, and enduring international brand partnerships."
+        title="Over 25 years in kidswear manufacturing."
+        text="Established in 2000, Muthu International brings garment industry experience, in-house design and modern manufacturing facilities together to serve customers across India."
         image={images.bloomCraft || images.editorial}
       />
 
@@ -65,45 +73,45 @@ function AboutPage() {
                 <p className="label-track text-[#EF8557]">[ OUR PURPOSE & HERITAGE ]</p>
               </div>
               <h2 className="display-title mt-3 text-3xl tracking-tight text-[#226192] sm:text-5xl">
-                Dedicated <span className="text-outline-blue">Exclusively</span> to Children’s Apparel.
+                Dedicated to children’s clothing since 2000.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
-                Muthu International Private Ltd is an Indian kidswear atelier and export manufacturer based in Tirupur, Tamil Nadu. We partner with international labels, retail chains, and boutique private-label founders who demand superior tactile finishing, chemical-free processing, and certified production standards.
+                Muthu International Private Limited is an established domestic garment manufacturer specializing in kidswear. For more than 25 years, we have built our business around quality, creativity, manufacturing experience and reliable customer relationships.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
-                Our machinery, cutting suites, and testing checkpoints are engineered specifically for children's safety — from tensile pull tests on baby snap buttons to breathable, skin-friendly embroidery fusing.
+                Our in-house design team, two operational factories, dedicated warehouse, modern machinery and workforce of over 100 employees provide an established foundation for serving the evolving Indian kidswear market.
               </p>
             </Reveal>
 
             <Reveal className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Operational Dossier</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Company at a glance</span>
               <h3 className="mt-2 font-['Space_Grotesk'] text-xl font-bold uppercase tracking-tight text-[#226192]">
-                Corporate Profile & Facility Specs
+                An established manufacturing team
               </h3>
               <dl className="mt-6 divide-y divide-[#226192]/15 text-xs">
                 <div className="flex justify-between py-3">
-                  <dt className="font-bold uppercase tracking-wider text-[#226192]">Legal Entity</dt>
-                  <dd className="font-semibold text-[#252525]">Muthu International Private Ltd</dd>
+                  <dt className="font-bold tracking-wider text-[#226192]">Established</dt>
+                  <dd className="font-semibold text-[#252525]">2000 · 25+ years of experience</dd>
                 </div>
                 <div className="flex justify-between py-3">
                   <dt className="font-bold uppercase tracking-wider text-[#226192]">Specialization</dt>
-                  <dd className="font-semibold text-[#252525]">Infant, Toddler & Tweenwear (0M–14Y)</dd>
+                  <dd className="font-semibold text-[#252525]">Children’s clothing and kidswear</dd>
                 </div>
                 <div className="flex justify-between py-3">
-                  <dt className="font-bold uppercase tracking-wider text-[#226192]">Facility Location</dt>
-                  <dd className="font-semibold text-[#252525]">Tirupur, Tamil Nadu, India</dd>
+                  <dt className="font-bold tracking-wider text-[#226192]">Facilities</dt>
+                  <dd className="font-semibold text-[#252525]">2 factories · 1 dedicated warehouse</dd>
                 </div>
                 <div className="flex justify-between py-3">
-                  <dt className="font-bold uppercase tracking-wider text-[#226192]">Capacity</dt>
-                  <dd className="font-semibold text-[#252525]">500,000+ Units / Month</dd>
+                  <dt className="font-bold tracking-wider text-[#226192]">Workforce</dt>
+                  <dd className="font-semibold text-[#252525]">100+ employees</dd>
                 </div>
                 <div className="flex justify-between py-3">
-                  <dt className="font-bold uppercase tracking-wider text-[#226192]">Auditing Standard</dt>
-                  <dd className="font-semibold text-[#252525]">AQL 2.5 Major / 4.0 Minor</dd>
+                  <dt className="font-bold tracking-wider text-[#226192]">Design</dt>
+                  <dd className="font-semibold text-[#252525]">In-house team · new styles every day</dd>
                 </div>
                 <div className="flex justify-between py-3">
-                  <dt className="font-bold uppercase tracking-wider text-[#226192]">Export Destinations</dt>
-                  <dd className="font-semibold text-[#252525]">UK, EU, USA, UAE, Australia</dd>
+                  <dt className="font-bold tracking-wider text-[#226192]">Market</dt>
+                  <dd className="font-semibold text-[#252525]">Customers across India</dd>
                 </div>
               </dl>
             </Reveal>
@@ -113,8 +121,8 @@ function AboutPage() {
 
       {/* 2. Manufacturing Philosophy Band */}
       <ContentBand
-        title="A DISCIPLINED ATELIER EXTENSION."
-        text="Every manufacturing contract is treated as a seamless extension of your design studio. From analyzing moodboards and selecting certified combed compact cottons to testing stretch recovery and packing barcodes — we own every detail."
+        title="Design and manufacturing, working together."
+        text="Our in-house design team develops fresh kidswear styles and coordinates with our manufacturing operations. This integrated approach helps us respond to customer requirements and changing market preferences."
         image={images.bloomHero || images.detail}
       />
 
@@ -123,8 +131,8 @@ function AboutPage() {
         <div className="page-shell">
           <SectionHeading
             eyebrow="Our Core Principles"
-            title="STANDARDS THAT GUIDE OUR ATELIER."
-            text="Safety, tactile excellence, and total transparency in every batch."
+            title="Our expertise in kidswear."
+            text="Creativity, modern facilities, experienced people and organized supply operations support our work for customers across India."
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -150,20 +158,37 @@ function AboutPage() {
         <div className="page-shell">
           <SectionHeading
             eyebrow="Production Methodology"
-            title="RIGOROUS CLARITY AT EVERY CHECKPOINT."
-            text="Creative concepting, manufacturing discipline, and reliable global dispatch."
+            title="Built on experience and teamwork."
+            text="Our people, factories, machinery and warehouse work together to support garment production and supply across India."
           />
           <ProcessList
             items={[
-              "Client design brief & tech pack intake",
-              "Cotton yarn selection & Pantone lab dips",
-              "Precision pattern grading & initial prototype",
-              "Fit review & buyer sample sign-off",
-              "Bulk computerized cutting & embellishment",
-              "100% metal detector scan & AQL 2.5 audit",
-              "Global customs clearance & door delivery",
+              "Understand customer and product requirements",
+              "Develop new kidswear styles with our in-house design team",
+              "Coordinate design development with manufacturing operations",
+              "Plan production across our operational facilities",
+              "Manufacture garments using modern machinery",
+              "Focus on consistent product quality and applicable standards",
+              "Coordinate warehouse and domestic supply operations",
             ]}
           />
+        </div>
+      </section>
+
+      <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
+        <div className="page-shell grid gap-6 md:grid-cols-3">
+          <Reveal className="border border-[#226192]/20 bg-white p-7">
+            <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-[#226192]">Our vision</h3>
+            <p className="mt-3 text-base leading-relaxed text-[#252525]/80">To become a recognized and trusted name in kidswear manufacturing by developing fresh designs, strengthening our capabilities and delivering quality children’s garments across India.</p>
+          </Reveal>
+          <Reveal className="border border-[#226192]/20 bg-white p-7">
+            <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-[#226192]">Our mission</h3>
+            <p className="mt-3 text-base leading-relaxed text-[#252525]/80">To manufacture quality kidswear by combining industry experience, in-house design, modern machinery and established production facilities while building lasting customer relationships.</p>
+          </Reveal>
+          <Reveal className="border border-[#226192]/20 bg-white p-7">
+            <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-[#226192]">Our promise</h3>
+            <p className="mt-3 text-base leading-relaxed text-[#252525]/80">Since 2000, our focus has been to develop fresh designs, manufacture quality kidswear and strengthen partnerships with customers throughout India.</p>
+          </Reveal>
         </div>
       </section>
 

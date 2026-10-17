@@ -79,7 +79,7 @@ function CollectionDetailPage() {
           <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-7">
-                <p className="label-track mb-3 text-[#EF8557]">Design Brief & Materials</p>
+                <p className="label-track mb-3 text-[#EF8557]">Collection Overview</p>
                 <h2 className="font-['Space_Grotesk'] text-2xl font-bold uppercase tracking-tight text-[#226192] sm:text-3xl">
                   Collection Highlights
                 </h2>
@@ -95,7 +95,7 @@ function CollectionDetailPage() {
                 </div>
               </div>
               <div className="space-y-3 border-t border-[#226192]/15 pt-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">Development Features:</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">In This Collection:</p>
                 {collection.details.map((d) => (
                   <div key={d} className="flex items-start gap-2.5 text-xs text-[#252525]/80">
                     <Check className="mt-0.5 size-4 shrink-0 text-[#EF8557]" />
@@ -114,7 +114,7 @@ function CollectionDetailPage() {
           <SectionHeading
             eyebrow="Curated Styles"
             title={`Styles in ${collection.name}`}
-            text="Explore production-ready silhouettes in this collection, ready for private label customization, color changes and custom branding."
+            text="Explore children's clothing styles from our evolving kidswear range."
           />
 
           {collectionProducts.length > 0 ? (

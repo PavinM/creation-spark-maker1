@@ -38,7 +38,7 @@ export const primaryNav = [
   { label: "About", to: "/about" },
   { label: "Products", to: "/products" },
   { label: "Manufacturing", to: "/manufacturing" },
-  { label: "OEM / Private Label", to: "/oem-private-label" },
+  { label: "Our Expertise", to: "/oem-private-label" },
   { label: "Collections", to: "/collections" },
   { label: "Quality", to: "/quality" },
 ] as const;
@@ -222,13 +222,13 @@ export function SiteFooter() {
               />
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#EAE6DE]/80">
-              Kids Apparel Manufacturing <span className="text-[#EF8557]">·</span> OEM <span className="text-[#EF8557]">·</span> Private Label Production Atelier.
+              Looking for an experienced kidswear manufacturer in India? Contact us to discuss our range, design capabilities and manufacturing facilities.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-xs text-[#EAE6DE]/80">
               <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">T-Shirts</span>
               <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">Co-Ord Sets</span>
-              <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">Botanical Printing</span>
-              <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">Embroidery</span>
+              <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">Night Suits</span>
+              <span className="border border-[#EAE6DE]/20 bg-[#FFFFFF]/5 px-2.5 py-1">Sweaters & Hoodies</span>
             </div>
           </div>
 
@@ -257,7 +257,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link to="/oem-private-label" className="text-[#EAE6DE]/80 hover:text-[#FFFFFF]">
-                  OEM Manufacturing
+                  Kidswear Manufacturing
                 </Link>
               </li>
               <li>
@@ -290,7 +290,7 @@ export function SiteFooter() {
             <p className="mt-1 text-sm leading-relaxed text-[#EAE6DE]/90">
               Muthu International Private Ltd<br />
               Tirupur, Tamil Nadu, India<br />
-              <span className="text-xs text-[#EAE6DE]/60">Global Garment Export Hub</span>
+              <span className="text-xs text-[#EAE6DE]/60">Kidswear manufacturing since 2000</span>
             </p>
             <div className="mt-5 space-y-1.5 text-xs text-[#EAE6DE]/80">
               <p>Email: <span className="text-[#FFFFFF]">export@muthuinternational.com</span></p>
@@ -311,8 +311,8 @@ export function SiteFooter() {
           <p>© {new Date().getFullYear()} Muthu International Private Ltd. All Rights Reserved.</p>
           <div className="flex gap-6 text-[#EAE6DE]/70">
             <span className="hover:text-[#FFFFFF]">B2B Manufacturing</span>
-            <span className="hover:text-[#FFFFFF]">OEM & Private Label</span>
-            <span className="hover:text-[#FFFFFF]">Export Quality AQL 2.5</span>
+            <span className="hover:text-[#FFFFFF]">100+ employees</span>
+            <span className="hover:text-[#FFFFFF]">Serving customers across India</span>
           </div>
         </div>
       </div>
@@ -531,7 +531,7 @@ export function CTASection() {
             Let’s Build Your Next <span className="text-outline-white">Kidswear</span> Collection.
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#EAE6DE]/85 sm:text-lg">
-            Have a design sketch, reference sample, tech pack or bulk requirement? Talk to our manufacturing team in Tirupur about OEM, private-label and custom kidswear development.
+            Looking for a kidswear manufacturing partner in India? Contact our team to discuss your product requirements, our range and manufacturing capabilities.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link
@@ -547,7 +547,7 @@ export function CTASection() {
               to="/contact"
               className="inline-flex items-center gap-2 border border-[#EAE6DE]/40 bg-transparent px-7 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-[#EAE6DE] transition-colors hover:border-[#FFFFFF] hover:bg-[#FFFFFF]/10 hover:text-[#FFFFFF]"
             >
-              Contact Our Atelier
+              Contact Our Team
             </Link>
           </div>
         </Reveal>
@@ -578,7 +578,7 @@ export function InquiryForm({ kind, initialProduct }: { kind: "contact" | "quote
           Thank you.
         </h3>
         <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-[#252525]/80">
-          Your manufacturing brief has been received. Our atelier team in Tirupur typically responds within 1 business day.
+          Your enquiry has been received. Thank you for contacting Muthu International Private Limited.
         </p>
         <button
           className="mt-8 border border-[#226192] bg-[#226192] px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] transition-colors hover:bg-[#EF8557] hover:border-[#EF8557]"
@@ -616,8 +616,8 @@ export function InquiryForm({ kind, initialProduct }: { kind: "contact" | "quote
       </label>
 
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#226192]">
-        Country / Market *
-        <Input required className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]" placeholder="e.g. United Kingdom, USA, Australia" />
+        City / State *
+        <Input required className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]" placeholder="Your city and state" />
       </label>
 
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#226192]">
@@ -627,14 +627,15 @@ export function InquiryForm({ kind, initialProduct }: { kind: "contact" | "quote
           className="h-12 border border-[#226192]/25 bg-[#FFFFFF] px-4 text-xs font-semibold text-[#226192] focus:border-[#226192] focus:outline-none"
         >
           {initialProduct && <option value="Specific Style">Product: {initialProduct}</option>}
-          <option value="Boys T-Shirts">Boys’ T-Shirts</option>
-          <option value="Girls T-Shirts">Girls’ T-Shirts</option>
-          <option value="Co-Ord Sets">Co-Ord Sets & 2-Piece Sets</option>
-          <option value="Cord Sets">Corduroy & Heavyweight Sets</option>
-          <option value="Printed Apparel">All-Over & Botanical Printed Apparel</option>
-          <option value="Embroidered Apparel">Embroidered & Appliqué Apparel</option>
-          <option value="Casualwear">Casualwear & Pullovers</option>
-          <option value="Full Collection">Full Kidswear Collection / Mixed</option>
+          <option value="Boys T-Shirts">Boys' T-Shirts</option>
+          <option value="Girls T-Shirts">Girls' T-Shirts</option>
+          <option value="Co-Ord Sets">Co-Ord Sets</option>
+          <option value="Night Suits">Night Suits</option>
+          <option value="Girls Paijamas">Girls' Paijamas</option>
+          <option value="Shorts">Shorts</option>
+          <option value="Sweaters">Sweaters</option>
+          <option value="Hoodies">Hoodies</option>
+          <option value="Other Kidswear">Other Children's Garments</option>
         </select>
       </label>
 
@@ -661,8 +662,8 @@ export function InquiryForm({ kind, initialProduct }: { kind: "contact" | "quote
           </label>
 
           <label className="grid gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#226192]">
-            Private Label Requirement
-            <Input className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525]" placeholder="e.g. Custom neck tags, hangtags, barcodes" />
+            Product Design Notes
+            <Input className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525]" placeholder="Share any style or design details" />
           </label>
 
           <label className="grid gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#226192]">
@@ -778,9 +779,9 @@ export function ManufacturingStorySection() {
     <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
       <div className="page-shell">
         <SectionHeading
-          eyebrow="Manufacturing Story"
-          title="EVERY GARMENT HAS A DISCIPLINED ATELIER JOURNEY."
-          text="From initial Pantone lab dips to 100% metal-detect needle checks, explore our precision kidswear manufacturing workflow."
+          eyebrow="Our Manufacturing Story"
+          title="Experience supported by modern facilities."
+          text="Since 2000, our two factories, in-house design team, modern machinery and dedicated warehouse have supported our kidswear manufacturing operations."
         />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
@@ -805,7 +806,7 @@ export function ManufacturingStorySection() {
                     <div className="bg-[#226192] p-5 text-[#FFFFFF]">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#EF8557]">
-                          Atelier Workflow
+                          Manufacturing Operations
                         </span>
                       </div>
                       <h4 className="mt-2 font-['Space_Grotesk'] text-lg font-bold uppercase text-[#FFFFFF]">

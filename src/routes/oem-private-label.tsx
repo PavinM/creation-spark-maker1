@@ -7,16 +7,16 @@ import { images, oemSteps } from "@/lib/content";
 export const Route = createFileRoute("/oem-private-label")({
   head: () => ({
     meta: [
-      { title: "Kidswear OEM & Private Label Manufacturer | Muthu International Atelier" },
+      { title: "Kidswear Manufacturing Expertise | Muthu International" },
       {
         name: "description",
         content:
-          "Full-scale OEM and private-label kidswear apparel manufacturing. Turn your brand’s designs into retail-ready collections with custom trims, packaging, and strict quality control.",
+          "Discover Muthu International's kidswear expertise, in-house design team, two operational factories and domestic supply operations.",
       },
-      { property: "og:title", content: "Your Brand. Your Vision. Our Atelier. | Muthu International" },
+      { property: "og:title", content: "Kidswear Manufacturing Expertise | Muthu International" },
       {
         property: "og:description",
-        content: "Custom kidswear OEM and private-label manufacturing built around your brief.",
+        content: "Over 25 years of garment industry experience, with kidswear as our core specialization.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,33 +28,33 @@ export const Route = createFileRoute("/oem-private-label")({
 function OemPrivateLabelPage() {
   const models = [
     {
-      title: "Contract OEM Manufacturing",
-      desc: "Engineered precisely to your tech packs, yarn counts, and bill of materials. You design; our atelier produces.",
-      points: ["100% adherence to technical specs", "Custom knitting & Pantone lab dips", "Dedicated bulk assembly lines"],
+      title: "Kidswear Manufacturing",
+      desc: "Children's clothing is our primary area of specialization, supported by over 25 years of garment industry experience.",
+      points: ["Established in 2000", "A diverse kidswear range", "Domestic market focus"],
     },
     {
-      title: "Turnkey Private Label",
-      desc: "Curated seasonal silhouettes with your branded neck tags, wash care labels, Pantone colorways, and retail packaging.",
-      points: ["Accelerated time-to-market", "Custom damask labels & heat transfers", "Branded polybags & barcoding"],
+      title: "Daily Design Development",
+      desc: "Our in-house design team continuously develops new styles to keep collections aligned with changing preferences.",
+      points: ["In-house design team", "New designs every day", "Trend awareness"],
     },
     {
-      title: "Bespoke Co-Creation",
-      desc: "Collaborative development of specialty fabric textures, innovative softening washes, and coordinated multi-piece sets.",
-      points: ["Exclusive botanical artwork prints", "Ergonomic toddler & baby sizing", "Custom nickel-free snaps & drawcords"],
+      title: "Modern Manufacturing",
+      desc: "Two operational factories equipped with modern machinery support our garment manufacturing operations.",
+      points: ["Two operational factories", "Modern machinery", "Organized production"],
     },
     {
-      title: "Range Planning & Drop Sync",
-      desc: "Seasonal collection coordination across boys, girls, and infants for commercially cohesive, synchronized drops.",
-      points: ["Cross-garment color balance", "Unified trim & packaging suite", "Consolidated air & sea freight"],
+      title: "People & Supply",
+      desc: "A dedicated workforce and warehouse support manufacturing, inventory management and domestic supply.",
+      points: ["100+ employees", "Dedicated warehouse", "Customers across India"],
     },
   ];
 
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
-        eyebrow="OEM & Private Label Atelier"
-        title="YOUR BRAND VISION. OUR MANUFACTURING."
-        text="High-precision development and bulk production for global fashion labels, department stores, and boutique private-label founders."
+        eyebrow="Our Expertise"
+        title="Experience behind every kidswear collection."
+        text="Over 25 years in the garment industry, supported by an in-house design team, two factories and a dedicated warehouse."
         image={images.bloomHero || images.printedSet}
       />
 
@@ -62,9 +62,9 @@ function OemPrivateLabelPage() {
       <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
-            eyebrow="Manufacturing Frameworks"
-            title="TAILORED TO YOUR SOURCING STRATEGY."
-            text="Turnkey private-label collections or pure contract OEM — we adapt to your operational model."
+            eyebrow="What We Bring Together"
+            title="Design, manufacturing and supply."
+            text="Our team and facilities support an evolving product range and the needs of customers across India."
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -98,13 +98,13 @@ function OemPrivateLabelPage() {
           <Reveal>
             <div className="flex items-center gap-2 text-[#EF8557]">
               <span className="size-2 rounded-full bg-[#EF8557]" />
-              <p className="label-track text-[#EF8557]">Structured Atelier Workflow</p>
+              <p className="label-track text-[#EF8557]">Our Manufacturing Foundation</p>
             </div>
             <h2 className="display-title mt-4 text-4xl uppercase tracking-tight text-[#FFFFFF] sm:text-6xl">
-              FROM CONCEPT TO DISPATCH IN SEVEN PHASES.
+              Built on experience. Supported by modern facilities.
             </h2>
             <p className="mt-4 max-w-2xl text-base text-[#EAE6DE]/85">
-              Every milestone is physically sampled, tested, and buyer-approved before advancing to bulk line assembly.
+              Since 2000, we have focused on kidswear, daily design development, consistent quality and dependable customer relationships.
             </p>
           </Reveal>
 
@@ -129,12 +129,12 @@ function OemPrivateLabelPage() {
               <div className="flex h-full flex-col justify-center border border-[#EF8557] bg-[#EF8557]/20 p-6 text-center">
                 <Sparkles className="mx-auto size-7 text-[#EF8557]" />
                 <h4 className="font-['Space_Grotesk'] mt-3 text-lg font-bold uppercase text-[#FFFFFF]">Ready to Begin?</h4>
-                <p className="mt-2 text-xs text-[#EAE6DE]/80">Connect directly with our Tirupur atelier team.</p>
+                <p className="mt-2 text-xs text-[#EAE6DE]/80">Contact our team to discuss our kidswear range.</p>
                 <Link
                   to="/request-quote"
                   className="mt-5 inline-flex items-center justify-center border border-[#EF8557] bg-[#EF8557] py-2.5 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] transition-colors hover:bg-[#EF8557]/90"
                 >
-                  START YOUR PROJECT
+                  Contact Our Team
                 </Link>
               </div>
             </Reveal>
@@ -148,23 +148,23 @@ function OemPrivateLabelPage() {
           <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
             <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
-                <p className="label-track text-[#EF8557]">Strict Confidentiality & IP Protection</p>
+                <p className="label-track text-[#EF8557]">Our Commitment</p>
                 <h3 className="font-['Space_Grotesk'] mt-2 text-2xl font-bold uppercase tracking-tight text-[#226192] sm:text-3xl">
-                  Your Proprietary Artwork Remains Exclusively Yours.
+                  Experienced in manufacturing. Inspired by design.
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-[#252525]/85">
-                  All partnerships operate under comprehensive mutual non-disclosure. Your artwork, custom CAD pattern blocks, and brand concepts never appear in unauthorized supply chains or third-party catalogues.
+                  We combine garment industry experience, in-house design expertise, modern machinery and established production facilities to make children's clothing for customers across India.
                 </p>
               </div>
               <div className="space-y-3 border-t border-[#226192]/15 pt-6 text-xs text-[#226192] lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-[#EF8557]" /> Legal NDA & exclusive buyer IP protection agreements
+                  <ShieldCheck className="size-4 text-[#EF8557]" /> More than 25 years of garment industry experience
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-[#EF8557]" /> Guaranteed production slots for scheduled season launches
+                  <ShieldCheck className="size-4 text-[#EF8557]" /> In-house design team developing fresh styles every day
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-[#EF8557]" /> Barcode, RFID tags, polybags & retail packing integration
+                  <ShieldCheck className="size-4 text-[#EF8557]" /> Two operational factories and a dedicated warehouse
                 </div>
               </div>
             </div>

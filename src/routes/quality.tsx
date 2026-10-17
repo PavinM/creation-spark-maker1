@@ -10,12 +10,12 @@ export const Route = createFileRoute("/quality")({
       {
         name: "description",
         content:
-          "Multi-stage quality assurance for children’s apparel: material audits, measurement tolerance, print & embroidery fastness, tensile button pull tests, and 100% metal scan.",
+          "Learn about Muthu International's commitment to consistent kidswear quality, customer requirements and applicable statutory and industry standards.",
       },
       { property: "og:title", content: "Quality at Every Stage | Muthu International" },
       {
         property: "og:description",
-        content: "A disciplined stage-by-stage quality assurance protocol protecting brand integrity.",
+        content: "Quality is an important part of our manufacturing approach and customer relationships.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,50 +27,50 @@ export const Route = createFileRoute("/quality")({
 const qualityStages = [
   {
     step: "01",
-    title: "Material Checking",
-    desc: "GSM consistency, 4-point fabric defect audit, D65 color matching and residual shrinkage testing.",
+    title: "Product Requirements",
+    desc: "Understand the garment style, customer needs and intended use.",
     icon: Scale,
   },
   {
     step: "02",
-    title: "Measurement Verification",
-    desc: "Pattern audit against approved size specs — neck curve, armhole, chest and body length tolerance.",
+    title: "Design Coordination",
+    desc: "Coordinate new styles from our in-house design team with manufacturing operations.",
     icon: FileCheck,
   },
   {
     step: "03",
-    title: "Print Fastness Audit",
-    desc: "Adhesion, wash fastness, rub fastness. Certified 100% free from phthalates and formaldehydes.",
+    title: "Production Planning",
+    desc: "Organize manufacturing work across our two operational factories.",
     icon: Sparkles,
   },
   {
     step: "04",
-    title: "Embroidery Inspection",
-    desc: "Stitch density, tension control, trimmed jump threads, child-safe protective soft backings.",
+    title: "Modern Machinery",
+    desc: "Use modern machinery to support the garment manufacturing process.",
     icon: Scissors,
   },
   {
     step: "05",
-    title: "Seaming Inspection",
-    desc: "SPI count, seam elasticity, bar-tacking on stress points, puckering and tension checks.",
+    title: "Experienced Workforce",
+    desc: "A team of over 100 employees supports manufacturing and business operations.",
     icon: ShieldCheck,
   },
   {
     step: "06",
-    title: "Finishing & Steam Press",
-    desc: "Thread suction chambers, steam pressing on form finishers, spotless retail presentation.",
+    title: "Quality Commitment",
+    desc: "Coordinate design and manufacturing processes while working toward consistent product quality.",
     icon: Sparkles,
   },
   {
     step: "07",
-    title: "AQL 2.5 Final Audit",
-    desc: "Independent statistical quality audit per international AQL 2.5 Major / 4.0 Minor parameters.",
+    title: "Applicable Requirements",
+    desc: "Maintain applicable statutory and industry requirements relevant to business operations.",
     icon: FileCheck,
   },
   {
     step: "08",
-    title: "100% Needle Detection",
-    desc: "Every single finished garment passes through dual-head metal detectors — zero metal contamination.",
+    title: "Customer Relationships",
+    desc: "Build long-term relationships through quality, reliable business practices and cooperation.",
     icon: Box,
   },
 ];
@@ -80,8 +80,8 @@ function QualityPage() {
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Quality & Compliance"
-        title="QUALITY AT EVERY STAGE OF CREATION."
-        text="Non-negotiable standards of tactile craftsmanship, dimensional stability, and certified child safety."
+        title="Quality in every garment."
+        text="We focus on consistent product quality, customer requirements and applicable statutory and industry standards."
         image={images.bloomCraft || images.quality}
       />
 
@@ -90,8 +90,8 @@ function QualityPage() {
         <div className="page-shell">
           <SectionHeading
             eyebrow="Quality Protocol"
-            title="FROM YARN TO EXPORT CARTON."
-            text="Multi-tier quality gates catch variances early, keeping mass bulk production strictly aligned with approved prototypes."
+            title="A quality-focused approach."
+            text="Our manufacturing approach coordinates design and production processes and aims to meet customer requirements through dependable business practices."
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,31 +120,31 @@ function QualityPage() {
         </div>
       </section>
 
-      {/* Child Safety Testing Protocols Banner */}
+      {/* Quality and compliance commitment */}
       <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20">
         <div className="page-shell">
           <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-7">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Kidswear Specific Safeguards</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Our commitment</span>
                 <h3 className="font-['Space_Grotesk'] mt-2 text-2xl font-bold uppercase tracking-tight text-[#226192] sm:text-3xl">
-                  Dedicated Child Safety Testing Protocols
+                  Quality is part of every relationship
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-[#252525]/85">
-                  Tensile pull testers calibrated for 70–90N force on all snaps, buttons, bows, and appliqués to eliminate choking hazards, complying with ASTM F963 and EN71 standards.
+                  We understand that quality, comfort and consistency matter in children's clothing. Our team works to meet customer requirements and build lasting relationships through reliable manufacturing practices.
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-3 text-xs text-[#226192]">
                   <div className="flex items-center gap-2">
-                    <Check className="size-4 text-[#EF8557]" /> Calibrated Button Pull Testing
+                    <Check className="size-4 text-[#EF8557]" /> Kidswear as our core specialization
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="size-4 text-[#EF8557]" /> Saliva & Perspiration Fastness
+                    <Check className="size-4 text-[#EF8557]" /> In-house design and development
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="size-4 text-[#EF8557]" /> Nickel-Free Snap Fasteners
+                    <Check className="size-4 text-[#EF8557]" /> Modern manufacturing facilities
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="size-4 text-[#EF8557]" /> Zero Sharp Seam Edge Inspection
+                    <Check className="size-4 text-[#EF8557]" /> Applicable requirements and standards
                   </div>
                 </div>
               </div>
@@ -152,16 +152,16 @@ function QualityPage() {
               <div className="border border-[#226192]/20 bg-[#EAE6DE] p-6 lg:col-span-5">
                 <div className="flex items-center gap-2 text-[#226192]">
                   <AlertCircle className="size-5 text-[#EF8557]" />
-                  <span className="text-xs font-bold uppercase tracking-wider">Compliance & Standards</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">Manufacturing Profile</span>
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-[#252525]/85">
-                  Audited and buyer-compliant production standards for North America, UK, Europe and Oceania markets.
+                  Established domestic kidswear manufacturer serving customers across India.
                 </p>
                 <div className="mt-4 border-l-2 border-[#EF8557] pl-4 text-xs font-medium text-[#226192]">
-                  OEKO-TEX Standard 100 Class 1 (Babywear) · GOTS Certified Organic Cottons · Sedex SMETA Audited
+                  Established in 2000 · Two operational factories · 100+ employees
                 </div>
                 <p className="mt-4 text-[11px] text-[#252525]/70">
-                  Full compliance dossiers furnished upon buyer request.
+                  In-house design team · Dedicated warehouse · Modern machinery
                 </p>
               </div>
             </div>

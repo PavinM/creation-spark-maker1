@@ -28,8 +28,8 @@ function GalleryPage() {
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Visual Portfolio"
-        title="PRODUCT. PROCESS. TACTILE DETAIL."
-        text="A visual documentation of our craftsmanship, clean stitching lines, botanical prints, and finished kidswear collections."
+        title="Kidswear, design and manufacturing."
+        text="A look at children's clothing, our design direction and the manufacturing environment behind Muthu International."
         image={images.bloomCraft || images.detail}
       />
 
@@ -37,7 +37,7 @@ function GalleryPage() {
         <div className="page-shell">
           <SectionHeading
             eyebrow="Inside Muthu International"
-            title="AN ATELIER PERSPECTIVE."
+            title="A look inside Muthu International."
             text="Filter by production category. Click any visual for high-resolution inspection."
           />
 

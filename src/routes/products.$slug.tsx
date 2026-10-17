@@ -25,7 +25,7 @@ export const Route = createFileRoute("/products/$slug")({
       { property: "og:title", content: loaderData?.name ?? "Muthu International Product" },
       {
         property: "og:description",
-        content: loaderData?.description ?? "Premium private-label kidswear development.",
+        content: loaderData?.description ?? "Children's clothing from Muthu International's kidswear range.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +45,7 @@ function ProductDetailPage() {
     { label: "Size Grading", val: p.sizes },
     { label: "Printing Techniques", val: p.print },
     { label: "Embroidery Execution", val: p.embroidery },
-    { label: "Private Label OEM", val: p.customization },
+    { label: "Style Information", val: p.customization },
   ];
 
   return (
@@ -61,7 +61,7 @@ function ProductDetailPage() {
               <ArrowLeft className="size-4" /> Back to Products
             </Link>
             <span className="text-xs uppercase tracking-[0.14em] text-[#252525]/70">
-              OEM & Private Label Reference Specification
+              Kidswear Product Information
             </span>
           </div>
 
@@ -132,7 +132,7 @@ function ProductDetailPage() {
                 {/* Technical Specifications Table */}
                 <div className="mt-8 border-t border-[#226192]/15 pt-6">
                   <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-[#226192]">
-                    Atelier Production Parameters
+                    Product Information
                   </h4>
                   <dl className="mt-3 divide-y divide-[#226192]/10 text-xs">
                     {p.specifications.map(([title, val]) => (
@@ -163,7 +163,7 @@ function ProductDetailPage() {
 
                 <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-[#252525]/75">
                   <ShieldCheck className="size-4 text-[#EF8557]" />
-                  <span>100% Quality Inspected · Needle Detection Cleared</span>
+                  <span>Kidswear manufacturing · Serving customers across India</span>
                 </div>
               </div>
             </aside>

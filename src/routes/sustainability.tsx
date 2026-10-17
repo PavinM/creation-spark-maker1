@@ -10,12 +10,12 @@ export const Route = createFileRoute("/sustainability")({
       {
         name: "description",
         content:
-          "Our verified framework for responsible kidswear production: organic material selection, efficient cutting, reduced chemical waste, and biodegradable packaging.",
+          "Learn about Muthu International's commitment to quality, applicable requirements, experienced people and responsible business relationships.",
       },
       { property: "og:title", content: "Responsible Manufacturing | Muthu International" },
       {
         property: "og:description",
-        content: "A factual framework for verified environmental and social responsibility initiatives.",
+        content: "We focus on quality and applicable statutory and industry requirements in our manufacturing operations.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,34 +26,34 @@ export const Route = createFileRoute("/sustainability")({
 
 const pillars = [
   {
-    title: "Responsible Material Selection",
+    title: "Kidswear Specialization",
     icon: Leaf,
-    desc: "Offering buyers access to certified organic combed cotton, BCI (Better Cotton Initiative) cotton, recycled polyester blends, and sustainably sourced viscose fibers.",
-    points: ["GOTS certified organic cotton options", "Low-impact reactive dyes", "Zero hazardous chemical input"],
+    desc: "Children's clothing is our core business, with a varied range developed for everyday and seasonal needs.",
+    points: ["A focus on kidswear", "Multiple product categories", "Serving the domestic market"],
   },
   {
-    title: "Efficient Production & Energy",
+    title: "Modern Manufacturing Facilities",
     icon: Factory,
-    desc: "Optimizing machinery usage, modern LED plant illumination, and high-efficiency servo-motor sewing lines that substantially lower power draw per garment output.",
-    points: ["Direct-drive energy-saving motors", "Optimized production sequencing", "Routine machine maintenance schedules"],
+    desc: "Two operational factories equipped with modern machinery support our garment manufacturing processes.",
+    points: ["Two operational factories", "Modern machinery", "Organized production"],
   },
   {
-    title: "Waste Reduction & Nesting",
+    title: "In-House Design Development",
     icon: Recycle,
-    desc: "Computerized CAD lay planning engineered to achieve industry-leading fabric utilization rates, dramatically reducing fabric offcuts and scrap margins.",
-    points: ["High-efficiency nesting software", "Fabric scrap sorting for industrial recycling", "Digital pattern proofing reducing paper usage"],
+    desc: "Our dedicated design team develops new styles every day to keep collections fresh and responsive to customer preferences.",
+    points: ["Fresh designs every day", "Trend awareness", "Design and production coordination"],
   },
   {
-    title: "Eco-Conscious Packaging",
+    title: "Warehouse & Supply",
     icon: Package,
-    desc: "Transitioning toward recycled low-density polyethylene (rLDPE) polybags, biodegradable starch bags, FSC-certified hangtags, and plastic-free carton sealing.",
-    points: ["100% Recycled PE polybag options", "FSC-certified paper hangtags & trims", "Plastic-free tape & unbleached cartons"],
+    desc: "A dedicated warehouse supports organized storage, inventory management and domestic supply operations.",
+    points: ["Dedicated warehouse", "Organized storage", "Customers across India"],
   },
   {
-    title: "Responsible Ethics & Welfare",
+    title: "People & Experience",
     icon: Droplets,
-    desc: "Maintaining strict compliance with labor welfare standards, fair wage compensation, safe and well-ventilated operating floors, and zero child or forced labor.",
-    points: ["Ethical labor practices & fair wages", "Health, safety & fire compliance", "Zero child-labor absolute policy"],
+    desc: "More than 100 employees contribute to manufacturing and business operations through teamwork and experience.",
+    points: ["100+ employees", "Garment industry experience", "Dedicated workforce"],
   },
 ];
 
@@ -62,8 +62,8 @@ function SustainabilityPage() {
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Environmental & Social Stewardship"
-        title="RESPONSIBILITY GROUNDED IN VERIFIED FACT."
-        text="A transparent framework for documenting verified practices, responsible material sourcing, and efficient manufacturing without greenwashing."
+        title="Experience, responsibility and quality."
+        text="An established kidswear manufacturer focused on quality, applicable requirements and long-term customer relationships."
         image={images.bloomHero || images.factory}
       />
 
@@ -74,45 +74,45 @@ function SustainabilityPage() {
             <Reveal>
               <div className="flex items-center gap-2 text-[#EF8557]">
                 <span className="size-2 rounded-full bg-[#EF8557]" />
-                <p className="label-track text-[#EF8557]">[ OUR PHILOSOPHY ]</p>
+                <p className="label-track text-[#EF8557]">[ OUR COMMITMENT ]</p>
               </div>
               <h2 className="display-title mt-3 text-3xl uppercase tracking-tight text-[#226192] sm:text-5xl">
-                REAL COMMITMENTS. NO GREENWASHING.
+                Quality and reliable business relationships.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
-                As a kids apparel manufacturer, our responsibility starts with the safety of the children who wear our garments and extends to the craftspeople who produce them. We approach sustainability practically: eliminating hazardous chemistry, conserving raw fabrics, and continuously improving resource efficiency.
+                We are committed to maintaining appropriate quality standards and complying with applicable statutory and industry requirements. Our manufacturing approach focuses on organized production, experienced people and customer needs.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
-                We believe in factual transparency rather than unsupported marketing slogans. When your brand requests certified organic or recycled fibers, we provide authentic transaction certificates and verified supply chain documentation.
+                With two operational factories, a dedicated warehouse, modern machinery and a workforce of over 100 employees, we continue to serve the evolving Indian kidswear market.
               </p>
             </Reveal>
 
             <Reveal className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Buyer Verification Dossier</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Our company</span>
               <h3 className="font-['Space_Grotesk'] mt-2 text-xl font-bold uppercase tracking-tight text-[#226192]">
-                Corporate Sustainability Framework
+                Established kidswear manufacturing
               </h3>
               <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">
-                This verification area is configured for factual data verified by independent third-party audits:
+                Our business is built on experience, creativity, manufacturing expertise and reliable customer relationships.
               </p>
               <div className="mt-6 space-y-4 text-xs">
                 <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
                   <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
-                    Organic Cotton Certification:
+                    Established:
                   </strong>
-                  GOTS (Global Organic Textile Standard) Scope Certificates available per batch order.
+                  2000, with over 25 years of garment industry experience.
                 </div>
                 <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
                   <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
-                    Social Compliance Audit:
+                    Manufacturing:
                   </strong>
-                  Sedex SMETA 4-Pillar ethical audit documentation maintained and current.
+                  Two operational factories equipped with modern machinery.
                 </div>
                 <div className="border-l-2 border-[#EF8557] pl-4 text-[#252525]/85">
                   <strong className="block font-['Space_Grotesk'] text-[#226192] uppercase tracking-wider">
-                    Chemical Safety Compliance:
+                    Design and supply:
                   </strong>
-                  OEKO-TEX Standard 100 Class 1 (Babywear) and zero hazardous discharge chemistry.
+                  An in-house design team, dedicated warehouse and customers across India.
                 </div>
               </div>
             </Reveal>
@@ -124,9 +124,9 @@ function SustainabilityPage() {
       <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
-            eyebrow="Action Areas"
-            title="PRACTICAL AREAS OF SUSTAINABLE FOCUS."
-            text="How we actively manage material selection, energy efficiency, waste minimization, and humane workplace standards."
+            eyebrow="Our Commitments"
+            title="The foundations of our business."
+            text="Kidswear expertise, design development, modern facilities, an experienced workforce and organized domestic supply operations."
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

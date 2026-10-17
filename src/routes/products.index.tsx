@@ -6,16 +6,16 @@ import { products, images } from "@/lib/content";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "Kidswear Product Catalogue | Muthu International Atelier" },
+      { title: "Kidswear Product Range | Muthu International" },
       {
         name: "description",
         content:
-          "Explore customizable boys’, girls’, printed, embroidered, co-ord and babycord kidswear developments by Muthu International.",
+          "Explore children's T-shirts, co-ord sets, night suits, girls' paijamas, shorts, sweaters, hoodies and other kidswear from Muthu International.",
       },
       { property: "og:title", content: "Muthu International Kidswear Catalogue" },
       {
         property: "og:description",
-        content: "Contemporary kidswear developed for OEM and private-label programmes.",
+        content: "A varied children's clothing range for everyday wear, nightwear, casual occasions and seasonal needs.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -41,6 +41,13 @@ const filters = [
   "Overshirts",
   "Dresses",
   "Sleepwear",
+  "Night Suits",
+  "Paijamas",
+  "Nightwear",
+  "Shorts",
+  "Sweaters",
+  "Hoodies",
+  "Seasonal",
   "Layering",
   "Unisex",
 ];
@@ -56,18 +63,18 @@ function ProductsPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
-        eyebrow="Product Catalogue"
-        title="KIDSWEAR DEVELOPED WITH INTENT."
-        text="A curated selection of silhouettes, pure cotton fabrications, and artisanal embellishments ready for full OEM customization."
+        eyebrow="Our Product Range"
+        title="A complete range of kidswear."
+        text="From everyday T-shirts and co-ord sets to nightwear and seasonal clothing, our range serves a variety of children's garment needs."
         image={images.bloomHero || images.hero}
       />
 
       <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
-            eyebrow="Explore Silhouettes"
-            title="PURPOSE-BUILT TO BE CUSTOMIZED."
-            text="Filter by silhouette, embellishment technique, or category. All styles are fully customizable for GSM, sizing, Pantone colors, and private labeling."
+            eyebrow="Explore Kidswear"
+            title="Styles for everyday and seasonal wear."
+            text="Browse the product categories in our evolving children's clothing range."
           />
 
           {/* Filter Tabs */}

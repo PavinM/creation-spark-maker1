@@ -1,21 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, MessageSquare, Instagram, Linkedin, Clock, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare, Clock, ArrowRight } from "lucide-react";
 import { InquiryForm, PageHero, Reveal } from "@/components/site";
 import { images } from "@/lib/content";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Muthu International | Kidswear Apparel Atelier" },
+      { title: "Contact Muthu International | Kidswear Manufacturer" },
       {
         name: "description",
         content:
-          "Connect with Muthu International Private Ltd for OEM manufacturing, private label kidswear, custom development, and bulk export enquiries in Tirupur, India.",
+          "Contact Muthu International Private Limited to discuss kidswear products, manufacturing capabilities and domestic business opportunities across India.",
       },
       { property: "og:title", content: "Let’s Talk | Muthu International Private Ltd" },
       {
         property: "og:description",
-        content: "Initiate your kidswear manufacturing conversation with our merchandising team.",
+        content: "Our team welcomes product enquiries and opportunities for long-term business relationships.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,9 +28,9 @@ function ContactPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
-        eyebrow="Commercial Enquiries"
-        title="LET’S INITIATE A CONVERSATION."
-        text="Whether launching a new seasonal private-label range, scaling contract OEM capacity, or developing custom prototypes, our atelier merchandising team is at your service."
+        eyebrow="Business Enquiries"
+        title="Let's build a business partnership."
+        text="Looking for an established kidswear manufacturer in India? Our team welcomes enquiries about our products, manufacturing capabilities and business opportunities."
         image={images.bloomHero || images.hero}
       />
 
@@ -70,7 +70,7 @@ function ContactPage() {
                     <div>
                       <strong className="block text-xs uppercase tracking-wider text-[#226192]">Phone & WhatsApp:</strong>
                       <p className="mt-1 text-[#252525]/85">+91 421 220 0000</p>
-                      <p className="text-xs text-[#EF8557]">Direct Merchandising Desk Available</p>
+                      <p className="text-xs text-[#EF8557]">Contact us about our kidswear range</p>
                     </div>
                   </div>
 
@@ -94,22 +94,15 @@ function ContactPage() {
                     <div>
                       <strong className="block text-xs uppercase tracking-wider text-[#226192]">Operating Hours:</strong>
                       <p className="mt-1 text-[#252525]/85">Monday – Saturday: 9:00 AM – 6:30 PM (IST)</p>
-                      <p className="text-xs text-[#252525]/70">Factory walkthroughs scheduled by appointment</p>
+                      <p className="text-xs text-[#252525]/70">Serving customers across India</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Professional Networks */}
+                {/* Business focus */}
                 <div className="mt-8 border-t border-[#226192]/15 pt-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#226192]">Global Networks:</span>
-                  <div className="mt-3 flex gap-3">
-                    <span className="flex items-center gap-2 border border-[#226192]/20 px-3 py-1.5 text-xs text-[#226192]">
-                      <Linkedin className="size-3.5 text-[#EF8557]" /> LinkedIn Official
-                    </span>
-                    <span className="flex items-center gap-2 border border-[#226192]/20 px-3 py-1.5 text-xs text-[#226192]">
-                      <Instagram className="size-3.5 text-[#EF8557]" /> Instagram Studio
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#226192]">Our focus</span>
+                  <p className="mt-2 text-sm leading-relaxed text-[#252525]/80">Kidswear manufacturing, fresh designs and quality-focused customer partnerships.</p>
                 </div>
               </div>
             </div>

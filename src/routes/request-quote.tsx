@@ -6,16 +6,16 @@ import { images } from "@/lib/content";
 export const Route = createFileRoute("/request-quote")({
   head: () => ({
     meta: [
-      { title: "Request a Kidswear Manufacturing Quote | Muthu International Atelier" },
+      { title: "Kidswear Business Enquiry | Muthu International" },
       {
         name: "description",
         content:
-          "Submit your custom kidswear OEM or private-label product brief to Muthu International. Fast quotation and technical feasibility assessment in Tirupur, India.",
+          "Contact Muthu International to discuss kidswear products, manufacturing capabilities and business opportunities across India.",
       },
       { property: "og:title", content: "Request a Kidswear Manufacturing Quote | Muthu International" },
       {
         property: "og:description",
-        content: "Tell us about your upcoming kidswear production requirements and receive a detailed quotation.",
+        content: "Share your kidswear product enquiry with our team and start a business conversation.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,9 +28,9 @@ function RequestQuotePage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
-        eyebrow="Commercial Estimator"
-        title="START YOUR PRODUCTION RUN."
-        text="Share your silhouettes, target quantities, and design references. Our atelier merchandising team will prepare formal FOB costing and a production calendar."
+        eyebrow="Business Enquiry"
+        title="Let's discuss kidswear manufacturing."
+        text="Tell us about your product requirements and business enquiry. Our team welcomes opportunities to build long-term customer relationships."
         image={images.bloomHero || images.quality}
       />
 
@@ -40,9 +40,9 @@ function RequestQuotePage() {
             {/* Left Guidance & Value Proposition */}
             <aside className="space-y-6 lg:col-span-4">
               <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Commercial Roadmap</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Our Approach</span>
                 <h2 className="font-['Space_Grotesk'] mt-2 text-2xl font-bold uppercase tracking-tight text-[#226192]">
-                  What Happens Next?
+                  Building a Partnership
                 </h2>
 
                 <div className="mt-6 space-y-6 text-xs text-[#252525]/85">
@@ -51,9 +51,9 @@ function RequestQuotePage() {
                       1
                     </span>
                     <div>
-                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192] uppercase">Technical Feasibility</strong>
+                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192]">Share Your Requirements</strong>
                       <p className="mt-1 leading-relaxed">
-                        We review yarn GSM, botanical print complexity, and sizing distribution.
+                        Tell us about the kidswear products and business needs you would like to discuss.
                       </p>
                     </div>
                   </div>
@@ -63,9 +63,9 @@ function RequestQuotePage() {
                       2
                     </span>
                     <div>
-                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192] uppercase">Costing & Milestones</strong>
+                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192]">Learn About Our Capabilities</strong>
                       <p className="mt-1 leading-relaxed">
-                        FOB/CIF pricing broken down by volume tiers, packaging specs, and air/sea freight.
+                        Our team can discuss our product range, design team and manufacturing facilities.
                       </p>
                     </div>
                   </div>
@@ -75,9 +75,9 @@ function RequestQuotePage() {
                       3
                     </span>
                     <div>
-                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192] uppercase">Sampling & Sign-Off</strong>
+                      <strong className="block font-['Space_Grotesk'] font-bold text-[#226192]">Explore a Partnership</strong>
                       <p className="mt-1 leading-relaxed">
-                        Lab dips, counter-sampling, and pre-production prototypes dispatched for fit approval.
+                        We value lasting relationships with customers and business partners across India.
                       </p>
                     </div>
                   </div>
@@ -86,10 +86,10 @@ function RequestQuotePage() {
                 <div className="mt-8 border-t border-[#226192]/15 pt-6 text-[11px] text-[#252525]/80">
                   <div className="flex items-center gap-2 font-bold text-[#226192]">
                     <ShieldCheck className="size-4 text-[#EF8557]" />
-                    <span>Non-Disclosure Protected</span>
+                    <span>Established since 2000</span>
                   </div>
                   <p className="mt-1 leading-relaxed">
-                    Your artwork, tech packs, and commercial details remain confidential under strict mutual NDA.
+                    More than 25 years of garment industry experience, with kidswear as our core specialization.
                   </p>
                 </div>
               </div>
@@ -97,10 +97,10 @@ function RequestQuotePage() {
               {/* Tips for fast quotation */}
               <div className="border border-[#226192]/20 bg-[#FFFFFF] p-6 text-xs shadow-sm">
                 <strong className="block uppercase tracking-wider text-[#226192] font-bold">
-                  Pro-Tip for Faster Costing:
+                  To help us respond:
                 </strong>
                 <p className="mt-2 leading-relaxed text-[#252525]/80">
-                  Attach a PDF tech pack or reference photograph with estimated quantities per size for formal quotation within 24 hours.
+                  Share the kidswear product categories or business requirements you would like to discuss.
                 </p>
               </div>
             </aside>
@@ -108,12 +108,12 @@ function RequestQuotePage() {
             {/* Right Detailed Quote Form */}
             <div className="lg:col-span-8">
               <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">B2B Production Brief</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Business Enquiry</span>
                 <h3 className="font-['Space_Grotesk'] mt-2 text-2xl font-bold uppercase tracking-tight text-[#226192] sm:text-3xl">
-                  Product & Commercial Requirements
+                  Product Requirements
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80 sm:text-sm">
-                  Complete the fields below so we can assign the dedicated kidswear technical merchandiser to your brand.
+                  Complete the fields below to share your enquiry with our team.
                 </p>
 
                 <div className="mt-8">

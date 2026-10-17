@@ -12,12 +12,12 @@ export const Route = createFileRoute("/design-development")({
       {
         name: "description",
         content:
-          "Turnkey product development: custom garments, fabric sourcing, Pantone color matching, botanical print & embroidery development, sampling, and private-label branding.",
+          "Muthu International's in-house design team develops new kidswear styles every day, coordinating design development with manufacturing operations.",
       },
       { property: "og:title", content: "From Idea to Production | Muthu International" },
       {
         property: "og:description",
-        content: "Collaborative kidswear design and technical product development for modern brands.",
+        content: "Fresh designs and a varied children's clothing range, informed by changing trends and customer preferences.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,52 +28,52 @@ export const Route = createFileRoute("/design-development")({
 
 const capabilities = [
   {
-    title: "Custom Silhouette Development",
+    title: "In-House Design Team",
     icon: Shirt,
-    desc: "Developing completely original silhouettes, proportions, and multi-piece coordinated sets from your tech packs, physical samples, or sketches.",
-    points: ["Original silhouette engineering", "Toddler & tween fit dynamics", "Seam construction optimization"],
+    desc: "Our dedicated design team creates new kidswear styles every day for an evolving product collection.",
+    points: ["Daily design development", "Kidswear specialization", "Fresh product ideas"],
   },
   {
-    title: "Fabric Engineering & Sourcing",
+    title: "Trend Awareness",
     icon: Scissors,
-    desc: "Curating certified cottons, organic yarns, single jerseys, french terry, babycord, slub, and performance blends with custom handfeel finishes.",
-    points: ["100% Combed Compact Cotton", "Bio-wash & peach skin finishes", "Custom weight engineering (140–360 GSM)"],
+    desc: "We keep our collections responsive to changing fashion trends and customer preferences.",
+    points: ["Changing trends", "Customer preferences", "Fresh collections"],
   },
   {
-    title: "Pantone Color Formulation",
+    title: "Product Range Development",
     icon: Palette,
-    desc: "Precision Pantone TCX / TPX matching via lab dips with strict spectrophotometer verification and eco-friendly reactive dyes.",
-    points: ["Fast lab-dip turnaround", "Batch-to-batch shade consistency", "Saliva and wash fastness compliant"],
+    desc: "Design development spans children's garments for everyday wear, nightwear and seasonal needs.",
+    points: ["T-shirts and co-ord sets", "Nightwear and paijamas", "Shorts, sweaters and hoodies"],
   },
   {
-    title: "Botanical & Reactive Printing",
+    title: "Design & Manufacturing Coordination",
     icon: Sparkles,
-    desc: "Engineering all-over rotary prints, digital direct-to-fabric prints, and localized screen prints using baby-safe water-based non-toxic chemistry.",
-    points: ["Rotary cylinder & digital AOP", "Plastisol, puff & discharge prints", "Phthalate and formaldehyde free"],
+    desc: "In-house design capabilities coordinate with our manufacturing operations for an integrated approach to children's garments.",
+    points: ["In-house design team", "Two operational factories", "Integrated production approach"],
   },
   {
-    title: "Artisanal Embroidery & Appliqué",
+    title: "Modern Manufacturing Facilities",
     icon: Scissors,
-    desc: "Creating multi-colour flat satin stitch, 3D puff embroidery, chenille textures, and mixed-fabric appliqué with protective soft backings.",
-    points: ["Multi-head Tajima machinery", "Ultra-soft fused backings", "High tensile pull resistance"],
+    desc: "Our two operational factories use modern machinery to support the garment manufacturing process.",
+    points: ["Two factories", "Modern machinery", "Organized production"],
   },
   {
-    title: "Proto & Fit Sampling",
+    title: "Experienced Workforce",
     icon: Shirt,
-    desc: "Rapid sampling rounds from first proto review samples to pre-production samples (PPS), ensuring exact sizing and silhouette sign-off before bulk.",
-    points: ["Speedy sample room turnaround", "Full size grading verification", "Complete technical specification sheets"],
+    desc: "Our workforce supports manufacturing and operational activities through teamwork and garment industry experience.",
+    points: ["100+ employees", "Dedicated team", "Manufacturing experience"],
   },
   {
-    title: "Label & Trim Customization",
+    title: "Warehouse & Supply",
     icon: Tag,
-    desc: "Custom woven damask labels, tear-away satin tags, heat-sealed neck transfers, customized hangtags, and embossed metal snaps.",
-    points: ["Hypoallergenic heat-transfer labels", "Certified nickel-free metal snaps", "Recycled paper swing tags & barcoding"],
+    desc: "A dedicated warehouse supports organized storage and inventory management for our domestic supply operations.",
+    points: ["Dedicated warehouse", "Inventory management", "Serving customers across India"],
   },
   {
-    title: "Turnkey Private-Label Solutions",
+    title: "Quality & Compliance",
     icon: Box,
-    desc: "End-to-end collection development where we handle every single step—delivering retail-ready packaged garments with your branded polybags.",
-    points: ["Full brand package development", "Ratio packing & barcode compliance", "International direct export dispatch"],
+    desc: "We are committed to maintaining appropriate quality standards and complying with applicable statutory and industry requirements.",
+    points: ["Consistent product quality", "Applicable requirements", "Reliable business practices"],
   },
 ];
 
@@ -81,9 +81,9 @@ function DesignDevelopmentPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
-        eyebrow="Technical Capabilities"
-        title="FROM SKETCH TO PRODUCTION PROTOTYPE."
-        text="Collaborative product development engineered around your brand aesthetics, tactile comfort, and target retail price-points."
+        eyebrow="Design & Development"
+        title="Fresh designs. Changing trends."
+        text="Our in-house team develops new kidswear styles every day, creating a varied and continuously evolving collection."
         image={images.bloomCraft || images.detail}
       />
 
@@ -94,16 +94,16 @@ function DesignDevelopmentPage() {
             <Reveal>
               <div className="flex items-center gap-2 text-[#EF8557]">
                 <span className="size-2 rounded-full bg-[#EF8557]" />
-                <p className="label-track text-[#EF8557]">[ CONCEPT INNOVATION ]</p>
+                <p className="label-track text-[#EF8557]">[ IN-HOUSE DESIGN TEAM ]</p>
               </div>
               <h2 className="display-title mt-3 text-3xl uppercase tracking-tight text-[#226192] sm:text-5xl">
-                BRIDGING CREATIVE VISION & INDUSTRIAL EXECUTION.
+                Design and manufacturing, working together.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
-                Whether you bring a complete technical pack or just inspirational moodboards and physical reference swatches, our technical merchandising and sampling team in Tirupur translates concepts into manufacturing realities.
+                Our dedicated design team develops styles that reflect changing trends and customer requirements. Keeping design within our organization helps coordinate creative development with our manufacturing operations.
               </p>
               <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
-                We balance contemporary magazine fashion aesthetics with the stringent functional standards necessary for children's wear: non-scratchy seams, safe neckline stretchability, resilient wash durability, and compliant hardware.
+                We focus on combining creativity, comfort and contemporary styling to develop children's garments across a diverse product range.
               </p>
               <div className="mt-8">
                 <Link
@@ -136,8 +136,8 @@ function DesignDevelopmentPage() {
         <div className="page-shell">
           <SectionHeading
             eyebrow="Core Competencies"
-            title="COMPREHENSIVE DESIGN & SAMPLING SERVICES."
-            text="Every facet of garment creation can be customized to your buyer manual specifications."
+            title="A varied and evolving kidswear range."
+            text="Our design work spans children's clothing for everyday wear, nightwear, casual occasions and seasonal needs."
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

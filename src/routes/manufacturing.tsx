@@ -12,12 +12,12 @@ export const Route = createFileRoute("/manufacturing")({
       {
         name: "description",
         content:
-          "Explore the complete 9-stage kidswear manufacturing journey at Muthu International: Fabric Selection, Pattern & Cutting, Printing, Embroidery, Stitching, Finishing, Quality Control and Packing.",
+          "Learn about Muthu International's kidswear manufacturing infrastructure: two operational factories, modern machinery, a dedicated warehouse and an experienced workforce.",
       },
       { property: "og:title", content: "Kidswear Manufacturing Process at Muthu International" },
       {
         property: "og:description",
-        content: "A disciplined, quality-controlled kidswear production process from fabric to final packing.",
+        content: "Over 25 years of garment industry experience, with facilities and design capability serving customers across India.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -31,8 +31,8 @@ function ManufacturingPage() {
     <div className="bg-[#EAE6DE] text-[#252525]">
       <PageHero
         eyebrow="Inside Our Factory"
-        title="EVERY GARMENT HAS A DISCIPLINED PROCESS."
-        text="A synchronized 9-stage journey transforming approved designs into export-grade kidswear in Tirupur, India."
+        title="Built on experience and modern facilities."
+        text="Since 2000, our two operational factories, modern machinery and dedicated workforce have supported our kidswear manufacturing business."
         image={images.bloomCraft || images.factory}
       />
 
@@ -40,9 +40,9 @@ function ManufacturingPage() {
       <section className="bg-[#EAE6DE] py-20 sm:py-28">
         <div className="page-shell">
           <SectionHeading
-            eyebrow="Stage-by-Stage"
-            title="THE NINE PILLARS OF PRODUCTION."
-            text="Dedicated checkpoints overseen by skilled pattern masters and independent QA auditors."
+            eyebrow="Our Manufacturing Approach"
+            title="Design, people and production working together."
+            text="Our in-house design team, manufacturing facilities and warehouse support a varied kidswear range and domestic supply operations."
           />
 
           <div className="mt-16 space-y-16">
@@ -105,30 +105,30 @@ function ManufacturingPage() {
         </div>
       </section>
 
-      {/* Factory Machinery & Standards Banner */}
+      {/* Manufacturing infrastructure */}
       <section className="border-t border-[#226192]/15 bg-[#EAE6DE] py-20">
         <div className="page-shell">
           <div className="border border-[#226192]/20 bg-[#FFFFFF] p-8 shadow-sm sm:p-12">
             <div className="grid gap-8 lg:grid-cols-3">
               <div>
                 <span className="font-mono text-xs font-bold text-[#EF8557]">01</span>
-                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold uppercase text-[#226192]">Sewing Machinery</h4>
+                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">Two operational factories</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
-                  Specialized Juki & Brother lockstitch, 4-thread overlock, flatlock and automatic collar machines for knits and wovens.
+                  Our two factories are equipped with modern machinery to support garment manufacturing processes.
                 </p>
               </div>
               <div>
                 <span className="font-mono text-xs font-bold text-[#EF8557]">02</span>
-                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold uppercase text-[#226192]">In-House Embellishment</h4>
+                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">In-house design team</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
-                  Multi-head Tajima embroidery and automated print stations — high-density, foil, flock and reactive botanical applications.
+                  Our dedicated team develops fresh designs every day, keeping the collection aligned with changing preferences.
                 </p>
               </div>
               <div>
                 <span className="font-mono text-xs font-bold text-[#EF8557]">03</span>
-                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold uppercase text-[#226192]">Zero-Toxicity & Metal Scan</h4>
+                <h4 className="font-['Space_Grotesk'] mt-2 text-lg font-bold text-[#226192]">Warehouse and supply</h4>
                 <p className="mt-2 text-xs leading-relaxed text-[#252525]/80">
-                  100% of finished apparel passes dual-head needle detection — zero metal contamination guaranteed for child safety.
+                  Our dedicated warehouse supports organized storage and inventory management for customers across India.
                 </p>
               </div>
             </div>

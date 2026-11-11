@@ -15,7 +15,8 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Let's Talk | Muthu International Private Ltd" },
       {
         property: "og:description",
-        content: "Our team welcomes product enquiries and opportunities for long-term business relationships.",
+        content:
+          "Our team welcomes product enquiries and opportunities for long-term business relationships.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -40,9 +41,9 @@ function ContactPage() {
     },
     {
       icon: Mail,
-      title: "Business Email",
-      lines: ["export@muthuinternational.com"],
-      sub: "Tech pack: development@muthuinternational.com",
+      title: "Official Company Email",
+      lines: ["MUTHUINTERNATIONALPVTLTD@GMAIL.COM"],
+      sub: "Stock bookings, wholesale & retail inquiries",
     },
     {
       icon: Clock,
@@ -90,18 +91,28 @@ function ContactPage() {
 
               <div className="mt-8 flex items-center gap-6 border-t border-[#226192]/20 pt-6">
                 <div className="text-center">
-                  <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">25+</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Years</p>
+                  <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">
+                    25+
+                  </p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">
+                    Years
+                  </p>
                 </div>
                 <div className="h-8 w-px bg-[#226192]/20" />
                 <div className="text-center">
                   <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">2</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Factories</p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">
+                    Factories
+                  </p>
                 </div>
                 <div className="h-8 w-px bg-[#226192]/20" />
                 <div className="text-center">
-                  <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">100+</p>
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">Employees</p>
+                  <p className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">
+                    100+
+                  </p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#252525]/70">
+                    Employees
+                  </p>
                 </div>
               </div>
             </div>
@@ -121,9 +132,13 @@ function ContactPage() {
                     <div className="flex size-10 items-center justify-center rounded-lg bg-[#226192]/5 text-[#EF8557] transition-colors group-hover:bg-[#EF8557] group-hover:text-white">
                       <Icon className="size-5" />
                     </div>
-                    <h3 className="mt-4 text-xs font-bold uppercase tracking-wider text-[#226192]">{c.title}</h3>
+                    <h3 className="mt-4 text-xs font-bold uppercase tracking-wider text-[#226192]">
+                      {c.title}
+                    </h3>
                     {c.lines.map((line) => (
-                      <p key={line} className="mt-1 text-sm text-[#252525]/85">{line}</p>
+                      <p key={line} className="mt-1 text-sm text-[#252525]/85">
+                        {line}
+                      </p>
                     ))}
                     <p className="mt-2 text-[11px] text-[#EF8557]">{c.sub}</p>
                   </div>
@@ -141,7 +156,9 @@ function ContactPage() {
             {/* Left info panel */}
             <div className="lg:col-span-4">
               <Reveal>
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">Send An Enquiry</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">
+                  Send An Enquiry
+                </span>
                 <h2 className="mt-3 font-['Space_Grotesk'] text-3xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-4xl">
                   Connect with our team.
                 </h2>
@@ -151,7 +168,9 @@ function ContactPage() {
                 </p>
 
                 <div className="mt-8 border-l-4 border-[#EF8557] bg-white p-5 shadow-sm">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">Our focus</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">
+                    Our focus
+                  </p>
                   <p className="mt-2 text-sm leading-relaxed text-[#252525]/80">
                     Kidswear manufacturing, fresh designs and quality-focused customer partnerships.
                   </p>
@@ -161,7 +180,9 @@ function ContactPage() {
                 <div className="mt-8 aspect-[4/3] overflow-hidden border border-[#226192]/10 bg-[#226192]/5">
                   <div className="flex size-full flex-col items-center justify-center text-center">
                     <MapPin className="size-8 text-[#226192]/30" />
-                    <p className="mt-2 text-xs font-bold uppercase tracking-wider text-[#226192]/50">Tirupur, Tamil Nadu</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wider text-[#226192]/50">
+                      Tirupur, Tamil Nadu
+                    </p>
                     <p className="mt-1 text-[10px] text-[#252525]/50">India's Knitwear Capital</p>
                   </div>
                 </div>
@@ -179,7 +200,9 @@ function ContactPage() {
                     <h3 className="font-['Space_Grotesk'] text-xl font-bold uppercase tracking-tight text-[#226192]">
                       Business Enquiry Form
                     </h3>
-                    <p className="text-xs text-[#252525]/60">We'll respond within 24–48 business hours</p>
+                    <p className="text-xs text-[#252525]/60">
+                      We'll respond within 24–48 business hours
+                    </p>
                   </div>
                 </div>
 

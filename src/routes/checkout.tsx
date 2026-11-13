@@ -56,7 +56,7 @@ function CheckoutPage() {
   const [email, setEmail] = useState(lastAddress?.email || "");
   const [addressLine1, setAddressLine1] = useState(lastAddress?.addressLine1 || "");
   const [addressLine2, setAddressLine2] = useState(lastAddress?.addressLine2 || "");
-  const [pinCode, setPinCode] = useState(lastAddress?.pinCode || "641602");
+  const [pinCode, setPinCode] = useState(lastAddress?.pinCode || "641603");
   const [city, setCity] = useState(lastAddress?.city || "Tirupur / Coimbatore");
   const [state, setState] = useState(lastAddress?.state || "Tamil Nadu");
   const [addressType, setAddressType] = useState<"Home" | "Work">("Home");
@@ -472,7 +472,7 @@ function CheckoutPage() {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+91 98401 23456"
+                    placeholder="+91 97878 06802"
                     className="h-10 rounded-none border-[#226192]/30 text-xs font-mono"
                   />
                 </div>

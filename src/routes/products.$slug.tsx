@@ -89,9 +89,9 @@ function ProductDetailPage() {
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
 
   // Geo-Shipping Pin Checker
-  const [checkPin, setCheckPin] = useState("641602"); // default Tirupur
+  const [checkPin, setCheckPin] = useState("641603"); // default Tirupur
   const [shippingResult, setShippingResult] = useState(() =>
-    calculateGeoShipping("641602", p.price),
+    calculateGeoShipping("641603", p.price),
   );
 
   // Reviews

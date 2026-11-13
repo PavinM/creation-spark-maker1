@@ -43,7 +43,7 @@ function CartPage() {
     discountAmount: number;
     message: string;
   } | null>(null);
-  const [pinCode, setPinCode] = useState("641602");
+  const [pinCode, setPinCode] = useState("641603");
 
   useEffect(() => {
     const handleUpdate = () => setCartItems(CartStore.getCart());

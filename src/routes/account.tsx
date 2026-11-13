@@ -4,7 +4,13 @@ import { Heart, Clock, FileText, Printer, Search, Send, ClipboardList, X } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  COMPANY_ADDRESS_FULL,
+  COMPANY_GSTIN,
+  COMPANY_LANDLINE,
+  COMPANY_NAME,
   COMPANY_OWNER_EMAIL,
+  COMPANY_PRIMARY_MOBILE,
+  COMPANY_SECONDARY_MOBILE,
   OrdersStore,
   WishlistStore,
   CartStore,
@@ -448,10 +454,12 @@ function BookingsPortalPage() {
                     Stock Booking & GST Price Slip
                   </h2>
                   <p className="text-xs text-[#252525]/75 mt-0.5">
-                    Muthu International Private Limited (Est. 2000)
+                    {COMPANY_NAME} (Est. 2000) · GST No: {COMPANY_GSTIN}
                   </p>
-                  <p className="text-[11px] text-[#252525]/60">
-                    Tirupur Garment Hub, Tamil Nadu – 641 602, India
+                  <p className="text-[11px] text-[#252525]/60">{COMPANY_ADDRESS_FULL}</p>
+                  <p className="text-[11px] text-[#252525]/70">
+                    Mob: {COMPANY_PRIMARY_MOBILE} / {COMPANY_SECONDARY_MOBILE} · Ph:{" "}
+                    {COMPANY_LANDLINE}
                   </p>
                   <p className="text-[11px] font-semibold text-[#226192]">
                     Owner Email: {COMPANY_OWNER_EMAIL}

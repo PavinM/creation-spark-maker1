@@ -1,7 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Clock, ArrowRight, Send } from "lucide-react";
 import { InquiryForm, Reveal } from "@/components/site";
-import { images } from "@/lib/content";
+import {
+  COMPANY_ADDRESS_CITY,
+  COMPANY_ADDRESS_LINE1,
+  COMPANY_CONTACT_PERSON,
+  COMPANY_GSTIN,
+  COMPANY_LANDLINE,
+  COMPANY_NAME,
+  COMPANY_OWNER_EMAIL,
+  COMPANY_PRIMARY_MOBILE,
+  COMPANY_SECONDARY_EMAIL,
+  COMPANY_SECONDARY_MOBILE,
+  images,
+} from "@/lib/content";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -30,19 +42,24 @@ function ContactPage() {
     {
       icon: MapPin,
       title: "Factory & Headquarters",
-      lines: ["Muthu International Private Ltd", "Tirupur, Tamil Nadu 641602, India"],
-      sub: "South India Textile Hub",
+      lines: [
+        COMPANY_NAME,
+        COMPANY_ADDRESS_LINE1,
+        COMPANY_ADDRESS_CITY,
+        `GST No: ${COMPANY_GSTIN}`,
+      ],
+      sub: "Avinashi Road, Tirupur Knitwear Hub",
     },
     {
       icon: Phone,
       title: "Phone & WhatsApp",
-      lines: ["+91 421 220 0000"],
-      sub: "Contact us about our kidswear range",
+      lines: [COMPANY_PRIMARY_MOBILE, COMPANY_SECONDARY_MOBILE, `Ph: ${COMPANY_LANDLINE}`],
+      sub: `${COMPANY_CONTACT_PERSON} · Direct Owner & Factory Desk`,
     },
     {
       icon: Mail,
       title: "Official Company Email",
-      lines: ["MUTHUINTERNATIONALPVTLTD@GMAIL.COM"],
+      lines: [COMPANY_OWNER_EMAIL, COMPANY_SECONDARY_EMAIL],
       sub: "Stock bookings, wholesale & retail inquiries",
     },
     {
@@ -181,9 +198,11 @@ function ContactPage() {
                   <div className="flex size-full flex-col items-center justify-center text-center">
                     <MapPin className="size-8 text-[#226192]/30" />
                     <p className="mt-2 text-xs font-bold uppercase tracking-wider text-[#226192]/50">
-                      Tirupur, Tamil Nadu
+                      Asher Nagar, Avinashi Road, Tirupur - 641603
                     </p>
-                    <p className="mt-1 text-[10px] text-[#252525]/50">India's Knitwear Capital</p>
+                    <p className="mt-1 text-[10px] text-[#252525]/50">
+                      14/2, North 1st Street · India&apos;s Knitwear Capital
+                    </p>
                   </div>
                 </div>
               </Reveal>

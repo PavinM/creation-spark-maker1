@@ -11,6 +11,7 @@ import bloomCraft from "@/assets/bloom-craft.jpg";
 import muthuLogo from "@/assets/muthu-logo.png";
 import muthuEmblem from "@/assets/muthu-emblem.png";
 import muthuWordmark from "@/assets/muthu-wordmark.png";
+import muthuCompanyLogo from "@/assets/muthu-company-logo.jpg";
 import manufacturingVideo from "@/assets/manufacturing-hero.mp4";
 import pageManufacturing from "@/assets/page-manufacturing.jpg";
 import pageAbout from "@/assets/page-about.jpg";
@@ -20,7 +21,17 @@ import pageDesign from "@/assets/page-design.jpg";
 import pageQuality from "@/assets/page-quality.jpg";
 
 import {
+  COMPANY_NAME,
+  COMPANY_CONTACT_PERSON,
   COMPANY_OWNER_EMAIL,
+  COMPANY_SECONDARY_EMAIL,
+  COMPANY_PRIMARY_MOBILE,
+  COMPANY_SECONDARY_MOBILE,
+  COMPANY_LANDLINE,
+  COMPANY_ADDRESS_LINE1,
+  COMPANY_ADDRESS_CITY,
+  COMPANY_ADDRESS_FULL,
+  COMPANY_GSTIN,
   type Brand,
   type BrandId,
   type ProductVariant,
@@ -55,7 +66,17 @@ import {
 } from "./ecommerce";
 
 export {
+  COMPANY_NAME,
+  COMPANY_CONTACT_PERSON,
   COMPANY_OWNER_EMAIL,
+  COMPANY_SECONDARY_EMAIL,
+  COMPANY_PRIMARY_MOBILE,
+  COMPANY_SECONDARY_MOBILE,
+  COMPANY_LANDLINE,
+  COMPANY_ADDRESS_LINE1,
+  COMPANY_ADDRESS_CITY,
+  COMPANY_ADDRESS_FULL,
+  COMPANY_GSTIN,
   type Brand,
   type BrandId,
   type ProductVariant,
@@ -103,6 +124,7 @@ export const images = {
   muthuLogo,
   muthuEmblem,
   muthuWordmark,
+  muthuCompanyLogo,
   manufacturingVideo,
   pageManufacturing,
   pageAbout,

@@ -2,7 +2,17 @@
 // Brands: Kids Korner (Flagship), X-Zone, H&D Club, Boy Munna
 // Main Business: Muthu International Private Limited (Est. 2000, Tirupur)
 
+export const COMPANY_NAME = "Muthu International Private Limited";
+export const COMPANY_CONTACT_PERSON = "M. Suresh";
 export const COMPANY_OWNER_EMAIL = "MUTHUINTERNATIONALPVTLTD@GMAIL.COM";
+export const COMPANY_SECONDARY_EMAIL = "cottoncastlesuresh@gmail.com";
+export const COMPANY_PRIMARY_MOBILE = "+91 97878 06802";
+export const COMPANY_SECONDARY_MOBILE = "+91 94432 38068";
+export const COMPANY_LANDLINE = "0421-4248068";
+export const COMPANY_ADDRESS_LINE1 = "14/2, Asher Nagar, North 1st Street, Avinashi Road";
+export const COMPANY_ADDRESS_CITY = "Tirupur - 641603, Tamil Nadu, India";
+export const COMPANY_ADDRESS_FULL = `${COMPANY_ADDRESS_LINE1}, ${COMPANY_ADDRESS_CITY}`;
+export const COMPANY_GSTIN = "33AARCM6569Q1ZD";
 
 export type BrandId = "kids-korner" | "x-zone" | "hd-club" | "boy-munna";
 

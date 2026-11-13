@@ -36,7 +36,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import {
+  COMPANY_ADDRESS_CITY,
+  COMPANY_ADDRESS_LINE1,
+  COMPANY_CONTACT_PERSON,
+  COMPANY_GSTIN,
+  COMPANY_LANDLINE,
+  COMPANY_NAME,
   COMPANY_OWNER_EMAIL,
+  COMPANY_PRIMARY_MOBILE,
+  COMPANY_SECONDARY_EMAIL,
+  COMPANY_SECONDARY_MOBILE,
   images,
   products,
   collections,
@@ -58,21 +67,22 @@ import {
 
 export const primaryNav = [
   { label: "Home", to: "/" },
-  { label: "Browse Catalog", to: "/products" },
-  { label: "New Arrivals", to: "/products", search: { filter: "new" } },
-  { label: "Best Sellers", to: "/products", search: { filter: "bestseller" } },
-  { label: "Wholesale & B2B", to: "/wholesale" },
-  { label: "Our Story", to: "/about" },
+  { label: "About", to: "/about" },
+  { label: "Our Brands", to: "/brands" },
+  { label: "Collections", to: "/collections" },
   { label: "Manufacturing", to: "/manufacturing" },
+  { label: "Our Expertise", to: "/oem-private-label" },
+  { label: "Quality", to: "/quality" },
 ] as const;
 
 export const secondaryNav = [
+  { label: "Browse Full Catalogue", to: "/products" },
   { label: "Kids Korner (Flagship)", to: "/brands/kids-korner" },
   { label: "X-Zone (Athleisure)", to: "/brands/x-zone" },
   { label: "H&D Club (Boutique)", to: "/brands/hd-club" },
   { label: "Boy Munna (Character)", to: "/brands/boy-munna" },
+  { label: "Wholesale & B2B", to: "/wholesale" },
   { label: "Design & Development", to: "/design-development" },
-  { label: "Quality Standards", to: "/quality" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact Us", to: "/contact" },
   { label: "My Bookings (Track by Email)", to: "/account" },
@@ -161,72 +171,76 @@ export function SiteHeader() {
         )}
       >
         <div className="page-shell flex items-center justify-between gap-3">
-          {/* Brand Logo - Bloom Editorial Style */}
+          {/* Company Logo */}
           <Link
             to="/"
-            className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
-            aria-label="Kids Korner & Muthu International Home"
+            className="group flex shrink-0 items-center transition-opacity hover:opacity-90"
+            aria-label="Muthu International Private Ltd Home"
           >
-            <span className="block h-9 w-11 sm:h-11 sm:w-13">
-              <img
-                src={images.muthuEmblem}
-                alt=""
-                aria-hidden="true"
-                className="brand-blue-filter size-full object-contain"
-                loading="eager"
-              />
-            </span>
-            <div className="flex flex-col">
-              <img
-                src={images.muthuWordmark}
-                alt="Muthu International"
-                className="brand-blue-filter h-auto w-24 object-contain sm:w-32"
-                loading="eager"
-              />
-              <span className="text-[9px] font-bold tracking-[0.18em] text-[#EF8557] uppercase">
-                Kids Korner · 4 Brands
-              </span>
-            </div>
+            <img
+              src={images.muthuCompanyLogo}
+              alt="Muthu International Private Ltd"
+              className="h-10 w-auto object-contain mix-blend-multiply sm:h-12"
+              loading="eager"
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-4 lg:flex" aria-label="Primary Navigation">
+          <nav
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
+            aria-label="Primary Navigation"
+          >
             <Link
               to="/"
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
-              activeProps={{ className: "text-[#226192] font-black" }}
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
               Home
             </Link>
 
             <Link
-              to="/products"
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
-              activeProps={{ className: "text-[#226192] font-black" }}
+              to="/about"
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
-              Browse Catalog
+              About
             </Link>
 
-            {/* Our Brands Mega-Dropdown */}
+            {/* Our Brands Mega-Dropdown (replaces Products) */}
             <div
               className="relative"
               ref={brandDropdownRef}
               onMouseEnter={() => setBrandDropdownOpen(true)}
               onMouseLeave={() => setBrandDropdownOpen(false)}
             >
-              <button
-                type="button"
-                className="flex items-center gap-1 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192] transition-colors hover:text-[#EF8557]"
-                onClick={() => setBrandDropdownOpen(!brandDropdownOpen)}
-                aria-expanded={brandDropdownOpen}
-              >
-                <span>Our Brands</span>
-                <ChevronDown className="size-3 text-[#EF8557]" />
-              </button>
+              <div className="flex items-center gap-0.5">
+                <Link
+                  to="/brands"
+                  className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+                  activeProps={{
+                    className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+                  }}
+                >
+                  Our Brands
+                </Link>
+                <button
+                  type="button"
+                  className="p-1 text-[#226192] transition-colors hover:text-[#EF8557]"
+                  onClick={() => setBrandDropdownOpen(!brandDropdownOpen)}
+                  aria-expanded={brandDropdownOpen}
+                  aria-label="Toggle Our Brands menu"
+                >
+                  <ChevronDown className="size-3 text-[#EF8557]" />
+                </button>
+              </div>
 
               {brandDropdownOpen && (
                 <div className="absolute left-0 top-full w-80 rounded-none border border-[#226192]/20 bg-[#FFFFFF] p-3 shadow-xl backdrop-blur-md animate-in fade-in-50 zoom-in-95">
-                  <div className="border-b border-[#226192]/10 pb-2 mb-2">
+                  <div className="mb-2 border-b border-[#226192]/10 pb-2">
                     <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#EF8557]">
                       Muthu International Portfolio
                     </p>
@@ -251,7 +265,7 @@ export function SiteHeader() {
                               {brand.badge}
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#252525]/70 line-clamp-1">
+                          <p className="line-clamp-1 text-[11px] text-[#252525]/70">
                             {brand.tagline}
                           </p>
                         </div>
@@ -259,12 +273,18 @@ export function SiteHeader() {
                       </Link>
                     ))}
                   </div>
-                  <div className="mt-2.5 border-t border-[#226192]/10 pt-2 text-center">
+                  <div className="mt-2.5 flex items-center justify-between border-t border-[#226192]/10 pt-2">
                     <Link
                       to="/brands"
                       className="text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:text-[#EF8557]"
                     >
-                      View All 4 Brand Stories →
+                      All 4 Brands →
+                    </Link>
+                    <Link
+                      to="/products"
+                      className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557] hover:text-[#226192]"
+                    >
+                      Full Catalogue →
                     </Link>
                   </div>
                 </div>
@@ -272,38 +292,48 @@ export function SiteHeader() {
             </div>
 
             <Link
-              to="/products"
-              search={{ filter: "new" }}
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
+              to="/collections"
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
-              New Arrivals
+              Collections
             </Link>
 
             <Link
-              to="/products"
-              search={{ filter: "bestseller" }}
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
+              to="/manufacturing"
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
-              Best Sellers
+              Manufacturing
             </Link>
 
             <Link
-              to="/wholesale"
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#EF8557] transition-colors hover:text-[#226192]"
+              to="/oem-private-label"
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
-              Wholesale & B2B
+              Our Expertise
             </Link>
 
             <Link
-              to="/about"
-              className="py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#226192]/80 transition-colors hover:text-[#226192]"
+              to="/quality"
+              className="whitespace-nowrap border-b-2 border-transparent py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#226192]/85 transition-colors hover:text-[#226192]"
+              activeProps={{
+                className: "text-[#226192] font-bold border-b-2 border-[#EF8557]",
+              }}
             >
-              About
+              Quality
             </Link>
           </nav>
 
-          {/* Right Action Icons: Search, Wishlist, Cart, Account */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right Action Icons: Search, Wishlist, Booking List, Account */}
+          <div className="flex items-center gap-2">
             {/* Live Search Trigger */}
             <button
               type="button"
@@ -332,11 +362,11 @@ export function SiteHeader() {
             {/* Booking List Link */}
             <Link
               to="/cart"
-              className="group relative flex h-9 items-center gap-2 border border-[#226192] bg-[#226192] px-2.5 sm:px-3 text-[#FFFFFF] transition-all hover:border-[#EF8557] hover:bg-[#EF8557]"
+              className="group relative flex h-9 items-center gap-2 border border-[#226192] bg-[#226192] px-2.5 text-[#FFFFFF] transition-all hover:border-[#EF8557] hover:bg-[#EF8557]"
               aria-label={`Booking List (${cartCount} items)`}
             >
               <ClipboardList className="size-4" />
-              <span className="hidden text-[11px] font-bold uppercase tracking-wider sm:inline">
+              <span className="hidden text-[11px] font-bold uppercase tracking-wider xl:inline">
                 Booking List
               </span>
               <span className="flex size-5 items-center justify-center rounded-full bg-[#FFFFFF] text-[10px] font-extrabold text-[#226192] group-hover:text-[#EF8557]">
@@ -352,14 +382,6 @@ export function SiteHeader() {
               aria-label="Track My Bookings"
             >
               <Package className="size-4" />
-            </Link>
-
-            <Link
-              to="/admin"
-              className="hidden xl:inline-flex items-center gap-1 border border-[#226192]/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:bg-[#226192] hover:text-[#FFFFFF] transition-colors"
-              title="Owner Stock & Booking Admin Console"
-            >
-              <span>Owner Admin</span>
             </Link>
 
             {/* Mobile Menu Button */}
@@ -587,19 +609,11 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* 1. Parent Business & Brand Heritage */}
           <div>
-            <div className="flex items-center gap-3">
-              <span className="relative block h-14 w-18">
-                <img
-                  src={images.muthuEmblem}
-                  alt="Muthu International Emblem"
-                  className="size-full object-contain brightness-0 invert opacity-90"
-                  loading="lazy"
-                />
-              </span>
+            <div className="inline-block border border-[#FFFFFF]/20 bg-[#EAE6DE] px-3 py-2 shadow-sm">
               <img
-                src={images.muthuWordmark}
-                alt="Muthu International"
-                className="h-auto w-32 object-contain brightness-0 invert opacity-80"
+                src={images.muthuCompanyLogo}
+                alt={COMPANY_NAME}
+                className="h-11 w-auto object-contain mix-blend-multiply"
                 loading="lazy"
               />
             </div>
@@ -609,18 +623,29 @@ export function SiteFooter() {
               100 dedicated team members.
             </p>
             <div className="mt-5 border-t border-[#FFFFFF]/15 pt-4 text-xs">
-              <span className="block font-bold text-[#EF8557] uppercase tracking-wider">
+              <span className="block font-bold uppercase tracking-wider text-[#EF8557]">
                 Corporate & Owner Stock Desk:
               </span>
-              <p className="text-[#EAE6DE]/75 mt-1">
-                Muthu International Private Limited
+              <p className="mt-1 font-semibold text-[#FFFFFF]">{COMPANY_NAME}</p>
+              <p className="mt-0.5 text-[#EAE6DE]/80">
+                {COMPANY_ADDRESS_LINE1},
                 <br />
-                Garment Hub, Tirupur – 641 602, Tamil Nadu, India.
+                {COMPANY_ADDRESS_CITY}
               </p>
-              <p className="mt-2 text-[#EAE6DE]/90 font-semibold break-all">
+              <p className="mt-1.5 font-mono text-[11px] text-[#EAE6DE]/85">
+                GST No: {COMPANY_GSTIN}
+              </p>
+              <p className="mt-1.5 text-[#EAE6DE]/85">
+                Contact: <strong>{COMPANY_CONTACT_PERSON}</strong>
+              </p>
+              <p className="mt-0.5 text-[#EAE6DE]/85">
+                Mob: {COMPANY_PRIMARY_MOBILE} / {COMPANY_SECONDARY_MOBILE}
+              </p>
+              <p className="mt-0.5 text-[#EAE6DE]/80">Ph: {COMPANY_LANDLINE}</p>
+              <p className="mt-1.5 break-all font-semibold text-[#EAE6DE]/90">
                 Email: {COMPANY_OWNER_EMAIL}
               </p>
-              <p className="mt-1 text-[#EAE6DE]/75">Phone: +91 98401 23456</p>
+              <p className="mt-0.5 break-all text-[#EAE6DE]/75">{COMPANY_SECONDARY_EMAIL}</p>
             </div>
           </div>
 
@@ -1655,7 +1680,7 @@ export function InquiryForm({
           required
           type="tel"
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
-          placeholder="+91 98401 23456"
+          placeholder="+91 97878 06802"
         />
       </label>
 

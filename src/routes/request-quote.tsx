@@ -1,5 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, ShieldCheck, Clock, FileSpreadsheet, Send, MessageSquare, Phone, Sparkles, Building, Layers } from "lucide-react";
+import {
+  Check,
+  ShieldCheck,
+  Clock,
+  FileSpreadsheet,
+  Send,
+  MessageSquare,
+  Phone,
+  Sparkles,
+  Building,
+  Layers,
+} from "lucide-react";
 import { useState } from "react";
 import { InquiryForm, Reveal } from "@/components/site";
 import { images } from "@/lib/content";
@@ -16,7 +27,8 @@ export const Route = createFileRoute("/request-quote")({
       { property: "og:title", content: "B2B Kidswear RFQ & Quotation | Muthu International" },
       {
         property: "og:description",
-        content: "Transparent costing, rapid sampling, and export-grade production from Tirupur, India.",
+        content:
+          "Transparent costing, rapid sampling, and export-grade production from Tirupur, India.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,9 +47,24 @@ const garmentCategories = [
 ];
 
 const volumeTiers = [
-  { tier: "Sampling / Pilot", range: "100 - 250 pcs", turnaround: "7-10 Days", note: "Best for test drops" },
-  { tier: "Brand Run", range: "500 - 2,500 pcs", turnaround: "20-25 Days", note: "Optimized unit cost" },
-  { tier: "Volume Export", range: "5,000+ pcs", turnaround: "30-40 Days", note: "Containerized pricing" },
+  {
+    tier: "Sampling / Pilot",
+    range: "100 - 250 pcs",
+    turnaround: "7-10 Days",
+    note: "Best for test drops",
+  },
+  {
+    tier: "Brand Run",
+    range: "500 - 2,500 pcs",
+    turnaround: "20-25 Days",
+    note: "Optimized unit cost",
+  },
+  {
+    tier: "Volume Export",
+    range: "5,000+ pcs",
+    turnaround: "30-40 Days",
+    note: "Containerized pricing",
+  },
 ];
 
 function RequestQuotePage() {
@@ -60,7 +87,9 @@ function RequestQuotePage() {
               <span className="text-[#EF8557]">Manufacturing Quote.</span>
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-              Partner directly with our Tirupur manufacturing facility. Share your garment specifications, tech packs, or volume requirements for a detailed line-item cost proposal within 24 hours.
+              Partner directly with our Tirupur manufacturing facility. Share your garment
+              specifications, tech packs, or volume requirements for a detailed line-item cost
+              proposal within 24 hours.
             </p>
           </Reveal>
         </div>
@@ -74,7 +103,9 @@ function RequestQuotePage() {
             <aside className="space-y-8 lg:col-span-5">
               {/* Interactive Scope Helper */}
               <div className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 shadow-sm sm:p-8">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Step 1: Select Scope</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+                  Step 1: Select Scope
+                </span>
                 <h3 className="mt-2 font-['Space_Grotesk'] text-xl font-bold text-[#0F172A]">
                   Primary Product Category
                 </h3>
@@ -112,7 +143,9 @@ function RequestQuotePage() {
                     >
                       <div className="flex items-center justify-between">
                         <strong className="text-xs font-bold text-[#0F172A]">{t.tier}</strong>
-                        <span className="font-mono text-xs font-bold text-[#226192]">{t.range}</span>
+                        <span className="font-mono text-xs font-bold text-[#226192]">
+                          {t.range}
+                        </span>
                       </div>
                       <div className="mt-1 flex items-center justify-between text-[11px] text-[#64748B]">
                         <span>Turnaround: {t.turnaround}</span>
@@ -130,7 +163,9 @@ function RequestQuotePage() {
                     <Clock className="size-5" />
                   </div>
                   <div>
-                    <strong className="block text-sm font-bold text-[#0F172A]">24-Hour Quote SLA</strong>
+                    <strong className="block text-sm font-bold text-[#0F172A]">
+                      24-Hour Quote SLA
+                    </strong>
                     <span className="text-xs text-[#64748B]">Guaranteed business day response</span>
                   </div>
                 </div>
@@ -151,11 +186,21 @@ function RequestQuotePage() {
                 </div>
 
                 <div className="mt-6 rounded-xl bg-[#F8FAFC] p-4 border border-[#E2E8F0]">
-                  <span className="block text-[10px] font-bold uppercase tracking-wider text-[#94A3B8]">Direct Desk</span>
-                  <div className="mt-1 font-mono text-xs font-semibold text-[#0F172A]">
-                    exports@muthuinternational.com
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-[#94A3B8]">
+                    Direct Desk
+                  </span>
+                  <div className="mt-1 font-mono text-xs font-semibold text-[#0F172A] break-all">
+                    MUTHUINTERNATIONALPVTLTD@GMAIL.COM
                   </div>
-                  <div className="text-xs text-[#64748B]">+91 98422 12345 (Tirupur HQ)</div>
+                  <div className="text-[11px] font-mono text-[#475569] mt-0.5">
+                    cottoncastlesuresh@gmail.com
+                  </div>
+                  <div className="text-xs text-[#64748B] mt-1">
+                    +91 97878 06802 / +91 94432 38068 (Ph: 0421-4248068)
+                  </div>
+                  <div className="text-[11px] text-[#64748B] mt-1">
+                    14/2, Asher Nagar, North 1st Street, Avinashi Road, Tirupur - 641603
+                  </div>
                 </div>
               </div>
             </aside>
@@ -164,12 +209,16 @@ function RequestQuotePage() {
             <div className="lg:col-span-7">
               <Reveal className="rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 shadow-lg sm:p-10">
                 <div className="border-b border-[#E2E8F0] pb-6">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">Step 2: Submit Details</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+                    Step 2: Submit Details
+                  </span>
                   <h2 className="mt-2 font-['Space_Grotesk'] text-2xl font-bold text-[#0F172A]">
                     Garment Project Specifications
                   </h2>
                   <p className="mt-1 text-xs text-[#64748B]">
-                    Selected Category: <strong className="text-[#226192]">{selectedCategory}</strong> • Volume: <strong className="text-[#226192]">{selectedTier}</strong>
+                    Selected Category:{" "}
+                    <strong className="text-[#226192]">{selectedCategory}</strong> • Volume:{" "}
+                    <strong className="text-[#226192]">{selectedTier}</strong>
                   </p>
                 </div>
 

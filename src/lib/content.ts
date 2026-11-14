@@ -11,7 +11,7 @@ import bloomCraft from "@/assets/bloom-craft.jpg";
 import muthuLogo from "@/assets/muthu-logo.png";
 import muthuEmblem from "@/assets/muthu-emblem.png";
 import muthuWordmark from "@/assets/muthu-wordmark.png";
-import muthuCompanyLogo from "@/assets/muthu-company-logo.jpg";
+import muthuCompanyLogo from "@/assets/muthu-company-logo.png";
 import manufacturingVideo from "@/assets/manufacturing-hero.mp4";
 import pageManufacturing from "@/assets/page-manufacturing.jpg";
 import pageAbout from "@/assets/page-about.jpg";

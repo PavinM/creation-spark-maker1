@@ -16,7 +16,8 @@ export const Route = createFileRoute("/collections/")({
       { property: "og:title", content: "Curated Kidswear Collections | Muthu International" },
       {
         property: "og:description",
-        content: "High-fashion lookbook showcasing contemporary children's apparel, coord sets, and nightwear.",
+        content:
+          "High-fashion lookbook showcasing contemporary children's apparel, coord sets, and nightwear.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,23 +33,33 @@ function CollectionsPage() {
       <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-20 sm:pt-36 sm:pb-28 text-center">
         <div className="page-shell relative z-10">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-              <span className="size-2 rounded-full bg-[#EF8557]" />
-              <span>Seasonal Curations</span>
+            <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 bg-[#EF8557]" />
+              <span>Seasonal Curations · Tirupur Design Atelier</span>
             </div>
-            <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl lg:text-7xl">
               Curated Kidswear
               <br />
               <span className="text-[#EF8557]">Stories.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-              Each collection is an expressive narrative combining hand-drawn graphic stories, ergonomic silhouettes, and certified skin-safe fabrics.
+              Each collection is an expressive narrative combining hand-drawn graphic stories,
+              ergonomic silhouettes, and certified skin-safe fabrics.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+              <Button
+                asChild
+                size="lg"
+                className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]"
+              >
                 <Link to="/products">Browse Full Garment Catalog</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+              >
                 <Link to="/gallery">View Editorial Lookbook Gallery</Link>
               </Button>
             </div>
@@ -68,16 +79,18 @@ function CollectionsPage() {
           <div className="mt-16 space-y-16">
             {collections.map((col, index) => (
               <Reveal key={col.slug}>
-                <div className={`overflow-hidden rounded-3xl border border-[#E2E8F0] bg-[#FFFFFF] shadow-sm transition-all duration-300 hover:shadow-xl lg:grid lg:grid-cols-12 lg:items-center ${
-                  index % 2 === 1 ? "lg:direction-rtl" : ""
-                }`}>
+                <div
+                  className={`overflow-hidden border border-[#226192]/20 bg-[#FFFFFF] shadow-sm transition-all duration-300 hover:shadow-xl lg:grid lg:grid-cols-12 lg:items-center ${
+                    index % 2 === 1 ? "lg:direction-rtl" : ""
+                  }`}
+                >
                   <div className="relative aspect-[4/3] overflow-hidden lg:col-span-6">
                     <img
                       src={col.image}
                       alt={col.name}
                       className="size-full object-cover transition-transform duration-700 hover:scale-105"
                     />
-                    <div className="absolute top-4 left-4 rounded-full bg-[#0F172A]/80 px-3 py-1 text-xs font-bold text-[#FFFFFF] backdrop-blur-sm">
+                    <div className="absolute top-4 left-4 bg-[#226192] px-3 py-1 text-xs font-bold text-[#FFFFFF]">
                       {col.season}
                     </div>
                   </div>
@@ -89,9 +102,7 @@ function CollectionsPage() {
                     <h2 className="mt-2 font-['Space_Grotesk'] text-3xl font-bold text-[#0F172A]">
                       {col.name}
                     </h2>
-                    <p className="mt-4 text-sm leading-relaxed text-[#64748B]">
-                      {col.description}
-                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-[#64748B]">{col.description}</p>
 
                     <div className="mt-6 border-t border-[#E2E8F0] pt-6">
                       <span className="block text-xs font-bold uppercase tracking-wider text-[#0F172A]">
@@ -104,13 +115,24 @@ function CollectionsPage() {
                     </div>
 
                     <div className="mt-8 flex items-center gap-4">
-                      <Button asChild className="border border-[#226192] bg-[#226192] text-[#FFFFFF] hover:bg-[#1B4E75]">
-                        <Link to="/collections/$slug" params={{ slug: col.slug }} className="flex items-center gap-2">
+                      <Button
+                        asChild
+                        className="border border-[#226192] bg-[#226192] text-[#FFFFFF] hover:bg-[#1B4E75]"
+                      >
+                        <Link
+                          to="/collections/$slug"
+                          params={{ slug: col.slug }}
+                          className="flex items-center gap-2"
+                        >
                           <span>Explore Capsule</span>
                           <ArrowRight className="size-4" />
                         </Link>
                       </Button>
-                      <Button asChild variant="outline" className="border-[#E2E8F0] text-[#0F172A] hover:bg-[#FAF8F5]">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-[#E2E8F0] text-[#0F172A] hover:bg-[#FAF8F5]"
+                      >
                         <Link to="/request-quote">Request Line Sheet</Link>
                       </Button>
                     </div>
@@ -135,11 +157,17 @@ function CollectionsPage() {
                   Custom Collection Development for Your Brand
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#64748B]">
-                  Looking for exclusive silhouettes not shown here? Our design studio creates customized private label collections matched to your brand’s demographic and price targets.
+                  Looking for exclusive silhouettes not shown here? Our design studio creates
+                  customized private label collections matched to your brand’s demographic and price
+                  targets.
                 </p>
               </div>
               <div className="lg:col-span-4 lg:text-right">
-                <Button asChild size="lg" className="border border-[#226192] bg-[#226192] text-[#FFFFFF] hover:bg-[#1B4E75]">
+                <Button
+                  asChild
+                  size="lg"
+                  className="border border-[#226192] bg-[#226192] text-[#FFFFFF] hover:bg-[#1B4E75]"
+                >
                   <Link to="/oem-private-label">Inquire About Custom Drops</Link>
                 </Button>
               </div>

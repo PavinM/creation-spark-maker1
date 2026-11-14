@@ -245,7 +245,7 @@ function ProductDetailPage() {
                     src={selectedImage}
                     width={1024}
                     height={1280}
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-crosshair"
+                    className="size-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-crosshair"
                     alt={p.name}
                   />
                   <div className="absolute left-3 top-3 border border-[#226192] bg-[#226192] px-2.5 py-1 text-[10px] font-bold text-[#FFFFFF] uppercase tracking-wider">
@@ -474,55 +474,59 @@ function ProductDetailPage() {
                 </div>
 
                 {/* Quantity and Booking Actions */}
-                <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                  <div className="flex items-center border border-[#226192]/30 bg-[#FFFFFF] shrink-0">
+                <div className="mt-5 space-y-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex items-center border border-[#226192]/30 bg-[#FFFFFF] shrink-0 h-11">
+                      <button
+                        type="button"
+                        onClick={() => setQty(Math.max(1, qty - 1))}
+                        className="px-3.5 h-full text-base font-bold text-[#226192] hover:bg-[#EAE6DE] transition-colors"
+                        aria-label="Decrease quantity"
+                      >
+                        -
+                      </button>
+                      <span className="w-9 text-center text-sm font-bold">{qty}</span>
+                      <button
+                        type="button"
+                        onClick={() => setQty(Math.min(liveStock, qty + 1))}
+                        className="px-3.5 h-full text-base font-bold text-[#226192] hover:bg-[#EAE6DE] transition-colors"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <Button
+                      onClick={handleAddToCart}
+                      disabled={liveStock === 0}
+                      className="flex-1 min-w-0 rounded-none border-2 border-[#226192] bg-[#226192] h-11 px-3 sm:px-4 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#18466b] transition-all"
+                    >
+                      {addedToast ? "✓ Reserved in List!" : "Add to Booking List"}
+                    </Button>
+
                     <button
                       type="button"
-                      onClick={() => setQty(Math.max(1, qty - 1))}
-                      className="px-3 py-2 text-base font-bold text-[#226192] hover:bg-[#EAE6DE]"
-                      aria-label="Decrease quantity"
+                      onClick={handleToggleWishlist}
+                      className={`size-11 shrink-0 flex items-center justify-center border transition-all ${
+                        isWishlisted
+                          ? "border-[#EF8557] bg-[#EF8557] text-[#FFFFFF]"
+                          : "border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                      }`}
+                      title={isWishlisted ? "In Wishlist" : "Save to Wishlist"}
+                      aria-label="Save to Wishlist"
                     >
-                      -
-                    </button>
-                    <span className="px-4 py-2 text-sm font-bold">{qty}</span>
-                    <button
-                      type="button"
-                      onClick={() => setQty(Math.min(liveStock, qty + 1))}
-                      className="px-3 py-2 text-base font-bold text-[#226192] hover:bg-[#EAE6DE]"
-                      aria-label="Increase quantity"
-                    >
-                      +
+                      <Heart className={`size-5 ${isWishlisted ? "fill-current" : ""}`} />
                     </button>
                   </div>
 
                   <Button
-                    onClick={handleAddToCart}
-                    disabled={liveStock === 0}
-                    className="flex-1 rounded-none border border-[#226192] bg-[#226192] h-11 font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557] hover:border-[#EF8557]"
-                  >
-                    {addedToast ? "✓ Reserved in List!" : "Add to Booking List"}
-                  </Button>
-
-                  <Button
                     onClick={handleBuyNow}
                     disabled={liveStock === 0}
-                    className="rounded-none border border-[#EF8557] bg-[#EF8557] h-11 px-6 font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557]/90"
+                    className="w-full rounded-none border border-[#EF8557] bg-[#EF8557] h-12 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] hover:bg-[#d97346] shadow-sm flex items-center justify-center gap-2 transition-all"
                   >
-                    Book Stock Now
+                    <span>BOOK STOCK NOW</span>
+                    <span className="text-base font-bold">→</span>
                   </Button>
-
-                  <button
-                    type="button"
-                    onClick={handleToggleWishlist}
-                    className={`flex size-11 items-center justify-center border transition-all ${
-                      isWishlisted
-                        ? "border-[#EF8557] bg-[#EF8557] text-[#FFFFFF]"
-                        : "border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
-                    }`}
-                    title={isWishlisted ? "In Wishlist" : "Save to Wishlist"}
-                  >
-                    <Heart className={`size-5 ${isWishlisted ? "fill-current" : ""}`} />
-                  </button>
                 </div>
 
                 <p className="mt-3 text-[11px] text-[#226192]/80 font-medium">

@@ -4,15 +4,17 @@ import {
   ArrowRight,
   Filter,
   Sparkles,
-  Star,
-  SlidersHorizontal,
   Check,
   ShieldCheck,
   Package,
+  ClipboardList,
+  Compass,
+  Layers,
+  Award,
 } from "lucide-react";
 import { useState } from "react";
-import { ProductCard, QuickViewModal, Reveal, SectionHeading } from "@/components/site";
-import { brandsList, getBrandById, products, type Product } from "@/lib/content";
+import { ProductCard, QuickViewModal, Reveal } from "@/components/site";
+import { brandsList, getBrandById, products, images, CartStore, type Product } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/brands/$slug")({
@@ -45,6 +47,14 @@ function BrandLandingPage() {
   const [sortBy, setSortBy] = useState<string>("featured");
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
 
+  // Kids Korner Lookbook Switcher State
+  const [kidsKornerLook, setKidsKornerLook] = useState<"botanical" | "sunset">("botanical");
+  const [kidsKornerAdded, setKidsKornerAdded] = useState(false);
+
+  // Boy Munna Costume Switcher State
+  const [munnaCostume, setMunnaCostume] = useState<"safari" | "space" | "dino">("safari");
+  const [munnaAdded, setMunnaAdded] = useState(false);
+
   // Products belonging to this brand
   const brandProducts = products.filter((p) => p.brandId === brand.id);
 
@@ -66,16 +76,84 @@ function BrandLandingPage() {
     if (sortBy === "price-high") return b.price - a.price;
     if (sortBy === "rating") return b.rating - a.rating;
     if (sortBy === "discount") return b.discountPercent - a.discountPercent;
-    return 0; // default featured
+    return 0;
   });
 
-  const brandNewArrivals = brandProducts.filter((p) => p.isNewArrival);
-  const brandBestSellers = brandProducts.filter((p) => p.isBestSeller);
+  // Handle Kids Korner Look Add
+  const handleAddKidsKornerLook = () => {
+    if (kidsKornerLook === "botanical") {
+      CartStore.addItem({
+        productId: "kk-cord-881",
+        variantId: "kk-cord-881-2-3y",
+        productSlug: "botanical-summer-co-ord-set",
+        productName: "Kids Korner Botanical Summer Co-ord Set",
+        brandId: "kids-korner",
+        brandName: "Kids Korner",
+        sku: "KK-CORD-881",
+        size: "2-3Y",
+        colour: "Oat & Olive",
+        colourHex: "#8B9A6F",
+        price: 499,
+        mrp: 799,
+        quantity: 1,
+        maxStock: 25,
+        image: images.detail,
+      });
+    } else {
+      CartStore.addItem({
+        productId: "kk-sunset-902",
+        variantId: "kk-sunset-902-3-4y",
+        productSlug: "kids-korner-organic-everyday-crew-tees",
+        productName: "Kids Korner Sunset Ribbed Daywear Set",
+        brandId: "kids-korner",
+        brandName: "Kids Korner",
+        sku: "KK-SUNSET-902",
+        size: "3-4Y",
+        colour: "Warm Terracotta",
+        colourHex: "#C86D51",
+        price: 549,
+        mrp: 849,
+        quantity: 1,
+        maxStock: 20,
+        image: images.printedSet,
+      });
+    }
+    setKidsKornerAdded(true);
+    setTimeout(() => setKidsKornerAdded(false), 2500);
+  };
+
+  // Handle Boy Munna Costume Add
+  const handleAddMunnaCostume = () => {
+    const titles = {
+      safari: "Munna Jungle Safari Graphic Tee & Cargo Shorts",
+      space: "Munna Rocket Launch Glow-in-the-Dark Playset",
+      dino: "Munna Dino Roar Heavyweight Jogger Set",
+    };
+    CartStore.addItem({
+      productId: `munna-${munnaCostume}`,
+      variantId: `munna-${munnaCostume}-3y`,
+      productSlug: "boy-munna-dino-explorer-playset",
+      productName: titles[munnaCostume],
+      brandId: "boy-munna",
+      brandName: "Boy Munna",
+      sku: `BM-${munnaCostume.toUpperCase()}-01`,
+      size: "3Y",
+      colour: "Character Print",
+      colourHex: "#EF8557",
+      price: 499,
+      mrp: 799,
+      quantity: 1,
+      maxStock: 30,
+      image: images.hero,
+    });
+    setMunnaAdded(true);
+    setTimeout(() => setMunnaAdded(false), 2500);
+  };
 
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       {/* ═══ 1. BRAND HERO BANNER ═══ */}
-      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-16 sm:pt-36 sm:pb-24">
+      <section className="relative overflow-hidden border-b border-[#D8D2C5] bg-[#EAE6DE] pt-28 pb-16 sm:pt-36 sm:pb-24">
         <div className="page-shell">
           <div className="mb-6 flex items-center justify-between">
             <Link
@@ -98,7 +176,7 @@ function BrandLandingPage() {
                   <p className="label-track text-[#EF8557]">{brand.role}</p>
                 </div>
 
-                <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                <h1 className="mt-4 font-serif text-4xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
                   {brand.name}
                 </h1>
 
@@ -119,7 +197,7 @@ function BrandLandingPage() {
                     Tirupur Factory Direct
                   </span>
                   <span className="border border-[#226192]/25 bg-[#FFFFFF] px-3 py-1 text-[#226192]">
-                    100% Skin-Safe
+                    100% GOTS Bio-Wash Cotton
                   </span>
                 </div>
               </Reveal>
@@ -142,39 +220,214 @@ function BrandLandingPage() {
         </div>
       </section>
 
-      {/* ═══ 2. BRAND STORYTELLING SECTION (SPECIAL EMPHASIS FOR BOY MUNNA) ═══ */}
-      <section className="border-b border-[#226192]/20 bg-[#FFFFFF] py-16 sm:py-20">
-        <div className="page-shell">
-          <div className="max-w-3xl">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
-              Brand Story & Philosophy
-            </span>
-            <h2 className="mt-2 font-['Space_Grotesk'] text-2xl font-bold uppercase text-[#226192] sm:text-3xl">
-              {brand.id === "boy-munna"
-                ? "The Story of Munna — Our Original Registered Character"
-                : `The Craftsmanship Behind ${brand.name}`}
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#252525]/85 sm:text-base">
-              {brand.story}
-            </p>
-
-            {brand.id === "boy-munna" && (
-              <div className="mt-6 border-l-2 border-[#EF8557] bg-[#EAE6DE]/40 p-4 text-xs text-[#252525]/85">
-                <p className="font-semibold text-[#226192]">
-                  Registered Trademark & Intellectual Property Notice:
-                </p>
-                <p className="mt-1">
-                  Munna is an original character registered by our business. Every T-shirt, coord
-                  set, and comic illustration is officially produced under authorized rights from
-                  our Tirupur studio.
-                </p>
+      {/* ═══ 2. KIDS KORNER OUTFIT-SWITCHING COORDINATOR ═══ */}
+      {brand.id === "kids-korner" && (
+        <section className="w-full py-16 px-4 sm:px-8 bg-white border-b border-[#D8D2C5]">
+          <div className="max-w-7xl mx-auto flex flex-col gap-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#EF8557]">
+                  Interactive Lookbook
+                </span>
+                <h2 className="font-serif text-3xl sm:text-4xl text-[#252525] mt-1">
+                  Outfit-Switching Coordinator
+                </h2>
               </div>
-            )}
+              <div className="flex items-center bg-[#EAE6DE] p-1 text-xs font-bold uppercase">
+                <button
+                  type="button"
+                  onClick={() => setKidsKornerLook("botanical")}
+                  className={`px-4 py-2 transition-all ${
+                    kidsKornerLook === "botanical"
+                      ? "bg-[#226192] text-white shadow-sm"
+                      : "text-[#252525] hover:text-[#226192]"
+                  }`}
+                >
+                  Botanical Garden Co-ord
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setKidsKornerLook("sunset")}
+                  className={`px-4 py-2 transition-all ${
+                    kidsKornerLook === "sunset"
+                      ? "bg-[#226192] text-white shadow-sm"
+                      : "text-[#252525] hover:text-[#226192]"
+                  }`}
+                >
+                  Sunset Ribbed Daywear
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#F7F3EB] p-8 border border-[#D8D2C5]">
+              <div className="lg:col-span-7 aspect-[16/10] overflow-hidden bg-white shadow-md">
+                <img
+                  src={kidsKornerLook === "botanical" ? images.detail : images.printedSet}
+                  alt="Kids Korner Coordinator Set"
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+              </div>
+              <div className="lg:col-span-5 flex flex-col gap-6">
+                <span className="text-xs font-mono text-[#717880] uppercase">
+                  {kidsKornerLook === "botanical" ? "SKU: KK-CORD-881" : "SKU: KK-SUNSET-902"} ·
+                  Stock: In-Stock Tirupur
+                </span>
+                <h3 className="font-serif text-3xl text-[#252525]">
+                  {kidsKornerLook === "botanical"
+                    ? "Botanical Summer Co-ord Set"
+                    : "Sunset Ribbed Daywear Set"}
+                </h3>
+                <p className="text-sm text-[#41474f] leading-relaxed">
+                  {kidsKornerLook === "botanical"
+                    ? "Smocked Top + Relaxed Trouser in 100% GOTS certified organic combed cotton with natural shell buttons."
+                    : "Ultra-breathable rib-knit tee and elasticated lounge bottoms crafted from 180 GSM bio-wash cotton."}
+                </p>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-2xl font-bold text-[#252525]">
+                    {kidsKornerLook === "botanical" ? "₹499" : "₹549"}
+                  </span>
+                  <span className="text-xs uppercase bg-[#EF8557]/10 text-[#EF8557] px-2 py-1 font-bold">
+                    Wholesale Pack Available
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddKidsKornerLook}
+                  className="w-full bg-[#EF8557] text-white py-3.5 text-xs uppercase tracking-widest font-bold hover:bg-[#d97346] transition-colors flex items-center justify-center gap-2 shadow-sm"
+                >
+                  <ClipboardList className="size-4" />
+                  <span>
+                    {kidsKornerAdded ? "Added to Booking List ✓" : "Add Coordinate Set to Booking"}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ 3. BOY MUNNA CHARACTER COSTUME SWITCHER ═══ */}
+      {brand.id === "boy-munna" && (
+        <section className="w-full bg-white py-16 px-4 sm:px-8 border-b border-[#D8D2C5]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#EF8557]">
+                Original Character IP
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#252525] mt-1">
+                Interactive Character Outfit Switcher
+              </h2>
+              <p className="text-xs text-[#717880] mt-1 uppercase tracking-wider">
+                Select Munna&apos;s adventure persona to preview garment details
+              </p>
+            </div>
+
+            <div className="flex justify-center gap-2 mb-8">
+              {(
+                [
+                  { id: "safari", label: "Safari Explorer" },
+                  { id: "space", label: "Space Cadet" },
+                  { id: "dino", label: "Dino Tracker" },
+                ] as const
+              ).map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setMunnaCostume(c.id)}
+                  className={`px-4 py-2 text-xs font-bold uppercase transition-all ${
+                    munnaCostume === c.id
+                      ? "bg-[#226192] text-white shadow-sm"
+                      : "bg-[#F7F3EB] text-[#252525] hover:bg-[#EAE6DE]"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#F7F3EB] p-8 border border-[#D8D2C5]">
+              <div className="aspect-[4/3] bg-white overflow-hidden shadow-md">
+                <img
+                  src={images.hero}
+                  alt="Munna Character Persona"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <span className="text-xs font-bold text-[#EF8557] uppercase">
+                  Active Costume Set
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[#252525] mt-1">
+                  {munnaCostume === "safari" && "Munna Jungle Safari Graphic Tee & Cargo Shorts"}
+                  {munnaCostume === "space" && "Munna Rocket Launch Glow-in-the-Dark Playset"}
+                  {munnaCostume === "dino" && "Munna Dino Roar Heavyweight Jogger Set"}
+                </h3>
+                <p className="text-sm text-[#717880] mt-2 leading-relaxed">
+                  Engineered with 180 GSM combed organic cotton, featuring adjustable waistbands,
+                  scratch-free tagless necklines, and vibrant non-toxic water eco-inks.
+                </p>
+                <div className="mt-6 flex items-baseline gap-3">
+                  <span className="text-2xl font-bold text-[#252525]">₹499</span>
+                  <span className="text-xs text-[#717880] line-through">₹799</span>
+                  <span className="text-xs font-bold text-[#EF8557] uppercase bg-[#EF8557]/10 px-2 py-0.5">
+                    Includes Comic
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleAddMunnaCostume}
+                  className="mt-4 bg-[#EF8557] hover:bg-[#d97346] text-white px-6 py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-colors"
+                >
+                  <ClipboardList className="size-4" />
+                  <span>
+                    {munnaAdded ? "Added to Booking List ✓" : "Add Look to Booking List — ₹499"}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══ 4. 180 GSM BIO-WASH STANDARD & SPECIFICATIONS ═══ */}
+      <section className="border-b border-[#D8D2C5] bg-[#FFFFFF] py-16 sm:py-20">
+        <div className="page-shell">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="border border-[#D8D2C5] p-6 bg-[#F7F3EB]">
+              <ShieldCheck className="size-8 text-[#226192] mb-3" />
+              <h4 className="font-serif text-lg font-bold text-[#252525]">
+                180 GSM Bio-Wash Standard
+              </h4>
+              <p className="text-xs text-[#717880] mt-2 leading-relaxed">
+                Every fabric roll is enzyme-washed to remove impurities and fiber prickliness,
+                ensuring a cloud-like touch against sensitive young skin.
+              </p>
+            </div>
+
+            <div className="border border-[#D8D2C5] p-6 bg-[#F7F3EB]">
+              <Sparkles className="size-8 text-[#EF8557] mb-3" />
+              <h4 className="font-serif text-lg font-bold text-[#252525]">Zero-Rub Eco Inks</h4>
+              <p className="text-xs text-[#717880] mt-2 leading-relaxed">
+                Oeko-Tex Standard 100 certified water-based inks that never crack, stiffen, or leach
+                chemicals even after 50+ household wash cycles.
+              </p>
+            </div>
+
+            <div className="border border-[#D8D2C5] p-6 bg-[#F7F3EB]">
+              <Package className="size-8 text-[#226192] mb-3" />
+              <h4 className="font-serif text-lg font-bold text-[#252525]">
+                Tirupur Mill Direct Stock
+              </h4>
+              <p className="text-xs text-[#717880] mt-2 leading-relaxed">
+                Direct allocation from our 14/2 Asher Nagar facility with instant booking references
+                and automated dispatch notification to corporate stock desk.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ 3. BRAND CATALOGUE BROWSING & FILTERS ═══ */}
+      {/* ═══ 5. BRAND CATALOGUE BROWSING & FILTERS ═══ */}
       <section className="py-16 sm:py-24">
         <div className="page-shell">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
@@ -183,7 +436,7 @@ function BrandLandingPage() {
                 <span className="size-1.5 rounded-full bg-[#EF8557]" />
                 Catalogue Collection
               </p>
-              <h2 className="font-['Space_Grotesk'] text-3xl font-extrabold uppercase text-[#226192]">
+              <h2 className="font-serif text-3xl font-extrabold uppercase text-[#226192]">
                 {brand.name} Garment Range ({brandProducts.length} Styles)
               </h2>
             </div>
@@ -194,28 +447,28 @@ function BrandLandingPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-[#226192]/30 bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#226192] focus:outline-none focus:border-[#226192]"
+                className="border border-[#D8D2C5] bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#226192] focus:outline-none focus:border-[#226192]"
               >
                 <option value="featured">Featured Picks</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
+                <option value="rating">Top Rated</option>
                 <option value="discount">Biggest Discount</option>
               </select>
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 border-b border-[#226192]/15 pb-4 mb-8">
+          {/* Category Chips */}
+          <div className="flex flex-wrap items-center gap-2 border-b border-[#D8D2C5] pb-6 mb-8">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-bold transition-all ${
+                className={`px-4 py-1.5 text-xs font-bold uppercase transition-all ${
                   activeCategory === cat
-                    ? "bg-[#226192] text-[#FFFFFF]"
-                    : "border border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557]"
+                    ? "border border-[#226192] bg-[#226192] text-white"
+                    : "border border-[#D8D2C5] bg-white text-[#252525] hover:border-[#226192]"
                 }`}
               >
                 {cat}
@@ -223,65 +476,38 @@ function BrandLandingPage() {
             ))}
           </div>
 
-          {/* Product Grid */}
+          {/* Products Grid */}
           {sortedProducts.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {sortedProducts.map((product) => (
-                <ProductCard
-                  key={product.slug}
-                  product={product}
-                  onQuickView={(p) => setQuickViewProduct(p)}
-                />
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+              {sortedProducts.map((p) => (
+                <ProductCard key={p.slug} product={p} onQuickView={setQuickViewProduct} />
               ))}
             </div>
           ) : (
-            <div className="border border-[#226192]/20 bg-[#FFFFFF] p-12 text-center">
-              <p className="text-sm text-[#252525]/70">
-                No styles found in this category for {brand.name}.
+            <div className="py-16 text-center text-[#717880]">
+              <p className="text-base font-semibold">
+                No garments match &ldquo;{activeCategory}&rdquo;.
               </p>
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-4"
+              <button
+                type="button"
                 onClick={() => setActiveCategory("All")}
+                className="mt-4 border border-[#226192] bg-[#226192] px-4 py-2 text-xs font-bold uppercase text-white hover:bg-[#EF8557] transition-colors"
               >
-                Reset Filter
-              </Button>
+                Show All {brand.name} Styles
+              </button>
             </div>
           )}
         </div>
       </section>
 
-      {/* ═══ 4. BRAND PROMOTIONAL / WHOLESALE CALLOUT ═══ */}
-      <section className="border-t border-[#226192]/20 bg-[#226192] py-14 text-[#FFFFFF]">
-        <div className="page-shell flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
-              B2B & Retail Distribution
-            </span>
-            <h3 className="font-['Space_Grotesk'] text-2xl font-bold uppercase text-[#FFFFFF] mt-1">
-              Interested in Bulk Orders for {brand.name}?
-            </h3>
-            <p className="text-xs text-[#EAE6DE]/85 mt-2 max-w-xl">
-              We supply retail chains, multi-brand outlets, and distributors nationwide directly
-              from our Tirupur factories.
-            </p>
-          </div>
-          <Link
-            to="/wholesale"
-            className="shrink-0 border border-[#EF8557] bg-[#EF8557] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557]/90 transition-colors"
-          >
-            Enquire for {brand.name}
-          </Link>
-        </div>
-      </section>
-
       {/* Quick View Modal */}
-      <QuickViewModal
-        product={quickViewProduct}
-        isOpen={!!quickViewProduct}
-        onClose={() => setQuickViewProduct(null)}
-      />
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          isOpen={!!quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
+      )}
     </div>
   );
 }

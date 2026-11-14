@@ -183,21 +183,45 @@ function ProductsPage() {
   return (
     <div className="bg-[#EAE6DE] text-[#252525]">
       {/* ═══ HERO ═══ */}
-      <section className="relative overflow-hidden border-b border-[#226192]/20 bg-[#EAE6DE] pt-28 pb-14 sm:pt-36 sm:pb-20">
+      <section className="relative overflow-hidden border-b border-[#D8D2C5] bg-[#EAE6DE] pt-28 pb-12 sm:pt-36 sm:pb-16">
         <div className="page-shell">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-              <span className="size-2 rounded-full bg-[#EF8557]" />
+            <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 bg-[#EF8557]" />
               <span>Multi-Brand Online Catalog</span>
             </div>
-            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl">
-              Kidswear Range & Collections.
+            <h1 className="mt-4 font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#252525]">
+              All Collections & Multi-Brand Catalog
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#252525]/85">
-              Explore 100% bio-washed combed cotton children&apos;s garments from Kids Korner,
-              X-Zone, H&D Club, and Boy Munna. Select your size, colour variant, and enjoy direct
-              geo-wise dispatch.
+            <p className="mt-3 max-w-2xl text-xs sm:text-sm text-[#717880] leading-relaxed">
+              Crafted in 100% combed cotton at our Tirupur knitting house. Browse essential
+              children&apos;s silhouettes across Kids Korner, X-Zone, H&D Club, and Boy Munna with
+              transparent MRP and direct stock booking.
             </p>
+
+            {/* Horizontal Sticky 4-Brand Filter Chips */}
+            <div className="mt-6 flex flex-wrap items-center gap-2 pt-4 border-t border-[#D8D2C5]">
+              {[
+                { id: "All", name: "All Labels" },
+                { id: "Kids Korner", name: "Kids Korner (Basics)" },
+                { id: "X-Zone", name: "X-Zone (Athletic)" },
+                { id: "H&D Club", name: "H&D Club (Occasion)" },
+                { id: "Boy Munna", name: "Boy Munna (Story IP)" },
+              ].map((b) => (
+                <button
+                  key={b.id}
+                  type="button"
+                  onClick={() => setSelectedBrand(b.id)}
+                  className={`px-4 py-2 text-xs font-bold uppercase transition-all border ${
+                    selectedBrand === b.id
+                      ? "border-[#226192] bg-[#226192] text-white shadow-sm"
+                      : "border-[#D8D2C5] bg-white text-[#252525] hover:border-[#226192]"
+                  }`}
+                >
+                  {b.name}
+                </button>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>

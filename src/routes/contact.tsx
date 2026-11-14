@@ -90,12 +90,12 @@ function ContactPage() {
           {/* Right: Content on Warm Ivory */}
           <div className="flex items-center px-8 py-32 lg:px-16 xl:px-24">
             <div className="max-w-lg">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-                <span className="size-2 rounded-full bg-[#EF8557]" />
-                <span>Business Enquiries</span>
+              <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                <span className="size-2 bg-[#EF8557]" />
+                <span>Contact Factory Desk · Tirupur Hub</span>
               </div>
 
-              <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-5xl lg:text-6xl">
                 Let's build a
                 <br />
                 <span className="text-[#EF8557]">partnership.</span>

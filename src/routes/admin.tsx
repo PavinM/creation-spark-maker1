@@ -231,8 +231,8 @@ function AdminDashboardPage() {
                 Notifications Inbox: {COMPANY_OWNER_EMAIL}
               </span>
             </div>
-            <h1 className="mt-1 font-['Space_Grotesk'] text-2xl sm:text-3xl font-extrabold uppercase text-[#226192]">
-              Muthu International — Stock & Bookings Dashboard
+            <h1 className="mt-1 font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#252525]">
+              Muthu International — Enterprise Stock &amp; Operations Desk
             </h1>
           </div>
 

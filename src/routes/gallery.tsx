@@ -15,7 +15,8 @@ export const Route = createFileRoute("/gallery")({
       { property: "og:title", content: "Inside Muthu International | Manufacturing Gallery" },
       {
         property: "og:description",
-        content: "High-definition photography of kidswear product development, factory floor, and craftsmanship.",
+        content:
+          "High-definition photography of kidswear product development, factory floor, and craftsmanship.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +46,8 @@ function GalleryPage() {
               </h1>
 
               <p className="mt-6 max-w-lg text-base leading-relaxed text-[#252525]/85">
-                A visual journey through our children's clothing collections, in-house design direction, and modern manufacturing facilities in Tirupur.
+                A visual journey through our children's clothing collections, in-house design
+                direction, and modern manufacturing facilities in Tirupur.
               </p>
 
               <div className="mt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#226192]">
@@ -58,13 +60,28 @@ function GalleryPage() {
             <div className="relative hidden lg:block">
               <div className="grid grid-cols-3 gap-3">
                 <div className="col-span-2 row-span-2 aspect-square overflow-hidden">
-                  <img src={images.pageGallery} alt="Kidswear collection flatlay" className="size-full object-cover opacity-80 transition-transform duration-700 hover:scale-105" loading="eager" />
+                  <img
+                    src={images.pageGallery}
+                    alt="Kidswear collection flatlay"
+                    className="size-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
+                    loading="eager"
+                  />
                 </div>
                 <div className="aspect-square overflow-hidden">
-                  <img src={images.editorial} alt="Editorial kidswear" className="size-full object-cover opacity-70 transition-transform duration-700 hover:scale-105" loading="eager" />
+                  <img
+                    src={images.editorial}
+                    alt="Editorial kidswear"
+                    className="size-full object-cover opacity-70 transition-transform duration-700 hover:scale-105"
+                    loading="eager"
+                  />
                 </div>
                 <div className="aspect-square overflow-hidden">
-                  <img src={images.factory} alt="Factory production" className="size-full object-cover opacity-70 transition-transform duration-700 hover:scale-105" loading="eager" />
+                  <img
+                    src={images.factory}
+                    alt="Factory production"
+                    className="size-full object-cover opacity-70 transition-transform duration-700 hover:scale-105"
+                    loading="eager"
+                  />
                 </div>
               </div>
               {/* Decorative corner accent */}

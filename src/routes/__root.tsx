@@ -79,7 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Muthu International Private Limited | Kidswear Since 2000" },
-      { name: "description", content: "Established kidswear manufacturer with over 25 years of garment industry experience, an in-house design team, two factories and customers across India." },
+      {
+        name: "description",
+        content:
+          "Established kidswear manufacturer with over 25 years of garment industry experience, an in-house design team, two factories and customers across India.",
+      },
       { name: "author", content: "Muthu International Private Ltd" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -87,7 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
@@ -118,7 +125,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteHeader />
-      <main><Outlet /></main>
+      <main>
+        <Outlet />
+      </main>
       <SiteFooter />
     </QueryClientProvider>
   );

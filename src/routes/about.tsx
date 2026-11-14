@@ -16,7 +16,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Muthu International Private Ltd" },
       {
         property: "og:description",
-        content: "Over 25 years of garment manufacturing experience, serving kidswear customers across India.",
+        content:
+          "Over 25 years of garment manufacturing experience, serving kidswear customers across India.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,12 +28,36 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   const milestones = [
-    { year: "2000", title: "Founded", desc: "Muthu International established in Tirupur, Tamil Nadu as a kidswear manufacturer." },
-    { year: "2005", title: "First Factory Expansion", desc: "Expanded operations with modern machinery and a growing workforce." },
-    { year: "2012", title: "In-House Design Team", desc: "Established a dedicated design team developing new styles every day." },
-    { year: "2018", title: "Second Factory", desc: "Opened a second operational factory to support growing production needs." },
-    { year: "2022", title: "Dedicated Warehouse", desc: "Built a dedicated warehouse for organized storage and supply operations." },
-    { year: "Today", title: "100+ Employees", desc: "Serving customers across India with a dedicated workforce and modern facilities." },
+    {
+      year: "2000",
+      title: "Founded",
+      desc: "Muthu International established in Tirupur, Tamil Nadu as a kidswear manufacturer.",
+    },
+    {
+      year: "2005",
+      title: "First Factory Expansion",
+      desc: "Expanded operations with modern machinery and a growing workforce.",
+    },
+    {
+      year: "2012",
+      title: "In-House Design Team",
+      desc: "Established a dedicated design team developing new styles every day.",
+    },
+    {
+      year: "2018",
+      title: "Second Factory",
+      desc: "Opened a second operational factory to support growing production needs.",
+    },
+    {
+      year: "2022",
+      title: "Dedicated Warehouse",
+      desc: "Built a dedicated warehouse for organized storage and supply operations.",
+    },
+    {
+      year: "Today",
+      title: "100+ Employees",
+      desc: "Serving customers across India with a dedicated workforce and modern facilities.",
+    },
   ];
 
   const stats = [
@@ -52,29 +77,40 @@ function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-                  <span className="size-2 rounded-full bg-[#EF8557]" />
-                  <span>About Muthu International</span>
+                <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 bg-[#EF8557]" />
+                  <span>About Muthu International · Tirupur Garment Heritage</span>
                 </div>
 
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                <h1 className="mt-6 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl lg:text-7xl">
                   Over 25 Years in
                   <br />
                   <span className="text-[#EF8557]">Kidswear Manufacturing.</span>
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-                  Established in 2000 in Tirupur, Muthu International brings garment industry experience, in-house daily design development, and two modern manufacturing factories together to serve brands and customers across India.
+                  Established in 2000 in Tirupur, Muthu International brings garment industry
+                  experience, in-house daily design development, and two modern manufacturing
+                  factories together to serve brands and customers across India.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]"
+                  >
                     <Link to="/manufacturing" className="flex items-center gap-2">
                       <span>Our Facilities</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                  >
                     <Link to="/contact">
                       <span>Contact Our Team</span>
                     </Link>
@@ -130,10 +166,16 @@ function AboutPage() {
               return (
                 <Reveal key={s.label}>
                   <div className="group relative overflow-hidden border border-[#226192]/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <div className={`absolute -right-4 -top-4 size-20 rounded-full bg-gradient-to-br ${s.color} opacity-[0.07] transition-all duration-500 group-hover:scale-150 group-hover:opacity-[0.12]`} />
+                    <div
+                      className={`absolute -right-4 -top-4 size-20 rounded-full bg-gradient-to-br ${s.color} opacity-[0.07] transition-all duration-500 group-hover:scale-150 group-hover:opacity-[0.12]`}
+                    />
                     <Icon className="size-5 text-[#EF8557]" />
-                    <p className="mt-3 font-['Space_Grotesk'] text-3xl font-extrabold tracking-tight text-[#226192]">{s.num}</p>
-                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#252525]/60">{s.label}</p>
+                    <p className="mt-3 font-['Space_Grotesk'] text-3xl font-extrabold tracking-tight text-[#226192]">
+                      {s.num}
+                    </p>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#252525]/60">
+                      {s.label}
+                    </p>
                   </div>
                 </Reveal>
               );
@@ -159,8 +201,12 @@ function AboutPage() {
                   />
                   {/* Corner accent */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#226192]/90 to-transparent p-6 pt-16">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">Since 2000</p>
-                    <p className="mt-1 font-['Space_Grotesk'] text-lg font-bold text-white">Crafting Children's Clothing</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+                      Since 2000
+                    </p>
+                    <p className="mt-1 font-['Space_Grotesk'] text-lg font-bold text-white">
+                      Crafting Children's Clothing
+                    </p>
                   </div>
                 </div>
               </div>
@@ -169,7 +215,9 @@ function AboutPage() {
             <Reveal>
               <div className="flex items-center gap-2 text-[#EF8557]">
                 <span className="size-2 rounded-full bg-[#EF8557]" />
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em]">Our Purpose & Heritage</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em]">
+                  Our Purpose & Heritage
+                </p>
               </div>
 
               <h2 className="mt-4 font-['Space_Grotesk'] text-3xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-5xl">
@@ -177,17 +225,22 @@ function AboutPage() {
               </h2>
 
               <p className="mt-6 text-base leading-relaxed text-[#252525]/85">
-                Muthu International Private Limited is an established domestic garment manufacturer specializing in kidswear. For more than 25 years, we have built our business around quality, creativity, manufacturing experience and reliable customer relationships.
+                Muthu International Private Limited is an established domestic garment manufacturer
+                specializing in kidswear. For more than 25 years, we have built our business around
+                quality, creativity, manufacturing experience and reliable customer relationships.
               </p>
 
               <p className="mt-4 text-base leading-relaxed text-[#252525]/85">
-                Our in-house design team, two operational factories, dedicated warehouse, modern machinery and workforce of over 100 employees provide an established foundation for serving the evolving Indian kidswear market.
+                Our in-house design team, two operational factories, dedicated warehouse, modern
+                machinery and workforce of over 100 employees provide an established foundation for
+                serving the evolving Indian kidswear market.
               </p>
 
               {/* Quote accent */}
               <div className="mt-8 border-l-4 border-[#EF8557] bg-[#226192]/5 p-6">
                 <p className="font-serif text-lg italic leading-relaxed text-[#226192]">
-                  "We combine experience, creativity and reliable manufacturing to build lasting customer relationships."
+                  "We combine experience, creativity and reliable manufacturing to build lasting
+                  customer relationships."
                 </p>
               </div>
 
@@ -211,7 +264,9 @@ function AboutPage() {
           <Reveal>
             <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">Company at a glance</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">
+                  Company at a glance
+                </span>
                 <h3 className="mt-2 font-['Space_Grotesk'] text-2xl font-bold uppercase tracking-tight">
                   An established manufacturing team
                 </h3>
@@ -226,7 +281,9 @@ function AboutPage() {
                   ["Market", "Customers across India"],
                 ].map(([dt, dd]) => (
                   <div key={dt} className="border-l-2 border-[#EF8557]/40 pl-4">
-                    <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">{dt}</dt>
+                    <dt className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">
+                      {dt}
+                    </dt>
                     <dd className="mt-1 text-sm font-semibold text-white/90">{dd}</dd>
                   </div>
                 ))}
@@ -252,16 +309,24 @@ function AboutPage() {
             <div className="space-y-12">
               {milestones.map((m, idx) => (
                 <Reveal key={m.year}>
-                  <div className={`relative flex items-start gap-8 ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
+                  <div
+                    className={`relative flex items-start gap-8 ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}
+                  >
                     {/* Dot */}
                     <div className="absolute left-4 top-1 z-10 flex size-3 -translate-x-1/2 items-center justify-center lg:left-1/2">
                       <span className="size-3 rounded-full border-2 border-[#EF8557] bg-[#EAE6DE]" />
                     </div>
 
                     {/* Content card */}
-                    <div className={`ml-10 w-full border border-[#226192]/15 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md lg:ml-0 lg:w-[calc(50%-2rem)] ${idx % 2 === 0 ? "lg:mr-auto lg:pr-10" : "lg:ml-auto lg:pl-10"}`}>
-                      <span className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">{m.year}</span>
-                      <h4 className="mt-1 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192]">{m.title}</h4>
+                    <div
+                      className={`ml-10 w-full border border-[#226192]/15 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md lg:ml-0 lg:w-[calc(50%-2rem)] ${idx % 2 === 0 ? "lg:mr-auto lg:pr-10" : "lg:ml-auto lg:pl-10"}`}
+                    >
+                      <span className="font-['Space_Grotesk'] text-2xl font-extrabold text-[#EF8557]">
+                        {m.year}
+                      </span>
+                      <h4 className="mt-1 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192]">
+                        {m.title}
+                      </h4>
                       <p className="mt-2 text-sm leading-relaxed text-[#252525]/75">{m.desc}</p>
                     </div>
                   </div>
@@ -294,7 +359,9 @@ function AboutPage() {
               },
             ].map((item) => (
               <Reveal key={item.label}>
-                <div className={`group flex h-full flex-col justify-between bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${item.accent}`}>
+                <div
+                  className={`group flex h-full flex-col justify-between bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${item.accent}`}
+                >
                   <div>
                     <h3 className="font-['Space_Grotesk'] text-xl font-bold uppercase tracking-tight text-[#226192]">
                       {item.label}

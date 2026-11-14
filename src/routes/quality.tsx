@@ -1,5 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, ShieldCheck, AlertCircle, FileCheck, Scale, Scissors, Sparkles, Box } from "lucide-react";
+import {
+  Check,
+  ShieldCheck,
+  AlertCircle,
+  FileCheck,
+  Scale,
+  Scissors,
+  Sparkles,
+  Box,
+} from "lucide-react";
 import { CTASection, Reveal, SectionHeading } from "@/components/site";
 import { images } from "@/lib/content";
 
@@ -15,7 +24,8 @@ export const Route = createFileRoute("/quality")({
       { property: "og:title", content: "Quality at Every Stage | Muthu International" },
       {
         property: "og:description",
-        content: "Quality is an important part of our manufacturing approach and customer relationships.",
+        content:
+          "Quality is an important part of our manufacturing approach and customer relationships.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,14 +35,46 @@ export const Route = createFileRoute("/quality")({
 });
 
 const qualityStages = [
-  { title: "Product Requirements", desc: "Understand the garment style, customer needs and intended use.", icon: Scale },
-  { title: "Design Coordination", desc: "Coordinate new styles from our in-house design team with manufacturing operations.", icon: FileCheck },
-  { title: "Production Planning", desc: "Organize manufacturing work across our two operational factories.", icon: Sparkles },
-  { title: "Modern Machinery", desc: "Use modern machinery to support the garment manufacturing process.", icon: Scissors },
-  { title: "Experienced Workforce", desc: "A team of over 100 employees supports manufacturing and business operations.", icon: ShieldCheck },
-  { title: "Quality Commitment", desc: "Coordinate design and manufacturing processes while working toward consistent product quality.", icon: Sparkles },
-  { title: "Applicable Requirements", desc: "Maintain applicable statutory and industry requirements relevant to business operations.", icon: FileCheck },
-  { title: "Customer Relationships", desc: "Build long-term relationships through quality, reliable business practices and cooperation.", icon: Box },
+  {
+    title: "Product Requirements",
+    desc: "Understand the garment style, customer needs and intended use.",
+    icon: Scale,
+  },
+  {
+    title: "Design Coordination",
+    desc: "Coordinate new styles from our in-house design team with manufacturing operations.",
+    icon: FileCheck,
+  },
+  {
+    title: "Production Planning",
+    desc: "Organize manufacturing work across our two operational factories.",
+    icon: Sparkles,
+  },
+  {
+    title: "Modern Machinery",
+    desc: "Use modern machinery to support the garment manufacturing process.",
+    icon: Scissors,
+  },
+  {
+    title: "Experienced Workforce",
+    desc: "A team of over 100 employees supports manufacturing and business operations.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Quality Commitment",
+    desc: "Coordinate design and manufacturing processes while working toward consistent product quality.",
+    icon: Sparkles,
+  },
+  {
+    title: "Applicable Requirements",
+    desc: "Maintain applicable statutory and industry requirements relevant to business operations.",
+    icon: FileCheck,
+  },
+  {
+    title: "Customer Relationships",
+    desc: "Build long-term relationships through quality, reliable business practices and cooperation.",
+    icon: Box,
+  },
 ];
 
 function QualityPage() {
@@ -44,18 +86,20 @@ function QualityPage() {
         <div className="page-shell relative z-10 text-center">
           <div className="mx-auto flex items-center justify-center gap-2 text-[#EF8557]">
             <ShieldCheck className="size-4" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.25em]">Quality & Compliance</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.25em]">
+              Quality & Compliance
+            </span>
           </div>
 
-          <h1 className="mx-auto mt-6 max-w-4xl font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-6 max-w-4xl font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl lg:text-7xl">
             Quality in every
             <br />
             <span className="text-[#EF8557]">garment.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/75">
-            We focus on consistent product quality, customer requirements and applicable
-            statutory and industry standards.
+            We focus on consistent product quality, customer requirements and applicable statutory
+            and industry standards.
           </p>
         </div>
 
@@ -100,7 +144,9 @@ function QualityPage() {
                     <h3 className="mt-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-tight text-[#226192] group-hover:text-[#EF8557]">
                       {q.title}
                     </h3>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-[#252525]/75">{q.desc}</p>
+                    <p className="mt-2 flex-1 text-xs leading-relaxed text-[#252525]/75">
+                      {q.desc}
+                    </p>
 
                     <div className="mt-4 h-0.5 w-8 bg-[#EF8557]/30 transition-all duration-300 group-hover:w-full group-hover:bg-[#EF8557]" />
                   </div>
@@ -118,7 +164,9 @@ function QualityPage() {
             {/* Left content */}
             <div className="bg-white p-10 lg:col-span-7 lg:p-14">
               <Reveal>
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">Our commitment</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EF8557]">
+                  Our commitment
+                </span>
                 <h3 className="mt-3 font-['Space_Grotesk'] text-2xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-3xl">
                   Quality is part of every relationship
                 </h3>
@@ -148,7 +196,9 @@ function QualityPage() {
               <Reveal>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="size-5 text-[#EF8557]" />
-                  <span className="text-xs font-bold uppercase tracking-wider">Manufacturing Profile</span>
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    Manufacturing Profile
+                  </span>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-white/80">
                   Established domestic kidswear manufacturer serving customers across India.
@@ -170,8 +220,12 @@ function QualityPage() {
                     { num: "100+", label: "Team" },
                   ].map((s) => (
                     <div key={s.label} className="text-center">
-                      <p className="font-['Space_Grotesk'] text-xl font-extrabold text-[#EF8557]">{s.num}</p>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-white/40">{s.label}</p>
+                      <p className="font-['Space_Grotesk'] text-xl font-extrabold text-[#EF8557]">
+                        {s.num}
+                      </p>
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-white/40">
+                        {s.label}
+                      </p>
                     </div>
                   ))}
                 </div>

@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, Leaf, Recycle, Droplets, ShieldCheck, Sun, Heart, Sparkles, ArrowRight, Award } from "lucide-react";
+import {
+  Check,
+  Leaf,
+  Recycle,
+  Droplets,
+  ShieldCheck,
+  Sun,
+  Heart,
+  Sparkles,
+  ArrowRight,
+  Award,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, Reveal, SectionHeading } from "@/components/site";
 import { images } from "@/lib/content";
@@ -16,7 +27,8 @@ export const Route = createFileRoute("/sustainability")({
       { property: "og:title", content: "Eco-Conscious Kidswear Production | Muthu International" },
       {
         property: "og:description",
-        content: "Pure for little skin, gentle on our planet. Discover our responsible textile stewardship and zero liquid discharge water treatment.",
+        content:
+          "Pure for little skin, gentle on our planet. Discover our responsible textile stewardship and zero liquid discharge water treatment.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -98,16 +110,27 @@ function SustainabilityPage() {
                   <span className="text-[#EF8557]">Kind to Nature.</span>
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-                  Children deserve clothes crafted with purity and care. At Muthu International, our environmental responsibility spans every meter of fabric—from certified organic cotton yarns to zero-discharge water recycling.
+                  Children deserve clothes crafted with purity and care. At Muthu International, our
+                  environmental responsibility spans every meter of fabric—from certified organic
+                  cotton yarns to zero-discharge water recycling.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]"
+                  >
                     <Link to="/request-quote" className="flex items-center gap-2">
                       <span>Source Sustainable Kidswear</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                  >
                     <Link to="/quality">
                       <span>Review Lab Safety Standards</span>
                     </Link>
@@ -130,26 +153,44 @@ function SustainabilityPage() {
                   <div className="mt-6 space-y-4 text-xs">
                     <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#226192]">Water Reclamation Rate</strong>
-                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">92%</span>
+                        <strong className="text-sm font-bold text-[#226192]">
+                          Water Reclamation Rate
+                        </strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">
+                          92%
+                        </span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#252525]/75">Closed-loop biological ETP and reverse osmosis system</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">
+                        Closed-loop biological ETP and reverse osmosis system
+                      </p>
                     </div>
 
                     <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#226192]">Chemical Safety Grade</strong>
-                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#226192]">Class 1</span>
+                        <strong className="text-sm font-bold text-[#226192]">
+                          Chemical Safety Grade
+                        </strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#226192]">
+                          Class 1
+                        </span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#252525]/75">OEKO-TEX standard compliant for direct infant skin contact</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">
+                        OEKO-TEX standard compliant for direct infant skin contact
+                      </p>
                     </div>
 
                     <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-4">
                       <div className="flex items-center justify-between">
-                        <strong className="text-sm font-bold text-[#226192]">Ethical Workplace</strong>
-                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">100% Fair</span>
+                        <strong className="text-sm font-bold text-[#226192]">
+                          Ethical Workplace
+                        </strong>
+                        <span className="font-['Space_Grotesk'] text-base font-bold text-[#EF8557]">
+                          100% Fair
+                        </span>
                       </div>
-                      <p className="mt-1 text-[11px] text-[#252525]/75">Over 100 respected employees with full healthcare & fair wages</p>
+                      <p className="mt-1 text-[11px] text-[#252525]/75">
+                        Over 100 respected employees with full healthcare & fair wages
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -184,9 +225,7 @@ function SustainabilityPage() {
                       <h3 className="mt-1 font-['Space_Grotesk'] text-xl font-bold text-[#0A2317]">
                         {pillar.title}
                       </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-[#4A5568]">
-                        {pillar.desc}
-                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-[#4A5568]">{pillar.desc}</p>
                     </div>
                     <div className="mt-6 border-t border-[#E3E8E5] pt-4">
                       <span className="inline-block rounded-full bg-[#ECFDF5] px-3 py-1 font-mono text-xs font-bold text-[#065F46]">
@@ -215,9 +254,15 @@ function SustainabilityPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A2317] via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6 right-6 text-[#FFFFFF]">
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#34D399]">Pediatric Safety</span>
-                    <h3 className="mt-1 font-['Space_Grotesk'] text-2xl font-bold">Tested for Sensitive Skin</h3>
-                    <p className="mt-2 text-xs text-[#D1FAE5]">Zero synthetic pesticide residue. Bio-washed for cloud-like touch.</p>
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#34D399]">
+                      Pediatric Safety
+                    </span>
+                    <h3 className="mt-1 font-['Space_Grotesk'] text-2xl font-bold">
+                      Tested for Sensitive Skin
+                    </h3>
+                    <p className="mt-2 text-xs text-[#D1FAE5]">
+                      Zero synthetic pesticide residue. Bio-washed for cloud-like touch.
+                    </p>
                   </div>
                 </div>
               </Reveal>
@@ -225,17 +270,23 @@ function SustainabilityPage() {
 
             <div className="lg:col-span-7">
               <Reveal>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#065F46]">Rigorous Protection</span>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#065F46]">
+                  Rigorous Protection
+                </span>
                 <h2 className="mt-2 font-['Space_Grotesk'] text-3xl font-extrabold text-[#0A2317] sm:text-4xl">
                   Built to the World's Strictest Children's Standards
                 </h2>
                 <p className="mt-4 text-base text-[#4A5568]">
-                  Babies and children have thinner, more permeable skin than adults. We construct garments with zero-compromise mechanical and chemical safety checklists.
+                  Babies and children have thinner, more permeable skin than adults. We construct
+                  garments with zero-compromise mechanical and chemical safety checklists.
                 </p>
 
                 <div className="mt-8 grid gap-3.5 sm:grid-cols-2">
                   {babySafetyChecks.map((check) => (
-                    <div key={check} className="flex items-start gap-3 rounded-xl border border-[#10B981]/20 bg-[#FFFFFF] p-3.5 shadow-sm">
+                    <div
+                      key={check}
+                      className="flex items-start gap-3 rounded-xl border border-[#10B981]/20 bg-[#FFFFFF] p-3.5 shadow-sm"
+                    >
                       <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#10B981] text-[#FFFFFF]">
                         <Check className="size-3" />
                       </div>

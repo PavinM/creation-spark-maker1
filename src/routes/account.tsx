@@ -147,13 +147,14 @@ function BookingsPortalPage() {
         <div className="border-b border-[#226192]/20 pb-6 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
-              No Login Required · Direct Identification by Email
+              Factory Allocation Portal · Direct Identification by Email
             </span>
-            <h1 className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-extrabold uppercase text-[#226192]">
-              My Stock Bookings & Saved Wishlist
+            <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#252525]">
+              Track Your Factory Stock Bookings
             </h1>
             <p className="text-xs text-[#252525]/75 mt-1">
-              Find any reserved order using your Customer Email or Booking Reference ID.
+              Find any reserved order using your Customer Email or Booking Reference ID
+              (BK-2026-XXXXXX).
             </p>
           </div>
 

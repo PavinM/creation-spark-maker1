@@ -19,10 +19,15 @@ export const Route = createFileRoute("/collections/$slug")({
       },
       {
         name: "description",
-        content: loaderData?.description ?? "Explore seasonal kidswear collections by Muthu International.",
+        content:
+          loaderData?.description ??
+          "Explore seasonal kidswear collections by Muthu International.",
       },
       { property: "og:title", content: loaderData?.name ?? "Muthu International Collection" },
-      { property: "og:description", content: loaderData?.highlight ?? "Kidswear collection development." },
+      {
+        property: "og:description",
+        content: loaderData?.highlight ?? "Kidswear collection development.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -47,7 +52,9 @@ function CollectionDetailPage() {
           </Link>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">{collection.season}</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+                {collection.season}
+              </span>
               <h1 className="font-['Space_Grotesk'] mt-2 text-4xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
                 {collection.name}
               </h1>
@@ -83,7 +90,9 @@ function CollectionDetailPage() {
                 <h2 className="font-['Space_Grotesk'] text-2xl font-bold uppercase tracking-tight text-[#226192] sm:text-3xl">
                   Collection Highlights
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-[#252525]/85">{collection.highlight}</p>
+                <p className="mt-4 text-sm leading-relaxed text-[#252525]/85">
+                  {collection.highlight}
+                </p>
                 <div className="mt-6">
                   <Link
                     to="/request-quote"
@@ -95,7 +104,9 @@ function CollectionDetailPage() {
                 </div>
               </div>
               <div className="space-y-3 border-t border-[#226192]/15 pt-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">In This Collection:</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#226192]">
+                  In This Collection:
+                </p>
                 {collection.details.map((d) => (
                   <div key={d} className="flex items-start gap-2.5 text-xs text-[#252525]/80">
                     <Check className="mt-0.5 size-4 shrink-0 text-[#EF8557]" />
@@ -127,7 +138,9 @@ function CollectionDetailPage() {
             </div>
           ) : (
             <div className="border border-[#226192]/20 bg-[#FFFFFF] p-12 text-center text-[#252525]/80">
-              <p className="text-sm">Additional styles for {collection.name} are currently in development.</p>
+              <p className="text-sm">
+                Additional styles for {collection.name} are currently in development.
+              </p>
               <Link
                 to="/products"
                 className="mt-6 inline-flex border border-[#226192] bg-[#226192] px-6 py-2.5 text-xs font-bold uppercase text-[#FFFFFF] hover:bg-[#EF8557]"

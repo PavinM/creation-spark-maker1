@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ShieldCheck, Sparkles, Building2, PackageCheck, Layers, Tag, Scissors, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ShieldCheck,
+  Sparkles,
+  Building2,
+  PackageCheck,
+  Layers,
+  Tag,
+  Scissors,
+  Globe,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, Reveal, SectionHeading } from "@/components/site";
 import { images } from "@/lib/content";
@@ -16,7 +27,8 @@ export const Route = createFileRoute("/oem-private-label")({
       { property: "og:title", content: "Kidswear Manufacturing Expertise | Muthu International" },
       {
         property: "og:description",
-        content: "Turnkey private label apparel solutions for retailers and children's brands worldwide.",
+        content:
+          "Turnkey private label apparel solutions for retailers and children's brands worldwide.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -30,25 +42,41 @@ const oemCapabilities = [
     title: "Bespoke Brand Identity Trims",
     icon: Tag,
     desc: "Complete personalization: high-definition woven damask labels, soft tagless heat-transfers, embossed hangtags, and barcoded inventory swing tickets.",
-    points: ["Damask woven & satin neck labels", "Tagless irritation-free heat seals", "FSC-certified embossed hangtags"],
+    points: [
+      "Damask woven & satin neck labels",
+      "Tagless irritation-free heat seals",
+      "FSC-certified embossed hangtags",
+    ],
   },
   {
     title: "Custom Hardware & Fasteners",
     icon: Scissors,
     desc: "Premium, baby-safe custom hardware engraved with your brand monogram: nickel-free snap buttons, anti-pinch zippers, and dyed-to-match drawcords.",
-    points: ["Nickel-free child-safe snaps", "Monogrammed zipper pullers", "OEKO-TEX compliant elastane trims"],
+    points: [
+      "Nickel-free child-safe snaps",
+      "Monogrammed zipper pullers",
+      "OEKO-TEX compliant elastane trims",
+    ],
   },
   {
     title: "Retail-Ready Packaging & Kitting",
     icon: PackageCheck,
     desc: "From individual 100% biodegradable compostable polybags to branded gift boxes, master carton barcoding, and EDI-compliant logistical packing.",
-    points: ["Biodegradable polybags with warning prints", "Custom folding & hanger-packing", "Master cartons with drop-test safety"],
+    points: [
+      "Biodegradable polybags with warning prints",
+      "Custom folding & hanger-packing",
+      "Master cartons with drop-test safety",
+    ],
   },
   {
     title: "Tech Pack Engineering & Sampling",
     icon: Layers,
     desc: "Send us your tech pack or reference sample. Our master patternmakers generate graded CAD patterns and deliver physical pilot samples within 7 business days.",
-    points: ["7-day rapid prototype turnaround", "Pediatric ergonomic fit testing", "Pre-production lab dip approval"],
+    points: [
+      "7-day rapid prototype turnaround",
+      "Pediatric ergonomic fit testing",
+      "Pre-production lab dip approval",
+    ],
   },
 ];
 
@@ -86,13 +114,41 @@ const serviceComparison = [
 ];
 
 const workflowSteps = [
-  { step: "01", title: "Tech Pack & Specification Review", desc: "Detailed review of specs, measurements, fabric selections, and target price points." },
-  { step: "02", title: "Proto Sampling & Lab Dips", desc: "Precision pilot sample stitched and spectrophotometer-calibrated color lab dips sent for physical sign-off." },
-  { step: "03", title: "Fit Validation & PP Approval", desc: "Wear testing on live pediatric fit models, shrinkage tests, and official pre-production approval." },
-  { step: "04", title: "Bulk Fabric Knitting & Dyeing", desc: "Yarn spun and knitted under automated tension controls, followed by non-toxic dyeing." },
-  { step: "05", title: "Precision Sewing & Assembly", desc: "State-of-the-art Juki sewing lines with in-line needle inspection and seam integrity monitoring." },
-  { step: "06", title: "Custom Trims & Retail Packaging", desc: "Attachment of your custom woven labels, hangtags, barcodes, and protective retail kitting." },
-  { step: "07", title: "Final AQL 1.5 & Logistics Dispatch", desc: "Final third-party or in-house AQL inspection before dispatch to domestic distribution or global ports." },
+  {
+    step: "01",
+    title: "Tech Pack & Specification Review",
+    desc: "Detailed review of specs, measurements, fabric selections, and target price points.",
+  },
+  {
+    step: "02",
+    title: "Proto Sampling & Lab Dips",
+    desc: "Precision pilot sample stitched and spectrophotometer-calibrated color lab dips sent for physical sign-off.",
+  },
+  {
+    step: "03",
+    title: "Fit Validation & PP Approval",
+    desc: "Wear testing on live pediatric fit models, shrinkage tests, and official pre-production approval.",
+  },
+  {
+    step: "04",
+    title: "Bulk Fabric Knitting & Dyeing",
+    desc: "Yarn spun and knitted under automated tension controls, followed by non-toxic dyeing.",
+  },
+  {
+    step: "05",
+    title: "Precision Sewing & Assembly",
+    desc: "State-of-the-art Juki sewing lines with in-line needle inspection and seam integrity monitoring.",
+  },
+  {
+    step: "06",
+    title: "Custom Trims & Retail Packaging",
+    desc: "Attachment of your custom woven labels, hangtags, barcodes, and protective retail kitting.",
+  },
+  {
+    step: "07",
+    title: "Final AQL 1.5 & Logistics Dispatch",
+    desc: "Final third-party or in-house AQL inspection before dispatch to domestic distribution or global ports.",
+  },
 ];
 
 function OemPrivateLabelPage() {
@@ -104,29 +160,40 @@ function OemPrivateLabelPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-                  <span className="size-2 rounded-full bg-[#EF8557]" />
-                  <span>Our Manufacturing Expertise</span>
+                <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 bg-[#EF8557]" />
+                  <span>Our Manufacturing Expertise · Private Label &amp; OEM</span>
                 </div>
 
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                <h1 className="mt-6 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl lg:text-7xl">
                   Your Brand.
                   <br />
                   <span className="text-[#EF8557]">Our Precision.</span>
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-                  Over 25 years in the garment industry, supported by an in-house design team, two modern operational factories, and a dedicated warehouse. From custom woven labels to export-grade bulk production, we bring complete OEM capabilities to your brand.
+                  Over 25 years in the garment industry, supported by an in-house design team, two
+                  modern operational factories, and a dedicated warehouse. From custom woven labels
+                  to export-grade bulk production, we bring complete OEM capabilities to your brand.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]"
+                  >
                     <Link to="/request-quote" className="flex items-center gap-2">
                       <span>Request Private Label Quote</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                  >
                     <Link to="/gallery">
                       <span>View Finished Products</span>
                     </Link>
@@ -155,13 +222,19 @@ function OemPrivateLabelPage() {
                   <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
                     <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-3.5">
                       <ShieldCheck className="size-4 text-[#EF8557]" />
-                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">Established 2000</strong>
+                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">
+                        Established 2000
+                      </strong>
                       <span className="text-[11px] text-[#252525]/75">25+ Years Experience</span>
                     </div>
                     <div className="rounded-xl border border-[#226192]/15 bg-[#EAE6DE]/60 p-3.5">
                       <Globe className="size-4 text-[#EF8557]" />
-                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">Pan-India Supply</strong>
-                      <span className="text-[11px] text-[#252525]/75">Serving Brands Nationwide</span>
+                      <strong className="mt-1 block font-['Space_Grotesk'] font-bold text-[#226192]">
+                        Pan-India Supply
+                      </strong>
+                      <span className="text-[11px] text-[#252525]/75">
+                        Serving Brands Nationwide
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -193,9 +266,7 @@ function OemPrivateLabelPage() {
                       <h3 className="mt-5 font-['Space_Grotesk'] text-lg font-bold uppercase tracking-tight text-[#226192]">
                         {item.title}
                       </h3>
-                      <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">
-                        {item.desc}
-                      </p>
+                      <p className="mt-3 text-xs leading-relaxed text-[#252525]/80">{item.desc}</p>
                     </div>
                     <div className="mt-6 border-t border-[#226192]/15 pt-4">
                       <ul className="space-y-2 text-[11px] text-[#252525]/85">
@@ -229,9 +300,15 @@ function OemPrivateLabelPage() {
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-[#226192]/20 bg-[#226192] text-[#FFFFFF]">
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider">Production Parameter</th>
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EAE6DE]">Curated White Label</th>
-                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EF8557]">Full Bespoke OEM</th>
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider">
+                      Production Parameter
+                    </th>
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EAE6DE]">
+                      Curated White Label
+                    </th>
+                    <th className="p-5 font-['Space_Grotesk'] text-base font-bold uppercase tracking-wider text-[#EF8557]">
+                      Full Bespoke OEM
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#226192]/15 text-xs sm:text-sm">
@@ -261,7 +338,10 @@ function OemPrivateLabelPage() {
 
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {workflowSteps.map((s, index) => (
-              <Reveal key={s.step} className={index === workflowSteps.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}>
+              <Reveal
+                key={s.step}
+                className={index === workflowSteps.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""}
+              >
                 <div className="relative flex h-full flex-col justify-between rounded-xl border border-[#FFFFFF]/20 bg-[#FFFFFF]/10 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#EF8557] hover:bg-[#FFFFFF]/15">
                   <div>
                     <span className="font-['Space_Grotesk'] text-2xl font-black text-[#EF8557]">
@@ -270,9 +350,7 @@ function OemPrivateLabelPage() {
                     <h4 className="mt-3 font-['Space_Grotesk'] text-base font-bold text-[#FFFFFF]">
                       {s.title}
                     </h4>
-                    <p className="mt-2 text-xs leading-relaxed text-[#FFFFFF]/80">
-                      {s.desc}
-                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-[#FFFFFF]/80">{s.desc}</p>
                   </div>
                 </div>
               </Reveal>

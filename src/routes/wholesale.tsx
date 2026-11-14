@@ -94,18 +94,53 @@ function WholesalePage() {
         {/* Hero Header */}
         <section className="border-b border-[#226192]/20 pb-16">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-              <span className="size-2 rounded-full bg-[#EF8557]" />
-              <span>Direct Manufacturing Supply</span>
+            <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+              <span className="size-2 bg-[#EF8557]" />
+              <span>Tirupur Direct Garment Manufacturing · Established 2000</span>
             </div>
-            <h1 className="mt-4 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl">
-              Wholesale & B2B Distribution.
+            <h1 className="mt-4 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl">
+              Direct-from-Mill Wholesale &amp; B2B Distribution.
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-              Source direct from Muthu International Private Limited in Tirupur, India. Over 25
+              Partner directly with Muthu International Private Limited in Tirupur, India. Over 25
               years of specialized kidswear production, two operational factories, daily design
               developments, and nationwide logistical reach.
             </p>
+
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-[#226192]/15 pt-6">
+              <div className="border border-[#226192]/15 bg-[#FFFFFF] p-4">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#226192]">
+                  250K+
+                </span>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#252525]/60 mt-0.5">
+                  Monthly Capacity
+                </p>
+              </div>
+              <div className="border border-[#226192]/15 bg-[#FFFFFF] p-4">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#226192]">
+                  2 Facilities
+                </span>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#252525]/60 mt-0.5">
+                  Asher Nagar &amp; Avinashi Rd
+                </p>
+              </div>
+              <div className="border border-[#226192]/15 bg-[#FFFFFF] p-4">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#226192]">
+                  100% GOTS
+                </span>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#252525]/60 mt-0.5">
+                  Pure Combed Cotton
+                </p>
+              </div>
+              <div className="border border-[#226192]/15 bg-[#FFFFFF] p-4">
+                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#226192]">
+                  0% Azo Dyes
+                </span>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#252525]/60 mt-0.5">
+                  Child Safe Standard
+                </p>
+              </div>
+            </div>
           </Reveal>
         </section>
 
@@ -183,23 +218,39 @@ function WholesalePage() {
 
               <div className="border border-[#226192]/20 bg-[#FFFFFF] p-6 space-y-3 text-xs">
                 <div className="flex items-center gap-3">
-                  <Factory className="size-5 text-[#EF8557]" />
+                  <Factory className="size-5 text-[#EF8557] shrink-0" />
                   <span>
-                    <strong>Tirupur Hub:</strong> 2 Operational Factories & Central Warehouse
+                    <strong>Tirupur Facility 01:</strong> 14/2, Asher Nagar, North 1st Street,
+                    Avinashi Road, Tirupur - 641603
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <ShieldCheck className="size-5 text-[#EF8557]" />
+                  <ShieldCheck className="size-5 text-[#EF8557] shrink-0" />
                   <span>
                     <strong>Child Safety:</strong> 100% Combed Cotton, Bio-Polished & Azo-Free Dyes
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Truck className="size-5 text-[#EF8557]" />
+                  <Truck className="size-5 text-[#EF8557] shrink-0" />
                   <span>
                     <strong>Pan-India Logistics:</strong> Surface freight, express air, and master
                     carton drop shipping
                   </span>
+                </div>
+                <div className="pt-2 border-t border-[#226192]/15 text-[11px] space-y-1">
+                  <p>
+                    Direct Hotline:{" "}
+                    <a
+                      href="tel:+919787806802"
+                      className="font-bold text-[#226192] hover:text-[#EF8557]"
+                    >
+                      +91 97878 06802
+                    </a>{" "}
+                    / +91 94432 38068 (Ph: 0421-4248068)
+                  </p>
+                  <p className="text-[#252525]/70">
+                    Email: cottoncastlesuresh@gmail.com · GST: 33AARCM6569Q1ZD
+                  </p>
                 </div>
               </div>
             </div>

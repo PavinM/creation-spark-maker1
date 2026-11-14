@@ -17,7 +17,8 @@ export const Route = createFileRoute("/manufacturing")({
       { property: "og:title", content: "Kidswear Manufacturing Process at Muthu International" },
       {
         property: "og:description",
-        content: "Over 25 years of garment industry experience, with facilities and design capability serving customers across India.",
+        content:
+          "Over 25 years of garment industry experience, with facilities and design capability serving customers across India.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,29 +36,40 @@ function ManufacturingPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#226192]/25 bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
-                  <span className="size-2 rounded-full bg-[#EF8557]" />
-                  <span>Inside Our Factories</span>
+                <div className="inline-flex items-center gap-2 border border-[#226192]/25 bg-[#FFFFFF] px-3.5 py-1 text-xs font-bold tracking-widest text-[#226192] uppercase shadow-sm">
+                  <span className="size-2 bg-[#EF8557]" />
+                  <span>Tirupur Mill Hub · Established 2000</span>
                 </div>
 
-                <h1 className="mt-6 font-['Space_Grotesk'] text-4xl font-extrabold uppercase leading-tight tracking-tight text-[#226192] sm:text-6xl lg:text-7xl">
+                <h1 className="mt-6 font-serif text-4xl font-bold uppercase leading-tight tracking-tight text-[#252525] sm:text-6xl lg:text-7xl">
                   Built on Experience.
                   <br />
                   <span className="text-[#EF8557]">Modern Facilities.</span>
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#252525]/85 sm:text-lg">
-                  Since 2000, our two operational factories, modern high-speed machinery, and dedicated workforce of over 100 people have powered our organized kidswear manufacturing operations in Tirupur.
+                  Since 2000, our two operational factories, modern high-speed machinery, and
+                  dedicated workforce of over 100 people have powered our organized kidswear
+                  manufacturing operations in Tirupur.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button asChild size="lg" className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="border border-[#226192] bg-[#226192] font-bold text-[#FFFFFF] shadow-sm hover:bg-[#1B4E75]"
+                  >
                     <Link to="/quality" className="flex items-center gap-2">
                       <span>Explore Quality Standards</span>
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-[#226192]/30 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557]"
+                  >
                     <Link to="/request-quote">
                       <span>Schedule Factory Visit</span>
                     </Link>
@@ -69,8 +81,8 @@ function ManufacturingPage() {
             {/* Right: HD Manufacturing Visual */}
             <div className="lg:col-span-5">
               <Reveal>
-                <div className="relative overflow-hidden rounded-2xl border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden border border-[#226192]/25 bg-[#FFFFFF] p-3 shadow-lg">
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={images.pageManufacturing}
                       alt="Muthu International modern manufacturing facility"
@@ -78,21 +90,21 @@ function ManufacturingPage() {
                       loading="eager"
                       decoding="async"
                     />
-                    <div className="absolute top-3 right-3 rounded-full bg-[#226192] px-3 py-1 text-[11px] font-bold text-[#FFFFFF]">
+                    <div className="absolute top-3 right-3 bg-[#226192] px-3 py-1 text-[11px] font-bold text-[#FFFFFF]">
                       Tirupur Hub
                     </div>
                   </div>
 
                   <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                    <div className="bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
                       <strong className="block text-base font-bold text-[#226192]">2</strong>
                       <span className="text-[10px] text-[#252525]/75 uppercase">Factories</span>
                     </div>
-                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                    <div className="bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
                       <strong className="block text-base font-bold text-[#EF8557]">100+</strong>
                       <span className="text-[10px] text-[#252525]/75 uppercase">Workers</span>
                     </div>
-                    <div className="rounded-lg bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
+                    <div className="bg-[#EAE6DE]/70 p-2.5 border border-[#226192]/15">
                       <strong className="block text-base font-bold text-[#226192]">25+</strong>
                       <span className="text-[10px] text-[#252525]/75 uppercase">Years</span>
                     </div>
@@ -139,23 +151,34 @@ function ManufacturingPage() {
                     </div>
 
                     {/* Content */}
-                    <div className={`p-8 sm:p-10 lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                    <div
+                      className={`p-8 sm:p-10 lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}
+                    >
                       <div className="flex items-center gap-3">
                         <span className="flex size-8 items-center justify-center bg-gradient-to-br from-[#EF8557] to-[#d96b3f] font-mono text-xs font-bold text-white">
                           {stage.number}
                         </span>
-                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#EF8557]">{stage.title}</span>
+                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#EF8557]">
+                          {stage.title}
+                        </span>
                       </div>
                       <h3 className="mt-4 font-['Space_Grotesk'] text-2xl font-extrabold uppercase tracking-tight text-[#226192] sm:text-3xl">
                         {stage.title}
                       </h3>
-                      <p className="mt-2 text-sm font-semibold text-[#226192]/70">{stage.shortDesc}</p>
-                      <p className="mt-3 text-sm leading-relaxed text-[#252525]/80">{stage.fullDesc}</p>
+                      <p className="mt-2 text-sm font-semibold text-[#226192]/70">
+                        {stage.shortDesc}
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-[#252525]/80">
+                        {stage.fullDesc}
+                      </p>
 
                       <div className="mt-6 border-t border-[#226192]/10 pt-4">
                         <div className="grid grid-cols-2 gap-2">
                           {stage.highlights.map((h) => (
-                            <div key={h} className="flex items-center gap-2 text-xs text-[#252525]/75">
+                            <div
+                              key={h}
+                              className="flex items-center gap-2 text-xs text-[#252525]/75"
+                            >
                               <Check className="size-3.5 shrink-0 text-[#EF8557]" />
                               <span>{h}</span>
                             </div>

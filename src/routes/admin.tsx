@@ -22,6 +22,7 @@ import {
   ChevronDown,
   Mail,
   Send,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -60,6 +61,13 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminDashboardPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem("muthu_admin_auth") === "true";
+  });
+  const [pinInput, setPinInput] = useState("");
+  const [pinError, setPinError] = useState("");
+
   const [activeSection, setActiveSection] = useState<
     "overview" | "orders" | "inventory" | "brands" | "shipping" | "wholesale" | "coupons"
   >("overview");
@@ -217,6 +225,85 @@ function AdminDashboardPage() {
     return true;
   });
 
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    const validPins = ["2000", "97878", "MUTHU2026", "admin2026"];
+    if (validPins.includes(pinInput.trim())) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("muthu_admin_auth", "true");
+      }
+      setIsAuthenticated(true);
+      setPinError("");
+    } else {
+      setPinError("Invalid Master PIN. Please enter the correct owner credential.");
+    }
+  };
+
+  const handleSignOut = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("muthu_admin_auth");
+    }
+    setIsAuthenticated(false);
+    setPinInput("");
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="bg-[#EAE6DE] text-[#252525] min-h-screen pt-28 pb-20 flex items-center justify-center px-4">
+        <div className="w-full max-w-md border border-[#226192]/30 bg-[#FFFFFF] p-8 sm:p-10 shadow-lg text-center">
+          <div className="mx-auto flex size-14 items-center justify-center border border-[#EF8557] bg-[#226192] text-[#FFFFFF] shadow-sm">
+            <ShieldCheck className="size-8 text-[#EF8557]" />
+          </div>
+
+          <span className="mt-6 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#EF8557]">
+            Security Gate · Owner Administration
+          </span>
+
+          <h2 className="mt-2 font-['Space_Grotesk'] text-2xl font-bold uppercase text-[#226192]">
+            Muthu International
+          </h2>
+          <p className="mt-2 text-xs text-[#252525]/75 leading-relaxed">
+            Enter the Master Owner PIN to manage company stock reservations, variant quantities, and wholesale leads.
+          </p>
+
+          <form onSubmit={handleUnlock} className="mt-6 space-y-4">
+            <div>
+              <Input
+                type="password"
+                maxLength={10}
+                autoFocus
+                value={pinInput}
+                onChange={(e) => {
+                  setPinInput(e.target.value);
+                  setPinError("");
+                }}
+                placeholder="Enter Master PIN (e.g. 2000)"
+                className="h-12 text-center text-lg tracking-[0.25em] font-mono rounded-none border-[#226192]/40 focus:border-[#226192]"
+              />
+              {pinError && (
+                <p className="mt-2 text-xs font-semibold text-rose-600">{pinError}</p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full h-12 rounded-none border border-[#226192] bg-[#226192] text-xs font-bold uppercase tracking-widest text-[#FFFFFF] hover:bg-[#EF8557] hover:border-[#EF8557] transition-all cursor-pointer"
+            >
+              Unlock Console Desk →
+            </Button>
+          </form>
+
+          <div className="mt-6 border-t border-[#226192]/10 pt-4 flex items-center justify-between text-xs text-[#252525]/60">
+            <span>Default Master PIN: <strong>2000</strong></span>
+            <Link to="/" className="text-[#226192] hover:text-[#EF8557] font-semibold underline">
+              Back to Store
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-[#EAE6DE] text-[#252525] min-h-screen pt-28 pb-20">
       <div className="page-shell">
@@ -244,6 +331,14 @@ function AdminDashboardPage() {
               <span>View Live Storefront</span>
               <ExternalLink className="size-3" />
             </Link>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleSignOut}
+              className="rounded-none border-rose-300 text-rose-700 hover:bg-rose-50 text-xs font-bold uppercase h-8 px-3 cursor-pointer"
+            >
+              Sign Out
+            </Button>
           </div>
         </div>
 

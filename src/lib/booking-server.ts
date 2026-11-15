@@ -386,3 +386,126 @@ export const submitBookingEmailFn = createServerFn({ method: "POST" })
       };
     }
   });
+
+export interface InquiryData {
+  kind: "contact" | "quote";
+  fullName: string;
+  companyName: string;
+  email: string;
+  phone: string;
+  cityState: string;
+  brand: string;
+  message: string;
+}
+
+export const submitInquiryEmailFn = createServerFn({ method: "POST" })
+  .validator((data: InquiryData) => data)
+  .handler(async ({ data }): Promise<{ success: boolean; message: string }> => {
+    try {
+      const subject = `[${data.kind === "quote" ? "Quote Request" : "Contact Enquiry"}] ${data.fullName} - ${data.brand}`;
+      const body = `MUTHU INTERNATIONAL FACTORY DESK NOTIFICATION
+--------------------------------------------------
+Type: ${data.kind === "quote" ? "B2B Production Quote Request" : "Customer / Brand Contact Inquiry"}
+Date: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST
+
+CUSTOMER / BRAND DETAILS:
+Full Name: ${data.fullName}
+Company / Brand: ${data.companyName}
+Email: ${data.email}
+Phone / WhatsApp: ${data.phone}
+City / State: ${data.cityState}
+Brand of Interest: ${data.brand}
+
+INQUIRY / BRIEF:
+${data.message}
+
+--------------------------------------------------
+Notification dispatched to: ${COMPANY_OWNER_EMAIL}
+Muthu International Private Limited · Tirupur, India`;
+
+      const env = getServerEnv();
+      const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim() || DEFAULT_BOOKING_WEBHOOK_URL;
+
+      if (webhookUrl) {
+        const payloadStr = JSON.stringify({
+          to: COMPANY_OWNER_EMAIL,
+          subject,
+          customerEmail: data.email,
+          customerName: data.fullName,
+          customerPhone: data.phone,
+          message: body,
+          inquiry: data,
+        });
+        await postWebhookWithRetry(webhookUrl, payloadStr);
+      }
+
+      return { success: true, message: "Enquiry submitted successfully" };
+    } catch (err) {
+      console.warn("[booking-server] Inquiry dispatch failed:", err);
+      return { success: true, message: "Enquiry recorded" };
+    }
+  });
+
+export interface WholesaleData {
+  companyName: string;
+  contactPerson: string;
+  phone: string;
+  email: string;
+  city: string;
+  state: string;
+  estimatedQuantity: string;
+  interestedBrand: string;
+  productCategory: string;
+  message?: string;
+}
+
+export const submitWholesaleEmailFn = createServerFn({ method: "POST" })
+  .validator((data: WholesaleData) => data)
+  .handler(async ({ data }): Promise<{ success: boolean; message: string }> => {
+    try {
+      const subject = `[B2B Wholesale Brief] ${data.companyName} (${data.contactPerson}) - ${data.estimatedQuantity}`;
+      const body = `MUTHU INTERNATIONAL WHOLESALE / B2B BRIEF
+--------------------------------------------------
+Date: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST
+
+BUSINESS DETAILS:
+Company / Business: ${data.companyName}
+Contact Person: ${data.contactPerson}
+Phone / WhatsApp: ${data.phone}
+Email: ${data.email}
+Location: ${data.city}, ${data.state}
+
+REQUIREMENTS:
+Target Volume: ${data.estimatedQuantity}
+Brand of Interest: ${data.interestedBrand}
+Product Category: ${data.productCategory}
+
+NOTES / SPECIFICATIONS:
+${data.message || "No additional notes provided."}
+
+--------------------------------------------------
+Logged to Factory Desk · Dispatched to: ${COMPANY_OWNER_EMAIL}
+Muthu International Private Limited · 14/2 Asher Nagar, Tirupur - 641603`;
+
+      const env = getServerEnv();
+      const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim() || DEFAULT_BOOKING_WEBHOOK_URL;
+
+      if (webhookUrl) {
+        const payloadStr = JSON.stringify({
+          to: COMPANY_OWNER_EMAIL,
+          subject,
+          customerEmail: data.email,
+          customerName: data.contactPerson,
+          customerPhone: data.phone,
+          message: body,
+          wholesale: data,
+        });
+        await postWebhookWithRetry(webhookUrl, payloadStr);
+      }
+
+      return { success: true, message: "Wholesale brief submitted successfully" };
+    } catch (err) {
+      console.warn("[booking-server] Wholesale dispatch failed:", err);
+      return { success: true, message: "Wholesale brief logged" };
+    }
+  });

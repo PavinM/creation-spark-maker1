@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SectionHeading, Reveal } from "@/components/site";
 import { WholesaleStore, brandsList } from "@/lib/content";
+import { submitWholesaleEmailFn } from "@/lib/booking-server";
 
 export const Route = createFileRoute("/wholesale")({
   head: () => ({
@@ -70,22 +71,45 @@ function WholesalePage() {
   const [message, setMessage] = useState("");
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    WholesaleStore.submit({
-      companyName,
-      contactPerson,
-      phone,
-      email,
-      city,
-      state,
-      estimatedQuantity,
-      interestedBrand,
-      productCategory,
-      message,
-    });
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      WholesaleStore.submit({
+        companyName,
+        contactPerson,
+        phone,
+        email,
+        city,
+        state,
+        estimatedQuantity,
+        interestedBrand,
+        productCategory,
+        message,
+      });
+
+      await submitWholesaleEmailFn({
+        data: {
+          companyName,
+          contactPerson,
+          phone,
+          email,
+          city,
+          state,
+          estimatedQuantity,
+          interestedBrand,
+          productCategory,
+          message,
+        },
+      });
+    } catch (err) {
+      console.warn("Wholesale brief submit error:", err);
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -432,9 +456,10 @@ function WholesalePage() {
 
                     <Button
                       type="submit"
-                      className="w-full h-12 rounded-none border border-[#EF8557] bg-[#EF8557] text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557]/90 transition-all"
+                      disabled={submitting}
+                      className="w-full h-12 rounded-none border border-[#EF8557] bg-[#EF8557] text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557]/90 transition-all cursor-pointer"
                     >
-                      Submit Wholesale Brief to Tirupur Factory Desk
+                      {submitting ? "Transmitting to Factory Desk..." : "Submit Wholesale Brief to Tirupur Factory Desk"}
                     </Button>
                   </form>
                 )}

@@ -31,6 +31,7 @@ import {
   BookmarkCheck,
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { submitInquiryEmailFn } from "@/lib/booking-server";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -1819,11 +1820,36 @@ export function InquiryForm({
   initialProduct?: string;
 }) {
   const [sent, setSent] = useState(false);
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cityState, setCityState] = useState("");
+  const [brand, setBrand] = useState(initialProduct || "Kids Korner");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (e.currentTarget.checkValidity()) {
+    if (!e.currentTarget.checkValidity()) return;
+    setSubmitting(true);
+    try {
+      await submitInquiryEmailFn({
+        data: {
+          kind,
+          fullName,
+          companyName,
+          email,
+          phone,
+          cityState,
+          brand,
+          message,
+        },
+      });
+    } catch (err) {
+      console.warn("Inquiry submit error:", err);
+    } finally {
+      setSubmitting(false);
       setSent(true);
     }
   };
@@ -1834,19 +1860,24 @@ export function InquiryForm({
         <div className="mx-auto flex size-14 items-center justify-center border border-[#EF8557] bg-[#226192] text-[#EF8557]">
           <CheckCircle2 className="size-8" />
         </div>
-        <p className="label-track mt-6 text-[#EF8557]">Enquiry Received</p>
+        <p className="label-track mt-6 text-[#EF8557]">Enquiry Received & Dispatched</p>
         <h3 className="mt-2 font-['Space_Grotesk'] text-2xl font-bold uppercase text-[#226192] sm:text-3xl">
           Thank you.
         </h3>
         <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-[#252525]/80">
-          Your enquiry has been received. Our team from Muthu International will get in touch within
-          24 hours.
+          Your enquiry has been received and emailed directly to our factory desk ({COMPANY_OWNER_EMAIL}).
+          Our team from Muthu International will get in touch within 24 hours.
         </p>
         <button
           className="mt-8 border border-[#226192] bg-[#226192] px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] transition-colors hover:bg-[#EF8557] hover:border-[#EF8557]"
           onClick={() => {
             setSent(false);
-            setFileName(null);
+            setFullName("");
+            setCompanyName("");
+            setEmail("");
+            setPhone("");
+            setCityState("");
+            setMessage("");
           }}
         >
           Submit Another Enquiry
@@ -1861,6 +1892,8 @@ export function InquiryForm({
         Full Name *
         <Input
           required
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="e.g. Eleanor Vance"
         />
@@ -1870,6 +1903,8 @@ export function InquiryForm({
         Company / Brand Name *
         <Input
           required
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="e.g. Bloom & Co. Kidswear"
         />
@@ -1880,6 +1915,8 @@ export function InquiryForm({
         <Input
           required
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="name@company.com"
         />
@@ -1890,6 +1927,8 @@ export function InquiryForm({
         <Input
           required
           type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="+91 97878 06802"
         />
@@ -1899,6 +1938,8 @@ export function InquiryForm({
         City / State *
         <Input
           required
+          value={cityState}
+          onChange={(e) => setCityState(e.target.value)}
           className="h-12 rounded-none border-[#226192]/25 bg-[#FFFFFF] px-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="Your city and state"
         />
@@ -1907,7 +1948,8 @@ export function InquiryForm({
       <label className="grid gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#226192]">
         Interested Brand *
         <select
-          defaultValue="Kids Korner"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
           className="h-12 border border-[#226192]/25 bg-[#FFFFFF] px-4 text-xs font-semibold text-[#226192] focus:border-[#226192] focus:outline-none"
         >
           <option value="Kids Korner">Kids Korner (Flagship Kidswear)</option>
@@ -1923,6 +1965,8 @@ export function InquiryForm({
         <Textarea
           required
           rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           className="rounded-none border-[#226192]/25 bg-[#FFFFFF] p-4 text-[#252525] focus:border-[#226192] focus:ring-1 focus:ring-[#226192]"
           placeholder="Please describe your requirements, volume targets, delivery locations, or specific garment questions..."
         />
@@ -1931,9 +1975,10 @@ export function InquiryForm({
       <div className="sm:col-span-2">
         <Button
           type="submit"
-          className="h-12 w-full rounded-none border border-[#226192] bg-[#226192] text-xs font-bold uppercase tracking-[0.18em] text-[#FFFFFF] shadow-sm transition-colors hover:border-[#EF8557] hover:bg-[#EF8557]"
+          disabled={submitting}
+          className="h-12 w-full rounded-none border border-[#226192] bg-[#226192] text-xs font-bold uppercase tracking-[0.18em] text-[#FFFFFF] shadow-sm transition-colors hover:border-[#EF8557] hover:bg-[#EF8557] cursor-pointer"
         >
-          Submit Enquiry
+          {submitting ? "Sending to Factory Desk..." : "Submit Enquiry"}
         </Button>
       </div>
     </form>

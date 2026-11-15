@@ -140,31 +140,50 @@ function ProductDetailPage() {
   const handleAddToCart = () => {
     const qtyToAdd = Math.max(1, qty || 1);
     const stockAvail = Math.max(1, liveStock || selectedVariant.stock || 10);
-    CartStore.addItem({
-      productId: p.slug,
-      productSlug: p.slug,
-      productName: p.name,
-      brandId: p.brandId,
-      brandName: p.brandName,
-      variantId: selectedVariant.id,
-      sku: selectedVariant.sku,
-      size: selectedVariant.size,
-      colour: selectedVariant.colour,
-      colourHex: selectedVariant.colourHex,
-      image: selectedVariant.image || p.image,
-      price: selectedVariant.price,
-      mrp: selectedVariant.mrp,
-      quantity: qtyToAdd,
-      maxStock: stockAvail,
-    });
+    try {
+      CartStore.addItem({
+        productId: p.slug,
+        productSlug: p.slug,
+        productName: p.name,
+        brandId: p.brandId,
+        brandName: p.brandName,
+        variantId: selectedVariant.id,
+        sku: selectedVariant.sku,
+        size: selectedVariant.size,
+        colour: selectedVariant.colour,
+        colourHex: selectedVariant.colourHex,
+        image: selectedVariant.image || p.image,
+        price: selectedVariant.price,
+        mrp: selectedVariant.mrp,
+        quantity: qtyToAdd,
+        maxStock: stockAvail,
+      });
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("cart-updated"));
+      }
+    } catch (err) {
+      console.warn("handleAddToCart error:", err);
+    }
 
     setAddedToast(true);
     setTimeout(() => setAddedToast(false), 2500);
   };
 
-  const handleBuyNow = () => {
+  const handleBuyNow = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     handleAddToCart();
-    navigate({ to: "/checkout" });
+    try {
+      navigate({ to: "/checkout" });
+    } catch {
+      window.location.href = "/checkout";
+    }
+    setTimeout(() => {
+      if (window.location.pathname !== "/checkout") {
+        window.location.href = "/checkout";
+      }
+    }, 60);
   };
 
   const handleToggleWishlist = () => {
@@ -499,9 +518,9 @@ function ProductDetailPage() {
                     </div>
 
                     <Button
+                      type="button"
                       onClick={handleAddToCart}
-                      disabled={liveStock === 0}
-                      className="flex-1 min-w-0 rounded-none border-2 border-[#226192] bg-[#226192] h-11 px-3 sm:px-4 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#18466b] transition-all"
+                      className="flex-1 min-w-0 rounded-none border-2 border-[#226192] bg-[#226192] h-11 px-3 sm:px-4 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#18466b] transition-all cursor-pointer"
                     >
                       {addedToast ? "✓ Reserved in List!" : "Add to Booking List"}
                     </Button>
@@ -521,14 +540,14 @@ function ProductDetailPage() {
                     </button>
                   </div>
 
-                  <Button
+                  <Link
+                    to="/checkout"
                     onClick={handleBuyNow}
-                    disabled={liveStock === 0}
-                    className="w-full rounded-none border border-[#EF8557] bg-[#EF8557] h-12 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] hover:bg-[#d97346] shadow-sm flex items-center justify-center gap-2 transition-all"
+                    className="w-full rounded-none border border-[#EF8557] bg-[#EF8557] h-12 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] hover:bg-[#d97346] shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer select-none"
                   >
                     <span>BOOK STOCK NOW</span>
                     <span className="text-base font-bold">→</span>
-                  </Button>
+                  </Link>
                 </div>
 
                 <p className="mt-3 text-[11px] text-[#226192]/80 font-medium">

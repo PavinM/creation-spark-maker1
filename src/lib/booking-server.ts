@@ -548,9 +548,66 @@ export const fetchCentralSheetDataFn = createServerFn({ method: "GET" }).handler
             wholesale?: WholesaleEnquiry[];
           };
           if (parsed && parsed.ok && Array.isArray(parsed.bookings)) {
+            // Normalize bookings so all legacy, manual, or test bookings display complete data
+            const normalizedBookings: Order[] = parsed.bookings.map((b: any) => {
+              const rawTotal = Number(b.total ?? b.totalAmount ?? 0);
+              const rawTax = Number(
+                b.tax ?? b.gstAmount ?? (rawTotal > 0 ? Math.round(rawTotal * 0.05) : 0),
+              );
+              return {
+                id: String(b.id || b.orderNumber || `ord-${Math.random()}`),
+                orderNumber: String(b.orderNumber || b.id || "BK-2026-000000"),
+                date: String(b.date || b.createdAt || new Date().toISOString()),
+                status: (b.status as any) || "Confirmed",
+                total: rawTotal,
+                totalMrp: Number(b.totalMrp ?? rawTotal),
+                subtotal: Number(b.subtotal ?? rawTotal),
+                discount: Number(b.discount ?? 0),
+                shippingFee: Number(b.shippingFee ?? 0),
+                shippingZone: b.shippingZone || "Standard Delivery",
+                tax: rawTax,
+                paymentMethod: b.paymentMethod || "Stock Reservation",
+                paymentStatus: b.paymentStatus || "Stock Reserved",
+                trackingNumber: b.trackingNumber || "",
+                courierName: b.courierName || "",
+                notes: b.notes || "",
+                shippingAddress: {
+                  id: b.shippingAddress?.id || "addr-default",
+                  fullName: b.shippingAddress?.fullName || b.customerName || "Customer",
+                  email: b.shippingAddress?.email || b.customerEmail || "",
+                  phone: b.shippingAddress?.phone || b.customerPhone || "",
+                  addressLine1:
+                    b.shippingAddress?.addressLine1 || b.shippingAddress?.streetAddress || "",
+                  addressLine2: b.shippingAddress?.addressLine2 || "",
+                  city: b.shippingAddress?.city || "",
+                  state: b.shippingAddress?.state || "",
+                  pinCode: b.shippingAddress?.pinCode || b.shippingAddress?.postalCode || "",
+                  addressType: b.shippingAddress?.addressType || "Home",
+                },
+                items: Array.isArray(b.items)
+                  ? b.items.map((i: any) => ({
+                      productId: i.productId || "prod",
+                      productSlug: i.productSlug || i.productId || "product",
+                      productName: i.productName || i.productTitle || "Garment Style",
+                      brandName: i.brandName || "Kids Korner",
+                      sku: i.sku || "KK-001",
+                      size: i.size || "Standard",
+                      colour: i.colour || i.color || "Standard",
+                      image: i.image || "",
+                      price: Number(i.price ?? 0),
+                      mrp: Number(i.mrp ?? i.price ?? 0),
+                      quantity: Number(i.quantity ?? 1),
+                      gstRate: i.gstRate || 5,
+                      taxableValue: i.taxableValue || 0,
+                      gstAmount: i.gstAmount || 0,
+                    }))
+                  : [],
+              };
+            });
+
             return {
               ok: true,
-              bookings: parsed.bookings,
+              bookings: normalizedBookings,
               wholesale: Array.isArray(parsed.wholesale) ? parsed.wholesale : [],
               source: "sheets",
             };

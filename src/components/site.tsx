@@ -931,11 +931,11 @@ function useScrollProgress<T extends HTMLElement>() {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+    element.style.setProperty("--scroll-progress", "1");
     if (
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       !("IntersectionObserver" in window)
     ) {
-      element.style.setProperty("--scroll-progress", "1");
       return;
     }
     const observer = new IntersectionObserver(
@@ -945,7 +945,7 @@ function useScrollProgress<T extends HTMLElement>() {
           observer.unobserve(element);
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+      { rootMargin: "100px 0px 100px 0px", threshold: 0.01 },
     );
     observer.observe(element);
     return () => {

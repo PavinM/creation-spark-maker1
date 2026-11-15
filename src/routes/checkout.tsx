@@ -75,6 +75,35 @@ function CheckoutPage() {
   const [emailSentByServer, setEmailSentByServer] = useState<boolean>(false);
   const [copiedSlip, setCopiedSlip] = useState<boolean>(false);
 
+  // Hydrate cart from client storage on mount and listen to updates
+  useEffect(() => {
+    setCartItems(CartStore.getCart());
+
+    const handleCartUpdate = () => {
+      setCartItems(CartStore.getCart());
+    };
+
+    window.addEventListener("cart-updated", handleCartUpdate);
+
+    // If address fields are empty, try hydrating from stored user
+    const clientUser = UserStore.getUser();
+    const clientAddr = clientUser?.addresses?.[0];
+    if (clientAddr) {
+      setFullName((prev) => prev || clientAddr.fullName || "");
+      setPhone((prev) => prev || clientAddr.phone || "");
+      setEmail((prev) => prev || clientAddr.email || "");
+      setAddressLine1((prev) => prev || clientAddr.addressLine1 || "");
+      setAddressLine2((prev) => prev || clientAddr.addressLine2 || "");
+      if (clientAddr.pinCode) setPinCode(clientAddr.pinCode);
+      if (clientAddr.city) setCity(clientAddr.city);
+      if (clientAddr.state) setState(clientAddr.state);
+    }
+
+    return () => {
+      window.removeEventListener("cart-updated", handleCartUpdate);
+    };
+  }, []);
+
   // Financial & Tax Calculations
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const totalMrp = cartItems.reduce((acc, item) => acc + item.mrp * item.quantity, 0);
@@ -118,88 +147,100 @@ function CheckoutPage() {
 
     setIsSubmitting(true);
 
-    const shippingAddress: CustomerAddress = {
-      id: `addr_${Date.now()}`,
-      fullName,
-      phone,
-      email,
-      addressLine1,
-      addressLine2,
-      city,
-      state,
-      pinCode,
-      addressType,
-    };
-
-    UserStore.saveContactFromBooking(shippingAddress);
-
-    // Prepare stock reservation map for variants
-    const variantStockMap = cartItems.map((c) => {
-      const prod = products.find((p) => p.slug === c.productSlug);
-      const variant = prod?.variants.find((v) => v.id === c.variantId);
-      return {
-        variantId: c.variantId,
-        defaultStock: variant?.stock ?? c.maxStock,
-        qty: c.quantity,
-      };
-    });
-
-    const newBooking = OrdersStore.createOrder(
-      {
-        status: "Stock Reserved",
-        items: cartItems.map((c) => {
-          const itemGst = calculateGstBreakdown(c.price, c.mrp, c.quantity);
-          return {
-            productId: c.productId,
-            productSlug: c.productSlug,
-            productName: c.productName,
-            brandName: c.brandName,
-            sku: c.sku,
-            size: c.size,
-            colour: c.colour,
-            image: c.image,
-            price: c.price,
-            mrp: c.mrp,
-            quantity: c.quantity,
-            gstRate: itemGst.gstRate,
-            taxableValue: itemGst.taxableValue,
-            gstAmount: itemGst.gstAmount,
-          };
-        }),
-        totalMrp,
-        subtotal,
-        discount: discountAmount,
-        couponCode: couponFeedback?.success ? couponCode.toUpperCase() : undefined,
-        shippingFee,
-        shippingZone: shippingCalculation.zoneName,
-        taxableValue: taxAggregation.taxableValue,
-        tax: taxAggregation.gstAmount,
-        total: finalTotal,
-        shippingAddress,
-        paymentMethod: "Stock Reservation (No Online Payment)",
-        paymentStatus: "Stock Reserved for Customer",
-        emailDispatchedToOwner: true,
-        trackingNumber: `RES-${Math.floor(100000 + Math.random() * 900000)}`,
-        courierName: "Muthu International Direct Hold",
-        notes: bookingNotes,
-      },
-      variantStockMap,
-    );
-
     try {
-      const serverResp = await submitBookingEmailFn({ data: { order: newBooking } });
-      setEmailSentByServer(serverResp.emailSentByServer);
-      setServerEmailMessage(serverResp.message);
-    } catch (err) {
-      console.warn("[checkout] Server notification fallback:", err);
-      setEmailSentByServer(false);
-      setServerEmailMessage(
-        `Booking saved! Click "Send Booking Email" below to open your email app to ${COMPANY_OWNER_EMAIL}.`,
-      );
-    }
+      const shippingAddress: CustomerAddress = {
+        id: `addr_${Date.now()}`,
+        fullName,
+        phone,
+        email,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        pinCode,
+        addressType,
+      };
 
-    setConfirmedBooking(newBooking);
-    setIsSubmitting(false);
+      UserStore.saveContactFromBooking(shippingAddress);
+
+      // Prepare stock reservation map for variants
+      const variantStockMap = cartItems.map((c) => {
+        const prod = products.find((p) => p.slug === c.productSlug);
+        const variant = prod?.variants.find((v) => v.id === c.variantId);
+        return {
+          variantId: c.variantId,
+          defaultStock: variant?.stock ?? c.maxStock,
+          qty: c.quantity,
+        };
+      });
+
+      const newBooking = OrdersStore.createOrder(
+        {
+          status: "Stock Reserved",
+          items: cartItems.map((c) => {
+            const itemGst = calculateGstBreakdown(c.price, c.mrp, c.quantity);
+            return {
+              productId: c.productId,
+              productSlug: c.productSlug,
+              productName: c.productName,
+              brandName: c.brandName,
+              sku: c.sku,
+              size: c.size,
+              colour: c.colour,
+              image: c.image,
+              price: c.price,
+              mrp: c.mrp,
+              quantity: c.quantity,
+              gstRate: itemGst.gstRate,
+              taxableValue: itemGst.taxableValue,
+              gstAmount: itemGst.gstAmount,
+            };
+          }),
+          totalMrp,
+          subtotal,
+          discount: discountAmount,
+          couponCode: couponFeedback?.success ? couponCode.toUpperCase() : undefined,
+          shippingFee,
+          shippingZone: shippingCalculation.zoneName,
+          taxableValue: taxAggregation.taxableValue,
+          tax: taxAggregation.gstAmount,
+          total: finalTotal,
+          shippingAddress,
+          paymentMethod: "Stock Reservation (No Online Payment)",
+          paymentStatus: "Stock Reserved for Customer",
+          emailDispatchedToOwner: true,
+          trackingNumber: `RES-${Math.floor(100000 + Math.random() * 900000)}`,
+          courierName: "Muthu International Direct Hold",
+          notes: bookingNotes,
+        },
+        variantStockMap,
+      );
+
+      // Instantly confirm stock booking locally so customer never gets stuck
+      setConfirmedBooking(newBooking);
+
+      // Attempt server notification in background with a 4s fast timeout
+      try {
+        const serverCall = submitBookingEmailFn({ data: { order: newBooking } });
+        const timeoutCall = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("Server timeout")), 4000),
+        );
+        const serverResp = await Promise.race([serverCall, timeoutCall]);
+        setEmailSentByServer(serverResp.emailSentByServer);
+        setServerEmailMessage(serverResp.message);
+      } catch (err) {
+        console.warn("[checkout] Server notification fallback:", err);
+        setEmailSentByServer(false);
+        setServerEmailMessage(
+          `Booking saved! Click "Send Booking Email" below to notify the factory owner at ${COMPANY_OWNER_EMAIL}.`,
+        );
+      }
+    } catch (bookingErr) {
+      console.error("[checkout] Error creating booking:", bookingErr);
+      alert("Could not process booking. Please check the fields and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyBookingSlip = () => {

@@ -140,6 +140,17 @@ export function SiteHeader() {
     setSearchOpen(false);
   }, [pathname]);
 
+  // Click outside to close brand dropdown
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (brandDropdownRef.current && !brandDropdownRef.current.contains(e.target as Node)) {
+        setBrandDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   // Lock body scroll when mobile menu or search is open
   useEffect(() => {
     if (open || searchOpen) {
@@ -372,73 +383,97 @@ export function SiteHeader() {
 
               {/* Our Brands with Interactive Mega Menu (replaces product) */}
               <div
-                className="relative"
+                className="relative py-1"
                 ref={brandDropdownRef}
                 onMouseEnter={() => setBrandDropdownOpen(true)}
                 onMouseLeave={() => setBrandDropdownOpen(false)}
               >
-                <div className="flex items-center gap-1 cursor-pointer">
+                <div
+                  className="flex items-center gap-1 cursor-pointer select-none"
+                  onClick={() => setBrandDropdownOpen((v) => !v)}
+                >
                   <Link
                     to="/brands"
                     className={cn(
                       "py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#252525] hover:text-[#226192] transition-colors relative whitespace-nowrap",
-                      pathname.startsWith("/brands") &&
+                      (pathname.startsWith("/brands") || brandDropdownOpen) &&
                         "text-[#226192] font-bold after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#EF8557]",
                     )}
                   >
                     Our Brands
                   </Link>
-                  <ChevronDown className="size-3 text-[#EF8557]" />
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setBrandDropdownOpen((v) => !v);
+                    }}
+                    aria-label="Toggle brand portfolio menu"
+                    className="p-0.5 hover:bg-[#226192]/10 rounded-sm"
+                  >
+                    <ChevronDown
+                      className={cn(
+                        "size-3 text-[#EF8557] transition-transform duration-200",
+                        brandDropdownOpen && "rotate-180",
+                      )}
+                    />
+                  </button>
                 </div>
 
                 {brandDropdownOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-96 rounded-none border border-[#226192]/25 bg-[#FFFFFF] p-4 shadow-2xl backdrop-blur-md z-50 animate-in fade-in-50 zoom-in-95">
-                    <div className="mb-3 border-b border-[#226192]/10 pb-2">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#EF8557]">
-                        Muthu International Portfolio
-                      </p>
-                      <p className="text-[11px] text-[#252525]/70">
-                        Four specialized kidswear labels · Unified factory booking
-                      </p>
-                    </div>
-                    <div className="space-y-2">
-                      {brandsList.map((brand) => (
-                        <Link
-                          key={brand.id}
-                          to="/brands/$slug"
-                          params={{ slug: brand.slug }}
-                          className="group flex items-start justify-between border border-transparent p-2.5 transition-all hover:border-[#226192]/20 hover:bg-[#F7F3EB]"
-                        >
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-['Space_Grotesk'] text-xs font-bold text-[#226192] group-hover:text-[#EF8557]">
-                                {brand.name}
-                              </span>
-                              <span className="bg-[#EF8557]/15 px-1.5 py-0.5 text-[8px] font-bold text-[#EF8557]">
-                                {brand.badge}
-                              </span>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1.5 z-50">
+                    <div className="w-96 rounded-none border border-[#226192]/25 bg-[#FFFFFF] p-4 shadow-2xl backdrop-blur-md animate-in fade-in-50 zoom-in-95">
+                      <div className="mb-3 border-b border-[#226192]/10 pb-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#EF8557]">
+                          Muthu International Portfolio
+                        </p>
+                        <p className="text-[11px] text-[#252525]/70">
+                          Four specialized kidswear labels · Unified factory booking
+                        </p>
+                      </div>
+                      <div className="space-y-2">
+                        {brandsList.map((brand) => (
+                          <Link
+                            key={brand.id}
+                            to="/brands/$slug"
+                            params={{ slug: brand.slug }}
+                            onClick={() => setBrandDropdownOpen(false)}
+                            className="group flex items-start justify-between border border-transparent p-2.5 transition-all hover:border-[#226192]/20 hover:bg-[#F7F3EB]"
+                          >
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <span className="font-['Space_Grotesk'] text-xs font-bold text-[#226192] group-hover:text-[#EF8557]">
+                                  {brand.name}
+                                </span>
+                                <span className="bg-[#EF8557]/15 px-1.5 py-0.5 text-[8px] font-bold text-[#EF8557]">
+                                  {brand.badge}
+                                </span>
+                              </div>
+                              <p className="line-clamp-1 text-[11px] text-[#252525]/70 mt-0.5">
+                                {brand.tagline}
+                              </p>
                             </div>
-                            <p className="line-clamp-1 text-[11px] text-[#252525]/70 mt-0.5">
-                              {brand.tagline}
-                            </p>
-                          </div>
-                          <ArrowRight className="size-3.5 text-[#226192]/40 transition-transform group-hover:translate-x-1 group-hover:text-[#EF8557]" />
+                            <ArrowRight className="size-3.5 text-[#226192]/40 transition-transform group-hover:translate-x-1 group-hover:text-[#EF8557]" />
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="mt-3 flex items-center justify-between border-t border-[#226192]/10 pt-2.5">
+                        <Link
+                          to="/brands"
+                          onClick={() => setBrandDropdownOpen(false)}
+                          className="text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:text-[#EF8557]"
+                        >
+                          All 4 Houses →
                         </Link>
-                      ))}
-                    </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-[#226192]/10 pt-2.5">
-                      <Link
-                        to="/brands"
-                        className="text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:text-[#EF8557]"
-                      >
-                        All 4 Houses →
-                      </Link>
-                      <Link
-                        to="/products"
-                        className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557] hover:text-[#226192]"
-                      >
-                        Browse Full Catalogue →
-                      </Link>
+                        <Link
+                          to="/products"
+                          onClick={() => setBrandDropdownOpen(false)}
+                          className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557] hover:text-[#226192]"
+                        >
+                          Browse Full Catalogue →
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -652,13 +687,29 @@ export function SiteHeader() {
             >
               About
             </Link>
-            <Link
-              to="/brands"
-              className="py-3 text-sm font-semibold tracking-wide text-slate-100 hover:text-[#EF8557]"
-              activeProps={{ className: "text-[#EF8557] font-bold" }}
-            >
-              Our Brands
-            </Link>
+            <div>
+              <Link
+                to="/brands"
+                className="py-3 text-sm font-semibold tracking-wide text-slate-100 hover:text-[#EF8557] flex items-center justify-between"
+                activeProps={{ className: "text-[#EF8557] font-bold" }}
+              >
+                <span>Our Brands</span>
+                <span className="text-[10px] text-[#EF8557] uppercase font-bold tracking-wider">4 Houses</span>
+              </Link>
+              <div className="pl-3 pb-2 pt-1 grid grid-cols-2 gap-1.5 border-l-2 border-[#EF8557]/40 my-1 bg-[#FFFFFF]/5">
+                {brandsList.map((brand) => (
+                  <Link
+                    key={brand.id}
+                    to="/brands/$slug"
+                    params={{ slug: brand.slug }}
+                    className="p-1.5 text-xs text-slate-200 hover:text-[#EF8557]"
+                  >
+                    <span className="font-semibold block">{brand.name}</span>
+                    <span className="text-[9px] text-[#EF8557] opacity-80">{brand.badge}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link
               to="/collections"
               className="py-3 text-sm font-semibold tracking-wide text-slate-100 hover:text-[#EF8557]"

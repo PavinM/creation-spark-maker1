@@ -46,6 +46,7 @@ function CartPage() {
   const [pinCode, setPinCode] = useState("641603");
 
   useEffect(() => {
+    setCartItems(CartStore.getCart());
     const handleUpdate = () => setCartItems(CartStore.getCart());
     window.addEventListener("cart-updated", handleUpdate);
     return () => window.removeEventListener("cart-updated", handleUpdate);

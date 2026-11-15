@@ -95,9 +95,9 @@ async function readWebhookEchoResponse(
   echoUrl: string,
 ): Promise<{ ok: boolean; status?: number; detail?: string }> {
   let lastErr: unknown;
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const followRes = await fetchWithTimeout(echoUrl, { method: "GET" }, 7000);
+      const followRes = await fetchWithTimeout(echoUrl, { method: "GET" }, 3500);
       const text = await followRes.text();
       const trimmed = text.trim();
       const isHtml = trimmed.startsWith("<");
@@ -123,8 +123,8 @@ async function readWebhookEchoResponse(
       };
     } catch (err) {
       lastErr = err;
-      if (attempt < 3) {
-        await sleepMs(400 * attempt);
+      if (attempt < 2) {
+        await sleepMs(300 * attempt);
       }
     }
   }
@@ -139,7 +139,7 @@ async function postWebhookWithRetry(
   payloadStr: string,
 ): Promise<{ ok: boolean; status?: number; detail?: string }> {
   let lastErr: unknown;
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const res = await fetchWithTimeout(
         webhookUrl,
@@ -149,7 +149,7 @@ async function postWebhookWithRetry(
           body: payloadStr,
           redirect: "manual",
         },
-        8000,
+        3500,
       );
 
       if (res.status >= 300 && res.status < 400) {
@@ -204,171 +204,181 @@ async function postWebhookWithRetry(
       lastErr = err;
     }
 
-    if (attempt < 3) {
-      await sleepMs(400 * attempt);
+    if (attempt < 2) {
+      await sleepMs(300 * attempt);
     }
   }
 
   return {
     ok: false,
-    detail: `Webhook dispatch failed after 3 attempts: ${String(lastErr)}`,
+    detail: `Webhook dispatch failed after 2 attempts: ${String(lastErr)}`,
   };
 }
 
 export const submitBookingEmailFn = createServerFn({ method: "POST" })
   .validator((data: { order: Order }) => data)
   .handler(async ({ data }): Promise<BookingNotificationResult> => {
-    const { order } = data;
-    const emailSubject = `[Stock Booking ${order.orderNumber}] ${order.shippingAddress.fullName} (${order.shippingAddress.email}) - Reserve Stock`;
-    const emailBody = formatBookingEmailBody(order);
+    try {
+      const { order } = data;
+      const emailSubject = `[Stock Booking ${order.orderNumber}] ${order.shippingAddress.fullName} (${order.shippingAddress.email}) - Reserve Stock`;
+      const emailBody = formatBookingEmailBody(order);
 
-    const env = getServerEnv();
-    const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim();
-    const resendApiKey = env?.["RESEND_API_KEY"]?.trim();
-    const brevoApiKey = env?.["BREVO_API_KEY"]?.trim();
-    const web3FormsKey = env?.["WEB3FORMS_ACCESS_KEY"]?.trim();
+      const env = getServerEnv();
+      const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim();
+      const resendApiKey = env?.["RESEND_API_KEY"]?.trim();
+      const brevoApiKey = env?.["BREVO_API_KEY"]?.trim();
+      const web3FormsKey = env?.["WEB3FORMS_ACCESS_KEY"]?.trim();
 
-    // 1. Always log on server for operational visibility
-    console.info(`\n[MUTHU INTERNATIONAL STOCK BOOKING -> ${COMPANY_OWNER_EMAIL}]`);
-    console.info(`Booking ID: ${order.orderNumber} | Customer: ${order.shippingAddress.email}`);
+      // 1. Always log on server for operational visibility
+      console.info(`\n[MUTHU INTERNATIONAL STOCK BOOKING -> ${COMPANY_OWNER_EMAIL}]`);
+      console.info(`Booking ID: ${order.orderNumber} | Customer: ${order.shippingAddress.email}`);
 
-    // 2. Option A: Webhook / Google Apps Script (Sends directly via owner's Gmail)
-    if (webhookUrl) {
-      const payloadStr = JSON.stringify({
-        to: COMPANY_OWNER_EMAIL,
-        subject: emailSubject,
-        customerEmail: order.shippingAddress.email,
-        customerName: order.shippingAddress.fullName,
-        customerPhone: order.shippingAddress.phone,
-        bookingNumber: order.orderNumber,
-        message: emailBody,
-        order,
-      });
-
-      const webhookResult = await postWebhookWithRetry(webhookUrl, payloadStr);
-      if (webhookResult.ok) {
-        console.info(
-          `[booking-server] Automated email sent via Webhook / Gmail Script -> ${COMPANY_OWNER_EMAIL}`,
-        );
-        return {
-          success: true,
-          emailSentByServer: true,
-          provider: "Webhook / Gmail Script",
-          ownerEmail: COMPANY_OWNER_EMAIL,
-          message: `Booking slip was automatically emailed to ${COMPANY_OWNER_EMAIL}. No manual Outlook/email action needed.`,
-        };
-      }
-      console.warn(`[booking-server] ${webhookResult.detail}`);
-    }
-
-    // 3. Option B: Resend API
-    if (resendApiKey) {
-      try {
-        const res = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${resendApiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: env?.["RESEND_FROM_EMAIL"] || "Kids Korner Bookings <onboarding@resend.dev>",
-            to: [COMPANY_OWNER_EMAIL],
-            reply_to: order.shippingAddress.email,
-            subject: emailSubject,
-            text: emailBody,
-          }),
+      // 2. Option A: Webhook / Google Apps Script (Sends directly via owner's Gmail)
+      if (webhookUrl) {
+        const payloadStr = JSON.stringify({
+          to: COMPANY_OWNER_EMAIL,
+          subject: emailSubject,
+          customerEmail: order.shippingAddress.email,
+          customerName: order.shippingAddress.fullName,
+          customerPhone: order.shippingAddress.phone,
+          bookingNumber: order.orderNumber,
+          message: emailBody,
+          order,
         });
 
-        if (res.ok) {
+        const webhookResult = await postWebhookWithRetry(webhookUrl, payloadStr);
+        if (webhookResult.ok) {
+          console.info(
+            `[booking-server] Automated email sent via Webhook / Gmail Script -> ${COMPANY_OWNER_EMAIL}`,
+          );
           return {
             success: true,
             emailSentByServer: true,
-            provider: "Resend API",
+            provider: "Webhook / Gmail Script",
             ownerEmail: COMPANY_OWNER_EMAIL,
-            message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Resend. No manual email action needed.`,
+            message: `Booking slip was automatically emailed to ${COMPANY_OWNER_EMAIL}. No manual Outlook/email action needed.`,
           };
         }
-        const errBody = await res.text();
-        console.warn(`[booking-server] Resend failed (${res.status}):`, errBody);
-      } catch (err) {
-        console.warn("[booking-server] Resend email dispatch failed:", err);
+        console.warn(`[booking-server] ${webhookResult.detail}`);
       }
-    }
 
-    // 4. Option C: Brevo (Sendinblue) API
-    if (brevoApiKey) {
-      try {
-        const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-          method: "POST",
-          headers: {
-            "api-key": brevoApiKey,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            sender: {
-              name: "Kids Korner Stock Bookings",
-              email: env?.["BREVO_SENDER_EMAIL"] || COMPANY_OWNER_EMAIL,
+      // 3. Option B: Resend API
+      if (resendApiKey) {
+        try {
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${resendApiKey}`,
+              "Content-Type": "application/json",
             },
-            to: [{ email: COMPANY_OWNER_EMAIL, name: "Muthu International Owner Desk" }],
-            replyTo: { email: order.shippingAddress.email, name: order.shippingAddress.fullName },
-            subject: emailSubject,
-            textContent: emailBody,
-          }),
-        });
+            body: JSON.stringify({
+              from: env?.["RESEND_FROM_EMAIL"] || "Kids Korner Bookings <onboarding@resend.dev>",
+              to: [COMPANY_OWNER_EMAIL],
+              reply_to: order.shippingAddress.email,
+              subject: emailSubject,
+              text: emailBody,
+            }),
+          });
 
-        if (res.ok) {
-          return {
-            success: true,
-            emailSentByServer: true,
-            provider: "Brevo API",
-            ownerEmail: COMPANY_OWNER_EMAIL,
-            message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Brevo. No manual email action needed.`,
-          };
+          if (res.ok) {
+            return {
+              success: true,
+              emailSentByServer: true,
+              provider: "Resend API",
+              ownerEmail: COMPANY_OWNER_EMAIL,
+              message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Resend. No manual email action needed.`,
+            };
+          }
+          const errBody = await res.text();
+          console.warn(`[booking-server] Resend failed (${res.status}):`, errBody);
+        } catch (err) {
+          console.warn("[booking-server] Resend email dispatch failed:", err);
         }
-        const errBody = await res.text();
-        console.warn(`[booking-server] Brevo failed (${res.status}):`, errBody);
-      } catch (err) {
-        console.warn("[booking-server] Brevo dispatch failed:", err);
       }
-    }
 
-    // 5. Option D: Web3Forms API
-    if (web3FormsKey) {
-      try {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: web3FormsKey,
-            subject: emailSubject,
-            from_name: `${order.shippingAddress.fullName} (Kids Korner Booking)`,
-            replyto: order.shippingAddress.email,
-            message: emailBody,
-          }),
-        });
+      // 4. Option C: Brevo (Sendinblue) API
+      if (brevoApiKey) {
+        try {
+          const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+            method: "POST",
+            headers: {
+              "api-key": brevoApiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              sender: {
+                name: "Kids Korner Stock Bookings",
+                email: env?.["BREVO_SENDER_EMAIL"] || COMPANY_OWNER_EMAIL,
+              },
+              to: [{ email: COMPANY_OWNER_EMAIL, name: "Muthu International Owner Desk" }],
+              replyTo: { email: order.shippingAddress.email, name: order.shippingAddress.fullName },
+              subject: emailSubject,
+              textContent: emailBody,
+            }),
+          });
 
-        if (res.ok) {
-          return {
-            success: true,
-            emailSentByServer: true,
-            provider: "Web3Forms",
-            ownerEmail: COMPANY_OWNER_EMAIL,
-            message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Web3Forms. No manual email action needed.`,
-          };
+          if (res.ok) {
+            return {
+              success: true,
+              emailSentByServer: true,
+              provider: "Brevo API",
+              ownerEmail: COMPANY_OWNER_EMAIL,
+              message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Brevo. No manual email action needed.`,
+            };
+          }
+          const errBody = await res.text();
+          console.warn(`[booking-server] Brevo failed (${res.status}):`, errBody);
+        } catch (err) {
+          console.warn("[booking-server] Brevo dispatch failed:", err);
         }
-      } catch (err) {
-        console.warn("[booking-server] Web3Forms dispatch failed:", err);
       }
-    }
 
-    // 6. Fallback when no external email provider key is configured in env
-    return {
-      success: true,
-      emailSentByServer: false,
-      ownerEmail: COMPANY_OWNER_EMAIL,
-      message: `Booking recorded! Automated email could not be sent from server—use the fallback button below to send via your email app to ${COMPANY_OWNER_EMAIL}.`,
-    };
+      // 5. Option D: Web3Forms API
+      if (web3FormsKey) {
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: web3FormsKey,
+              subject: emailSubject,
+              from_name: `${order.shippingAddress.fullName} (Kids Korner Booking)`,
+              replyto: order.shippingAddress.email,
+              message: emailBody,
+            }),
+          });
+
+          if (res.ok) {
+            return {
+              success: true,
+              emailSentByServer: true,
+              provider: "Web3Forms",
+              ownerEmail: COMPANY_OWNER_EMAIL,
+              message: `Booking email automatically sent to ${COMPANY_OWNER_EMAIL} via Web3Forms. No manual email action needed.`,
+            };
+          }
+        } catch (err) {
+          console.warn("[booking-server] Web3Forms dispatch failed:", err);
+        }
+      }
+
+      // 6. Fallback when no external email provider key is configured in env
+      return {
+        success: true,
+        emailSentByServer: false,
+        ownerEmail: COMPANY_OWNER_EMAIL,
+        message: `Booking recorded! Automated email could not be sent from server—use the fallback button below to send via your email app to ${COMPANY_OWNER_EMAIL}.`,
+      };
+    } catch (unexpected) {
+      console.warn("[booking-server] Caught unexpected error in submitBookingEmailFn:", unexpected);
+      return {
+        success: true,
+        emailSentByServer: false,
+        ownerEmail: COMPANY_OWNER_EMAIL,
+        message: `Booking recorded! Please use the 'Send Booking Email' button below to email ${COMPANY_OWNER_EMAIL}.`,
+      };
+    }
   });

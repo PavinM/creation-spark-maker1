@@ -1,5 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
-import { COMPANY_OWNER_EMAIL, formatBookingEmailBody, type Order } from "./ecommerce";
+import {
+  COMPANY_OWNER_EMAIL,
+  formatBookingEmailBody,
+  type Order,
+  type WholesaleEnquiry,
+} from "./ecommerce";
 
 export interface BookingNotificationResult {
   success: boolean;
@@ -237,9 +242,10 @@ export const submitBookingEmailFn = createServerFn({ method: "POST" })
       console.info(`\n[MUTHU INTERNATIONAL STOCK BOOKING -> ${COMPANY_OWNER_EMAIL}]`);
       console.info(`Booking ID: ${order.orderNumber} | Customer: ${order.shippingAddress.email}`);
 
-      // 2. Option A: Webhook / Google Apps Script (Sends directly via owner's Gmail)
+      // 2. Option A: Webhook / Google Apps Script (Sends directly via owner's Gmail & appends to Google Sheet)
       if (webhookUrl) {
         const payloadStr = JSON.stringify({
+          action: "create_booking",
           to: COMPANY_OWNER_EMAIL,
           subject: emailSubject,
           customerEmail: order.shippingAddress.email,
@@ -428,6 +434,7 @@ Muthu International Private Limited · Tirupur, India`;
 
       if (webhookUrl) {
         const payloadStr = JSON.stringify({
+          action: "create_inquiry",
           to: COMPANY_OWNER_EMAIL,
           subject,
           customerEmail: data.email,
@@ -492,6 +499,7 @@ Muthu International Private Limited · 14/2 Asher Nagar, Tirupur - 641603`;
 
       if (webhookUrl) {
         const payloadStr = JSON.stringify({
+          action: "create_wholesale",
           to: COMPANY_OWNER_EMAIL,
           subject,
           customerEmail: data.email,
@@ -509,3 +517,50 @@ Muthu International Private Limited · 14/2 Asher Nagar, Tirupur - 641603`;
       return { success: true, message: "Wholesale brief logged" };
     }
   });
+
+export interface CentralSheetData {
+  ok: boolean;
+  bookings: Order[];
+  wholesale: WholesaleEnquiry[];
+  source: "sheets" | "fallback";
+}
+
+export const fetchCentralSheetDataFn = createServerFn({ method: "GET" }).handler(
+  async (): Promise<CentralSheetData> => {
+    const env = getServerEnv();
+    const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim() || DEFAULT_BOOKING_WEBHOOK_URL;
+    if (!webhookUrl) {
+      return { ok: false, bookings: [], wholesale: [], source: "fallback" };
+    }
+
+    try {
+      const getUrl = webhookUrl.includes("?")
+        ? `${webhookUrl}&action=get_data`
+        : `${webhookUrl}?action=get_data`;
+      const res = await fetchWithTimeout(getUrl, { method: "GET", redirect: "follow" }, 5000);
+      if (res.ok) {
+        const text = await res.text();
+        const trimmed = text.trim();
+        if (!trimmed.startsWith("<")) {
+          const parsed = JSON.parse(trimmed) as {
+            ok?: boolean;
+            bookings?: Order[];
+            wholesale?: WholesaleEnquiry[];
+          };
+          if (parsed && parsed.ok && Array.isArray(parsed.bookings)) {
+            return {
+              ok: true,
+              bookings: parsed.bookings,
+              wholesale: Array.isArray(parsed.wholesale) ? parsed.wholesale : [],
+              source: "sheets",
+            };
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("[booking-server] fetchCentralSheetDataFn error:", err);
+    }
+
+    return { ok: false, bookings: [], wholesale: [], source: "fallback" };
+  },
+);

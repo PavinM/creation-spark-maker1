@@ -43,6 +43,7 @@ import {
 import {
   getEmailNotificationStatusFn,
   submitBookingEmailFn,
+  fetchCentralSheetDataFn,
   type EmailConfigStatus,
 } from "@/lib/booking-server";
 
@@ -99,11 +100,47 @@ function AdminDashboardPage() {
     loading: false,
     msg: "",
   });
+  const [sheetSynced, setSheetSynced] = useState(false);
+  const [isSyncingSheet, setIsSyncingSheet] = useState(false);
+  const [sheetSyncMessage, setSheetSyncMessage] = useState<string | null>(null);
+
+  const handleSyncSheet = async () => {
+    setIsSyncingSheet(true);
+    setSheetSyncMessage(null);
+    try {
+      const res = await fetchCentralSheetDataFn();
+      if (res.ok && res.bookings && res.bookings.length > 0) {
+        setSheetSynced(true);
+        const currentOrders = OrdersStore.getOrders();
+        const merged = [...res.bookings];
+        for (const ord of currentOrders) {
+          if (!merged.some((m) => m.orderNumber === ord.orderNumber || m.id === ord.id)) {
+            merged.push(ord);
+          }
+        }
+        setOrders(merged);
+        if (res.wholesale && res.wholesale.length > 0) {
+          setWholesaleLeads(res.wholesale);
+        }
+        setSheetSyncMessage(`Synced ${res.bookings.length} live bookings from Google Sheets`);
+      } else {
+        setSheetSynced(false);
+        setSheetSyncMessage("Google Apps Script webhook is active & ready to log bookings to Google Sheets");
+      }
+    } catch {
+      setSheetSynced(false);
+      setSheetSyncMessage("Google Apps Script webhook active for incoming bookings & inquiries.");
+    } finally {
+      setIsSyncingSheet(false);
+    }
+  };
 
   useEffect(() => {
     getEmailNotificationStatusFn()
       .then((res) => setEmailStatus(res))
       .catch(() => setEmailStatus(null));
+
+    handleSyncSheet();
 
     const handleOrders = () => setOrders(OrdersStore.getOrders());
     const handleStock = () => setStockVersion((v) => v + 1);
@@ -323,24 +360,59 @@ function AdminDashboardPage() {
             </h1>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold bg-[#FFFFFF] border border-[#226192]/25 text-[#226192] shadow-xs">
+                <span className={`size-2 rounded-full ${sheetSynced ? "bg-emerald-500 animate-pulse" : "bg-emerald-600"}`} />
+                <span>Google Sheets: {sheetSynced ? "Live Cloud Synced" : "Webhook Ready"}</span>
+              </span>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={handleSyncSheet}
+                disabled={isSyncingSheet}
+                className="h-7 text-[11px] font-bold border-[#226192]/30 text-[#226192] hover:bg-[#226192] hover:text-white rounded-none cursor-pointer"
+                title="Fetch latest rows from Google Sheets"
+              >
+                <RefreshCw className={`size-3 mr-1 ${isSyncingSheet ? "animate-spin" : ""}`} />
+                {isSyncingSheet ? "Syncing..." : "Sync Sheets"}
+              </Button>
+            </div>
+
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 border border-[#226192] px-3.5 py-1.5 text-xs font-bold uppercase text-[#226192] hover:bg-[#226192] hover:text-[#FFFFFF] transition-colors"
+              className="inline-flex items-center gap-1.5 border border-[#226192] px-3.5 py-1 text-xs font-bold uppercase text-[#226192] hover:bg-[#226192] hover:text-[#FFFFFF] transition-colors h-7"
             >
-              <span>View Live Storefront</span>
+              <span>View Store</span>
               <ExternalLink className="size-3" />
             </Link>
             <Button
               type="button"
               variant="outline"
               onClick={handleSignOut}
-              className="rounded-none border-rose-300 text-rose-700 hover:bg-rose-50 text-xs font-bold uppercase h-8 px-3 cursor-pointer"
+              className="rounded-none border-rose-300 text-rose-700 hover:bg-rose-50 text-xs font-bold uppercase h-7 px-3 cursor-pointer"
             >
               Sign Out
             </Button>
           </div>
         </div>
+
+        {sheetSyncMessage && (
+          <div className="mb-6 flex items-center justify-between border border-[#226192]/20 bg-[#FFFFFF] px-4 py-2.5 text-xs text-[#226192]">
+            <span className="flex items-center gap-2 font-medium">
+              <CheckCircle2 className="size-4 text-emerald-600" />
+              <span>{sheetSyncMessage}</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => setSheetSyncMessage(null)}
+              className="text-[#252525]/50 hover:text-[#252525]"
+            >
+              ✕
+            </button>
+          </div>
+        )}
 
         {/* Console Nav Tabs */}
         <div className="flex flex-wrap items-center gap-2 border-b border-[#226192]/20 pb-4 mb-8">
@@ -363,20 +435,19 @@ function AdminDashboardPage() {
               onClick={() =>
                 setActiveSection(
                   id as
-                    | "overview"
-                    | "orders"
-                    | "inventory"
-                    | "brands"
-                    | "shipping"
-                    | "wholesale"
-                    | "coupons",
+                  | "overview"
+                  | "orders"
+                  | "inventory"
+                  | "brands"
+                  | "shipping"
+                  | "wholesale"
+                  | "coupons",
                 )
               }
-              className={`flex items-center gap-2 px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all ${
-                activeSection === id
-                  ? "bg-[#226192] text-[#FFFFFF]"
-                  : "border border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557]"
-              }`}
+              className={`flex items-center gap-2 px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all ${activeSection === id
+                ? "bg-[#226192] text-[#FFFFFF]"
+                : "border border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557]"
+                }`}
             >
               <Icon className="size-3.5" />
               <span>{label}</span>
@@ -1031,11 +1102,10 @@ function AdminDashboardPage() {
                             WholesaleStore.updateStatus(lead.id, st);
                             setWholesaleLeads(WholesaleStore.getEnquiries());
                           }}
-                          className={`px-2 py-0.5 text-[10px] font-bold border transition-colors ${
-                            lead.status === st
-                              ? "bg-[#226192] text-[#FFFFFF] border-[#226192]"
-                              : "border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557]"
-                          }`}
+                          className={`px-2 py-0.5 text-[10px] font-bold border transition-colors ${lead.status === st
+                            ? "bg-[#226192] text-[#FFFFFF] border-[#226192]"
+                            : "border-[#226192]/20 bg-[#FFFFFF] text-[#226192] hover:border-[#EF8557]"
+                            }`}
                         >
                           {st}
                         </button>

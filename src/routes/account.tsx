@@ -387,37 +387,48 @@ function BookingsPortalPage() {
                 {wishlistedProducts.map((p) => (
                   <div
                     key={p.slug}
-                    className="border border-[#226192]/20 bg-[#FFFFFF] p-4 flex flex-col justify-between shadow-sm"
+                    className="flex flex-col h-full border border-[#226192]/20 bg-[#FFFFFF] p-4 shadow-sm transition-all hover:border-[#EF8557]"
                   >
-                    <div>
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#EAE6DE]/40 border border-[#226192]/10">
                       <img
                         src={p.image}
                         alt={p.name}
-                        className="aspect-[4/5] size-full object-cover border border-[#226192]/10"
+                        className="size-full object-cover transition-transform duration-300 hover:scale-105"
+                        loading="lazy"
                       />
-                      <span className="mt-2 block text-[10px] font-bold uppercase text-[#EF8557]">
+                    </div>
+
+                    <div className="flex flex-col flex-1 pt-3 pb-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557]">
                         {p.brandName}
                       </span>
-                      <h4 className="font-['Space_Grotesk'] text-sm font-bold text-[#226192] line-clamp-1">
+                      <Link
+                        to="/products/$slug"
+                        params={{ slug: p.slug }}
+                        className="mt-1 font-['Space_Grotesk'] text-sm font-bold text-[#226192] hover:text-[#EF8557] line-clamp-2 transition-colors"
+                      >
                         {p.name}
-                      </h4>
-                      <div className="mt-1 flex items-baseline gap-2">
-                        <span className="font-bold text-[#226192]">₹{p.price}</span>
-                        <span className="text-xs text-[#252525]/50 line-through">₹{p.mrp}</span>
+                      </Link>
+                      <div className="mt-2 flex items-baseline gap-2">
+                        <span className="text-base font-bold text-[#226192]">₹{p.price}</span>
+                        {p.mrp > p.price && (
+                          <span className="text-xs text-[#252525]/50 line-through">₹{p.mrp}</span>
+                        )}
                       </div>
                     </div>
 
-                    <div className="mt-4 space-y-2 border-t border-[#226192]/10 pt-3">
+                    <div className="mt-auto space-y-2 border-t border-[#226192]/10 pt-3">
                       <Button
+                        type="button"
                         onClick={() => handleMoveToBookingList(p.slug)}
-                        className="w-full rounded-none bg-[#226192] text-xs font-bold uppercase text-[#FFFFFF] hover:bg-[#EF8557]"
+                        className="w-full rounded-none bg-[#226192] hover:bg-[#EF8557] text-xs font-bold uppercase text-[#FFFFFF] transition-all h-10 cursor-pointer"
                       >
                         Move to Booking List
                       </Button>
                       <button
                         type="button"
                         onClick={() => WishlistStore.toggle(p.slug)}
-                        className="w-full text-center text-xs text-[#252525]/60 hover:text-rose-600 font-semibold"
+                        className="w-full text-center text-xs text-[#252525]/60 hover:text-rose-600 font-semibold py-1 transition-colors cursor-pointer"
                       >
                         Remove from Wishlist
                       </button>

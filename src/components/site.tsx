@@ -388,38 +388,25 @@ export function SiteHeader() {
                 onMouseEnter={() => setBrandDropdownOpen(true)}
                 onMouseLeave={() => setBrandDropdownOpen(false)}
               >
-                <div
-                  className="flex items-center gap-1 cursor-pointer select-none"
+                <button
+                  type="button"
                   onClick={() => setBrandDropdownOpen((v) => !v)}
+                  className={cn(
+                    "flex items-center gap-1 cursor-pointer select-none py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#252525] hover:text-[#226192] transition-colors relative whitespace-nowrap",
+                    (pathname.startsWith("/brands") || brandDropdownOpen) &&
+                      "text-[#226192] font-bold after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#EF8557]",
+                  )}
+                  aria-expanded={brandDropdownOpen}
+                  aria-label="Our Brands Portfolio"
                 >
-                  <Link
-                    to="/brands"
+                  <span>Our Brands</span>
+                  <ChevronDown
                     className={cn(
-                      "py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#252525] hover:text-[#226192] transition-colors relative whitespace-nowrap",
-                      (pathname.startsWith("/brands") || brandDropdownOpen) &&
-                        "text-[#226192] font-bold after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#EF8557]",
+                      "size-3 text-[#EF8557] transition-transform duration-200",
+                      brandDropdownOpen && "rotate-180",
                     )}
-                  >
-                    Our Brands
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setBrandDropdownOpen((v) => !v);
-                    }}
-                    aria-label="Toggle brand portfolio menu"
-                    className="p-0.5 hover:bg-[#226192]/10 rounded-sm"
-                  >
-                    <ChevronDown
-                      className={cn(
-                        "size-3 text-[#EF8557] transition-transform duration-200",
-                        brandDropdownOpen && "rotate-180",
-                      )}
-                    />
-                  </button>
-                </div>
+                  />
+                </button>
 
                 {brandDropdownOpen && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1.5 z-50">

@@ -174,16 +174,9 @@ function ProductDetailPage() {
       e.preventDefault();
     }
     handleAddToCart();
-    try {
-      navigate({ to: "/checkout" });
-    } catch {
+    navigate({ to: "/checkout" }).catch(() => {
       window.location.href = "/checkout";
-    }
-    setTimeout(() => {
-      if (window.location.pathname !== "/checkout") {
-        window.location.href = "/checkout";
-      }
-    }, 60);
+    });
   };
 
   const handleToggleWishlist = () => {
@@ -540,14 +533,14 @@ function ProductDetailPage() {
                     </button>
                   </div>
 
-                  <Link
-                    to="/checkout"
+                  <button
+                    type="button"
                     onClick={handleBuyNow}
                     className="w-full rounded-none border border-[#EF8557] bg-[#EF8557] h-12 text-xs font-bold uppercase tracking-widest text-[#FFFFFF] hover:bg-[#d97346] shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer select-none"
                   >
                     <span>BOOK STOCK NOW</span>
                     <span className="text-base font-bold">→</span>
-                  </Link>
+                  </button>
                 </div>
 
                 <p className="mt-3 text-[11px] text-[#226192]/80 font-medium">

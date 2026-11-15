@@ -300,16 +300,18 @@ export function SiteHeader() {
               <Link
                 to="/account"
                 search={{ tab: "wishlist" }}
-                className="relative flex items-center gap-1 text-[#252525] hover:text-[#EF8557] transition-colors py-1"
+                className="group relative flex items-center gap-1.5 text-[#252525] hover:text-[#EF8557] transition-colors py-1 px-1"
                 aria-label={`Wishlist (${wishlistCount} items)`}
               >
-                <Heart className="size-5 text-[#226192]" />
-                {wishlistCount > 0 && (
-                  <span className="size-4 bg-[#252525] text-[#FFFFFF] text-[10px] font-bold flex items-center justify-center -ml-2 -mt-3">
-                    {wishlistCount}
-                  </span>
-                )}
-                <span className="hidden xl:inline text-xs font-semibold uppercase tracking-wider ml-1">
+                <div className="relative flex items-center justify-center">
+                  <Heart className="size-5 text-[#226192] transition-colors group-hover:text-[#EF8557]" />
+                  {wishlistCount > 0 && (
+                    <span className="absolute -top-1.5 -right-2 min-w-[17px] h-[17px] px-1 rounded-full bg-[#EF8557] text-[#FFFFFF] text-[10px] font-bold flex items-center justify-center shadow-xs border border-white">
+                      {wishlistCount}
+                    </span>
+                  )}
+                </div>
+                <span className="hidden xl:inline text-xs font-semibold uppercase tracking-wider">
                   Wishlist
                 </span>
               </Link>
@@ -317,18 +319,20 @@ export function SiteHeader() {
               {/* Prominent Booking List Badge in Coral */}
               <Link
                 to="/cart"
-                className="flex items-center gap-2.5 bg-[#EF8557] hover:bg-[#d97346] text-[#FFFFFF] px-3 sm:px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all shadow-sm group"
+                className="relative flex items-center gap-3 bg-[#EF8557] hover:bg-[#d97346] text-[#FFFFFF] pl-3.5 pr-4 py-2 text-xs font-bold uppercase tracking-wider transition-all shadow-sm group select-none"
                 aria-label={`Booking List (${cartCount} items)`}
               >
-                <div className="relative flex items-center">
-                  <ClipboardList className="size-4.5" />
-                  <span className="absolute -top-2.5 -right-2.5 bg-[#252525] text-[#FFFFFF] text-[9px] size-4 flex items-center justify-center font-bold">
-                    {cartCount}
-                  </span>
+                <div className="relative flex items-center justify-center shrink-0">
+                  <ClipboardList className="size-5" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-2 -right-2.5 min-w-[18px] h-[18px] px-1 rounded-full bg-[#18466b] text-[#FFFFFF] text-[10px] font-extrabold flex items-center justify-center shadow-sm border-2 border-[#EF8557]">
+                      {cartCount}
+                    </span>
+                  )}
                 </div>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[10px] opacity-90">Booking List</span>
-                  <span className="font-mono text-xs mt-0.5">
+                <div className="flex flex-col text-left leading-tight">
+                  <span className="text-[10px] opacity-95 tracking-wide font-semibold">Booking List</span>
+                  <span className="font-mono text-xs font-bold">
                     ₹{cartSubtotal > 0 ? cartSubtotal.toLocaleString("en-IN") : "0"}
                   </span>
                 </div>

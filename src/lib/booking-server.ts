@@ -49,7 +49,7 @@ function getServerEnv() {
 }
 
 const DEFAULT_BOOKING_WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbzAEyMlcCwqAgxBJIhDJMdw6y2bS066AVlIOOl7R_S61QN_VFplweuBDt6HWuSgJwPP/exec";
+  "https://script.google.com/macros/s/AKfycbywCl61Tg0WChFL4zwNcJpgII4W6gSv_DkvRt7O8p5Z6om-mrj8sBf9YCRlyiNr2T7g/exec";
 
 export const getEmailNotificationStatusFn = createServerFn({ method: "GET" }).handler(
   async (): Promise<EmailConfigStatus> => {

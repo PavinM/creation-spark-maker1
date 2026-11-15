@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Heart, Clock, FileText, Printer, Search, Send, ClipboardList, X } from "lucide-react";
+import { Heart, Clock, FileText, Printer, Search, Send, ClipboardList, X, RefreshCw, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -20,6 +20,7 @@ import {
   type Order,
   type OrderStatus,
 } from "@/lib/content";
+import { fetchCentralSheetDataFn } from "@/lib/booking-server";
 
 export const Route = createFileRoute("/account")({
   validateSearch: (
@@ -69,6 +70,8 @@ function BookingsPortalPage() {
   const [orders, setOrders] = useState<Order[]>(() => OrdersStore.getOrders());
   const [wishlistSlugs, setWishlistSlugs] = useState<string[]>(() => WishlistStore.getWishlist());
   const [lookupQuery, setLookupQuery] = useState<string>("");
+  const [isSyncingSheets, setIsSyncingSheets] = useState(false);
+  const [sheetNotice, setSheetNotice] = useState<string | null>(null);
 
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(() => {
     if (searchParams.orderId) {
@@ -77,11 +80,46 @@ function BookingsPortalPage() {
     return null;
   });
 
+  const syncCentralBookings = async () => {
+    setIsSyncingSheets(true);
+    setSheetNotice(null);
+    try {
+      const res = await fetchCentralSheetDataFn();
+      if (res.ok && res.bookings && res.bookings.length > 0) {
+        setOrders((prev) => {
+          const merged = [...prev];
+          let newCount = 0;
+          for (const ord of res.bookings) {
+            if (!merged.some((m) => m.orderNumber === ord.orderNumber || m.id === ord.id)) {
+              merged.push(ord);
+              newCount++;
+            }
+          }
+          if (newCount > 0) {
+            try {
+              OrdersStore.saveOrders(merged);
+            } catch {}
+            setSheetNotice(`Synced ${newCount} booking(s) from central database.`);
+          }
+          return merged;
+        });
+      }
+    } catch {
+      // safe fallback
+    } finally {
+      setIsSyncingSheets(false);
+    }
+  };
+
   useEffect(() => {
     const handleOrders = () => setOrders(OrdersStore.getOrders());
     const handleWishlist = () => setWishlistSlugs(WishlistStore.getWishlist());
     window.addEventListener("orders-updated", handleOrders);
     window.addEventListener("wishlist-updated", handleWishlist);
+
+    // Initial background sync with central Google Sheets database
+    syncCentralBookings();
+
     return () => {
       window.removeEventListener("orders-updated", handleOrders);
       window.removeEventListener("wishlist-updated", handleWishlist);
@@ -205,23 +243,44 @@ function BookingsPortalPage() {
           </div>
 
           {activeTab === "orders" && (
-            <div className="flex items-center gap-2 border border-[#226192]/30 bg-[#FFFFFF] px-3 py-1.5 w-full sm:w-80">
-              <Search className="size-3.5 text-[#226192]" />
-              <input
-                type="text"
-                value={lookupQuery}
-                onChange={(e) => setLookupQuery(e.target.value)}
-                placeholder="Search by Email or Booking ID..."
-                className="w-full bg-transparent text-xs outline-none"
-              />
-              {lookupQuery && (
-                <button type="button" onClick={() => setLookupQuery("")}>
-                  <X className="size-3 text-[#252525]/60" />
-                </button>
-              )}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-2 border border-[#226192]/30 bg-[#FFFFFF] px-3 py-1.5 w-full sm:w-80">
+                <Search className="size-3.5 text-[#226192]" />
+                <input
+                  type="text"
+                  value={lookupQuery}
+                  onChange={(e) => setLookupQuery(e.target.value)}
+                  placeholder="Search by Email or Booking ID..."
+                  className="w-full bg-transparent text-xs outline-none"
+                />
+                {lookupQuery && (
+                  <button type="button" onClick={() => setLookupQuery("")}>
+                    <X className="size-3 text-[#252525]/60" />
+                  </button>
+                )}
+              </div>
+              <button
+                type="button"
+                onClick={syncCentralBookings}
+                disabled={isSyncingSheets}
+                className="inline-flex items-center gap-1.5 border border-[#226192]/30 bg-[#FFFFFF] px-3 py-1.5 text-xs font-bold uppercase text-[#226192] hover:border-[#EF8557] hover:text-[#EF8557] disabled:opacity-50 transition-colors"
+                title="Sync bookings from Google Sheets central database"
+              >
+                <RefreshCw className={`size-3 ${isSyncingSheets ? "animate-spin text-[#EF8557]" : ""}`} />
+                <span>{isSyncingSheets ? "Syncing..." : "Sync Sheets"}</span>
+              </button>
             </div>
           )}
         </div>
+
+        {sheetNotice && (
+          <div className="mb-6 border border-emerald-600 bg-emerald-50 px-4 py-2.5 text-xs font-semibold text-emerald-800 flex items-center justify-between">
+            <span>{sheetNotice}</span>
+            <button type="button" onClick={() => setSheetNotice(null)} className="text-emerald-700">
+              <X className="size-3.5" />
+            </button>
+          </div>
+        )}
 
         {/* ═══ TAB 1: BOOKINGS LIST & TRACKING ═══ */}
         {activeTab === "orders" && (
@@ -258,6 +317,15 @@ function BookingsPortalPage() {
                         <span className="rounded-full bg-[#EF8557]/15 px-2.5 py-0.5 text-xs font-bold text-[#EF8557]">
                           {ord.status}
                         </span>
+                        <a
+                          href={`https://wa.me/919787806802?text=${encodeURIComponent(`Hello Muthu International, I have a stock reservation with Booking #${ord.orderNumber} under email ${ord.shippingAddress.email}. Please provide a status update.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 border border-emerald-600 bg-emerald-600 px-2.5 py-1 text-[10px] font-bold uppercase text-[#FFFFFF] hover:bg-emerald-700 transition-colors"
+                        >
+                          <MessageSquare className="size-3" />
+                          <span>WhatsApp Desk</span>
+                        </a>
                         <a
                           href={mailtoUrl}
                           className="inline-flex items-center gap-1 border border-[#EF8557] bg-[#EF8557] px-2.5 py-1 text-[10px] font-bold uppercase text-[#FFFFFF] hover:bg-[#EF8557]/90"

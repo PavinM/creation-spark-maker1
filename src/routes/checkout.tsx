@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   BookmarkCheck,
   Send,
+  MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -350,6 +351,24 @@ function CheckoutPage() {
                   <Printer className="size-3.5" />
                   <span>Print Slip</span>
                 </button>
+
+                <a
+                  href={`https://wa.me/919787806802?text=${encodeURIComponent(`Hello Muthu International, I just reserved garments with Booking #${confirmedBooking.orderNumber} for total ₹${confirmedBooking.total}. Customer: ${confirmedBooking.shippingAddress.fullName} (${confirmedBooking.shippingAddress.email}).`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-emerald-600 bg-emerald-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-emerald-700 transition-colors"
+                >
+                  <MessageSquare className="size-3.5" />
+                  <span>WhatsApp Factory Desk</span>
+                </a>
+
+                <Link
+                  to="/account"
+                  search={{ tab: "orders", orderId: confirmedBooking.id }}
+                  className="inline-flex items-center gap-2 border border-[#226192] bg-[#226192] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#FFFFFF] hover:bg-[#EF8557] hover:border-[#EF8557] transition-colors"
+                >
+                  <span>Track In Account Portal</span>
+                </Link>
               </div>
             </div>
 

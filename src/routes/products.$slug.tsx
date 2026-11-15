@@ -138,6 +138,8 @@ function ProductDetailPage() {
   };
 
   const handleAddToCart = () => {
+    const qtyToAdd = Math.max(1, qty || 1);
+    const stockAvail = Math.max(1, liveStock || selectedVariant.stock || 10);
     CartStore.addItem({
       productId: p.slug,
       productSlug: p.slug,
@@ -152,8 +154,8 @@ function ProductDetailPage() {
       image: selectedVariant.image || p.image,
       price: selectedVariant.price,
       mrp: selectedVariant.mrp,
-      quantity: qty,
-      maxStock: liveStock,
+      quantity: qtyToAdd,
+      maxStock: stockAvail,
     });
 
     setAddedToast(true);

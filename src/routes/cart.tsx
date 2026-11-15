@@ -36,7 +36,17 @@ export const Route = createFileRoute("/cart")({
 
 function CartPage() {
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => CartStore.getCart());
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const raw = localStorage.getItem("kids_korner_cart_v1");
+        return raw ? JSON.parse(raw) : [];
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  });
   const [couponCode, setCouponCode] = useState("");
   const [couponFeedback, setCouponFeedback] = useState<{
     success: boolean;

@@ -381,89 +381,94 @@ export function SiteHeader() {
                 About
               </Link>
 
-              {/* Our Brands with Interactive Mega Menu (replaces product) */}
+              {/* Our Brands with Interactive Mega Menu */}
               <div
-                className="relative py-1"
+                className="group relative py-2"
                 ref={brandDropdownRef}
-                onMouseEnter={() => setBrandDropdownOpen(true)}
-                onMouseLeave={() => setBrandDropdownOpen(false)}
               >
-                <button
-                  type="button"
+                <div
+                  className="flex items-center gap-1 cursor-pointer select-none py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#252525] group-hover:text-[#226192] transition-colors relative whitespace-nowrap"
                   onClick={() => setBrandDropdownOpen((v) => !v)}
-                  className={cn(
-                    "flex items-center gap-1 cursor-pointer select-none py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#252525] hover:text-[#226192] transition-colors relative whitespace-nowrap",
-                    (pathname.startsWith("/brands") || brandDropdownOpen) &&
-                      "text-[#226192] font-bold after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#EF8557]",
-                  )}
-                  aria-expanded={brandDropdownOpen}
-                  aria-label="Our Brands Portfolio"
                 >
-                  <span>Our Brands</span>
+                  <Link
+                    to="/brands"
+                    className={cn(
+                      pathname.startsWith("/brands") &&
+                        "text-[#226192] font-bold after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-[2.5px] after:bg-[#EF8557]",
+                    )}
+                  >
+                    Our Brands
+                  </Link>
                   <ChevronDown
                     className={cn(
-                      "size-3 text-[#EF8557] transition-transform duration-200",
+                      "size-3 text-[#EF8557] transition-transform duration-200 group-hover:rotate-180",
                       brandDropdownOpen && "rotate-180",
                     )}
                   />
-                </button>
+                </div>
 
-                {brandDropdownOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1.5 z-50">
-                    <div className="w-96 rounded-none border border-[#226192]/25 bg-[#FFFFFF] p-4 shadow-2xl backdrop-blur-md animate-in fade-in-50 zoom-in-95">
-                      <div className="mb-3 border-b border-[#226192]/10 pb-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#EF8557]">
-                          Muthu International Portfolio
-                        </p>
-                        <p className="text-[11px] text-[#252525]/70">
-                          Four specialized kidswear labels · Unified factory booking
-                        </p>
-                      </div>
-                      <div className="space-y-2">
-                        {brandsList.map((brand) => (
-                          <Link
-                            key={brand.id}
-                            to="/brands/$slug"
-                            params={{ slug: brand.slug }}
-                            onClick={() => setBrandDropdownOpen(false)}
-                            className="group flex items-start justify-between border border-transparent p-2.5 transition-all hover:border-[#226192]/20 hover:bg-[#F7F3EB]"
-                          >
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-['Space_Grotesk'] text-xs font-bold text-[#226192] group-hover:text-[#EF8557]">
-                                  {brand.name}
-                                </span>
-                                <span className="bg-[#EF8557]/15 px-1.5 py-0.5 text-[8px] font-bold text-[#EF8557]">
-                                  {brand.badge}
-                                </span>
-                              </div>
-                              <p className="line-clamp-1 text-[11px] text-[#252525]/70 mt-0.5">
-                                {brand.tagline}
-                              </p>
+                {/* Dropdown Menu Container (Pure CSS group-hover + state fallback) */}
+                <div
+                  className={cn(
+                    "absolute left-1/2 -translate-x-1/2 top-full pt-1.5 z-50 transition-all duration-150",
+                    brandDropdownOpen
+                      ? "block opacity-100 pointer-events-auto"
+                      : "hidden group-hover:block group-hover:opacity-100 group-hover:pointer-events-auto"
+                  )}
+                >
+                  <div className="w-96 rounded-none border-2 border-[#226192]/30 bg-[#FFFFFF] p-4 shadow-2xl">
+                    <div className="mb-3 border-b border-[#226192]/10 pb-2">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#EF8557]">
+                        Muthu International Portfolio
+                      </p>
+                      <p className="text-[11px] text-[#252525]/70">
+                        Four specialized kidswear labels · Unified factory booking
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      {brandsList.map((brand) => (
+                        <Link
+                          key={brand.id}
+                          to="/brands/$slug"
+                          params={{ slug: brand.slug }}
+                          onClick={() => setBrandDropdownOpen(false)}
+                          className="group/item flex items-start justify-between border border-transparent p-2.5 transition-all hover:border-[#226192]/20 hover:bg-[#F7F3EB]"
+                        >
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-['Space_Grotesk'] text-xs font-bold text-[#226192] group-hover/item:text-[#EF8557]">
+                                {brand.name}
+                              </span>
+                              <span className="bg-[#EF8557]/15 px-1.5 py-0.5 text-[8px] font-bold text-[#EF8557]">
+                                {brand.badge}
+                              </span>
                             </div>
-                            <ArrowRight className="size-3.5 text-[#226192]/40 transition-transform group-hover:translate-x-1 group-hover:text-[#EF8557]" />
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="mt-3 flex items-center justify-between border-t border-[#226192]/10 pt-2.5">
-                        <Link
-                          to="/brands"
-                          onClick={() => setBrandDropdownOpen(false)}
-                          className="text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:text-[#EF8557]"
-                        >
-                          All 4 Houses →
+                            <p className="line-clamp-1 text-[11px] text-[#252525]/70 mt-0.5">
+                              {brand.tagline}
+                            </p>
+                          </div>
+                          <ArrowRight className="size-3.5 text-[#226192]/40 transition-transform group-hover/item:translate-x-1 group-hover/item:text-[#EF8557]" />
                         </Link>
-                        <Link
-                          to="/products"
-                          onClick={() => setBrandDropdownOpen(false)}
-                          className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557] hover:text-[#226192]"
-                        >
-                          Browse Full Catalogue →
-                        </Link>
-                      </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between border-t border-[#226192]/10 pt-2.5">
+                      <Link
+                        to="/brands"
+                        onClick={() => setBrandDropdownOpen(false)}
+                        className="text-[10px] font-bold uppercase tracking-wider text-[#226192] hover:text-[#EF8557]"
+                      >
+                        All 4 Houses →
+                      </Link>
+                      <Link
+                        to="/products"
+                        onClick={() => setBrandDropdownOpen(false)}
+                        className="text-[10px] font-bold uppercase tracking-wider text-[#EF8557] hover:text-[#226192]"
+                      >
+                        Browse Full Catalogue →
+                      </Link>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               <Link

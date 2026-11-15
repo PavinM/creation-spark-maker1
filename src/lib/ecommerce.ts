@@ -1014,18 +1014,19 @@ export const CartStore = {
     const current = this.getCart();
     const uniqueKey = `${item.productId}-${item.variantId}`;
     const existingIndex = current.findIndex((i) => i.id === uniqueKey);
-    const liveMaxStock = StockStore.getVariantStock(item.variantId, item.maxStock);
+    const liveMaxStock = Math.max(1, StockStore.getVariantStock(item.variantId, item.maxStock || 10));
+    const safeQty = Math.max(1, Math.min(item.quantity || 1, liveMaxStock));
 
     const existing = existingIndex > -1 ? current[existingIndex] : undefined;
     if (existing) {
-      const newQty = Math.min(existing.quantity + item.quantity, liveMaxStock);
+      const newQty = Math.max(1, Math.min(existing.quantity + (item.quantity || 1), liveMaxStock));
       current[existingIndex] = { ...existing, quantity: newQty, maxStock: liveMaxStock };
     } else {
       current.push({
         ...item,
         id: uniqueKey,
         maxStock: liveMaxStock,
-        quantity: Math.min(item.quantity, liveMaxStock),
+        quantity: safeQty,
       });
     }
 

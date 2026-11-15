@@ -43,13 +43,17 @@ function getServerEnv() {
   return proc.env;
 }
 
+const DEFAULT_BOOKING_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbzAEyMlcCwqAgxBJIhDJMdw6y2bS066AVlIOOl7R_S61QN_VFplweuBDt6HWuSgJwPP/exec";
+
 export const getEmailNotificationStatusFn = createServerFn({ method: "GET" }).handler(
   async (): Promise<EmailConfigStatus> => {
     const env = getServerEnv();
-    if (env?.["BOOKING_WEBHOOK_URL"]) {
+    const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim() || DEFAULT_BOOKING_WEBHOOK_URL;
+    if (webhookUrl) {
       return {
         configured: true,
-        provider: "Google Apps Script / Webhook",
+        provider: "Google Apps Script / Gmail Webhook",
         ownerEmail: COMPANY_OWNER_EMAIL,
       };
     }
@@ -224,7 +228,7 @@ export const submitBookingEmailFn = createServerFn({ method: "POST" })
       const emailBody = formatBookingEmailBody(order);
 
       const env = getServerEnv();
-      const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim();
+      const webhookUrl = env?.["BOOKING_WEBHOOK_URL"]?.trim() || DEFAULT_BOOKING_WEBHOOK_URL;
       const resendApiKey = env?.["RESEND_API_KEY"]?.trim();
       const brevoApiKey = env?.["BREVO_API_KEY"]?.trim();
       const web3FormsKey = env?.["WEB3FORMS_ACCESS_KEY"]?.trim();
